@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -45,12 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1CCB4893C02BEB5922128D30AFF2667F /* Pods_CleanWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CleanWeatherTests.framework; path = "Pods-CleanWeatherTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCB4893C02BEB5922128D30AFF2667F /* Pods_CleanWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22495A80B796E82CDD17B6B6A3E53703 /* Pods-CleanWeather-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CleanWeather-Info.plist"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3C4201F8F75FD36A4F5FEFCBC2C2EE42 /* Pods-CleanWeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CleanWeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		48009BCC74239D940DB9EBEF174D39E7 /* Pods-CleanWeatherTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CleanWeatherTests.modulemap"; sourceTree = "<group>"; };
-		52041042B6D418962A72F98FDC6A1D23 /* Pods_CleanWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CleanWeather.framework; path = "Pods-CleanWeather.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52041042B6D418962A72F98FDC6A1D23 /* Pods_CleanWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638955CCC45E6935DD8A210E730CB7F7 /* Pods-CleanWeatherTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CleanWeatherTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		648AC0A2A74400F07EFA05E011FA346F /* Pods-CleanWeather-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CleanWeather-dummy.m"; sourceTree = "<group>"; };
 		6AA22BAB30E0EA8C141AC99DC580ED9E /* Pods-CleanWeatherTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CleanWeatherTests-umbrella.h"; sourceTree = "<group>"; };
@@ -59,7 +60,7 @@
 		8865F0948194D1D1E8C967A4E879956F /* Pods-CleanWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CleanWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 		965897508EC64EF476E1E6B237DB198E /* Pods-CleanWeather-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CleanWeather-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A62C228D0FB772FC893EBD3448F892D0 /* Pods-CleanWeatherTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CleanWeatherTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		B3A6D92EA3C33237B4718020E5519BC3 /* Pods-CleanWeather.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CleanWeather.modulemap"; sourceTree = "<group>"; };
 		D45BCD46DDA838DB32F4FCFAA0E4AAF3 /* Pods-CleanWeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CleanWeatherTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 			children = (
 				EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -266,6 +266,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = F886948ED098D154630FA142E92BF5D9 /* Products */;
