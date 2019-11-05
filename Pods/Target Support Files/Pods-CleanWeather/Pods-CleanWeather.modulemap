@@ -1,0 +1,6 @@
+framework module Pods_CleanWeather {
+  umbrella header "Pods-CleanWeather-umbrella.h"
+
+  export *
+  module * { export * }
+}
