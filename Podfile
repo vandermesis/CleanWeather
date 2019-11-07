@@ -7,6 +7,7 @@ target 'CleanWeather' do
 
   # Pods for CleanWeather
   pod 'SwiftLint'
+  pod 'Rswift'
   target 'CleanWeatherTests' do
     inherit! :search_paths
     # Pods for testing
