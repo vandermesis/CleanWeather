@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PeopleListController" customModule="CleanWeather" customModuleProvider="target">
             <connections>
+                <outlet property="changeBackgroundButton" destination="VIH-dW-rb9" id="STZ-h3-tM2"/>
                 <outlet property="tableView" destination="4oo-3i-MmA" id="8jU-Hu-dR5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,11 +27,24 @@
                         <outlet property="delegate" destination="-1" id="bSo-m8-W0W"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-dW-rb9">
+                    <rect key="frame" x="20" y="64" width="374" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="0aG-iX-WAb"/>
+                    </constraints>
+                    <state key="normal" title="Click"/>
+                    <connections>
+                        <action selector="tapChangeBackgroundAction:" destination="-1" eventType="touchUpInside" id="8wC-RZ-c0g"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="VIH-dW-rb9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="0LA-gp-r9C"/>
+                <constraint firstItem="VIH-dW-rb9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="BpG-0W-kSQ"/>
                 <constraint firstItem="4oo-3i-MmA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Gba-Ra-raV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4oo-3i-MmA" secondAttribute="trailing" id="XUd-WH-pfa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VIH-dW-rb9" secondAttribute="trailing" constant="20" id="ZcA-UC-Vmx"/>
                 <constraint firstAttribute="bottom" secondItem="4oo-3i-MmA" secondAttribute="bottom" id="gOE-Ey-YkZ"/>
                 <constraint firstItem="4oo-3i-MmA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xDH-Bl-tMq"/>
             </constraints>

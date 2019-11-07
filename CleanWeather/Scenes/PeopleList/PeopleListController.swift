@@ -12,12 +12,14 @@ protocol PeopleListPresentable: UIViewController {
     func displayPeople(_ people: [PersonDisplayable])
     func presentAlert(title: String, body: String)
     func updateSpinner(state: Bool)
+    func changeBackgroundColor(_ color: UIColor)
 }
 
 final class PeopleListController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-        
+    @IBOutlet private weak var changeBackgroundButton: UIButton!
+    
     private var dataSource = [PersonDisplayable]()
     
     private let interactor: PeopleListInteractor
@@ -34,6 +36,10 @@ final class PeopleListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.getPeople()
+    }
+    
+    @IBAction private func tapChangeBackgroundAction(_ sender: UIButton) {
+        interactor.changeBackground()
     }
     
 }
@@ -57,6 +63,10 @@ extension PeopleListController: PeopleListPresentable {
             self.tableView.backgroundColor = state ? .orange : .white
         }
     }
+    
+    func changeBackgroundColor(_ color: UIColor) {
+        self.tableView.backgroundColor = color
+    }
 }
 
 extension PeopleListController: UITableViewDataSource {
@@ -79,7 +89,7 @@ extension PeopleListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let personId = dataSource[indexPath.row].id
-        interactor.didSelectItem(personId: personId)
+        interactor.didSelectPersonCell(personId: personId)
     }
     
 }

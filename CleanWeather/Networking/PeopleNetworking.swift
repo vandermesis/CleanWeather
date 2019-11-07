@@ -20,6 +20,7 @@ final class PeopleNetworkingImpl: PeopleNetworking {
         
         //TODO: Build proper networking and remove these mocked values
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+
             completion?(Result.success([
                 Person(id: "fb812bd3-8bbd-47cc-92f5-fb6205bf0ccd", firstName: "Bernadette", lastName: "Bransden", age: 23, sex: "Female", email: "bbransden0@army.mil"),
                 Person(id: "c1f2934e-b2f4-47d2-961f-22c72d2411b5", firstName: "Rayshell", lastName: "Mangon", age: 24, sex: "Female", email: "rmangon1@google.fr"),

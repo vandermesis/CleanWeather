@@ -6,11 +6,13 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 protocol PeopleListInteractor {
     func getPeople()
-    func didSelectItem(personId: String)
+    func didSelectPersonCell(personId: String)
+    func changeBackground()
 }
 
 final class PeopleListInteractorImpl {
@@ -47,8 +49,16 @@ extension PeopleListInteractorImpl: PeopleListInteractor {
         }
     }
     
-    func didSelectItem(personId: String) {
+    func didSelectPersonCell(personId: String) {
         router.navigateToPersonDetails(personId: personId)
+    }
+    
+    func changeBackground() {
+        if people.isEmpty {
+            presenter.changeBackgroundColor(.red)
+        } else {
+            presenter.changeBackgroundColor(.blue)
+        }
     }
     
 }

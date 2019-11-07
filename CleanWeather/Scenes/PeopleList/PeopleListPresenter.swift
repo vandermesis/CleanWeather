@@ -6,12 +6,14 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 protocol PeopleListPresenter {
     func displayPeople(people: [Person])
     func displayError(error: Error)
     func updateSpinner(state: Bool)
+    func changeBackgroundColor(_ color: UIColor)
 }
 
 final class PeopleListPresenterImpl {
@@ -33,6 +35,10 @@ extension PeopleListPresenterImpl: PeopleListPresenter {
     
     func updateSpinner(state: Bool) {
         controller?.updateSpinner(state: state)
+    }
+    
+    func changeBackgroundColor(_ color: UIColor) {
+        controller?.changeBackgroundColor(color)
     }
 
 }

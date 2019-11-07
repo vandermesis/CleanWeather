@@ -23,6 +23,7 @@
 		BA15D6612372144700813B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6602372144700813B24 /* Assets.xcassets */; };
 		BA15D6642372144700813B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6622372144700813B24 /* LaunchScreen.storyboard */; };
 		BA15D66F2372144700813B24 /* CleanWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15D66E2372144700813B24 /* CleanWeatherTests.swift */; };
+		BA4A904D2374905500753E39 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4A904C2374905500753E39 /* Colors.xcassets */; };
 		DAF763D9D33A3E242275A8D3 /* Pods_CleanWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0E35A8AD004B65ED274673 /* Pods_CleanWeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		BA15D66A2372144700813B24 /* CleanWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA15D66E2372144700813B24 /* CleanWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanWeatherTests.swift; sourceTree = "<group>"; };
 		BA15D6702372144700813B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA4A904C2374905500753E39 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F8C6165805C0B9DAC9808A12 /* Pods-CleanWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanWeather.release.xcconfig"; path = "Target Support Files/Pods-CleanWeather/Pods-CleanWeather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 				BA15D6652372144700813B24 /* Info.plist */,
 				BA15D6622372144700813B24 /* LaunchScreen.storyboard */,
 				BA15D6602372144700813B24 /* Assets.xcassets */,
+				BA4A904C2374905500753E39 /* Colors.xcassets */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA15D6642372144700813B24 /* LaunchScreen.storyboard in Resources */,
+				BA4A904D2374905500753E39 /* Colors.xcassets in Resources */,
 				609DA54B237440BA00C5773D /* PeopleListController.xib in Resources */,
 				BA15D6612372144700813B24 /* Assets.xcassets in Resources */,
 			);
