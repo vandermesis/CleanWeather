@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     
     private func setupStartingController() -> UIViewController {
-        return PeopleListCreator().getController()
+        let controller = PeopleListCreator().getController()
+        return UINavigationController(rootViewController: controller)
     }
     
     private func displayStartingController(controller: UIViewController, at scene: UIWindowScene) {
