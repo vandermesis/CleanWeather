@@ -9,11 +9,30 @@
 import Foundation
 
 protocol PeopleListPresenter {
-    
+    func displayPeople(people: [Person])
+    func displayError(error: Error)
+    func updateSpinner(state: Bool)
 }
 
-final class PeopleListPresenterImpl: PeopleListPresenter {
+final class PeopleListPresenterImpl {
 
     weak var controller: PeopleListPresentable?
+
+}
+
+extension PeopleListPresenterImpl: PeopleListPresenter {
+
+    func displayPeople(people: [Person]) {
+        let displayable = people.map { PersonDisplayable.convert(from: $0) }
+        controller?.displayPeople(displayable)
+    }
+    
+    func displayError(error: Error) {
+        controller?.presentAlert(title: "ERROR", body: "API ERROR: \(error)")
+    }
+    
+    func updateSpinner(state: Bool) {
+        controller?.updateSpinner(state: state)
+    }
 
 }

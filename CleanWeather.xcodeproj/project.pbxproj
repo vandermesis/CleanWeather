@@ -17,6 +17,7 @@
 		60EAC79C2374415A00E48021 /* PeopleListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC79B2374415A00E48021 /* PeopleListPresenter.swift */; };
 		60EAC79E2374417000E48021 /* PeopleListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC79D2374417000E48021 /* PeopleListWorker.swift */; };
 		60EAC7A02374418100E48021 /* PeopleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC79F2374418100E48021 /* PeopleListRouter.swift */; };
+		60EAC7A323744B6A00E48021 /* PersonDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC7A223744B6A00E48021 /* PersonDisplayable.swift */; };
 		BA15D6582372144700813B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15D6572372144700813B24 /* AppDelegate.swift */; };
 		BA15D65A2372144700813B24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15D6592372144700813B24 /* SceneDelegate.swift */; };
 		BA15D6612372144700813B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6602372144700813B24 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		60EAC79B2374415A00E48021 /* PeopleListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListPresenter.swift; sourceTree = "<group>"; };
 		60EAC79D2374417000E48021 /* PeopleListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListWorker.swift; sourceTree = "<group>"; };
 		60EAC79F2374418100E48021 /* PeopleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListRouter.swift; sourceTree = "<group>"; };
+		60EAC7A223744B6A00E48021 /* PersonDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDisplayable.swift; sourceTree = "<group>"; };
 		69885D32103E8D1A91938F37 /* Pods-CleanWeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanWeatherTests.release.xcconfig"; path = "Target Support Files/Pods-CleanWeatherTests/Pods-CleanWeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		AE79D4809CA575058D7E319E /* Pods_CleanWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA15D6542372144700813B24 /* CleanWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 		609DA547237440A900C5773D /* PeopleList */ = {
 			isa = PBXGroup;
 			children = (
+				60EAC7A123744B5A00E48021 /* Displayable */,
 				609DA54C237440C800C5773D /* PeopleListCreator.swift */,
 				609DA548237440BA00C5773D /* PeopleListController.swift */,
 				609DA549237440BA00C5773D /* PeopleListController.xib */,
@@ -150,6 +153,14 @@
 				60EAC79F2374418100E48021 /* PeopleListRouter.swift */,
 			);
 			path = PeopleList;
+			sourceTree = "<group>";
+		};
+		60EAC7A123744B5A00E48021 /* Displayable */ = {
+			isa = PBXGroup;
+			children = (
+				60EAC7A223744B6A00E48021 /* PersonDisplayable.swift */,
+			);
+			path = Displayable;
 			sourceTree = "<group>";
 		};
 		BA15D64B2372144700813B24 = {
@@ -370,6 +381,7 @@
 				609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */,
 				60EAC79A2374413B00E48021 /* PeopleListInteractor.swift in Sources */,
 				60EAC7A02374418100E48021 /* PeopleListRouter.swift in Sources */,
+				60EAC7A323744B6A00E48021 /* PersonDisplayable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
