@@ -1,5 +1,6 @@
 excluded:
-  - Pods
+ - Pods
+ - R.generated.swift
 
 line_length:
  warning: 180

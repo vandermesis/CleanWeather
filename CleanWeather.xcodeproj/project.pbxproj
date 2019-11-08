@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		BA15D6642372144700813B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6622372144700813B24 /* LaunchScreen.storyboard */; };
 		BA15D66F2372144700813B24 /* CleanWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15D66E2372144700813B24 /* CleanWeatherTests.swift */; };
 		BA4A904D2374905500753E39 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4A904C2374905500753E39 /* Colors.xcassets */; };
+		BAFBFAAA2374D4EF0047E52B /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFBFAA92374D4EF0047E52B /* R.generated.swift */; };
 		DAF763D9D33A3E242275A8D3 /* Pods_CleanWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0E35A8AD004B65ED274673 /* Pods_CleanWeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		BA15D66E2372144700813B24 /* CleanWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanWeatherTests.swift; sourceTree = "<group>"; };
 		BA15D6702372144700813B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA4A904C2374905500753E39 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BAFBFAA92374D4EF0047E52B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		F8C6165805C0B9DAC9808A12 /* Pods-CleanWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanWeather.release.xcconfig"; path = "Target Support Files/Pods-CleanWeather/Pods-CleanWeather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		609DA54223743DF900C5773D /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				BAFBFAA92374D4EF0047E52B /* R.generated.swift */,
 				BA15D6572372144700813B24 /* AppDelegate.swift */,
 				BA15D6592372144700813B24 /* SceneDelegate.swift */,
 				BA15D6652372144700813B24 /* Info.plist */,
@@ -214,10 +217,12 @@
 			buildConfigurationList = BA15D6732372144700813B24 /* Build configuration list for PBXNativeTarget "CleanWeather" */;
 			buildPhases = (
 				BA03F02C9A94FF57FAB08E73 /* [CP] Check Pods Manifest.lock */,
-				BAD86A612372159300CB737C /* ShellScript */,
+				BAFBFAA82374D3F90047E52B /* R.swift */,
 				BA15D6502372144700813B24 /* Sources */,
+				BAD86A612372159300CB737C /* SwiftLint */,
 				BA15D6512372144700813B24 /* Frameworks */,
 				BA15D6522372144700813B24 /* Resources */,
+				316B6EFF07719DC6BCD8F16D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,6 +312,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		316B6EFF07719DC6BCD8F16D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanWeather/Pods-CleanWeather-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanWeather/Pods-CleanWeather-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanWeather/Pods-CleanWeather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA03F02C9A94FF57FAB08E73 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,7 +351,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BAD86A612372159300CB737C /* ShellScript */ = {
+		BAD86A612372159300CB737C /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -338,6 +360,7 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -345,6 +368,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		BAFBFAA82374D3F90047E52B /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		DDB2CFAD30ED216E0E89D16A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -386,6 +429,7 @@
 				60EAC79A2374413B00E48021 /* PeopleListInteractor.swift in Sources */,
 				60EAC7A02374418100E48021 /* PeopleListRouter.swift in Sources */,
 				60EAC7A323744B6A00E48021 /* PersonDisplayable.swift in Sources */,
+				BAFBFAAA2374D4EF0047E52B /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
