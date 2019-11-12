@@ -18,6 +18,8 @@ final class CitiesListController: UIViewController, CitiesListPresentable {
     
     private let interactor: CitiesListInteractor
     
+    private let datasource = [CitiesDisplayable]()
+    
     init(interactor: CitiesListInteractor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
@@ -29,5 +31,9 @@ final class CitiesListController: UIViewController, CitiesListPresentable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
+        print("\(#function)")
     }
 }

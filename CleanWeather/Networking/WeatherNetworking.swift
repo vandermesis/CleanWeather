@@ -17,6 +17,7 @@ protocol WeatherNetworking {
 final class WeatherNetworkingImpl: WeatherNetworking {
     
     func fetchWeather(completion: FetchWeatherCompletion?) {
+        
         var randomTemp: [Double] {
             var array = [Double]()
             for _ in 0...20 {
