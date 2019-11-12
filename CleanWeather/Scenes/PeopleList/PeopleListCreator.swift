@@ -23,7 +23,5 @@ struct PeopleListCreator {
         router.controller = controller
         
         return controller
-        
     }
-
 }
