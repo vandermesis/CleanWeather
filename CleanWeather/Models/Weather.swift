@@ -8,19 +8,19 @@
 
 struct Weather: Codable {
     
-    enum SFsymbol: String {
+    enum WeatherSymbol: String {
         case clearDay = "clear-day"
         case clearNight = "clear-night"
-        case cloudy = "cloudy"
-        case fog = "fog"
         case partlyCloudyDay = "partly-cloudy-day"
         case partlyCloudyNight = "partly-cloudy-night"
-        case rain = "rain"
-        case sleet = "sleet"
-        case snow = "snow"
-        case wind = "wind"
-        case umbrella = "umbrella"
-        case isEmpty = "nosign"
+        case cloudy
+        case fog
+        case rain
+        case sleet
+        case snow
+        case wind
+        case umbrella
+        case isEmpty
     }
     
     let city: String
@@ -31,7 +31,7 @@ struct Weather: Codable {
     let dailyTempMax: [Double]
     let icon: String
     
-    var symbol: SFsymbol {
-        return SFsymbol(rawValue: icon) ?? .isEmpty
+    var symbol: WeatherSymbol {
+        return WeatherSymbol(rawValue: icon) ?? .isEmpty
     }
 }
