@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     
     private func setupStartingController() -> UIViewController {
-        let controller = CitiesListCreator().getController()
+        let controller = CityListCreator().getController()
         return UINavigationController(rootViewController: controller)
     }
     

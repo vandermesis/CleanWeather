@@ -1,5 +1,5 @@
 //
-//  CitiesDisplayable.swift
+//  CityDisplayable.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 12/11/2019.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct CitiesDisplayable {
+struct CityDisplayable {
     
     let cityName: String
     let cityWeatherIcon: String
     let cityTempRounded: Int
     
-    static func convert(from object: Weather) -> CitiesDisplayable {
+    static func convert(from object: Weather) -> CityDisplayable {
         
         let temp = Int(object.temperature.rounded())
         
@@ -45,6 +45,6 @@ struct CitiesDisplayable {
             }
         }
         
-        return CitiesDisplayable(cityName: object.city, cityWeatherIcon: icon, cityTempRounded: temp)
+        return CityDisplayable(cityName: object.city, cityWeatherIcon: icon, cityTempRounded: temp)
     }
 }

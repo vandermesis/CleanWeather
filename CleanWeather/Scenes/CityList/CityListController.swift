@@ -1,5 +1,5 @@
 //
-//  CitiesListController.swift
+//  CityListController.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 12/11/2019.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol CitiesListPresentable: UIViewController {
+protocol CityListPresentable: UIViewController {
     
 }
 
-final class CitiesListController: UIViewController, CitiesListPresentable {
+final class CityListController: UIViewController, CityListPresentable {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private let interactor: CitiesListInteractor
+    private let interactor: CityListInteractor
     
-    private let datasource = [CitiesDisplayable]()
+    private let datasource = [CityDisplayable]()
     
-    init(interactor: CitiesListInteractor) {
+    init(interactor: CityListInteractor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }

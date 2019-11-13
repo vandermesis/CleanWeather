@@ -1,5 +1,5 @@
 //
-//  CitiesListWorker.swift
+//  CityListWorker.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 12/11/2019.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CitiesListWorker {
+protocol CityListWorker {
     
 }
 
-final class CitiesListWorkerImpl: CitiesListWorker {
+final class CityListWorkerImpl: CityListWorker {
     
     private let networking: WeatherNetworking
     

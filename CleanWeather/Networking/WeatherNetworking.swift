@@ -18,6 +18,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
     
     func fetchWeather(completion: FetchWeatherCompletion?) {
         
+        //TODO: Build networking and remove mock
         var randomTemp: [Double] {
             var array = [Double]()
             for _ in 0...20 {

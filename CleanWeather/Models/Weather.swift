@@ -30,6 +30,7 @@ struct Weather: Codable {
     let dailyTempMin: [Double]
     let dailyTempMax: [Double]
     let icon: String
+    
     var symbol: SFsymbol {
         return SFsymbol(rawValue: icon) ?? .isEmpty
     }

@@ -1,5 +1,5 @@
 //
-//  CitiesListRouter.swift
+//  CityListPresenter.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 12/11/2019.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol CitiesListRouter {
+protocol CityListPresenter {
     
 }
 
-final class CitiesListRouterImpl: CitiesListRouter {
+final class CityListPresenterImpl: CityListPresenter {
     
-    weak var controller: UIViewController?
+    weak var controller: CityListPresentable?
     
 }
