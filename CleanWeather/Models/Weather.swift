@@ -8,21 +8,6 @@
 
 struct Weather: Codable {
     
-    enum WeatherSymbol: String {
-        case clearDay = "clear-day"
-        case clearNight = "clear-night"
-        case partlyCloudyDay = "partly-cloudy-day"
-        case partlyCloudyNight = "partly-cloudy-night"
-        case cloudy
-        case fog
-        case rain
-        case sleet
-        case snow
-        case wind
-        case umbrella
-        case isEmpty
-    }
-    
     let city: String
     let temperature: Double
     let hourlyTempMin: [Double]

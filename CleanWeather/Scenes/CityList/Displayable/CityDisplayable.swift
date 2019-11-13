@@ -11,40 +11,13 @@ import Foundation
 struct CityDisplayable {
     
     let cityName: String
-    let cityWeatherIcon: String
+    let cityWeatherIcon: WeatherSymbol
     let cityTempRounded: Int
     
     static func convert(from object: Weather) -> CityDisplayable {
         
         let temp = Int(object.temperature.rounded())
         
-        var icon: String {
-            switch object.symbol {
-            case .clearDay:
-                return "sun.max"
-            case .clearNight:
-                return "moon"
-            case .cloudy:
-                return "cloud"
-            case .fog:
-                return "cloud.fog"
-            case .partlyCloudyDay:
-                return "cloud.sun"
-            case .partlyCloudyNight:
-                return "cloud.moon"
-            case .rain:
-                return "cloud.rain"
-            case .sleet:
-                return "cloud.sleet"
-            case .snow:
-                return "cloud.snow"
-            case .wind:
-                return "wind"
-            default:
-                return "nosign"
-            }
-        }
-        
-        return CityDisplayable(cityName: object.city, cityWeatherIcon: icon, cityTempRounded: temp)
+        return CityDisplayable(cityName: object.city, cityWeatherIcon: object.symbol, cityTempRounded: temp)
     }
 }
