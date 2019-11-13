@@ -26,7 +26,7 @@ final class CitiesListController: UIViewController, CitiesListPresentable {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init \(coder) has not been implemented yet")
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
