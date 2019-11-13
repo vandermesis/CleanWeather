@@ -1,12 +1,12 @@
 //
-//  Weather.swift
+//  CityWeather.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 12/11/2019.
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-struct Weather: Codable {
+struct CityWeather: Codable {
     
     let city: String
     let temperature: Double

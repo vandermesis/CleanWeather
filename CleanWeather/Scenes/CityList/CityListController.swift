@@ -18,7 +18,7 @@ final class CityListController: UIViewController, CityListPresentable {
     
     private let interactor: CityListInteractor
     
-    private let datasource = [CityDisplayable]()
+    private let dataSource = [CityWeatherDisplayable]()
     
     init(interactor: CityListInteractor) {
         self.interactor = interactor
