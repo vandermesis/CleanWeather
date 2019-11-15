@@ -46,7 +46,7 @@ extension CityListInteractorImpl: CityListInteractor {
         }
     }
     
-    func didSelectCityCell(name: String) {
-        router.navigateToCityDetails(city: name)
+    func didSelectCityCell(city: String) {
+        router.navigateToCityDetails(city: city)
     }
 }

@@ -23,16 +23,15 @@ final class CityListPresenterImpl {
 extension CityListPresenterImpl: CityListPresenter {
     
     func displayCity(city: [CityWeather]) {
-        <#code#>
+        let displayable = city.map { CityWeatherDisplayable.convert(from: $0)}
+        controller?.displayCity(displayable)
     }
     
     func displayError(error: Error) {
-        <#code#>
+        controller?.presentAlert(title: "Error", message: "API Error:  \(error)")
     }
     
     func showSpinner(_ state: Bool) {
-        <#code#>
+        controller?.showSpinner(state)
     }
-    
-    
 }
