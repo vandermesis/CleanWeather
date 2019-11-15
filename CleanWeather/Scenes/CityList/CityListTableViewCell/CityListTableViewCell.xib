@@ -22,30 +22,30 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-wR-GBk">
-                        <rect key="frame" x="135" y="0.0" width="50" height="50"/>
-                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="DEY-JN-m7Z"/>
-                            <constraint firstAttribute="height" constant="50" id="nZU-Ll-Xku"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19o" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVr-Yl-IT1">
                         <rect key="frame" x="271" y="13" width="33" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-wR-GBk">
+                        <rect key="frame" x="220" y="0.0" width="50" height="50"/>
+                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="DEY-JN-m7Z"/>
+                            <constraint firstAttribute="height" constant="50" id="nZU-Ll-Xku"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="vVr-Yl-IT1" secondAttribute="trailing" constant="16" id="1FU-Eh-owa"/>
                     <constraint firstAttribute="bottom" secondItem="hab-xj-pXs" secondAttribute="bottom" constant="13" id="E2Z-z7-Ycd"/>
                     <constraint firstItem="vVr-Yl-IT1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="FGT-pd-rYJ"/>
-                    <constraint firstItem="4gt-wR-GBk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OVX-2E-8KJ"/>
                     <constraint firstAttribute="bottom" secondItem="vVr-Yl-IT1" secondAttribute="bottom" constant="13" id="VU6-k4-Z75"/>
+                    <constraint firstAttribute="trailing" secondItem="4gt-wR-GBk" secondAttribute="trailing" constant="50" id="XR2-w5-jPQ"/>
                     <constraint firstItem="hab-xj-pXs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="eza-jQ-tmU"/>
-                    <constraint firstItem="4gt-wR-GBk" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kcb-0J-dcw"/>
                     <constraint firstItem="hab-xj-pXs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="vN9-0c-usU"/>
+                    <constraint firstItem="4gt-wR-GBk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x9f-Pv-5l6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
