@@ -18,7 +18,6 @@ final class PeopleNetworkingImpl: PeopleNetworking {
 
     func fetchPeople(completion: FetchPeopleCompletion?) {
         
-        //TODO: Build proper networking and remove these mocked values
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 
             completion?(Result.success([

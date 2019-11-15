@@ -58,7 +58,6 @@ extension PeopleListController: PeopleListPresentable {
     }
     
     func updateSpinner(state: Bool) {
-        // TODO: Build proper spinner logic
         UIView.animate(withDuration: 0.3) {
             self.tableView.backgroundColor = state ? .orange : .white
         }
@@ -76,7 +75,6 @@ extension PeopleListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Build proper cells and dequeue them
         let cell = UITableViewCell()
         cell.backgroundColor = .clear
         cell.imageView?.image = UIImage(named: dataSource[indexPath.row].genderIconName)

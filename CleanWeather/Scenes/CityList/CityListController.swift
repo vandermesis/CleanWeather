@@ -40,6 +40,7 @@ final class CityListController: UIViewController {
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
+        //TODO: Implement add new city functionality
         print("\(#function)")
     }
 }
@@ -67,12 +68,12 @@ extension CityListController: CityListPresentable {
             view.addSubview(spinner.view)
             spinner.didMove(toParent: self)
             
+            //FIXME: To be removed after fix
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 spinner.willMove(toParent: nil)
                 spinner.view.removeFromSuperview()
                 spinner.removeFromParent()
             }
-            
         } else {
             DispatchQueue.main.async {
                 spinner.willMove(toParent: nil)
@@ -94,7 +95,7 @@ extension CityListController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityListTableViewCell else {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "CityCell")
             return cell }
-        
+        //FIXME: To be removed after setting CityListTableViewCell outlets to private
         cell.cityNameLabel.text = dataSource[indexPath.row].cityName
         cell.cityTempLabel.text = dataSource[indexPath.row].cityTemp
         cell.cityWeatherSymbol.image = UIImage(systemName: dataSource[indexPath.row].cityWeatherIcon.icon)
