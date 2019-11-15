@@ -33,9 +33,10 @@ final class CityListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "CityListTableViewCell", bundle: nil), forCellReuseIdentifier: "CityCell")
+        tableView.dataSource = self
+        tableView.delegate = self
         interactor.getCity()
-        
-//        tableView.register(UINib(nibName: "CityListTableViewCell", bundle: nil), forCellReuseIdentifier: "CityCell")
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -59,15 +60,25 @@ extension CityListController: CityListPresentable {
     
     func showSpinner(_ state: Bool) {
         let spinner = Spinner()
+        
         if state {
             addChild(spinner)
             spinner.view.frame = view.frame
             view.addSubview(spinner.view)
             spinner.didMove(toParent: self)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                spinner.willMove(toParent: nil)
+                spinner.view.removeFromSuperview()
+                spinner.removeFromParent()
+            }
+            
         } else {
-            spinner.willMove(toParent: nil)
-            spinner.view.removeFromSuperview()
-            spinner.removeFromParent()
+            DispatchQueue.main.async {
+                spinner.willMove(toParent: nil)
+                spinner.view.removeFromSuperview()
+                spinner.removeFromParent()
+            }
         }
     }
 }
@@ -75,24 +86,19 @@ extension CityListController: CityListPresentable {
 extension CityListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1//dataSource.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Build proper cells and dequeue them
-        let cell = UITableViewCell()
-        cell.backgroundColor = .clear
-        cell.imageView?.image = UIImage(named: dataSource[indexPath.row].cityWeatherIcon.icon)
-        cell.textLabel?.text = dataSource[indexPath.row].cityName
-        cell.detailTextLabel?.text = dataSource[indexPath.row].cityTemp
-        return cell
         
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityListTableViewCell else {
-//            let cell = CityListTableViewCell(style: .default, reuseIdentifier: "CityCell")
-//            return cell }
-//        cell.cityNameLabel.text = dataSource[indexPath.row].cityName
-//        cell.cityTempLabel.text = dataSource[indexPath.row].cityTemp
-//        cell.cityWeatherSymbol.image = UIImage(systemName: dataSource[indexPath.row].cityWeatherIcon.icon)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityListTableViewCell else {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "CityCell")
+            return cell }
+        
+        cell.cityNameLabel.text = dataSource[indexPath.row].cityName
+        cell.cityTempLabel.text = dataSource[indexPath.row].cityTemp
+        cell.cityWeatherSymbol.image = UIImage(systemName: dataSource[indexPath.row].cityWeatherIcon.icon)
+        return cell
     }
 }
 
