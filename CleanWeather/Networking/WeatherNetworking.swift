@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias FetchWeatherCompletion = ([CityWeather]) -> Void
+typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
@@ -28,7 +28,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
             return array
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            completion?([
+            completion?(Result.success([
                 CityWeather(city: "Katowice",
                             temperature: randomTemp[0],
                             hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
@@ -64,7 +64,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
                             dailyTempMin: [randomTemp[11], randomTemp[12], randomTemp[13], randomTemp[14], randomTemp[15]],
                             dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
                             icon: "wind")
-            ])
+            ]))
         }
     }
 }
