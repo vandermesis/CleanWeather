@@ -35,7 +35,7 @@ extension CityListInteractorImpl: CityListInteractor {
     func getCity() {
         presenter.showSpinner(true)
         worker.fetchCityWeather { [weak self] result in
-            self?.presenter.showSpiner(false)
+            self?.presenter.showSpinner(false)
             switch result {
             case .success(let city):
                 self?.city = city

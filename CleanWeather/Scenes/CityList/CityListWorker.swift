@@ -9,14 +9,37 @@
 import Foundation
 
 protocol CityListWorker {
-    
+    func fetchCityWeather(completion: FetchWeatherCompletion?)
 }
 
-final class CityListWorkerImpl: CityListWorker {
+final class CityListWorkerImpl {
     
     private let networking: WeatherNetworking
     
     init(networking: WeatherNetworking) {
         self.networking = networking
+    }
+}
+
+extension CityListWorkerImpl: CityListWorker {
+    
+    func fetchCityWeather(completion: FetchWeatherCompletion?) {
+        networking.fetchCurrentWeatherForAllCities { [weak self] result in
+            
+            guard let self = self, case .success(let city) = result else {
+                completion?(result)
+                return
+            }
+            
+            let sortedCity = self.sortCity(city: city)
+            completion?(.success(sortedCity))
+        }
+    }
+}
+
+private extension CityListWorkerImpl {
+    
+    private func sortCity(city: [CityWeather]) -> [CityWeather] {
+        return city.sorted(by: { $0.city < $1.city })
     }
 }
