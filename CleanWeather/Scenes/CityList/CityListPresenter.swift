@@ -9,11 +9,30 @@
 import UIKit
 
 protocol CityListPresenter {
+    func displayCity(city: [CityWeather])
+    func displayError(error: Error)
+    func showSpinner(_ state: Bool)
+}
+
+final class CityListPresenterImpl {
+    
+    weak var controller: CityListPresentable?
     
 }
 
-final class CityListPresenterImpl: CityListPresenter {
+extension CityListPresenterImpl: CityListPresenter {
     
-    weak var controller: CityListPresentable?
+    func displayCity(city: [CityWeather]) {
+        <#code#>
+    }
+    
+    func displayError(error: Error) {
+        <#code#>
+    }
+    
+    func showSpinner(_ state: Bool) {
+        <#code#>
+    }
+    
     
 }

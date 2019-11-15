@@ -33,6 +33,8 @@ final class CityListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.getCity()
+        
 //        tableView.register(UINib(nibName: "CityListTableViewCell", bundle: nil), forCellReuseIdentifier: "CityCell")
     }
     
@@ -97,6 +99,7 @@ extension CityListController: UITableViewDataSource {
 extension CityListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
+        let name = dataSource[indexPath.row].cityName
+        interactor.didSelectCityCell(city: name)
     }
 }
