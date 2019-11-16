@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol CityListPresentable: UIViewController {
+protocol CityListPresentable: SuperViewController {
     func displayCity(_ citiesWeather: [CityWeatherDisplayable])
     func presentAlert(title: String, message: String)
-    func showSpinner(_ state: Bool)
+    func presentSpinner(_ state: Bool)
 }
 
-final class CityListController: UIViewController {
+final class CityListController: SuperViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -57,35 +57,13 @@ extension CityListController: CityListPresentable {
     }
     
     func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        navigationController?.present(alert, animated: true, completion: nil)
+        alert(title: title, message: message)
     }
     
-    func showSpinner(_ state: Bool) {
-        let spinner = SpinnerController()
-        
-        if state {
-            addChild(spinner)
-            spinner.view.frame = view.frame
-            view.addSubview(spinner.view)
-            spinner.didMove(toParent: self)
-            
-            //FIXME: To be removed after fix
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                spinner.willMove(toParent: nil)
-                spinner.view.removeFromSuperview()
-                spinner.removeFromParent()
-            }
-        } else {
-            DispatchQueue.main.async {
-                spinner.willMove(toParent: nil)
-                spinner.view.removeFromSuperview()
-                spinner.removeFromParent()
-            }
-        }
+    func presentSpinner(_ state: Bool) {
+        spinner(state)
     }
+    
 }
 
 extension CityListController: UITableViewDataSource {

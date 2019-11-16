@@ -32,6 +32,6 @@ extension CityListPresenterImpl: CityListPresenter {
     }
     
     func showSpinner(_ state: Bool) {
-        controller?.showSpinner(state)
+        controller?.presentSpinner(state)
     }
 }
