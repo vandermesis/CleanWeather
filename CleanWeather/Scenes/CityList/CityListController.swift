@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CityListPresentable: UIViewController {
-    func displayCity(_ city: [CityWeatherDisplayable])
+    func displayCity(_ citiesWeather: [CityWeatherDisplayable])
     func presentAlert(title: String, message: String)
     func showSpinner(_ state: Bool)
 }
@@ -20,7 +20,7 @@ final class CityListController: UIViewController {
     
     private let interactor: CityListInteractor
     
-    private var dataSource = [CityWeatherDisplayable]()
+    private var citiesWeahterDataSource = [CityWeatherDisplayable]()
     
     init(interactor: CityListInteractor) {
         self.interactor = interactor
@@ -47,8 +47,8 @@ final class CityListController: UIViewController {
 
 extension CityListController: CityListPresentable {
     
-    func displayCity(_ city: [CityWeatherDisplayable]) {
-        dataSource = city
+    func displayCity(_ citiesWeather: [CityWeatherDisplayable]) {
+        citiesWeahterDataSource = citiesWeather
         tableView.reloadData()
     }
     
@@ -87,7 +87,7 @@ extension CityListController: CityListPresentable {
 extension CityListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return citiesWeahterDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,9 +96,9 @@ extension CityListController: UITableViewDataSource {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "CityCell")
             return cell }
         //FIXME: To be removed after setting CityListTableViewCell outlets to private
-        cell.cityNameLabel.text = dataSource[indexPath.row].cityName
-        cell.cityTempLabel.text = dataSource[indexPath.row].cityTemp
-        cell.cityWeatherSymbol.image = UIImage(systemName: dataSource[indexPath.row].cityWeatherIcon.icon)
+        cell.cityNameLabel.text = citiesWeahterDataSource[indexPath.row].cityName
+        cell.cityTempLabel.text = citiesWeahterDataSource[indexPath.row].cityTemp
+        cell.cityWeatherSymbol.image = UIImage(systemName: citiesWeahterDataSource[indexPath.row].cityWeatherIcon.icon)
         return cell
     }
 }
@@ -106,7 +106,7 @@ extension CityListController: UITableViewDataSource {
 extension CityListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let name = dataSource[indexPath.row].cityName
-        interactor.didSelectCityCell(city: name)
+        let id = citiesWeahterDataSource[indexPath.row].id
+        interactor.didSelectCityCell(id: id)
     }
 }

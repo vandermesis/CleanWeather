@@ -10,12 +10,12 @@ import Foundation
 
 protocol CityListInteractor {
     func getCity()
-    func didSelectCityCell(city: String)
+    func didSelectCityCell(id: String)
 }
 
 final class CityListInteractorImpl {
     
-    private var city = [CityWeather]()
+    private var cityWeather = [CityWeather]()
     
     private let presenter: CityListPresenter
     private let worker: CityListWorker
@@ -38,15 +38,15 @@ extension CityListInteractorImpl: CityListInteractor {
             self?.presenter.showSpinner(false)
             switch result {
             case .success(let city):
-                self?.city = city
-                self?.presenter.displayCity(city: city)
+                self?.cityWeather = city
+                self?.presenter.displayCitiesWeather(citiesWeather: city)
             case .failure(let error):
                 self?.presenter.displayError(error: error)
             }
         }
     }
     
-    func didSelectCityCell(city: String) {
-        router.navigateToCityDetails(city: city)
+    func didSelectCityCell(id: String) {
+        router.navigateToCityDetails(id: id)
     }
 }

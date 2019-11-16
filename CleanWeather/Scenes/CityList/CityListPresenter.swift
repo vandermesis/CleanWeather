@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CityListPresenter {
-    func displayCity(city: [CityWeather])
+    func displayCitiesWeather(citiesWeather: [CityWeather])
     func displayError(error: Error)
     func showSpinner(_ state: Bool)
 }
@@ -22,8 +22,8 @@ final class CityListPresenterImpl {
 
 extension CityListPresenterImpl: CityListPresenter {
     
-    func displayCity(city: [CityWeather]) {
-        let displayable = city.map { CityWeatherDisplayable.convert(from: $0)}
+    func displayCitiesWeather(citiesWeather: [CityWeather]) {
+        let displayable = citiesWeather.map { CityWeatherDisplayable.convert(from: $0)}
         controller?.displayCity(displayable)
     }
     
