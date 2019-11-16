@@ -30,7 +30,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             completion?(Result.success([
                 CityWeather(id: "fb812bd3-8bbd-47cc-92f5-fb6205bf0ccd",
-                            city: "Katowice",
+                            city: "KatowiceKatowiceKatowiceKatowiceKatowice",
                             temperature: randomTemp[0],
                             hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
                             hourlyTempMax: [randomTemp[6], randomTemp[7], randomTemp[8], randomTemp[9], randomTemp[10]],

@@ -17,28 +17,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hab-xj-pXs">
-                        <rect key="frame" x="16" y="13" width="35" height="24"/>
+                        <rect key="frame" x="10" y="10" width="35" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19o" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVr-Yl-IT1">
-                        <rect key="frame" x="271" y="13" width="33" height="24"/>
+                        <rect key="frame" x="277" y="13" width="33" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-wR-GBk">
-                        <rect key="frame" x="220" y="0.0" width="50" height="50"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-wR-GBk">
+                        <rect key="frame" x="55" y="0.0" width="212" height="50"/>
                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="vVr-Yl-IT1" secondAttribute="trailing" constant="16" id="1FU-Eh-owa"/>
-                    <constraint firstItem="vVr-Yl-IT1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jb1-Na-Rqk"/>
-                    <constraint firstItem="4gt-wR-GBk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QR8-22-mL6"/>
-                    <constraint firstItem="hab-xj-pXs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rhh-yA-6lq"/>
-                    <constraint firstItem="hab-xj-pXs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="vN9-0c-usU"/>
+                    <constraint firstAttribute="trailing" secondItem="vVr-Yl-IT1" secondAttribute="trailing" constant="10" id="1FU-Eh-owa"/>
+                    <constraint firstItem="4gt-wR-GBk" firstAttribute="leading" secondItem="hab-xj-pXs" secondAttribute="trailing" constant="10" id="8wh-YD-noQ"/>
+                    <constraint firstItem="hab-xj-pXs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="MLq-VZ-rtO"/>
+                    <constraint firstItem="vVr-Yl-IT1" firstAttribute="centerY" secondItem="hab-xj-pXs" secondAttribute="centerY" id="XKX-Cf-LH4"/>
+                    <constraint firstItem="4gt-wR-GBk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xcx-7n-Xc9"/>
+                    <constraint firstItem="4gt-wR-GBk" firstAttribute="centerY" secondItem="hab-xj-pXs" secondAttribute="centerY" id="eaB-dq-VPo"/>
+                    <constraint firstAttribute="bottom" secondItem="hab-xj-pXs" secondAttribute="bottom" constant="10" id="sJU-A3-R3q"/>
+                    <constraint firstItem="hab-xj-pXs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vN9-0c-usU"/>
                     <constraint firstItem="vVr-Yl-IT1" firstAttribute="leading" secondItem="4gt-wR-GBk" secondAttribute="trailing" constant="10" id="zfR-vg-znz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -48,7 +51,7 @@
                 <outlet property="cityTempLabel" destination="vVr-Yl-IT1" id="kq9-aU-ifT"/>
                 <outlet property="cityWeatherSymbol" destination="4gt-wR-GBk" id="5j0-ZD-zT7"/>
             </connections>
-            <point key="canvasLocation" x="-32" y="-46"/>
+            <point key="canvasLocation" x="-33.333333333333336" y="-46.205357142857139"/>
         </tableViewCell>
     </objects>
 </document>
