@@ -33,15 +33,19 @@ final class CityListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "CityListTableViewCell", bundle: nil), forCellReuseIdentifier: "CityCell")
-        tableView.dataSource = self
-        tableView.delegate = self
+        setupTableView()
         interactor.getCity()
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
         //TODO: Implement add new city functionality
         print("\(#function)")
+    }
+    
+    func setupTableView() {
+        tableView.register(cellType: CityListTableViewCell.self)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -92,9 +96,7 @@ extension CityListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as? CityListTableViewCell else {
-            let cell = UITableViewCell(style: .default, reuseIdentifier: "CityCell")
-            return cell }
+        let cell = tableView.dequeueReusableCell(with: CityListTableViewCell.self, for: indexPath)
         //FIXME: To be removed after setting CityListTableViewCell outlets to private
         cell.cityNameLabel.text = citiesWeahterDataSource[indexPath.row].cityName
         cell.cityTempLabel.text = citiesWeahterDataSource[indexPath.row].cityTemp
@@ -108,5 +110,40 @@ extension CityListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let id = citiesWeahterDataSource[indexPath.row].id
         interactor.didSelectCityCell(id: id)
+    }
+}
+
+public protocol ClassNameProtocol {
+    static var className: String { get }
+    var className: String { get }
+}
+
+public extension ClassNameProtocol {
+    static var className: String {
+        return String(describing: self)
+    }
+
+    var className: String {
+        return type(of: self).className
+    }
+}
+
+extension NSObject: ClassNameProtocol {}
+
+public extension UITableView {
+    func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
+        let className = cellType.className
+        let nib = UINib(nibName: className, bundle: bundle)
+        register(nib, forCellReuseIdentifier: className)
+    }
+
+    func register<T: UITableViewCell>(cellTypes: [T.Type], bundle: Bundle? = nil) {
+        cellTypes.forEach { register(cellType: $0, bundle: bundle) }
+    }
+
+    func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as? T else {
+            fatalError("Failed to dequeue cell!") }
+        return cell
     }
 }
