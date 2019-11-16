@@ -23,6 +23,8 @@
 		BA15D6612372144700813B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6602372144700813B24 /* Assets.xcassets */; };
 		BA15D6642372144700813B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6622372144700813B24 /* LaunchScreen.storyboard */; };
 		BA15D66F2372144700813B24 /* CleanWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15D66E2372144700813B24 /* CleanWeatherTests.swift */; };
+		BA2D2C9B238072FD00204BA0 /* TableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */; };
+		BA2D2C9D238073A400204BA0 /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D2C9C238073A400204BA0 /* SuperViewController.swift */; };
 		BA4A904D2374905500753E39 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4A904C2374905500753E39 /* Colors.xcassets */; };
 		BA69C358237C0F9200309105 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA69C357237C0F9200309105 /* R.generated.swift */; };
 		BA69C35A237C2DA100309105 /* WeatherSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA69C359237C2DA100309105 /* WeatherSymbol.swift */; };
@@ -77,6 +79,8 @@
 		BA15D66A2372144700813B24 /* CleanWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA15D66E2372144700813B24 /* CleanWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanWeatherTests.swift; sourceTree = "<group>"; };
 		BA15D6702372144700813B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerExtension.swift; sourceTree = "<group>"; };
+		BA2D2C9C238073A400204BA0 /* SuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
 		BA4A904C2374905500753E39 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BA69C357237C0F9200309105 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		BA69C359237C2DA100309105 /* WeatherSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSymbol.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 		609DA54223743DF900C5773D /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				BA2D2C9C238073A400204BA0 /* SuperViewController.swift */,
+				BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */,
 				BA6E474B237E13E20083762F /* SpinnerController.swift */,
 				BA69C357237C0F9200309105 /* R.generated.swift */,
 				BA15D6572372144700813B24 /* AppDelegate.swift */,
@@ -490,6 +496,7 @@
 				BA15D6582372144700813B24 /* AppDelegate.swift in Sources */,
 				BAF3A19B237B4C1C0093420E /* CityWeatherDisplayable.swift in Sources */,
 				60EAC79E2374417000E48021 /* PeopleListWorker.swift in Sources */,
+				BA2D2C9B238072FD00204BA0 /* TableViewControllerExtension.swift in Sources */,
 				609DA54423743E2D00C5773D /* Person.swift in Sources */,
 				609DA54D237440C800C5773D /* PeopleListCreator.swift in Sources */,
 				BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */,
@@ -499,6 +506,7 @@
 				609DA54A237440BA00C5773D /* PeopleListController.swift in Sources */,
 				BA69C35A237C2DA100309105 /* WeatherSymbol.swift in Sources */,
 				60EAC79C2374415A00E48021 /* PeopleListPresenter.swift in Sources */,
+				BA2D2C9D238073A400204BA0 /* SuperViewController.swift in Sources */,
 				609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */,
 				BAF3A18A237B21C20093420E /* CityListController.swift in Sources */,
 				BAF3A186237B10970093420E /* CityWeather.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpinnerController: UIViewController {
+final class SpinnerController: UIViewController {
     
     var spinner = UIActivityIndicatorView(style: .large)
     
