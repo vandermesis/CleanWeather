@@ -11,8 +11,14 @@ import UIKit
 class CityListTableViewCell: UITableViewCell {
     
     //TODO: Make outlets private
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var cityTempLabel: UILabel!
-    @IBOutlet weak var cityWeatherSymbol: UIImageView!
+    @IBOutlet private weak var cityNameLabel: UILabel!
+    @IBOutlet private weak var cityTempLabel: UILabel!
+    @IBOutlet private weak var cityWeatherSymbol: UIImageView!
+    
+    func setupWith(cityName: String, cityTemp: String, weatherSymbol: String) {
+        self.cityNameLabel.text = cityName
+        self.cityTempLabel.text = cityTemp
+        self.cityWeatherSymbol.image = UIImage(systemName: weatherSymbol)
+    }
     
 }
