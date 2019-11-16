@@ -64,7 +64,7 @@ extension CityListController: CityListPresentable {
     }
     
     func showSpinner(_ state: Bool) {
-        let spinner = Spinner()
+        let spinner = SpinnerController()
         
         if state {
             addChild(spinner)

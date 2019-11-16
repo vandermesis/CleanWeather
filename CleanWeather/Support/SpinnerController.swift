@@ -1,5 +1,5 @@
 //
-//  Spinner.swift
+//  SpinnerController.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 14/11/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Spinner: UIViewController {
+class SpinnerController: UIViewController {
     
     var spinner = UIActivityIndicatorView(style: .large)
     
