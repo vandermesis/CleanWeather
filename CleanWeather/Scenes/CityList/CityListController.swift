@@ -97,9 +97,7 @@ extension CityListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(with: CityListTableViewCell.self, for: indexPath)
-        cell.setupWith(cityName: citiesWeahterDataSource[indexPath.row].cityName,
-                       cityTemp: citiesWeahterDataSource[indexPath.row].cityTemp,
-                       weatherSymbol: citiesWeahterDataSource[indexPath.row].cityWeatherIcon.icon)
+        cell.setupWith(cityWeatherDisplayable: citiesWeahterDataSource[indexPath.row])
         return cell
     }
 }
