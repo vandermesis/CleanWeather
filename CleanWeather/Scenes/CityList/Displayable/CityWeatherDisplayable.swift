@@ -11,15 +11,14 @@ import Foundation
 struct CityWeatherDisplayable {
     
     let id: String
-    let cityName: String
-    let cityWeatherIcon: WeatherSymbol
-    let cityTemp: String
+    let name: String
+    let symbol: WeatherSymbol
+    let temp: String
     
     init(object: CityWeather) {
-        let temp = "\(Int(object.temperature.rounded()))°"
         id = object.id
-        cityName = object.city
-        cityWeatherIcon = object.symbol
-        cityTemp = temp
+        name = object.city
+        symbol = object.symbol
+        temp = "\(Int(object.temperature.rounded()))°"
     }
 }

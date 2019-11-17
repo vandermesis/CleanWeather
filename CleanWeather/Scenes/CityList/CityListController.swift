@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol CityListPresentable: SuperViewController {
+protocol CityListPresentable: SharedViewController {
     func displayCity(_ citiesWeather: [CityWeatherDisplayable])
 }
 
-final class CityListController: SuperViewController {
+final class CityListController: SharedViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -32,9 +32,8 @@ final class CityListController: SuperViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupNavigationBar()
         interactor.getCity()
-        title = "Cities"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonPressed(_:)))
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -44,6 +43,11 @@ final class CityListController: SuperViewController {
     
     func setupTableView() {
         tableView.register(cellType: CityListTableViewCell.self)
+    }
+    
+    func setupNavigationBar() {
+        title = "CleanWeather"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonPressed(_:)))
     }
 }
 

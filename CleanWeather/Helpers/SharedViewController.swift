@@ -1,5 +1,5 @@
 //
-//  SuperViewController.swift
+//  SharedViewController.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 16/11/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SuperViewController: UIViewController {
+class SharedViewController: UIViewController {
     
     func presentSpinner(_ state: Bool) {
         if state {

@@ -17,17 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let startingController = setupStartingController()
         displayStartingController(controller: startingController, at: windowScene)
     }
-
 }
 
 private extension SceneDelegate {
     
     private func setupStartingController() -> UIViewController {
         let controller = CityListCreator().getController()
-        let newController = UIViewController()
-        let nC = UINavigationController(rootViewController: newController)
-        nC.pushViewController(controller, animated: true)
-        return nC
+        return UINavigationController(rootViewController: controller)
     }
     
     private func displayStartingController(controller: UIViewController, at scene: UIWindowScene) {
@@ -36,5 +32,4 @@ private extension SceneDelegate {
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
     }
-
 }

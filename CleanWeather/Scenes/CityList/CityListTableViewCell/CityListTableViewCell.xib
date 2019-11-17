@@ -17,22 +17,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Warsaw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hab-xj-pXs">
-                        <rect key="frame" x="10" y="10" width="315" height="30"/>
+                        <rect key="frame" x="10" y="10" width="305" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="19o" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVr-Yl-IT1">
-                        <rect key="frame" x="367" y="13" width="40" height="24"/>
+                        <rect key="frame" x="357" y="13" width="50" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="cqm-w6-Z0t"/>
+                            <constraint firstAttribute="width" constant="50" id="cqm-w6-Z0t"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-wR-GBk">
-                        <rect key="frame" x="335" y="15" width="22" height="21.5"/>
+                        <rect key="frame" x="325" y="15" width="22" height="21.5"/>
                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </imageView>
                 </subviews>
