@@ -26,6 +26,7 @@ public extension ClassNameProtocol {
 extension NSObject: ClassNameProtocol {}
 
 public extension UITableView {
+    
     func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
         let className = cellType.className
         let nib = UINib(nibName: className, bundle: bundle)
@@ -36,7 +37,7 @@ public extension UITableView {
         cellTypes.forEach { register(cellType: $0, bundle: bundle) }
     }
 
-    func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
+    func dequeue<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as? T else {
             fatalError("Failed to dequeue cell!") }
         return cell

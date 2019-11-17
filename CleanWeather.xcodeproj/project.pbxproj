@@ -171,9 +171,6 @@
 		609DA54223743DF900C5773D /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				BA2D2C9C238073A400204BA0 /* SuperViewController.swift */,
-				BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */,
-				BA6E474B237E13E20083762F /* SpinnerController.swift */,
 				BA69C357237C0F9200309105 /* R.generated.swift */,
 				BA15D6572372144700813B24 /* AppDelegate.swift */,
 				BA15D6592372144700813B24 /* SceneDelegate.swift */,
@@ -234,6 +231,7 @@
 				609DA53F23743DEA00C5773D /* Models */,
 				609DA54123743DF100C5773D /* Networking */,
 				609DA54023743DED00C5773D /* Scenes */,
+				BA74DD592381C37300CF1D91 /* Helpers */,
 				609DA54223743DF900C5773D /* Support */,
 			);
 			path = CleanWeather;
@@ -257,18 +255,28 @@
 			path = CityListTableViewCell;
 			sourceTree = "<group>";
 		};
+		BA74DD592381C37300CF1D91 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BA2D2C9C238073A400204BA0 /* SuperViewController.swift */,
+				BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */,
+				BA6E474B237E13E20083762F /* SpinnerController.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		BAF3A18B237B22470093420E /* CityList */ = {
 			isa = PBXGroup;
 			children = (
 				BAF3A19C237B4C220093420E /* Displayable */,
 				BA6E4751237E18600083762F /* CityListTableViewCell */,
+				BAF3A196237B27880093420E /* CityListCreator.swift */,
 				BAF3A189237B21C20093420E /* CityListController.swift */,
 				BAF3A198237B2F6E0093420E /* CityListController.xib */,
 				BAF3A18C237B233F0093420E /* CityListInteractor.swift */,
-				BAF3A18E237B23CD0093420E /* CityListPresenter.swift */,
 				BAF3A190237B24C70093420E /* CityListWorker.swift */,
+				BAF3A18E237B23CD0093420E /* CityListPresenter.swift */,
 				BAF3A192237B25880093420E /* CityListRouter.swift */,
-				BAF3A196237B27880093420E /* CityListCreator.swift */,
 			);
 			path = CityList;
 			sourceTree = "<group>";
