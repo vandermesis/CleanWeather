@@ -14,7 +14,7 @@ class CityListTableViewCell: UITableViewCell {
     @IBOutlet private weak var cityTempLabel: UILabel!
     @IBOutlet private weak var cityWeatherSymbol: UIImageView!
     
-    func setupWith(cityWeatherDisplayable: CityWeatherDisplayable) {
+    func setup(with cityWeatherDisplayable: CityWeatherDisplayable) {
         cityNameLabel.text = cityWeatherDisplayable.name
         cityTempLabel.text = cityWeatherDisplayable.temp
         cityWeatherSymbol.image = UIImage(systemName: cityWeatherDisplayable.symbol.icon)
