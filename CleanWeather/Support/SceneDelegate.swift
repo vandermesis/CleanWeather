@@ -24,7 +24,10 @@ private extension SceneDelegate {
     
     private func setupStartingController() -> UIViewController {
         let controller = CityListCreator().getController()
-        return UINavigationController(rootViewController: controller)
+        let newController = UIViewController()
+        let nC = UINavigationController(rootViewController: newController)
+        nC.pushViewController(controller, animated: true)
+        return nC
     }
     
     private func displayStartingController(controller: UIViewController, at scene: UIWindowScene) {

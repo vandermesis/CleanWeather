@@ -33,6 +33,12 @@ extension PeopleListWorkerImpl: PeopleListWorker {
             }
             
             let sortedPeople = self.sortPeople(people: people)
+            
+            if sortedPeople.count < 20 {
+                completion?(.failure(AppError(message: "niem asz 20 ludzin")))
+                return
+            }
+            
             completion?(.success(sortedPeople))
         }
     }
@@ -44,5 +50,19 @@ private extension PeopleListWorkerImpl {
     private func sortPeople(people: [Person]) -> [Person] {
         return people.sorted(by: { $0.firstName < $1.firstName })
     }
-    
+}
+
+struct AppError: Error {
+    let message: String
+}
+
+extension Error {
+    var userFriendlyMessage: String {
+        if self is DecodingError {
+            return "Bd dekodowania"
+        } else if let apperror = self as? AppError {
+            return apperror.message
+        }
+        return "Unknown error"
+    }
 }

@@ -15,10 +15,11 @@ struct CityWeatherDisplayable {
     let cityWeatherIcon: WeatherSymbol
     let cityTemp: String
     
-    static func convert(from object: CityWeather) -> CityWeatherDisplayable {
-        
+    init(object: CityWeather) {
         let temp = "\(Int(object.temperature.rounded()))°"
-        
-        return CityWeatherDisplayable(id: object.id, cityName: object.city, cityWeatherIcon: object.symbol, cityTemp: temp)
+        id = object.id
+        cityName = object.city
+        cityWeatherIcon = object.symbol
+        cityTemp = temp
     }
 }

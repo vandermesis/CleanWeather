@@ -33,6 +33,8 @@ final class CityListController: SuperViewController {
         super.viewDidLoad()
         setupTableView()
         interactor.getCity()
+        title = "Cities"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonPressed(_:)))
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -42,8 +44,6 @@ final class CityListController: SuperViewController {
     
     func setupTableView() {
         tableView.register(cellType: CityListTableViewCell.self)
-        tableView.dataSource = self
-        tableView.delegate = self
     }
 }
 

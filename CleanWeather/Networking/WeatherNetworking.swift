@@ -70,6 +70,8 @@ final class WeatherNetworkingImpl: WeatherNetworking {
                             dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
                             icon: "wind")
             ]))
+            //TODO: To be removed - saved here as a draft of .failure
+            //completion?(Result.failure(AppError(message: "Błąd API")))
         }
     }
 }
