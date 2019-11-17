@@ -10,26 +10,19 @@ import UIKit
 
 class SuperViewController: UIViewController {
     
+    let spinner = SpinnerController()
+    
     func presentSpinner(_ state: Bool) {
-        let spinner = SpinnerController()
-        
         if state {
             addChild(spinner)
             spinner.view.frame = view.frame
             view.addSubview(spinner.view)
             spinner.didMove(toParent: self)
-            
-            //FIXME: To be removed after fix
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                spinner.willMove(toParent: nil)
-                spinner.view.removeFromSuperview()
-                spinner.removeFromParent()
-            }
         } else {
             DispatchQueue.main.async {
-                spinner.willMove(toParent: nil)
-                spinner.view.removeFromSuperview()
-                spinner.removeFromParent()
+                self.spinner.willMove(toParent: nil)
+                self.spinner.view.removeFromSuperview()
+                self.spinner.removeFromParent()
             }
         }
     }
