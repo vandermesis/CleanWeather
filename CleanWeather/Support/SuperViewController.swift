@@ -10,7 +10,7 @@ import UIKit
 
 class SuperViewController: UIViewController {
     
-    func spinner(_ state: Bool) {
+    func presentSpinner(_ state: Bool) {
         let spinner = SpinnerController()
         
         if state {
@@ -34,7 +34,7 @@ class SuperViewController: UIViewController {
         }
     }
     
-    func alert(title: String, message: String) {
+    func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)

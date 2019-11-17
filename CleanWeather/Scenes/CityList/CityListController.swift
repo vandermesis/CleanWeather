@@ -10,8 +10,6 @@ import UIKit
 
 protocol CityListPresentable: SuperViewController {
     func displayCity(_ citiesWeather: [CityWeatherDisplayable])
-    func presentAlert(title: String, message: String)
-    func presentSpinner(_ state: Bool)
 }
 
 final class CityListController: SuperViewController {
@@ -55,15 +53,6 @@ extension CityListController: CityListPresentable {
         citiesWeahterDataSource = citiesWeather
         tableView.reloadData()
     }
-    
-    func presentAlert(title: String, message: String) {
-        alert(title: title, message: message)
-    }
-    
-    func presentSpinner(_ state: Bool) {
-        spinner(state)
-    }
-    
 }
 
 extension CityListController: UITableViewDataSource {
@@ -73,7 +62,6 @@ extension CityListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(with: CityListTableViewCell.self, for: indexPath)
         cell.setupWith(cityWeatherDisplayable: citiesWeahterDataSource[indexPath.row])
         return cell
