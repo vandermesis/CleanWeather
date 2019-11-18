@@ -41,7 +41,7 @@ extension CityListInteractorImpl: CityListInteractor {
                 self?.cityWeather = city
                 self?.presenter.displayCitiesWeather(citiesWeather: city)
             case .failure(let error):
-                self?.presenter.displayError(error: error)
+                self?.presenter.displayError(error)
             }
         }
     }

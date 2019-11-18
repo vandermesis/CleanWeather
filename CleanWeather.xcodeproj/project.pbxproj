@@ -33,6 +33,7 @@
 		BA6E4750237E185A0083762F /* CityListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6E474E237E185A0083762F /* CityListTableViewCell.xib */; };
 		BA74DD5B2381C90500CF1D91 /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */; };
 		BAC16BE123820FDF00420AA6 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */; };
+		BAC16BE3238214C100420AA6 /* SharedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC16BE2238214C100420AA6 /* SharedPresenter.swift */; };
 		BAF3A186237B10970093420E /* CityWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF3A185237B10970093420E /* CityWeather.swift */; };
 		BAF3A188237B170A0093420E /* WeatherNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF3A187237B170A0093420E /* WeatherNetworking.swift */; };
 		BAF3A18A237B21C20093420E /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF3A189237B21C20093420E /* CityListController.swift */; };
@@ -91,6 +92,7 @@
 		BA6E474E237E185A0083762F /* CityListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityListTableViewCell.xib; sourceTree = "<group>"; };
 		BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpinnerController.xib; sourceTree = "<group>"; };
 		BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
+		BAC16BE2238214C100420AA6 /* SharedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPresenter.swift; sourceTree = "<group>"; };
 		BAF3A185237B10970093420E /* CityWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeather.swift; sourceTree = "<group>"; };
 		BAF3A187237B170A0093420E /* WeatherNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworking.swift; sourceTree = "<group>"; };
 		BAF3A189237B21C20093420E /* CityListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				BA2D2C9C238073A400204BA0 /* SharedViewController.swift */,
+				BAC16BE2238214C100420AA6 /* SharedPresenter.swift */,
 				BA6E474B237E13E20083762F /* SpinnerController.swift */,
 				BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */,
 			);
@@ -522,6 +525,7 @@
 				BAC16BE123820FDF00420AA6 /* ErrorExtension.swift in Sources */,
 				BA2D2C9B238072FD00204BA0 /* TableViewControllerExtension.swift in Sources */,
 				609DA54423743E2D00C5773D /* Person.swift in Sources */,
+				BAC16BE3238214C100420AA6 /* SharedPresenter.swift in Sources */,
 				609DA54D237440C800C5773D /* PeopleListCreator.swift in Sources */,
 				BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */,
 				BAF3A193237B25880093420E /* CityListRouter.swift in Sources */,

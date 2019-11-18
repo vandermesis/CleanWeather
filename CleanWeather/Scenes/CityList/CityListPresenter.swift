@@ -8,15 +8,13 @@
 
 import UIKit
 
-protocol CityListPresenter {
+protocol CityListPresenter: SharedPresenter {
     func displayCitiesWeather(citiesWeather: [CityWeather])
-    func displayError(error: Error)
-    func showSpinner(_ state: Bool)
 }
 
-final class CityListPresenterImpl {
+final class CityListPresenterImpl: SharedPresenter {
     
-    weak var controller: CityListPresentable?
+//    weak var controller: CityListPresentable?
     
 }
 
@@ -25,13 +23,5 @@ extension CityListPresenterImpl: CityListPresenter {
     func displayCitiesWeather(citiesWeather: [CityWeather]) {
         let displayable = citiesWeather.map { CityWeatherDisplayable(object: $0)}
         controller?.displayCity(displayable)
-    }
-    
-    func displayError(error: Error) {
-        controller?.presentAlert(title: "Error", message: error.userFriendlyMessage)
-    }
-    
-    func showSpinner(_ state: Bool) {
-        controller?.presentSpinner(state)
     }
 }
