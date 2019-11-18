@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol SharedPresentable {
+    
+}
+
 class SharedPresenter {
     
-    weak var controller: CityListPresentable?
+    weak var controller: SharedViewController?
     
     func displayError(_ error: Error) {
         controller?.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
