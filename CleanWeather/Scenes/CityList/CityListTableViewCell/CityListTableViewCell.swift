@@ -10,14 +10,14 @@ import UIKit
 
 class CityListTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var cityNameLabel: UILabel!
-    @IBOutlet private weak var cityTempLabel: UILabel!
-    @IBOutlet private weak var cityWeatherSymbol: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var tempLabel: UILabel!
+    @IBOutlet private weak var weatherSymbol: UIImageView!
     
     func setup(with cityWeatherDisplayable: CityWeatherDisplayable) {
-        cityNameLabel.text = cityWeatherDisplayable.name
-        cityTempLabel.text = cityWeatherDisplayable.temp
-        cityWeatherSymbol.image = UIImage(systemName: cityWeatherDisplayable.symbol.icon)
+        nameLabel.text = cityWeatherDisplayable.name
+        tempLabel.text = cityWeatherDisplayable.temp
+        weatherSymbol.image = UIImage(systemName: cityWeatherDisplayable.symbol.icon)
     }
     
 }

@@ -32,13 +32,7 @@ extension PeopleListWorkerImpl: PeopleListWorker {
                 return
             }
             
-            let sortedPeople = self.sortPeople(people: people)
-            
-            if sortedPeople.count < 20 {
-                completion?(.failure(AppError(message: "Not enough people")))
-                return
-            }
-            
+            let sortedPeople = self.sortPeople(people: people)            
             completion?(.success(sortedPeople))
         }
     }

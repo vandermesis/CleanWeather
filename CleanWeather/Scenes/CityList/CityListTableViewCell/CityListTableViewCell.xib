@@ -49,9 +49,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="cityNameLabel" destination="hab-xj-pXs" id="hc9-0g-rCS"/>
-                <outlet property="cityTempLabel" destination="vVr-Yl-IT1" id="kq9-aU-ifT"/>
-                <outlet property="cityWeatherSymbol" destination="4gt-wR-GBk" id="5j0-ZD-zT7"/>
+                <outlet property="nameLabel" destination="hab-xj-pXs" id="hc9-0g-rCS"/>
+                <outlet property="tempLabel" destination="vVr-Yl-IT1" id="kq9-aU-ifT"/>
+                <outlet property="weatherSymbol" destination="4gt-wR-GBk" id="5j0-ZD-zT7"/>
             </connections>
             <point key="canvasLocation" x="-165.94202898550725" y="-43.526785714285715"/>
         </tableViewCell>
