@@ -13,6 +13,7 @@ class SharedViewController: UIViewController {
     func presentSpinner(_ state: Bool) {
         if state {
             let spinner = SpinnerController()
+            guard navigationController?.presentedViewController == nil else { return }
             navigationController?.present(spinner, animated: false, completion: nil)
         } else {
             if let spinner = navigationController?.presentedViewController as? SpinnerController {
