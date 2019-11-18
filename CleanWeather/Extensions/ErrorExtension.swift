@@ -15,10 +15,10 @@ struct AppError: Error {
 extension Error {
     var userFriendlyMessage: String {
         if self is DecodingError {
-            return "Docoding Error"
+            return R.string.localizable.decodingError()
         } else if let appError = self as? AppError {
             return appError.message
         }
-        return "Unknown error"
+        return R.string.localizable.unknownError()
     }
 }

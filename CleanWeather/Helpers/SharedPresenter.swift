@@ -13,7 +13,7 @@ class SharedPresenter {
     weak var controller: CityListPresentable?
     
     func displayError(_ error: Error) {
-        controller?.presentAlert(title: "Error", message: error.userFriendlyMessage)
+        controller?.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
     }
     
     func showSpinner(_ state: Bool) {

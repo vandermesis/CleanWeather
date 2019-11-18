@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  CleanWeather
+
+  Created by Marek Skrzelowski on 18/11/2019.
+  Copyright © 2019 vandermesis. All rights reserved.
+*/
+
+// Errors
+"error" = "Error";
+"unknownError" = "Unknown Error";
+"decodingError" = "Decoding Error";
+
+// Titles
+"cleanWeather" = "CleanWeather";
+
+// Alerts
+"addCity" = "Add new City";
+"ok" = "OK";
+
