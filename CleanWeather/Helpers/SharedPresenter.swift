@@ -8,19 +8,14 @@
 
 import UIKit
 
-protocol SharedPresentable {
+class SharedPresenter<T: SpinnerPresentable & AlertPresentable>: SpinnerPresenter, AlertPresenter {
+    var controller: T?
     
-}
-
-class SharedPresenter {
-    
-    weak var controller: CityListPresentable?
-    
-    func displayError(_ error: Error) {
-        controller?.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
-    }
-    
-    func showSpinner(_ state: Bool) {
+    func toggleSpinner(_ state: Bool) {
         controller?.presentSpinner(state)
     }
+    func presentAlert(title: String, message: String) {
+        controller?.presentAlert(title: title, message: message)
+    }
 }
+

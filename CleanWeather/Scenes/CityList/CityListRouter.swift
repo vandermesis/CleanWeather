@@ -22,7 +22,7 @@ extension CityListRouterImpl: CityListRouter {
     
     func navigateToCityDetails(id: String) {
         // TODO: Add cityDetailsController Creator code here
-        let cityDetailsController = UIViewController()
+        let cityDetailsController = PeopleListCreator().getController()
         controller?.navigationController?.pushViewController(cityDetailsController, animated: true)
     }
 }

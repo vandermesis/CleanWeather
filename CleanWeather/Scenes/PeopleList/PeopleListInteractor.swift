@@ -36,15 +36,15 @@ final class PeopleListInteractorImpl {
 extension PeopleListInteractorImpl: PeopleListInteractor {
     
     func getPeople() {
-        presenter.updateSpinner(state: true)
+        presenter.toggleSpinner(true)
         worker.fetchPeople { [weak self] result in
-            self?.presenter.updateSpinner(state: false)
+            self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let people):
                 self?.people = people
                 self?.presenter.displayPeople(people: people)
             case .failure(let error):
-                self?.presenter.displayError(error: error)
+                self?.presenter.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
             }
         }
     }

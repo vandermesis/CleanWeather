@@ -33,15 +33,15 @@ final class CityListInteractorImpl {
 extension CityListInteractorImpl: CityListInteractor {
     
     func getCity() {
-        presenter.showSpinner(true)
+        presenter.toggleSpinner(true)
         worker.fetchCityWeather { [weak self] result in
-            self?.presenter.showSpinner(false)
+            self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
                 self?.cityWeather = city
                 self?.presenter.displayCitiesWeather(citiesWeather: city)
             case .failure(let error):
-                self?.presenter.displayError(error)
+                self?.presenter.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
             }
         }
     }
