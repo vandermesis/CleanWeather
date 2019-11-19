@@ -9,9 +9,7 @@
 import UIKit
 
 protocol AlertPresentable: UIViewController {
-    
     func presentAlert(title: String, message: String)
-    
 }
 
 extension AlertPresentable {

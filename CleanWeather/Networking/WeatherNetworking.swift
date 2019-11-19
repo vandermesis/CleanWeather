@@ -58,8 +58,6 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             completion?(Result.success(randomCityWeahter))
-            //TODO: To be removed - saved here as a draft of .failure
-            //completion?(Result.failure(AppError(message: "Błąd API")))
         }
     }
 }

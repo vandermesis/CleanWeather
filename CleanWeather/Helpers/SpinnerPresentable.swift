@@ -9,16 +9,12 @@
 import UIKit
 
 protocol SpinnerPresentable: UIViewController {
-    
-    //TODO: Rename this, we can hide spinner with 'presentSpinner' that's confusing, rename it to 'toggleSpinner'
-    func presentSpinner(_ state: Bool)
-    
+    func toogleSpinner(_ state: Bool)
 }
 
 extension SpinnerPresentable {
     
-    //TODO: Rename this, we can hide spinner with 'presentSpinner' that's confusing, rename it to 'toggleSpinner'
-    func presentSpinner(_ state: Bool) {
+    func toogleSpinner(_ state: Bool) {
         if state {
             guard navigationController?.presentedViewController == nil else { return }
             let spinner = SpinnerController()
@@ -28,5 +24,4 @@ extension SpinnerPresentable {
             spinner.dismiss(animated: false, completion: nil)
         }
     }
-    
 }
