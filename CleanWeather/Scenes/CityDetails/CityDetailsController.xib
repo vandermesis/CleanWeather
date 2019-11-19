@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,7 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityDetailsController" customModule="CleanWeather" customModuleProvider="target">
             <connections>
+                <outlet property="cityLabel" destination="GG3-FO-UAQ" id="pBQ-lj-ZPD"/>
+                <outlet property="tableView" destination="kcY-gQ-iEf" id="2Fp-7b-oni"/>
+                <outlet property="tempLabel" destination="nFU-2l-XnE" id="lmf-3d-BQh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weatherSymbol" destination="9Ik-LG-vz7" id="iTh-Jo-uaw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -17,15 +21,51 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-LG-vz7">
-                    <rect key="frame" x="143" y="384" width="128" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington DC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GG3-FO-UAQ">
+                    <rect key="frame" x="108.33333333333333" y="54" width="197.33333333333337" height="36"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFU-2l-XnE">
+                    <rect key="frame" x="160.66666666666666" y="100" width="92.666666666666657" height="96"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-LG-vz7">
+                    <rect key="frame" x="155.66666666666666" y="208.66666666666669" width="102.66666666666666" height="99"/>
                     <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" weight="thin"/>
                 </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kcY-gQ-iEf">
+                    <rect key="frame" x="0.0" y="321.66666666666669" width="414" height="540.33333333333326"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG9-gR-ZOW">
+                    <rect key="frame" x="253.33333333333334" y="100" width="29.333333333333343" height="96"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
+                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="nFU-2l-XnE" firstAttribute="top" secondItem="GG3-FO-UAQ" secondAttribute="bottom" constant="10" id="2fM-7r-VAH"/>
+                <constraint firstItem="GG3-FO-UAQ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="56B-TX-oDm"/>
+                <constraint firstItem="kcY-gQ-iEf" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="DlB-Xa-BUq"/>
+                <constraint firstItem="kcY-gQ-iEf" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Mji-no-fWM"/>
+                <constraint firstItem="9Ik-LG-vz7" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Mtr-FL-9DK"/>
+                <constraint firstItem="kcY-gQ-iEf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ol2-g9-ss3"/>
+                <constraint firstItem="GG3-FO-UAQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="T1L-lL-R2d"/>
+                <constraint firstItem="nFU-2l-XnE" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="TUm-7i-NR9"/>
+                <constraint firstItem="kcY-gQ-iEf" firstAttribute="top" secondItem="9Ik-LG-vz7" secondAttribute="bottom" constant="20" id="WPh-2d-Kjt"/>
+                <constraint firstItem="ZG9-gR-ZOW" firstAttribute="top" secondItem="GG3-FO-UAQ" secondAttribute="bottom" constant="10" id="Xhr-pd-PhH"/>
+                <constraint firstItem="9Ik-LG-vz7" firstAttribute="top" secondItem="nFU-2l-XnE" secondAttribute="bottom" constant="10" id="tzM-0c-Qgv"/>
+                <constraint firstItem="ZG9-gR-ZOW" firstAttribute="leading" secondItem="nFU-2l-XnE" secondAttribute="trailing" id="xZ4-43-GyJ"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
+            <point key="canvasLocation" x="-183" y="-14"/>
         </view>
     </objects>
     <resources>

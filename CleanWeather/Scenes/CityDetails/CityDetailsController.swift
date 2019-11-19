@@ -14,6 +14,11 @@ protocol CityDetailsPresentable {
 
 final class CityDetailsController: SharedViewController {
     
+    @IBOutlet private weak var tempLabel: UILabel!
+    @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var weatherSymbol: UIImageView!
+    @IBOutlet private weak var tableView: UITableView!
+    
     private let interactor: CityDetailsInteractor
     
     init(interactor: CityDetailsInteractor) {
