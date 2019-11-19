@@ -9,11 +9,20 @@
 import UIKit
 
 protocol CityListRouter {
-    
+    func navigateToCityDetails(id: String)
 }
 
-final class CityListRouterImpl: CityListRouter {
+final class CityListRouterImpl {
     
     weak var controller: UIViewController?
     
+}
+
+extension CityListRouterImpl: CityListRouter {
+    
+    func navigateToCityDetails(id: String) {
+        // TODO: Add cityDetailsController Creator code here
+        let cityDetailsController = PeopleListCreator().getController()
+        controller?.navigationController?.pushViewController(cityDetailsController, animated: true)
+    }
 }

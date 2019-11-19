@@ -17,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let startingController = setupStartingController()
         displayStartingController(controller: startingController, at: windowScene)
     }
-
 }
 
 private extension SceneDelegate {
@@ -33,5 +32,4 @@ private extension SceneDelegate {
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
     }
-
 }

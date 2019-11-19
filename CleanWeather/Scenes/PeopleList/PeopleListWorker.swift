@@ -32,11 +32,10 @@ extension PeopleListWorkerImpl: PeopleListWorker {
                 return
             }
             
-            let sortedPeople = self.sortPeople(people: people)
+            let sortedPeople = self.sortPeople(people: people)            
             completion?(.success(sortedPeople))
         }
     }
-    
 }
 
 private extension PeopleListWorkerImpl {
@@ -44,5 +43,4 @@ private extension PeopleListWorkerImpl {
     private func sortPeople(people: [Person]) -> [Person] {
         return people.sorted(by: { $0.firstName < $1.firstName })
     }
-    
 }

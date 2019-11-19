@@ -8,14 +8,12 @@
 
 import UIKit
 
-protocol PeopleListPresentable: UIViewController {
+protocol PeopleListPresentable {
     func displayPeople(_ people: [PersonDisplayable])
-    func presentAlert(title: String, body: String)
-    func updateSpinner(state: Bool)
     func changeBackgroundColor(_ color: UIColor)
 }
 
-final class PeopleListController: UIViewController {
+final class PeopleListController: SharedViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var changeBackgroundButton: UIButton!
@@ -51,19 +49,6 @@ extension PeopleListController: PeopleListPresentable {
         tableView.reloadData()
     }
     
-    func presentAlert(title: String, body: String) {
-        let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        navigationController?.present(alert, animated: true, completion: nil)
-    }
-    
-    func updateSpinner(state: Bool) {
-        // TODO: Build proper spinner logic
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.backgroundColor = state ? .orange : .white
-        }
-    }
-    
     func changeBackgroundColor(_ color: UIColor) {
         self.tableView.backgroundColor = color
     }
@@ -76,7 +61,6 @@ extension PeopleListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Build proper cells and dequeue them
         let cell = UITableViewCell()
         cell.backgroundColor = .clear
         cell.imageView?.image = UIImage(named: dataSource[indexPath.row].genderIconName)

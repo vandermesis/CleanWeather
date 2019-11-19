@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol CityListPresentable: UIViewController {
-    
+protocol CityListPresentable {
+    func displayCity(_ citiesWeather: [CityWeatherDisplayable])
 }
 
-final class CityListController: UIViewController, CityListPresentable {
+final class CityListController: SharedViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
     private let interactor: CityListInteractor
     
-    private let dataSource = [CityWeatherDisplayable]()
+    private var citiesWeahterDataSource = [CityWeatherDisplayable]()
     
     init(interactor: CityListInteractor) {
         self.interactor = interactor
@@ -31,9 +31,51 @@ final class CityListController: UIViewController, CityListPresentable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        setupNavigationBar()
+        interactor.getCity()
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
+        //TODO: Implement add new city functionality
         print("\(#function)")
+    }
+    
+    func setupTableView() {
+        tableView.register(cellType: CityListTableViewCell.self)
+    }
+    
+    func setupNavigationBar() {
+        title = R.string.localizable.cleanWeather()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonPressed(_:)))
+    }
+}
+
+extension CityListController: CityListPresentable {
+    
+    func displayCity(_ citiesWeather: [CityWeatherDisplayable]) {
+        citiesWeahterDataSource = citiesWeather
+        tableView.reloadData()
+    }
+}
+
+extension CityListController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return citiesWeahterDataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
+        cell.setup(with: citiesWeahterDataSource[indexPath.row])
+        return cell
+    }
+}
+
+extension CityListController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id = citiesWeahterDataSource[indexPath.row].id
+        interactor.didSelectCityCell(id: id)
     }
 }

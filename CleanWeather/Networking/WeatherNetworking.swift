@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias FetchWeatherCompletion = ([CityWeather]) -> Void
+typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
@@ -19,52 +19,47 @@ final class WeatherNetworkingImpl: WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?) {
         
         //TODO: Build networking and remove mock
+        
         var randomTemp: [Double] {
-            var array = [Double]()
+            let random = Double.random(in: -30...30)
+            return Array(repeating: random, count: 10)
+        }
+        
+        var randomId: String {
+            let id = UUID()
+            return id.uuidString
+        }
+        
+        var randomIcon: String {
+            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
+            let random = Int.random(in: 0...9)
+            return icon[random]
+        }
+        
+        var randomCity: String {
+            let city = ["Katowice", "Gdańsk", "Tokyo", "New York", "Ljubliana", "Berlin", "Sydney", "Szanghaj", "Moskwa", "Paryż"]
+            let random = Int.random(in: 0...9)
+            return city[random]
+        }
+        
+        var randomCityWeahter: [CityWeather] {
+            var array = [CityWeather]()
             for _ in 0...20 {
-                let random = Double.random(in: -30...30)
-                array.append(random)
+                let cityWeather = CityWeather(id: randomId,
+                                              city: randomCity,
+                                              temperature: randomTemp[0],
+                                              hourlyTempMin: randomTemp, hourlyTempMax: randomTemp,
+                                              dailyTempMin: randomTemp, dailyTempMax: randomTemp,
+                                              icon: randomIcon)
+                array.append(cityWeather)
             }
             return array
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            completion?([
-                CityWeather(city: "Katowice",
-                            temperature: randomTemp[0],
-                            hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
-                            hourlyTempMax: [randomTemp[6], randomTemp[7], randomTemp[8], randomTemp[9], randomTemp[10]],
-                            dailyTempMin: [randomTemp[11], randomTemp[12], randomTemp[13], randomTemp[14], randomTemp[15]],
-                            dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
-                            icon: "clear-day"),
-                CityWeather(city: "Gdańsk",
-                            temperature: randomTemp[0],
-                            hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
-                            hourlyTempMax: [randomTemp[6], randomTemp[7], randomTemp[8], randomTemp[9], randomTemp[10]],
-                            dailyTempMin: [randomTemp[11], randomTemp[12], randomTemp[13], randomTemp[14], randomTemp[15]],
-                            dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
-                            icon: "cloudy"),
-                CityWeather(city: "Tokyo",
-                            temperature: randomTemp[0],
-                            hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
-                            hourlyTempMax: [randomTemp[6], randomTemp[7], randomTemp[8], randomTemp[9], randomTemp[10]],
-                            dailyTempMin: [randomTemp[11], randomTemp[12], randomTemp[13], randomTemp[14], randomTemp[15]],
-                            dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
-                            icon: "clear-night"),
-                CityWeather(city: "New York",
-                            temperature: randomTemp[0],
-                            hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
-                            hourlyTempMax: [randomTemp[6], randomTemp[7], randomTemp[8], randomTemp[9], randomTemp[10]],
-                            dailyTempMin: [randomTemp[11], randomTemp[12], randomTemp[13], randomTemp[14], randomTemp[15]],
-                            dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
-                            icon: "rain"),
-                CityWeather(city: "Ljubliana",
-                            temperature: randomTemp[0],
-                            hourlyTempMin: [randomTemp[1], randomTemp[2], randomTemp[3], randomTemp[4], randomTemp[5]],
-                            hourlyTempMax: [randomTemp[6], randomTemp[7], randomTemp[8], randomTemp[9], randomTemp[10]],
-                            dailyTempMin: [randomTemp[11], randomTemp[12], randomTemp[13], randomTemp[14], randomTemp[15]],
-                            dailyTempMax: [randomTemp[16], randomTemp[17], randomTemp[18], randomTemp[19], randomTemp[20]],
-                            icon: "wind")
-            ])
+            completion?(Result.success(randomCityWeahter))
+            //TODO: To be removed - saved here as a draft of .failure
+            //completion?(Result.failure(AppError(message: "Błąd API")))
         }
     }
 }

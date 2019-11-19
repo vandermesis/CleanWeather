@@ -8,12 +8,19 @@
 
 import UIKit
 
-protocol CityListPresenter {
-    
+protocol CityListPresenter: SpinnerPresenter, AlertPresenter {
+    func displayCitiesWeather(citiesWeather: [CityWeather])
 }
 
-final class CityListPresenterImpl: CityListPresenter {
+final class CityListPresenterImpl: SharedPresenter<CityListController> {
+        
+}
+
+extension CityListPresenterImpl: CityListPresenter {
     
-    weak var controller: CityListPresentable?
+    func displayCitiesWeather(citiesWeather: [CityWeather]) {
+        let displayable = citiesWeather.map { CityWeatherDisplayable(object: $0)}
+        controller?.displayCity(displayable)
+    }
     
 }

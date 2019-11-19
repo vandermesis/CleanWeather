@@ -21,7 +21,6 @@ final class PeopleListRouterImpl {
 extension PeopleListRouterImpl: PeopleListRouter {
     
     func navigateToPersonDetails(personId: String) {
-        // TODO: Add Next Controller Creator code here
         let nextController = UIViewController()
         controller?.navigationController?.pushViewController(nextController, animated: true)
     }

@@ -9,16 +9,12 @@
 import UIKit
 import Foundation
 
-protocol PeopleListPresenter {
+protocol PeopleListPresenter: SpinnerPresenter, AlertPresenter {
     func displayPeople(people: [Person])
-    func displayError(error: Error)
-    func updateSpinner(state: Bool)
     func changeBackgroundColor(_ color: UIColor)
 }
 
-final class PeopleListPresenterImpl {
-
-    weak var controller: PeopleListPresentable?
+final class PeopleListPresenterImpl: SharedPresenter<PeopleListController> {
 
 }
 
@@ -27,14 +23,6 @@ extension PeopleListPresenterImpl: PeopleListPresenter {
     func displayPeople(people: [Person]) {
         let displayable = people.map { PersonDisplayable.convert(from: $0) }
         controller?.displayPeople(displayable)
-    }
-    
-    func displayError(error: Error) {
-        controller?.presentAlert(title: "ERROR", body: "API ERROR: \(error)")
-    }
-    
-    func updateSpinner(state: Bool) {
-        controller?.updateSpinner(state: state)
     }
     
     func changeBackgroundColor(_ color: UIColor) {

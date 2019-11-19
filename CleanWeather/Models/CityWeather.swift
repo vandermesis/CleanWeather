@@ -8,6 +8,7 @@
 
 struct CityWeather: Codable {
     
+    let id: String
     let city: String
     let temperature: Double
     let hourlyTempMin: [Double]
