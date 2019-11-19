@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CityListPresentable: SharedViewController {
+protocol CityListPresentable {
     func displayCity(_ citiesWeather: [CityWeatherDisplayable])
 }
 
