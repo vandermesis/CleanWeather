@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CityListRouter {
-    func navigateToCityDetails(cityWeather: CityWeatherDisplayable)
+    func navigateToCityDetails(cityWeather: CityWeather)
 }
 
 final class CityListRouterImpl {
@@ -20,7 +20,7 @@ final class CityListRouterImpl {
 
 extension CityListRouterImpl: CityListRouter {
     
-    func navigateToCityDetails(cityWeather: CityWeatherDisplayable) {
+    func navigateToCityDetails(cityWeather: CityWeather) {
         let cityDetailsController = CityDetailsCreator().getController(with: cityWeather)
         controller?.navigationController?.pushViewController(cityDetailsController, animated: true)
     }

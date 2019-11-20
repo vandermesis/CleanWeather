@@ -75,7 +75,7 @@ extension CityListController: UITableViewDataSource {
 extension CityListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cityWeather = citiesWeatherDataSource[indexPath.row]
-        interactor.didSelectCityCell(with: cityWeather)
+        let id = citiesWeatherDataSource[indexPath.row].id
+        interactor.didSelectCityCell(with: id)
     }
 }

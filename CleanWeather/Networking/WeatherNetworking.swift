@@ -48,8 +48,6 @@ final class WeatherNetworkingImpl: WeatherNetworking {
                 let cityWeather = CityWeather(id: randomId,
                                               city: randomCity,
                                               temperature: randomTemp[0],
-                                              hourlyTempMin: randomTemp, hourlyTempMax: randomTemp,
-                                              dailyTempMin: randomTemp, dailyTempMax: randomTemp,
                                               icon: randomIcon)
                 array.append(cityWeather)
             }

@@ -9,22 +9,20 @@
 import UIKit
 
 protocol CityDetailsPresentable {
-    
+    func displayCityDetails(_ cityDetails: CityDetailsDisplayable)
 }
 
 final class CityDetailsController: SharedViewController {
     
-    @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
     
     private let interactor: CityDetailsInteractor
-    private let passedCityWeather: CityWeatherDisplayable
     
-    init(interactor: CityDetailsInteractor, passedCityWeather: CityWeatherDisplayable) {
+    init(interactor: CityDetailsInteractor) {
         self.interactor = interactor
-        self.passedCityWeather = passedCityWeather
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,16 +32,15 @@ final class CityDetailsController: SharedViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUIWithPassedWeatherData()
-    }
-    
-    func updateUIWithPassedWeatherData() {
-        tempLabel.text = passedCityWeather.temp
-        cityLabel.text = passedCityWeather.name
-        weatherSymbol.image = UIImage(systemName: passedCityWeather.symbol.icon)
+        interactor.updateUIWithPassedData()
     }
 }
 
 extension CityDetailsController: CityDetailsPresentable {
     
+    func displayCityDetails(_ cityDetails: CityDetailsDisplayable) {
+        cityLabel.text = cityDetails.name
+        tempLabel.text = cityDetails.temp
+        weatherSymbol.image = UIImage(systemName: cityDetails.symbol.icon)
+    }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol CityListInteractor {
     func getCity()
-    func didSelectCityCell(with weather: CityWeatherDisplayable)
+    func didSelectCityCell(with id: String)
 }
 
 final class CityListInteractorImpl {
@@ -46,7 +46,10 @@ extension CityListInteractorImpl: CityListInteractor {
         }
     }
     
-    func didSelectCityCell(with weather: CityWeatherDisplayable) {
-        router.navigateToCityDetails(cityWeather: weather)
+    func didSelectCityCell(with id: String) {
+        let filter = cityWeather.filter { $0.id == id }
+        if let weather = filter.first {
+            router.navigateToCityDetails(cityWeather: weather)
+        }
     }
 }
