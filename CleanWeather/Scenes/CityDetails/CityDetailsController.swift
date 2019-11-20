@@ -20,9 +20,11 @@ final class CityDetailsController: SharedViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let interactor: CityDetailsInteractor
+    private let passedCityWeather: CityWeatherDisplayable
     
-    init(interactor: CityDetailsInteractor) {
+    init(interactor: CityDetailsInteractor, passedCityWeather: CityWeatherDisplayable) {
         self.interactor = interactor
+        self.passedCityWeather = passedCityWeather
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,6 +34,13 @@ final class CityDetailsController: SharedViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUIWithPassedWeatherData()
+    }
+    
+    func updateUIWithPassedWeatherData() {
+        tempLabel.text = passedCityWeather.temp
+        cityLabel.text = passedCityWeather.name
+        weatherSymbol.image = UIImage(systemName: passedCityWeather.symbol.icon)
     }
 }
 

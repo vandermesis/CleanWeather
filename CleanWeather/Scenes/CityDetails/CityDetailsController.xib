@@ -42,12 +42,6 @@
                     <rect key="frame" x="0.0" y="321.66666666666669" width="414" height="540.33333333333326"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG9-gR-ZOW">
-                    <rect key="frame" x="253.33333333333334" y="100" width="29.333333333333343" height="96"/>
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
-                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -60,9 +54,7 @@
                 <constraint firstItem="GG3-FO-UAQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="T1L-lL-R2d"/>
                 <constraint firstItem="nFU-2l-XnE" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="TUm-7i-NR9"/>
                 <constraint firstItem="kcY-gQ-iEf" firstAttribute="top" secondItem="9Ik-LG-vz7" secondAttribute="bottom" constant="20" id="WPh-2d-Kjt"/>
-                <constraint firstItem="ZG9-gR-ZOW" firstAttribute="top" secondItem="GG3-FO-UAQ" secondAttribute="bottom" constant="10" id="Xhr-pd-PhH"/>
                 <constraint firstItem="9Ik-LG-vz7" firstAttribute="top" secondItem="nFU-2l-XnE" secondAttribute="bottom" constant="10" id="tzM-0c-Qgv"/>
-                <constraint firstItem="ZG9-gR-ZOW" firstAttribute="leading" secondItem="nFU-2l-XnE" secondAttribute="trailing" id="xZ4-43-GyJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-183" y="-14"/>

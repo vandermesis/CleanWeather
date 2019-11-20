@@ -10,14 +10,15 @@ import Foundation
 
 struct CityDetailsCreator {
     
-    func getController() -> CityDetailsController {
+    func getController(with passedWeatherData: CityWeatherDisplayable) -> CityDetailsController {
         
+        let passedData = passedWeatherData
         let networking = WeatherNetworkingImpl()
         let worker = CityDetailsWorkerImpl(networking: networking)
         let router = CityDetailsRouterImpl()
         let presenter = CityDetailsPresenterImpl()
         let interactor = CityDetailsInteractorImpl(presenter: presenter, worker: worker, router: router)
-        let controller = CityDetailsController(interactor: interactor)
+        let controller = CityDetailsController(interactor: interactor, passedCityWeather: passedData)
         
         presenter.controller = controller
         router.controller = controller
