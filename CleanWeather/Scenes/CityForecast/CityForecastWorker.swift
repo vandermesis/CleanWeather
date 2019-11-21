@@ -24,13 +24,6 @@ final class CityForecastWorkerImpl {
 extension CityForecastWorkerImpl: CityForecastWorker {
     
     func fetchCityHourDetailsList(id: String, completion: FetchForecastCompletion?) {
-        networking.fetchForecastWeatherForCity(id: id) { result in
-            switch result {
-            case .success:
-                completion?(result)
-            case .failure:
-                completion?(result)
-            }
-        }
+        networking.fetchForecastWeatherForCity(id: id, completion: completion)
     }
 }
