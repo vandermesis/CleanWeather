@@ -1,5 +1,5 @@
 //
-//  CityDetailsDisplayable.swift
+//  CityForecastDisplayable.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 20/11/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CityDetailsDisplayable {
+struct CityForecastDisplayable {
     
     let id: String
     let name: String

@@ -1,5 +1,5 @@
 //
-//  CityDetailsRouter.swift
+//  CityForecastRouter.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 19/11/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CityDetailsRouter {
+protocol CityForecastRouter {
     
 }
 
@@ -18,6 +18,6 @@ final class CityDetailsRouterImpl {
     
 }
 
-extension CityDetailsRouterImpl: CityDetailsRouter {
+extension CityDetailsRouterImpl: CityForecastRouter {
     
 }

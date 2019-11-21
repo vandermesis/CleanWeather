@@ -9,11 +9,11 @@
 import Foundation
 
 typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
-typealias FetchForecastCompletion = (Result<CityWeatherDetails, Error>) -> Void
+typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
-    func fetchForecastWeatherForCity(completion: FetchForecastCompletion?)
+    func fetchForecastWeatherForCity(with id: String, completion: FetchForecastCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
@@ -55,36 +55,24 @@ final class WeatherNetworkingImpl: WeatherNetworking {
             return array
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion?(Result.success(randomCityWeahter))
         }
     }
     
-    func fetchForecastWeatherForCity(completion: FetchForecastCompletion?) {
-        
-        var randomId: String {
-            let id = UUID()
-            return id.uuidString
-        }
+    func fetchForecastWeatherForCity(with id: String, completion: FetchForecastCompletion?) {
     
-        var hours: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-        
-        var randomTemp: [Double] {
-            var array = [Double]()
-            for _ in 0...9 {
-                let random = Double.random(in: -30...30)
-                array.append(random)
-            }
-            return array
+        var hour: [String] {
+            let hours = 0...23
+            return hours.map { "\($0):00" }
         }
         
-        var randomPrecip: [Double] {
-            var array = [Double]()
-            for _ in 0...9 {
-                let random = Double.random(in: 0...100)
-                array.append(random)
-            }
-            return array
+        var randomTemp: Double {
+            return Double.random(in: -30...30)
+        }
+        
+        var randomPrecip: Double {
+            return Double.random(in: 0...100)
         }
         
         var randomIcon: String {
@@ -93,12 +81,17 @@ final class WeatherNetworkingImpl: WeatherNetworking {
             return icon[random]
         }
         
-        var randomCityDetails: CityWeatherDetails {
-            return CityWeatherDetails(id: randomId, hour: hours, hourTemp: randomTemp, hourPrecipProbability: randomPrecip, icon: randomIcon)
+        var randomCityHourDetails: [CityForecast] {
+            var array = [CityForecast]()
+            for i in 0...23 {
+                let cityWeatherHour = CityForecast(id: id, hour: hour[i], hourTemp: randomTemp, hourPrecipProbability: randomPrecip, icon: randomIcon)
+                array.append(cityWeatherHour)
+            }
+            return array
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            completion?(Result.success(randomCityDetails))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion?(Result.success(randomCityHourDetails))
         }
     }
 }

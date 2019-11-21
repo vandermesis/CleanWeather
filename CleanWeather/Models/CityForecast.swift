@@ -6,12 +6,12 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-struct CityWeatherDetails: Codable {
+struct CityForecast: Codable {
     
     let id: String
-    let hour: [String]
-    let hourTemp: [Double]
-    let hourPrecipProbability: [Double]
+    let hour: String
+    let hourTemp: Double
+    let hourPrecipProbability: Double
     let icon: String
     
     var symbol: WeatherSymbol {

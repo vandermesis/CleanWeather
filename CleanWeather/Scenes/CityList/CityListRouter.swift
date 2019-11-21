@@ -21,7 +21,7 @@ final class CityListRouterImpl {
 extension CityListRouterImpl: CityListRouter {
     
     func navigateToCityDetails(cityWeather: CityWeather) {
-        let cityDetailsController = CityDetailsCreator().getController(with: cityWeather)
+        let cityDetailsController = CityForecastCreator().getController(with: cityWeather)
         controller?.navigationController?.pushViewController(cityDetailsController, animated: true)
     }
 }

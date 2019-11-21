@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityDetailsController" customModule="CleanWeather" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityForecastController" customModule="CleanWeather" customModuleProvider="target">
             <connections>
                 <outlet property="cityLabel" destination="GG3-FO-UAQ" id="pBQ-lj-ZPD"/>
                 <outlet property="tableView" destination="kcY-gQ-iEf" id="2Fp-7b-oni"/>
@@ -22,19 +22,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington DC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GG3-FO-UAQ">
-                    <rect key="frame" x="108.33333333333333" y="54" width="197.33333333333337" height="36"/>
+                    <rect key="frame" x="108.66666666666669" y="54" width="197" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFU-2l-XnE">
-                    <rect key="frame" x="160.66666666666666" y="100" width="92.666666666666657" height="96"/>
+                    <rect key="frame" x="160.66666666666666" y="100" width="93" height="96"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-LG-vz7">
-                    <rect key="frame" x="155.66666666666666" y="208.66666666666669" width="102.66666666666666" height="99"/>
+                    <rect key="frame" x="156" y="208.66666666666669" width="102" height="99"/>
                     <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" weight="thin"/>
                 </imageView>

@@ -1,5 +1,5 @@
 //
-//  CityDetailsInteractor.swift
+//  CityForecastInteractor.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 19/11/2019.
@@ -8,21 +8,21 @@
 
 import Foundation
 
-protocol CityDetailsInteractor {
+protocol CityForecastInteractor {
     func updateUIWithPassedData()
-    func getDetailsList()
+    func getCityHourDetailsList()
 }
 
-final class CityDetailsInteractorImpl {
+final class CityForecastInteractorImpl {
     
-    private let presenter: CityDetailsPresenter
-    private let worker: CityDetailsWorker
-    private let router: CityDetailsRouter
+    private let presenter: CityForecastPresenter
+    private let worker: CityForecastWorker
+    private let router: CityForecastRouter
     private let passedCityWeather: CityWeather
     
-    init(presenter: CityDetailsPresenter,
-         worker: CityDetailsWorker,
-         router: CityDetailsRouter,
+    init(presenter: CityForecastPresenter,
+         worker: CityForecastWorker,
+         router: CityForecastRouter,
          passedData: CityWeather) {
         self.presenter = presenter
         self.worker = worker
@@ -31,15 +31,16 @@ final class CityDetailsInteractorImpl {
     }
 }
 
-extension CityDetailsInteractorImpl: CityDetailsInteractor {
+extension CityForecastInteractorImpl: CityForecastInteractor {
     
     func updateUIWithPassedData() {
         presenter.displayCityDetails(from: passedCityWeather)
     }
     
-    func getDetailsList() {
+    func getCityHourDetailsList() {
+        let id = passedCityWeather.id
         presenter.toggleSpinner(true)
-        worker.fetchCityDetailsList { [weak self] result in
+        worker.fetchCityHourDetailsList(with: id) { [weak self] result in
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let detailsList):
