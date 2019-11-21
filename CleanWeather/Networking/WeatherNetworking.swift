@@ -13,7 +13,7 @@ typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
-    func fetchForecastWeatherForCity(with id: String, completion: FetchForecastCompletion?)
+    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
@@ -60,7 +60,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
     }
     
-    func fetchForecastWeatherForCity(with id: String, completion: FetchForecastCompletion?) {
+    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?) {
     
         var hour: [String] {
             let hours = 0...23

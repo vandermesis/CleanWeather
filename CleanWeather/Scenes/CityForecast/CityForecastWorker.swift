@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityForecastWorker {
-    func fetchCityHourDetailsList(with id: String, completion: FetchForecastCompletion?)
+    func fetchCityHourDetailsList(id: String, completion: FetchForecastCompletion?)
 }
 
 final class CityForecastWorkerImpl {
@@ -23,8 +23,8 @@ final class CityForecastWorkerImpl {
 
 extension CityForecastWorkerImpl: CityForecastWorker {
     
-    func fetchCityHourDetailsList(with id: String, completion: FetchForecastCompletion?) {
-        networking.fetchForecastWeatherForCity(with: id) { result in
+    func fetchCityHourDetailsList(id: String, completion: FetchForecastCompletion?) {
+        networking.fetchForecastWeatherForCity(id: id) { result in
             switch result {
             case .success:
                 completion?(result)

@@ -10,7 +10,7 @@ import UIKit
 
 protocol CityForecastPresentable {
     func displayCityDetails(_ cityDetails: CityForecastDisplayable)
-    func displayCityDetailsList(_ cityDetailsList: [CityForecastListDisplayable])
+    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable])
 }
 
 final class CityForecastController: SharedViewController {
@@ -22,7 +22,7 @@ final class CityForecastController: SharedViewController {
     
     private let interactor: CityForecastInteractor
     
-    private var cityDetailsListDataSource = [CityForecastListDisplayable]()
+    private var cityForecastDataSource = [CityForecastListDisplayable]()
     
     init(interactor: CityForecastInteractor) {
         self.interactor = interactor
@@ -35,8 +35,8 @@ final class CityForecastController: SharedViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.updateUIWithPassedData()
-        interactor.getCityHourDetailsList()
+        interactor.getCityDetails()
+        interactor.getCityForecast()
         setupTableView()
     }
     
@@ -48,8 +48,8 @@ final class CityForecastController: SharedViewController {
 
 extension CityForecastController: CityForecastPresentable {
     
-    func displayCityDetailsList(_ cityDetailsList: [CityForecastListDisplayable]) {
-        cityDetailsListDataSource = cityDetailsList     
+    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
+        cityForecastDataSource = cityForecast
         tableView.reloadData()
     }
 
@@ -63,12 +63,12 @@ extension CityForecastController: CityForecastPresentable {
 extension CityForecastController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cityDetailsListDataSource.count
+        return cityForecastDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
-        cell.setupDetailsTableViewCell(with: cityDetailsListDataSource[indexPath.row])
+        cell.setupDetailsTableViewCell(with: cityForecastDataSource[indexPath.row])
         return cell
     }
 }

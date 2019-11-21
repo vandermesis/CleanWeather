@@ -9,8 +9,8 @@
 import UIKit
 
 protocol CityForecastPresenter: SpinnerPresenter, AlertPresenter {
-    func displayCityDetails(from passedData: CityWeather)
-    func displayCityDetailsList(from detailsList: [CityForecast])
+    func displayCityDetails(_ cityDetails: CityWeather)
+    func displayCityDetailsList(_ forecast: [CityForecast])
 }
 
 final class CityForecastPresenterImpl: SharedPresenter<CityForecastController> {
@@ -19,13 +19,13 @@ final class CityForecastPresenterImpl: SharedPresenter<CityForecastController> {
 
 extension CityForecastPresenterImpl: CityForecastPresenter {
     
-    func displayCityDetails(from passedData: CityWeather) {
-        let displayable = CityForecastDisplayable(object: passedData)
+    func displayCityDetails(_ cityDetails: CityWeather) {
+        let displayable = CityForecastDisplayable(object: cityDetails)
         controller?.displayCityDetails(displayable)
     }
     
-    func displayCityDetailsList(from detailsList: [CityForecast]) {
-        let displayable = detailsList.map { CityForecastListDisplayable(object: $0) }
-        controller?.displayCityDetailsList(displayable)
+    func displayCityDetailsList(_ forecast: [CityForecast]) {
+        let displayable = forecast.map { CityForecastListDisplayable(object: $0) }
+        controller?.displayCityForecast(displayable)
     }
 }
