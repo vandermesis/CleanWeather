@@ -47,9 +47,7 @@ extension CityListInteractorImpl: CityListInteractor {
     }
     
     func didSelectCityCell(id: String) {
-        let filter = cityWeather.filter { $0.id == id }
-        if let weather = filter.first {
-            router.navigateToCityDetails(cityWeather: weather)
-        }
+        guard let weather = cityWeather.first(where: { $0.id == id }) else { return }
+        router.navigateToCityDetails(cityWeather: weather)
     }
 }
