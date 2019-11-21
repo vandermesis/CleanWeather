@@ -344,9 +344,9 @@
 		BAC16BDF23820F9A00420AA6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */,
 				BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */,
 				BA960AF9238720C2009A69C9 /* DoubleExtension.swift */,
+				BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

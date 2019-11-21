@@ -8,4 +8,5 @@
 
 protocol AlertPresenter {
     func presentAlert(title: String, message: String)
+    func presentError(_ error: Error)
 }

@@ -46,7 +46,7 @@ extension CityForecastInteractorImpl: CityForecastInteractor {
             case .success(let detailsList):
                 self?.presenter.displayCityDetailsList(detailsList)
             case .failure(let error):
-                self?.presenter.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
+                self?.presenter.presentError(error)
             }
         }
     }
