@@ -10,6 +10,7 @@ import UIKit
 
 protocol CityDetailsPresentable {
     func displayCityDetails(_ cityDetails: CityDetailsDisplayable)
+    func displayCityDetailsList(_ cityDetailsList: CityDetailsListDisplayable)
 }
 
 final class CityDetailsController: SharedViewController {
@@ -20,6 +21,8 @@ final class CityDetailsController: SharedViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let interactor: CityDetailsInteractor
+    
+    private var cityDetailsListDataSource: CityDetailsListDisplayable?
     
     init(interactor: CityDetailsInteractor) {
         self.interactor = interactor
@@ -33,11 +36,20 @@ final class CityDetailsController: SharedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.updateUIWithPassedData()
+        interactor.getDetailsList()
     }
 }
 
 extension CityDetailsController: CityDetailsPresentable {
     
+    func displayCityDetailsList(_ cityDetailsList: CityDetailsListDisplayable) {
+        cityDetailsListDataSource = cityDetailsList
+        if let details = cityDetailsListDataSource {
+            print(details)
+        }
+        tableView.reloadData()
+    }
+
     func displayCityDetails(_ cityDetails: CityDetailsDisplayable) {
         cityLabel.text = cityDetails.name
         tempLabel.text = cityDetails.temp

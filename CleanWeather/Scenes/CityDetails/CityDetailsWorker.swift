@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityDetailsWorker {
-    
+    func fetchCityDetailsList(completion: FetchForecastCompletion?)
 }
 
 final class CityDetailsWorkerImpl {
@@ -23,4 +23,14 @@ final class CityDetailsWorkerImpl {
 
 extension CityDetailsWorkerImpl: CityDetailsWorker {
     
+    func fetchCityDetailsList(completion: FetchForecastCompletion?) {
+        networking.fetchForecastWeatherForCity { [weak self] result in
+            
+            guard let _ = self, case .success(let city) = result else {
+                completion?(result)
+                return
+            }
+            completion?(.success(city))
+        }
+    }
 }

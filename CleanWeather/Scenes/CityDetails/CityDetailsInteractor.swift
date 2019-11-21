@@ -10,6 +10,7 @@ import Foundation
 
 protocol CityDetailsInteractor {
     func updateUIWithPassedData()
+    func getDetailsList()
 }
 
 final class CityDetailsInteractorImpl {
@@ -34,5 +35,18 @@ extension CityDetailsInteractorImpl: CityDetailsInteractor {
     
     func updateUIWithPassedData() {
         presenter.displayCityDetails(from: passedCityWeather)
+    }
+    
+    func getDetailsList() {
+        presenter.toggleSpinner(true)
+        worker.fetchCityDetailsList { [weak self] result in
+            self?.presenter.toggleSpinner(false)
+            switch result {
+            case .success(let detailsList):
+                self?.presenter.displayCityDetailsList(from: detailsList)
+            case .failure(let error):
+                self?.presenter.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
+            }
+        }
     }
 }
