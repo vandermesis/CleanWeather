@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CityListPresentable {
+protocol CityListPresentable: SpinnerPresentable & AlertPresentable {
     func displayCity(_ citiesWeather: [CityWeatherDisplayable])
 }
 

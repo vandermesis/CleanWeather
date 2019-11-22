@@ -14,7 +14,7 @@ protocol PeopleListPresenter: SpinnerPresenter, AlertPresenter {
     func changeBackgroundColor(_ color: UIColor)
 }
 
-final class PeopleListPresenterImpl: SharedPresenter<PeopleListController> {
+final class PeopleListPresenterImpl<T: PeopleListPresentable>: SharedPresenter<T> {
 
 }
 

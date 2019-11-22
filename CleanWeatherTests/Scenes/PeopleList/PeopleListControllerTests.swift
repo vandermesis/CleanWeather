@@ -14,4 +14,6 @@ import Nimble
 
 class PeopleListControllerTests: XCTestCase {
 
+    // TODO: Remove this, we do not test Controllers - ui testing is complex
+    
 }

@@ -17,6 +17,15 @@
 		609DA54A237440BA00C5773D /* PeopleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA548237440BA00C5773D /* PeopleListController.swift */; };
 		609DA54B237440BA00C5773D /* PeopleListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609DA549237440BA00C5773D /* PeopleListController.xib */; };
 		609DA54D237440C800C5773D /* PeopleListCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA54C237440C800C5773D /* PeopleListCreator.swift */; };
+		60DDA2152388410600EF9898 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2142388410600EF9898 /* Mock.swift */; };
+		60DDA2172388413500EF9898 /* Mock+Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2162388413500EF9898 /* Mock+Person.swift */; };
+		60DDA2192388421E00EF9898 /* FakePeopleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2182388421E00EF9898 /* FakePeopleListRouter.swift */; };
+		60DDA21B2388425F00EF9898 /* FakePeopleListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA21A2388425F00EF9898 /* FakePeopleListPresenter.swift */; };
+		60DDA21E238842C800EF9898 /* FakePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA21D238842C800EF9898 /* FakePresenter.swift */; };
+		60DDA2202388437B00EF9898 /* FakePeopleListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA21F2388437B00EF9898 /* FakePeopleListInteractor.swift */; };
+		60DDA223238846E800EF9898 /* FakePeopleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA222238846E800EF9898 /* FakePeopleNetworking.swift */; };
+		60DDA225238848EB00EF9898 /* FakePeopleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA224238848EB00EF9898 /* FakePeopleListController.swift */; };
+		60E2CDBE2388321B00FF2ED1 /* FakePeopleListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E2CDBD2388321B00FF2ED1 /* FakePeopleListWorker.swift */; };
 		60EAC79A2374413B00E48021 /* PeopleListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC7992374413B00E48021 /* PeopleListInteractor.swift */; };
 		60EAC79C2374415A00E48021 /* PeopleListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC79B2374415A00E48021 /* PeopleListPresenter.swift */; };
 		60EAC79E2374417000E48021 /* PeopleListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAC79D2374417000E48021 /* PeopleListWorker.swift */; };
@@ -105,6 +114,15 @@
 		609DA548237440BA00C5773D /* PeopleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListController.swift; sourceTree = "<group>"; };
 		609DA549237440BA00C5773D /* PeopleListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleListController.xib; sourceTree = "<group>"; };
 		609DA54C237440C800C5773D /* PeopleListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListCreator.swift; sourceTree = "<group>"; };
+		60DDA2142388410600EF9898 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		60DDA2162388413500EF9898 /* Mock+Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+Person.swift"; sourceTree = "<group>"; };
+		60DDA2182388421E00EF9898 /* FakePeopleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleListRouter.swift; sourceTree = "<group>"; };
+		60DDA21A2388425F00EF9898 /* FakePeopleListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleListPresenter.swift; sourceTree = "<group>"; };
+		60DDA21D238842C800EF9898 /* FakePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePresenter.swift; sourceTree = "<group>"; };
+		60DDA21F2388437B00EF9898 /* FakePeopleListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleListInteractor.swift; sourceTree = "<group>"; };
+		60DDA222238846E800EF9898 /* FakePeopleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleNetworking.swift; sourceTree = "<group>"; };
+		60DDA224238848EB00EF9898 /* FakePeopleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleListController.swift; sourceTree = "<group>"; };
+		60E2CDBD2388321B00FF2ED1 /* FakePeopleListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleListWorker.swift; sourceTree = "<group>"; };
 		60EAC7992374413B00E48021 /* PeopleListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListInteractor.swift; sourceTree = "<group>"; };
 		60EAC79B2374415A00E48021 /* PeopleListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListPresenter.swift; sourceTree = "<group>"; };
 		60EAC79D2374417000E48021 /* PeopleListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListWorker.swift; sourceTree = "<group>"; };
@@ -278,6 +296,31 @@
 			path = PeopleList;
 			sourceTree = "<group>";
 		};
+		60DDA213238840FD00EF9898 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				60DDA2142388410600EF9898 /* Mock.swift */,
+				60DDA2162388413500EF9898 /* Mock+Person.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		60DDA21C238842AB00EF9898 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				60DDA21D238842C800EF9898 /* FakePresenter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		60DDA221238846D900EF9898 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				60DDA222238846E800EF9898 /* FakePeopleNetworking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		60EAC7A123744B5A00E48021 /* Displayable */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +365,9 @@
 		BA15D66D2372144700813B24 /* CleanWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				60DDA221238846D900EF9898 /* Networking */,
+				60DDA21C238842AB00EF9898 /* Helpers */,
+				60DDA213238840FD00EF9898 /* Mocks */,
 				BA7FC5A023881A5E00917A40 /* Scenes */,
 				BA15D66E2372144700813B24 /* CleanWeatherTests.swift */,
 				BA15D6702372144700813B24 /* Info.plist */,
@@ -391,6 +437,11 @@
 		BA7FC5A323881C3600917A40 /* PeopleList */ = {
 			isa = PBXGroup;
 			children = (
+				60E2CDBD2388321B00FF2ED1 /* FakePeopleListWorker.swift */,
+				60DDA2182388421E00EF9898 /* FakePeopleListRouter.swift */,
+				60DDA21A2388425F00EF9898 /* FakePeopleListPresenter.swift */,
+				60DDA21F2388437B00EF9898 /* FakePeopleListInteractor.swift */,
+				60DDA224238848EB00EF9898 /* FakePeopleListController.swift */,
 				BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */,
 				BA7FC5A423881CC800917A40 /* PeopleListControllerTests.swift */,
 				BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */,
@@ -753,10 +804,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60DDA21B2388425F00EF9898 /* FakePeopleListPresenter.swift in Sources */,
 				BA7FC5C52388201700917A40 /* CityForecastWorkerTests.swift in Sources */,
 				BA15D66F2372144700813B24 /* CleanWeatherTests.swift in Sources */,
+				60DDA223238846E800EF9898 /* FakePeopleNetworking.swift in Sources */,
 				BA7FC5C9238820C100917A40 /* CityForecastRouterTests.swift in Sources */,
+				60E2CDBE2388321B00FF2ED1 /* FakePeopleListWorker.swift in Sources */,
 				BA7FC5B423881E6100917A40 /* CityListInteractorTests.swift in Sources */,
+				60DDA2202388437B00EF9898 /* FakePeopleListInteractor.swift in Sources */,
+				60DDA21E238842C800EF9898 /* FakePresenter.swift in Sources */,
+				60DDA225238848EB00EF9898 /* FakePeopleListController.swift in Sources */,
+				60DDA2192388421E00EF9898 /* FakePeopleListRouter.swift in Sources */,
 				BA7FC5B623881E8000917A40 /* CityListWorkerTests.swift in Sources */,
 				BA7FC5C72388204600917A40 /* CityForecastPresenterTests.swift in Sources */,
 				BA7FC5B223881E3D00917A40 /* CityListControllerTests.swift in Sources */,
@@ -769,6 +827,8 @@
 				BA7FC5B023881E0F00917A40 /* CityListCreatorTests.swift in Sources */,
 				BA7FC5BF23881F5600917A40 /* CityForecastControllerTests.swift in Sources */,
 				BA7FC5BA23881EB200917A40 /* CityListRouterTests.swift in Sources */,
+				60DDA2152388410600EF9898 /* Mock.swift in Sources */,
+				60DDA2172388413500EF9898 /* Mock+Person.swift in Sources */,
 				BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */,
 				BA7FC5C123881F7700917A40 /* CityForecastInteractorTests.swift in Sources */,
 				BA7FC5AB23881D7D00917A40 /* PeopleListPresenterTests.swift in Sources */,

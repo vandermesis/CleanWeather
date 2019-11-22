@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CityForecastPresentable {
+protocol CityForecastPresentable: SpinnerPresentable & AlertPresentable {
     func displayCityDetails(_ cityDetails: CityForecastDisplayable)
     func displayCityForecast(_ cityForecast: [CityForecastListDisplayable])
 }

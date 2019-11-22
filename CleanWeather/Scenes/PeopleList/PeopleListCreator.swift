@@ -15,7 +15,7 @@ struct PeopleListCreator {
         let networking = PeopleNetworkingImpl()
         let worker = PeopleListWorkerImpl(networking: networking)
         let router = PeopleListRouterImpl()
-        let presenter = PeopleListPresenterImpl()
+        let presenter = PeopleListPresenterImpl<PeopleListController>()
         let interactor = PeopleListInteractorImpl(presenter: presenter, worker: worker, router: router)
         let controller = PeopleListController(interactor: interactor)
         
