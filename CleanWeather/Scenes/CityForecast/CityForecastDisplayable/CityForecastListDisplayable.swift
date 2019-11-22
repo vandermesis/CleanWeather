@@ -20,7 +20,7 @@ struct CityForecastListDisplayable {
         id = object.id
         hour = object.hour
         temp = object.hourTemp.temperatureString
-        precip = "\(Int(object.hourPrecipProbability.rounded()))%"
+        precip = object.hourPrecipProbability.percentString
         symbol = object.symbol
     }
 }

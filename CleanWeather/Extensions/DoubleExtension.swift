@@ -13,4 +13,8 @@ extension Double {
     var temperatureString: String {
         return "\(Int(self.rounded()))°"
     }
+    
+    var percentString: String {
+        return "\(Int(self.rounded()))%"
+    }
 }

@@ -18,7 +18,7 @@ struct CityForecastDisplayable {
     init(object: CityWeather) {
         id = object.id
         name = object.city
-        temp = "\(Int(object.temperature.rounded()))°"
+        temp = object.temperature.temperatureString
         symbol = object.symbol
     }
 }
