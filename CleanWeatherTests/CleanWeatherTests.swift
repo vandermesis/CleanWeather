@@ -7,6 +7,9 @@
 //
 
 import XCTest
+import Quick
+import Nimble
+
 @testable import CleanWeather
 
 class CleanWeatherTests: XCTestCase {
