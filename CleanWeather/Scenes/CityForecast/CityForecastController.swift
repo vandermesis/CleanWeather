@@ -48,15 +48,15 @@ final class CityForecastController: SharedViewController {
 
 extension CityForecastController: CityForecastPresentable {
     
-    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
-        cityForecastDataSource = cityForecast
-        tableView.reloadData()
-    }
-
     func displayCityDetails(_ cityDetails: CityForecastDisplayable) {
         cityLabel.text = cityDetails.name
         tempLabel.text = cityDetails.temp
         weatherSymbol.image = UIImage(systemName: cityDetails.symbol.icon)
+    }
+    
+    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
+        cityForecastDataSource = cityForecast
+        tableView.reloadData()
     }
 }
 

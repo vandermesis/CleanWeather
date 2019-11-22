@@ -1,5 +1,5 @@
 //
-//  CityWeatherDetails.swift
+//  CityForecast.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 20/11/2019.
