@@ -10,6 +10,7 @@
 "error" = "Error";
 "unknownError" = "Unknown Error";
 "decodingError" = "Decoding Error";
+"dataSourceError" = "Cell DataSource Error";
 
 // Titles
 "cleanWeather" = "CleanWeather";

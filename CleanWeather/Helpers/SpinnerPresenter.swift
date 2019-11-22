@@ -9,4 +9,3 @@
 protocol SpinnerPresenter {
     func toggleSpinner(_ state: Bool)
 }
-

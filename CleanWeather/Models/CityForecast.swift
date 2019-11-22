@@ -1,16 +1,17 @@
 //
-//  CityWeather.swift
+//  CityForecast.swift
 //  CleanWeather
 //
-//  Created by Marek Skrzelowski on 12/11/2019.
+//  Created by Marek Skrzelowski on 20/11/2019.
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-struct CityWeather: Codable {
+struct CityForecast: Codable {
     
     let id: String
-    let city: String
-    let temperature: Double
+    let hour: String
+    let hourTemp: Double
+    let hourPrecipProbability: Double
     let icon: String
     
     var symbol: WeatherSymbol {

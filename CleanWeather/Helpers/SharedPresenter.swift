@@ -12,10 +12,14 @@ class SharedPresenter<T: SpinnerPresentable & AlertPresentable>: SpinnerPresente
     var controller: T?
     
     func toggleSpinner(_ state: Bool) {
-        controller?.presentSpinner(state)
+        controller?.toogleSpinner(state)
     }
+    
     func presentAlert(title: String, message: String) {
         controller?.presentAlert(title: title, message: message)
     }
+    
+    func presentError(_ error: Error) {
+        controller?.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
+    }
 }
-

@@ -9,31 +9,22 @@
 import Foundation
 
 typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
+typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
+    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
     
+    //TODO: Build networking and remove mock
+    
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?) {
-        
-        //TODO: Build networking and remove mock
-        
-        var randomTemp: [Double] {
-            let random = Double.random(in: -30...30)
-            return Array(repeating: random, count: 10)
-        }
         
         var randomId: String {
             let id = UUID()
             return id.uuidString
-        }
-        
-        var randomIcon: String {
-            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
-            let random = Int.random(in: 0...9)
-            return icon[random]
         }
         
         var randomCity: String {
@@ -42,24 +33,65 @@ final class WeatherNetworkingImpl: WeatherNetworking {
             return city[random]
         }
         
+        var randomTemp: Double {
+            return Double.random(in: -30...30)
+        }
+        
+        var randomIcon: String {
+            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
+            let random = Int.random(in: 0...9)
+            return icon[random]
+        }
+        
         var randomCityWeahter: [CityWeather] {
             var array = [CityWeather]()
             for _ in 0...20 {
                 let cityWeather = CityWeather(id: randomId,
                                               city: randomCity,
-                                              temperature: randomTemp[0],
-                                              hourlyTempMin: randomTemp, hourlyTempMax: randomTemp,
-                                              dailyTempMin: randomTemp, dailyTempMax: randomTemp,
+                                              temperature: randomTemp,
                                               icon: randomIcon)
                 array.append(cityWeather)
             }
             return array
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion?(Result.success(randomCityWeahter))
-            //TODO: To be removed - saved here as a draft of .failure
-            //completion?(Result.failure(AppError(message: "Błąd API")))
+        }
+    }
+    
+    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?) {
+    
+        var hour: [String] {
+            let hours = 0...23
+            return hours.map { "\($0):00" }
+        }
+        
+        var randomTemp: Double {
+            return Double.random(in: -30...30)
+        }
+        
+        var randomPrecip: Double {
+            return Double.random(in: 0...100)
+        }
+        
+        var randomIcon: String {
+            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
+            let random = Int.random(in: 0...9)
+            return icon[random]
+        }
+        
+        var randomCityHourDetails: [CityForecast] {
+            var array = [CityForecast]()
+            for i in 0...23 {
+                let cityWeatherHour = CityForecast(id: id, hour: hour[i], hourTemp: randomTemp, hourPrecipProbability: randomPrecip, icon: randomIcon)
+                array.append(cityWeatherHour)
+            }
+            return array
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion?(Result.success(randomCityHourDetails))
         }
     }
 }

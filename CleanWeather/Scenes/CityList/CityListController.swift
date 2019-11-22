@@ -18,7 +18,7 @@ final class CityListController: SharedViewController {
     
     private let interactor: CityListInteractor
     
-    private var citiesWeahterDataSource = [CityWeatherDisplayable]()
+    private var citiesWeatherDataSource = [CityWeatherDisplayable]()
     
     init(interactor: CityListInteractor) {
         self.interactor = interactor
@@ -54,7 +54,7 @@ final class CityListController: SharedViewController {
 extension CityListController: CityListPresentable {
     
     func displayCity(_ citiesWeather: [CityWeatherDisplayable]) {
-        citiesWeahterDataSource = citiesWeather
+        citiesWeatherDataSource = citiesWeather
         tableView.reloadData()
     }
 }
@@ -62,12 +62,12 @@ extension CityListController: CityListPresentable {
 extension CityListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return citiesWeahterDataSource.count
+        return citiesWeatherDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
-        cell.setup(with: citiesWeahterDataSource[indexPath.row])
+        cell.setup(with: citiesWeatherDataSource[indexPath.row])
         return cell
     }
 }
@@ -75,7 +75,7 @@ extension CityListController: UITableViewDataSource {
 extension CityListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = citiesWeahterDataSource[indexPath.row].id
+        let id = citiesWeatherDataSource[indexPath.row].id
         interactor.didSelectCityCell(id: id)
     }
 }

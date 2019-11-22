@@ -9,9 +9,7 @@
 import UIKit
 
 protocol AlertPresentable: UIViewController {
-    
     func presentAlert(title: String, message: String)
-    
 }
 
 extension AlertPresentable {
@@ -22,5 +20,4 @@ extension AlertPresentable {
         alert.addAction(action)
         navigationController?.present(alert, animated: true, completion: nil)
     }
-    
 }
