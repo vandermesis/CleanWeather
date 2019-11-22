@@ -13,7 +13,7 @@ protocol CityForecastPresenter: SpinnerPresenter, AlertPresenter {
     func displayCityDetailsList(_ forecast: [CityForecast])
 }
 
-final class CityForecastPresenterImpl: SharedPresenter<CityForecastController> {
+final class CityForecastPresenterImpl<T: CityForecastPresentable>: SharedPresenter<T> {
     
 }
 

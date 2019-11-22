@@ -44,7 +44,7 @@ extension PeopleListInteractorImpl: PeopleListInteractor {
                 self?.people = people
                 self?.presenter.displayPeople(people: people)
             case .failure(let error):
-                self?.presenter.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
+                self?.presenter.presentError(error)
             }
         }
     }

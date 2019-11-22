@@ -6,12 +6,31 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
 
 @testable import CleanWeather
 
-class PeopleListCreatorTests: XCTestCase {
+final class PeopleListCreatorTests: QuickSpec {
+    
+    override func spec() {
 
+        var controller: UIViewController?
+
+        describe("getting PeopleListController") {
+            
+            beforeEach {
+                controller = PeopleListCreator().getController()
+            }
+            
+            afterEach {
+                controller = nil
+            }
+            
+            it("should return valid controller") {
+                expect(controller).to(beAKindOf(PeopleListController.self))
+            }
+            
+        }
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PeopleListPresentable {
+protocol PeopleListPresentable: SpinnerPresentable & AlertPresentable {
     func displayPeople(_ people: [PersonDisplayable])
     func changeBackgroundColor(_ color: UIColor)
 }
