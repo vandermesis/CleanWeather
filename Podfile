@@ -10,8 +10,6 @@ target 'CleanWeather' do
   pod 'SwiftLint'
   pod 'R.swift'
   
-
-
 target 'CleanWeatherTests' do
   
   inherit! :search_paths
