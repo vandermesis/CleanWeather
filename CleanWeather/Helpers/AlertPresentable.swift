@@ -10,7 +10,6 @@ import UIKit
 
 protocol AlertPresentable: UIViewController {
     func presentAlert(title: String, message: String)
-    func presentError(_ error: Error)
 }
 
 extension AlertPresentable {
@@ -20,9 +19,5 @@ extension AlertPresentable {
         let action = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: nil)
         alert.addAction(action)
         navigationController?.present(alert, animated: true, completion: nil)
-    }
-    
-    func presentError(_ error: Error) {
-        presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
     }
 }
