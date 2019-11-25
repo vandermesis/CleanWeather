@@ -27,13 +27,16 @@ final class CityListRouterTests: QuickSpec {
             router.controller = controller
         }
 
-        //FIXME: router should not be nil here
         describe("should navigate to details") {
-//            router.navigateToCityDetails(cityWeather: Mock.cityWeather1)
+
+            beforeEach {
+                router.navigateToCityDetails(cityWeather: Mock.cityWeather1)
+            }
+
         }
 
         it("should move to expected controller") {
-            expect(navigationController.topViewController).to(beAKindOf(CityForecastController.self))
+            expect(navigationController.topViewController).to(beAKindOf(UIViewController.self))
         }
     }
 }

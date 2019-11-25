@@ -21,6 +21,7 @@ final class CityListPresenterTests: QuickSpec {
         beforeEach {
             presenter = CityListPresenterImpl<FakeCityListController>()
             controller = FakeCityListController()
+            presenter.controller = controller
         }
 
         describe("displaying cities") {
