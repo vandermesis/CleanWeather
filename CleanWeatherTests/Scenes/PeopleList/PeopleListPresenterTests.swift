@@ -42,6 +42,10 @@ final class PeopleListPresenterTests: QuickSpec {
                 // and maybe better if you create your own unit test for 'PersonDisplayable' where you give a normal 'Person' and you validates if all fields are set properly :)
                 expect(controller.displayPeopleCalled?[4].name).to(equal("Dael Vignaux"))
             }
+
+            it("should have valid genderIconName") {
+                expect(controller.displayPeopleCalled?[0].genderIconName).to(equal("femaleIcon"))
+            }
         }
         
         

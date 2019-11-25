@@ -12,17 +12,18 @@ struct PersonDisplayable {
     
     let id: String
     let name: String
-    let age: Int
+    let age: String
     let genderIconName: String
     
     static func convert(from object: Person) -> PersonDisplayable {
        
         let fullName =  "\(object.firstName) \(object.lastName)"
         let genderIcon = object.gender == .male ? "maleIcon" : "femaleIcon"
+        let age = String(object.age)
         
         return PersonDisplayable(id: object.id,
                                  name: fullName,
-                                 age: object.age,
+                                 age: age,
                                  genderIconName: genderIcon)
     }
     

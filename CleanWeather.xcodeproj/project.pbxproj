@@ -40,6 +40,7 @@
 		BA2D2C9B238072FD00204BA0 /* TableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */; };
 		BA2D2C9D238073A400204BA0 /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D2C9C238073A400204BA0 /* SharedViewController.swift */; };
 		BA4A904D2374905500753E39 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4A904C2374905500753E39 /* Colors.xcassets */; };
+		BA5A1494238B42D800483BBF /* PersonDisplayableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A1493238B42D800483BBF /* PersonDisplayableTests.swift */; };
 		BA69C358237C0F9200309105 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA69C357237C0F9200309105 /* R.generated.swift */; };
 		BA69C35A237C2DA100309105 /* WeatherSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA69C359237C2DA100309105 /* WeatherSymbol.swift */; };
 		BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6E474B237E13E20083762F /* SpinnerController.swift */; };
@@ -50,7 +51,6 @@
 		BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */; };
 		BA76CF9123857635001DDC94 /* CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76CF9023857635001DDC94 /* CityForecast.swift */; };
 		BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */; };
-		BA7FC5A523881CC800917A40 /* PeopleListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A423881CC800917A40 /* PeopleListControllerTests.swift */; };
 		BA7FC5A723881D0E00917A40 /* PeopleListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */; };
 		BA7FC5A923881D5500917A40 /* PeopleListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */; };
 		BA7FC5AB23881D7D00917A40 /* PeopleListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5AA23881D7D00917A40 /* PeopleListPresenterTests.swift */; };
@@ -144,6 +144,7 @@
 		BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerExtension.swift; sourceTree = "<group>"; };
 		BA2D2C9C238073A400204BA0 /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
 		BA4A904C2374905500753E39 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BA5A1493238B42D800483BBF /* PersonDisplayableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDisplayableTests.swift; sourceTree = "<group>"; };
 		BA69C357237C0F9200309105 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		BA69C359237C2DA100309105 /* WeatherSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSymbol.swift; sourceTree = "<group>"; };
 		BA6E474B237E13E20083762F /* SpinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
@@ -154,7 +155,6 @@
 		BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastDisplayable.swift; sourceTree = "<group>"; };
 		BA76CF9023857635001DDC94 /* CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecast.swift; sourceTree = "<group>"; };
 		BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListCreatorTests.swift; sourceTree = "<group>"; };
-		BA7FC5A423881CC800917A40 /* PeopleListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListControllerTests.swift; sourceTree = "<group>"; };
 		BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListInteractorTests.swift; sourceTree = "<group>"; };
 		BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListWorkerTests.swift; sourceTree = "<group>"; };
 		BA7FC5AA23881D7D00917A40 /* PeopleListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListPresenterTests.swift; sourceTree = "<group>"; };
@@ -443,11 +443,11 @@
 				60DDA21F2388437B00EF9898 /* FakePeopleListInteractor.swift */,
 				60DDA224238848EB00EF9898 /* FakePeopleListController.swift */,
 				BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */,
-				BA7FC5A423881CC800917A40 /* PeopleListControllerTests.swift */,
 				BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */,
 				BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */,
 				BA7FC5AA23881D7D00917A40 /* PeopleListPresenterTests.swift */,
 				BA7FC5AC23881DA500917A40 /* PeopleListRouterTests.swift */,
+				BA5A1493238B42D800483BBF /* PersonDisplayableTests.swift */,
 			);
 			path = PeopleList;
 			sourceTree = "<group>";
@@ -823,7 +823,6 @@
 				BA7FC5BD23881EF400917A40 /* CityForecastCreatorTests.swift in Sources */,
 				BA7FC5A723881D0E00917A40 /* PeopleListInteractorTests.swift in Sources */,
 				BA7FC5B823881E9E00917A40 /* CityListPresenterTests.swift in Sources */,
-				BA7FC5A523881CC800917A40 /* PeopleListControllerTests.swift in Sources */,
 				BA7FC5B023881E0F00917A40 /* CityListCreatorTests.swift in Sources */,
 				BA7FC5BF23881F5600917A40 /* CityForecastControllerTests.swift in Sources */,
 				BA7FC5BA23881EB200917A40 /* CityListRouterTests.swift in Sources */,
@@ -832,6 +831,7 @@
 				BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */,
 				BA7FC5C123881F7700917A40 /* CityForecastInteractorTests.swift in Sources */,
 				BA7FC5AB23881D7D00917A40 /* PeopleListPresenterTests.swift in Sources */,
+				BA5A1494238B42D800483BBF /* PersonDisplayableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
