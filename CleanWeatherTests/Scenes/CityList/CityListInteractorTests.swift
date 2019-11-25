@@ -6,12 +6,15 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
 
 @testable import CleanWeather
 
-class CityListInteractorTests: XCTestCase {
+final class CityListInteractorTests: QuickSpec {
 
+    override func spec() {
+
+        
+    }
 }

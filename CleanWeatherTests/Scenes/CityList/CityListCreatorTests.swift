@@ -6,12 +6,30 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
 
 @testable import CleanWeather
 
-class CityListCreatorTests: XCTestCase {
+final class CityListCreatorTests: QuickSpec {
 
+    override func spec() {
+
+        var controller: UIViewController?
+
+        describe("getting CityListController") {
+
+            beforeEach {
+                controller = CityListCreator().getController()
+            }
+
+            afterEach {
+                controller = nil
+            }
+
+            it("should return valid controller") {
+                expect(controller).to(beAKindOf(CityListController.self))
+            }
+        }
+    }
 }

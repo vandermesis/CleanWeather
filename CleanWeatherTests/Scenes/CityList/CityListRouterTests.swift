@@ -6,12 +6,34 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
 
 @testable import CleanWeather
 
-class CityListRouterTests: XCTestCase {
+final class CityListRouterTests: QuickSpec {
 
+    override func spec() {
+
+        var router: CityListRouterImpl!
+        var controller: UIViewController!
+        var navigationController: UINavigationController!
+
+        beforeEach {
+            router = CityListRouterImpl()
+            controller = CityListCreator().getController()
+            navigationController = UINavigationController()
+            navigationController.viewControllers = [controller]
+            router.controller = controller
+        }
+
+        //FIXME: router should not be nil here
+        describe("should navigate to details") {
+//            router.navigateToCityDetails(cityWeather: Mock.cityWeather1)
+        }
+
+        it("should move to expected controller") {
+            expect(navigationController.topViewController).to(beAKindOf(CityForecastController.self))
+        }
+    }
 }
