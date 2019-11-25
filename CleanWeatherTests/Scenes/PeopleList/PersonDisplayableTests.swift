@@ -15,30 +15,24 @@ final class PersonDisplayableTests: QuickSpec {
 
     override func spec() {
 
-        var person: [Person]!
-        var displayable: [PersonDisplayable]!
+        var displayable: PersonDisplayable!
 
-        describe("PersonDisplayable convert") {
+        describe("Person should be converted to PersonDisplayable") {
 
             beforeEach {
-                person = Mock.people
-                displayable = person.map { PersonDisplayable.convert(from: $0 )}
+                displayable = PersonDisplayable.convert(from: Mock.person1)
             }
 
-            it("should return a valid names") {
-                expect(displayable[0].name).to(equal("Bernadette Bransden"))
+            it("should return a valid id") {
+                expect(displayable.id).to(equal("fb812bd3-8bbd-47cc-92f5-fb6205bf0ccd"))
             }
 
-            it("should return a valid genderIconName") {
-                expect(displayable[1].genderIconName).to(equal("femaleIcon"))
-                expect(displayable[2].genderIconName).to(equal("maleIcon"))
+            it("should return a valid name") {
+                expect(displayable.name).to(equal("Bernadette Bransden"))
             }
 
-            it("should return all properties of type String") {
-                expect(displayable[2].id).to(beAKindOf(String.self))
-                expect(displayable[2].name).to(beAKindOf(String.self))
-                expect(displayable[2].age).to(beAKindOf(String.self))
-                expect(displayable[2].genderIconName).to(beAKindOf(String.self))
+            it("should return a valid age") {
+                expect(displayable.age).to(equal("23"))
             }
         }
     }

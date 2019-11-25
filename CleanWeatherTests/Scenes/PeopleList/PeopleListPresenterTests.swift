@@ -38,10 +38,6 @@ final class PeopleListPresenterTests: QuickSpec {
             it("should have valid names") {
                 expect(controller.displayPeopleCalled?[4].name).to(equal("Dael Vignaux"))
             }
-
-            it("should have valid genderIconName") {
-                expect(controller.displayPeopleCalled?[0].genderIconName).to(equal("femaleIcon"))
-            }
         }
         
         

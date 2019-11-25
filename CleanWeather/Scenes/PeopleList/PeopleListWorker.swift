@@ -41,6 +41,6 @@ extension PeopleListWorkerImpl: PeopleListWorker {
 private extension PeopleListWorkerImpl {
     
     private func sortPeople(people: [Person]) -> [Person] {
-        return people.sorted(by: { $0.firstName < $1.firstName })
+        return people.filter({$0.age > 40}).sorted(by: { $0.firstName < $1.firstName })
     }
 }

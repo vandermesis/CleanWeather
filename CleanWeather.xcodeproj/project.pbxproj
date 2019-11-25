@@ -10,8 +10,6 @@
 		0A89A29B9E0333965A6C7673 /* Pods_CleanWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE79D4809CA575058D7E319E /* Pods_CleanWeather.framework */; };
 		606B800A2383FD8F00C8B952 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B80092383FD8F00C8B952 /* SpinnerPresentable.swift */; };
 		606B800C2383FDCC00C8B952 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B800B2383FDCC00C8B952 /* AlertPresentable.swift */; };
-		606B800E23841C3500C8B952 /* SpinnerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B800D23841C3500C8B952 /* SpinnerPresenter.swift */; };
-		606B801023841C4800C8B952 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B800F23841C4800C8B952 /* AlertPresenter.swift */; };
 		609DA54423743E2D00C5773D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA54323743E2D00C5773D /* Person.swift */; };
 		609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA54523743F5600C5773D /* PeopleNetworking.swift */; };
 		609DA54A237440BA00C5773D /* PeopleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA548237440BA00C5773D /* PeopleListController.swift */; };
@@ -112,8 +110,6 @@
 		48EA4325B0C9F3C6F9D43A9E /* Pods-CleanWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanWeather.debug.xcconfig"; path = "Target Support Files/Pods-CleanWeather/Pods-CleanWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		606B80092383FD8F00C8B952 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
 		606B800B2383FDCC00C8B952 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
-		606B800D23841C3500C8B952 /* SpinnerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresenter.swift; sourceTree = "<group>"; };
-		606B800F23841C4800C8B952 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		609DA54323743E2D00C5773D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		609DA54523743F5600C5773D /* PeopleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworking.swift; sourceTree = "<group>"; };
 		609DA548237440BA00C5773D /* PeopleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListController.swift; sourceTree = "<group>"; };
@@ -420,9 +416,7 @@
 				BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */,
 				BAC16BE2238214C100420AA6 /* SharedPresenter.swift */,
 				606B80092383FD8F00C8B952 /* SpinnerPresentable.swift */,
-				606B800D23841C3500C8B952 /* SpinnerPresenter.swift */,
 				606B800B2383FDCC00C8B952 /* AlertPresentable.swift */,
-				606B800F23841C4800C8B952 /* AlertPresenter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -787,7 +781,6 @@
 				BAED7AB923847A2200790744 /* CityForecastRouter.swift in Sources */,
 				BA153646238602110060EC78 /* CityForecastListDisplayable.swift in Sources */,
 				BA15D65A2372144700813B24 /* SceneDelegate.swift in Sources */,
-				606B800E23841C3500C8B952 /* SpinnerPresenter.swift in Sources */,
 				BA69C358237C0F9200309105 /* R.generated.swift in Sources */,
 				609DA54A237440BA00C5773D /* PeopleListController.swift in Sources */,
 				BAF57DE42386955D0054C3F6 /* CityForecastTableViewCell.swift in Sources */,
@@ -810,7 +803,6 @@
 				60EAC7A323744B6A00E48021 /* PersonDisplayable.swift in Sources */,
 				BA6E474F237E185A0083762F /* CityListTableViewCell.swift in Sources */,
 				BAF3A197237B27880093420E /* CityListCreator.swift in Sources */,
-				606B801023841C4800C8B952 /* AlertPresenter.swift in Sources */,
 				BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

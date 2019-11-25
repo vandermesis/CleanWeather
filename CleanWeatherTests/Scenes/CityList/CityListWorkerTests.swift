@@ -55,6 +55,10 @@ final class CityListWorkerTests: QuickSpec {
                     expect(receivedCities?.count).to(equal(Mock.citiesWeather.count))
                 }
 
+                it("should return Gdańsk as first city") {
+                    expect(receivedCities?[0].city).to(equal("Gdańsk"))
+                }
+
                 it("should return no errors") {
                     expect(receivedError).to(beNil())
                 }

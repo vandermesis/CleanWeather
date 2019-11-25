@@ -33,10 +33,9 @@ final class CityListRouterTests: QuickSpec {
                 router.navigateToCityDetails(cityWeather: Mock.cityWeather1)
             }
 
-        }
-
-        it("should move to expected controller") {
-            expect(navigationController.topViewController).to(beAKindOf(UIViewController.self))
+            it("should move to expected controller") {
+                expect(navigationController.topViewController).toEventually(beAKindOf(CityForecastController.self))
+            }
         }
     }
 }

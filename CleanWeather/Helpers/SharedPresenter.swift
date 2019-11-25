@@ -8,8 +8,17 @@
 
 import UIKit
 
+protocol SpinnerPresenter {
+    func toggleSpinner(_ state: Bool)
+}
+
+protocol AlertPresenter {
+    func presentAlert(title: String, message: String)
+    func presentError(_ error: Error)
+}
+
 class SharedPresenter<T: SpinnerPresentable & AlertPresentable>: SpinnerPresenter, AlertPresenter {
-    var controller: T?
+    weak var controller: T?
     
     func toggleSpinner(_ state: Bool) {
         controller?.toogleSpinner(state)

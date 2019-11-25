@@ -52,7 +52,7 @@ final class PeopleListWorkerTests: QuickSpec {
                 
                 it("should return people list") {
                     expect(receivedPeople).toNot(beNil())
-                    expect(receivedPeople?.count).to(equal(Mock.people.count))
+                    expect(receivedPeople?.count).to(equal(4))
                 }
                 
                 it("should return no errors") {
