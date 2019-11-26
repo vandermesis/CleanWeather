@@ -66,7 +66,7 @@ final class CityListInteractorTests: QuickSpec {
             context("on failure response") {
 
                 beforeEach {
-                    worker.fetchCityWeatherCompletion?(.failure(AppError(message: R.string.localizable.networkingError())))
+                    worker.fetchCityWeatherCompletion?(.failure(UnitTestError()))
                 }
 
                 it("should call presenter to hide spinner") {

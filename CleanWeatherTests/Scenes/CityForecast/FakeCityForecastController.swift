@@ -15,7 +15,6 @@ final class FakeCityForecastController: UIViewController, CityForecastPresentabl
     var displayCityDetailsCalled: CityForecastDisplayable?
     var displayCityForecastCalled: [CityForecastListDisplayable]?
 
-
     func displayCityDetails(_ cityDetails: CityForecastDisplayable) {
         displayCityDetailsCalled = cityDetails
     }
