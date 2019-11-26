@@ -35,7 +35,7 @@ final class CityListPresenterTests: QuickSpec {
                 expect(controller.displayCityCalled?.count).to(equal(Mock.citiesWeather.count))
             }
 
-            it("should display temperature with degree sign") {
+            it("should display rounded temperature with degree sign") {
                 expect(controller.displayCityCalled?[0].temp).to(contain("23°"))
             }
         }

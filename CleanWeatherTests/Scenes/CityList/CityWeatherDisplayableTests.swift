@@ -17,11 +17,11 @@ final class CityWeatherDisplayableTests: QuickSpec {
 
         var displayable: CityWeatherDisplayable!
 
-        beforeEach {
-            displayable = CityWeatherDisplayable(object: Mock.cityWeather3)
-        }
-
         describe("init of CityWeatherDisplayable") {
+
+            beforeEach {
+                displayable = CityWeatherDisplayable(object: Mock.cityWeather3)
+            }
 
             it("should return valid id string") {
                 expect(displayable.id).to(equal("05197501-e7b0-4bfd-84e0-e07038270f2d"))
@@ -32,7 +32,7 @@ final class CityWeatherDisplayableTests: QuickSpec {
             }
 
             it("should return valid temperature string") {
-                expect(displayable.temp).to(equal("0°"))
+                expect(displayable.temp).to(equal("-10°"))
             }
 
             it("should return valid symbol") {
