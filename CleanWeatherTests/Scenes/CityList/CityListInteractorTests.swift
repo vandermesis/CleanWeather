@@ -30,7 +30,7 @@ final class CityListInteractorTests: QuickSpec {
         describe("getting City") {
 
             beforeEach {
-                interactor.getCity()
+                interactor.getCityWeather()
             }
 
             it("should call presenter to show spinner") {
@@ -74,7 +74,7 @@ final class CityListInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display error") {
-                    expect(presenter.presentErrorCalled).to(beAKindOf(AppError.self))
+                    expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
                 }
             }
         }
@@ -82,7 +82,7 @@ final class CityListInteractorTests: QuickSpec {
         describe("selecting city cell") {
 
             beforeEach {
-                interactor.getCity()
+                interactor.getCityWeather()
                 worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
             }
 

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityListInteractor {
-    func getCity()
+    func getCityWeather()
     func didSelectCityCell(id: String)
 }
 
@@ -32,7 +32,7 @@ final class CityListInteractorImpl {
 
 extension CityListInteractorImpl: CityListInteractor {
     
-    func getCity() {
+    func getCityWeather() {
         presenter.toggleSpinner(true)
         worker.fetchCityWeather { [weak self] result in
             self?.presenter.toggleSpinner(false)

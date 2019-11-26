@@ -37,7 +37,7 @@ final class CityListController: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
-        interactor.getCity()
+        interactor.getCityWeather()
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {

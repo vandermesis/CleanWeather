@@ -67,7 +67,7 @@ final class CityListWorkerTests: QuickSpec {
             context("on error response") {
 
                 beforeEach {
-                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.failure(AppError(message: R.string.localizable.apiError())))
+                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.failure(UnitTestError()))
                 }
 
                 it("should not return cities list") {
@@ -75,7 +75,7 @@ final class CityListWorkerTests: QuickSpec {
                 }
 
                 it("should return error") {
-                    expect(receivedError).to(beAKindOf(AppError.self))
+                    expect(receivedError).to(beAKindOf(UnitTestError.self))
                 }
             }
         }
