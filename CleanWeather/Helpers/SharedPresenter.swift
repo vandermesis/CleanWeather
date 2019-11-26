@@ -18,6 +18,7 @@ protocol AlertPresenter {
 }
 
 class SharedPresenter<T: SpinnerPresentable & AlertPresentable>: SpinnerPresenter, AlertPresenter {
+
     weak var controller: T?
     
     func toggleSpinner(_ state: Bool) {

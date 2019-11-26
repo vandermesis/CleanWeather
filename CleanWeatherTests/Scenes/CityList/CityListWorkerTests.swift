@@ -56,7 +56,7 @@ final class CityListWorkerTests: QuickSpec {
                 }
 
                 it("should return Gdańsk as first city") {
-                    expect(receivedCities?[0].city).to(equal("Gdańsk"))
+                    expect(receivedCities?.first?.city).to(equal("Gdańsk"))
                 }
 
                 it("should return no errors") {
@@ -67,7 +67,7 @@ final class CityListWorkerTests: QuickSpec {
             context("on error response") {
 
                 beforeEach {
-                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.failure(AppError(message: "API didn't response")))
+                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.failure(AppError(message: R.string.localizable.apiError())))
                 }
 
                 it("should not return cities list") {

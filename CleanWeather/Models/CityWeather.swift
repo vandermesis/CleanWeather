@@ -6,7 +6,7 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-struct CityWeather: Codable {
+struct CityWeather: Codable, Equatable {
     
     let id: String
     let city: String

@@ -15,6 +15,91 @@ final class CityListInteractorTests: QuickSpec {
 
     override func spec() {
 
-        
+        var router: FakeCityListRouter!
+        var worker: FakeCityListWorker!
+        var presenter: FakeCityListPresenter!
+        var interactor: CityListInteractorImpl!
+
+        beforeEach {
+            router = FakeCityListRouter()
+            worker = FakeCityListWorker()
+            presenter = FakeCityListPresenter()
+            interactor = CityListInteractorImpl(presenter: presenter, worker: worker, router: router)
+        }
+
+        describe("getting City") {
+
+            beforeEach {
+                interactor.getCity()
+            }
+
+            it("should call presenter to show spinner") {
+                expect(presenter.toggleSpinnerStateCalled).to(beTrue())
+            }
+
+            it("should call worker to get cities") {
+                expect(worker.fetchCityWeatherCalled).to(beTrue())
+            }
+
+            context("on success response") {
+
+                beforeEach {
+                    worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                }
+
+                it("should call presenter to display valid cities") {
+                    expect(presenter.displayCitiesWeatherCalled).notTo(beNil())
+                    expect(presenter.displayCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
+                }
+
+                it("should not call presenter to display any alert") {
+                    expect(presenter.presentAlertMessageCalled).to(beNil())
+                    expect(presenter.presentAlertTitleCalled).to(beNil())
+                    expect(presenter.presentErrorCalled).to(beNil())
+                }
+            }
+
+            context("on failure response") {
+
+                beforeEach {
+                    worker.fetchCityWeatherCompletion?(.failure(AppError(message: R.string.localizable.networkingError())))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                }
+
+                it("should call presenter to display error") {
+                    expect(presenter.presentErrorCalled).to(beAKindOf(AppError.self))
+                }
+            }
+        }
+
+        describe("selecting city cell") {
+
+            beforeEach {
+                interactor.getCity()
+                worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
+            }
+
+            context("on success response") {
+
+                beforeEach {
+                    interactor.didSelectCityCell(id: Mock.cityWeather4.id)
+                }
+
+                it("should filter [CityWeather] with valid id") {
+                    expect(router.navigateToCityDetailsCityWeatherCalled?.id).to(equal(Mock.cityWeather4.id))
+                }
+
+                it("should call router to navigate to city details") {
+                    expect(router.navigateToCityDetailsCityWeatherCalled).to(equal(Mock.cityWeather4))
+                }
+            }
+        }
     }
 }
