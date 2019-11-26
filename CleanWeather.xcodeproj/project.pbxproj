@@ -56,6 +56,11 @@
 		BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */; };
 		BA76CF9123857635001DDC94 /* CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76CF9023857635001DDC94 /* CityForecast.swift */; };
 		BA7A1FD8238D54CA00E18E79 /* CityWeatherDisplayableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FD7238D54C900E18E79 /* CityWeatherDisplayableTests.swift */; };
+		BA7A1FDA238D5E7200E18E79 /* FakeCityForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FD9238D5E7200E18E79 /* FakeCityForecastController.swift */; };
+		BA7A1FDC238D660C00E18E79 /* FakeCityForecastInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FDB238D660C00E18E79 /* FakeCityForecastInteractor.swift */; };
+		BA7A1FDE238D672200E18E79 /* FakeCityForecastWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FDD238D672200E18E79 /* FakeCityForecastWorker.swift */; };
+		BA7A1FE0238D683F00E18E79 /* FakeCityForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FDF238D683F00E18E79 /* FakeCityForecastPresenter.swift */; };
+		BA7A1FE2238D68F100E18E79 /* FakeCityForecastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FE1238D68F100E18E79 /* FakeCityForecastRouter.swift */; };
 		BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */; };
 		BA7FC5A723881D0E00917A40 /* PeopleListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */; };
 		BA7FC5A923881D5500917A40 /* PeopleListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */; };
@@ -164,6 +169,11 @@
 		BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastDisplayable.swift; sourceTree = "<group>"; };
 		BA76CF9023857635001DDC94 /* CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecast.swift; sourceTree = "<group>"; };
 		BA7A1FD7238D54C900E18E79 /* CityWeatherDisplayableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherDisplayableTests.swift; sourceTree = "<group>"; };
+		BA7A1FD9238D5E7200E18E79 /* FakeCityForecastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastController.swift; sourceTree = "<group>"; };
+		BA7A1FDB238D660C00E18E79 /* FakeCityForecastInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastInteractor.swift; sourceTree = "<group>"; };
+		BA7A1FDD238D672200E18E79 /* FakeCityForecastWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastWorker.swift; sourceTree = "<group>"; };
+		BA7A1FDF238D683F00E18E79 /* FakeCityForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastPresenter.swift; sourceTree = "<group>"; };
+		BA7A1FE1238D68F100E18E79 /* FakeCityForecastRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastRouter.swift; sourceTree = "<group>"; };
 		BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListCreatorTests.swift; sourceTree = "<group>"; };
 		BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListInteractorTests.swift; sourceTree = "<group>"; };
 		BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListWorkerTests.swift; sourceTree = "<group>"; };
@@ -481,6 +491,11 @@
 		BA7FC5BB23881EC800917A40 /* CityForecast */ = {
 			isa = PBXGroup;
 			children = (
+				BA7A1FD9238D5E7200E18E79 /* FakeCityForecastController.swift */,
+				BA7A1FDB238D660C00E18E79 /* FakeCityForecastInteractor.swift */,
+				BA7A1FDD238D672200E18E79 /* FakeCityForecastWorker.swift */,
+				BA7A1FDF238D683F00E18E79 /* FakeCityForecastPresenter.swift */,
+				BA7A1FE1238D68F100E18E79 /* FakeCityForecastRouter.swift */,
 				BA7FC5BC23881EF400917A40 /* CityForecastCreatorTests.swift */,
 				BA7FC5C023881F7700917A40 /* CityForecastInteractorTests.swift */,
 				BA7FC5C42388201700917A40 /* CityForecastWorkerTests.swift */,
@@ -825,6 +840,7 @@
 				BA389B01238BDE6200A20E92 /* FakeWeatherNetworking.swift in Sources */,
 				BA389B05238BE60700A20E92 /* FakeCityListInteractor.swift in Sources */,
 				60DDA2202388437B00EF9898 /* FakePeopleListInteractor.swift in Sources */,
+				BA7A1FE2238D68F100E18E79 /* FakeCityForecastRouter.swift in Sources */,
 				60DDA21E238842C800EF9898 /* FakePresenter.swift in Sources */,
 				BA389B09238BE7DA00A20E92 /* FakeCityListPresenter.swift in Sources */,
 				60DDA225238848EB00EF9898 /* FakePeopleListController.swift in Sources */,
@@ -835,16 +851,20 @@
 				BA7FC5A923881D5500917A40 /* PeopleListWorkerTests.swift in Sources */,
 				BA7FC5AD23881DA500917A40 /* PeopleListRouterTests.swift in Sources */,
 				BA7A1FD8238D54CA00E18E79 /* CityWeatherDisplayableTests.swift in Sources */,
+				BA7A1FE0238D683F00E18E79 /* FakeCityForecastPresenter.swift in Sources */,
 				BA389B0D238BE93400A20E92 /* FakeCityListController.swift in Sources */,
+				BA7A1FDA238D5E7200E18E79 /* FakeCityForecastController.swift in Sources */,
 				BA7FC5BD23881EF400917A40 /* CityForecastCreatorTests.swift in Sources */,
 				BA7FC5A723881D0E00917A40 /* PeopleListInteractorTests.swift in Sources */,
 				BA7FC5B823881E9E00917A40 /* CityListPresenterTests.swift in Sources */,
+				BA7A1FDC238D660C00E18E79 /* FakeCityForecastInteractor.swift in Sources */,
 				BA7FC5B023881E0F00917A40 /* CityListCreatorTests.swift in Sources */,
 				BA7FC5BA23881EB200917A40 /* CityListRouterTests.swift in Sources */,
 				60DDA2152388410600EF9898 /* Mock.swift in Sources */,
 				60DDA2172388413500EF9898 /* Mock+Person.swift in Sources */,
 				BA389B07238BE6C900A20E92 /* FakeCityListWorker.swift in Sources */,
 				BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */,
+				BA7A1FDE238D672200E18E79 /* FakeCityForecastWorker.swift in Sources */,
 				BA7FC5C123881F7700917A40 /* CityForecastInteractorTests.swift in Sources */,
 				BA7FC5AB23881D7D00917A40 /* PeopleListPresenterTests.swift in Sources */,
 				BA5A1494238B42D800483BBF /* PersonDisplayableTests.swift in Sources */,
