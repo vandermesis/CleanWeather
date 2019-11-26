@@ -13,7 +13,7 @@ final class FakeCityListInteractor: CityListInteractor {
     var getCityCalled: Bool?
     var didSelectCityCellIdCalled: String?
 
-    func getCityWeather() {
+    func getCitiesWeather() {
         getCityCalled = true
     }
 

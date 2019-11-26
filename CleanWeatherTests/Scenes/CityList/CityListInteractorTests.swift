@@ -30,7 +30,7 @@ final class CityListInteractorTests: QuickSpec {
         describe("getting City") {
 
             beforeEach {
-                interactor.getCityWeather()
+                interactor.getCitiesWeather()
             }
 
             it("should call presenter to show spinner") {
@@ -82,22 +82,29 @@ final class CityListInteractorTests: QuickSpec {
         describe("selecting city cell") {
 
             beforeEach {
-                interactor.getCityWeather()
+                interactor.getCitiesWeather()
                 worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
             }
 
-            context("on success response") {
+            context("on valid id tapped") {
 
                 beforeEach {
                     interactor.didSelectCityCell(id: Mock.cityWeather4.id)
                 }
 
-                it("should filter [CityWeather] with valid id") {
-                    expect(router.navigateToCityDetailsCityWeatherCalled?.id).to(equal(Mock.cityWeather4.id))
-                }
-
                 it("should call router to navigate to city details") {
                     expect(router.navigateToCityDetailsCityWeatherCalled).to(equal(Mock.cityWeather4))
+                }
+            }
+
+            context("on invalid id tapped") {
+
+                beforeEach {
+                    interactor.didSelectCityCell(id: "invalidID")
+                }
+
+                it("should not call router to navigate to city details") {
+                    expect(router.navigateToCityDetailsCityWeatherCalled).to(beNil())
                 }
             }
         }
