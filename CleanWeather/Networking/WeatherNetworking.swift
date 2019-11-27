@@ -38,8 +38,8 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
         
         var randomIcon: String {
-            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
-            let random = Int.random(in: 0...9)
+            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind", "invalid"]
+            let random = Int.random(in: 0...10)
             return icon[random]
         }
         
