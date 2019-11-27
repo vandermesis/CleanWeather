@@ -6,12 +6,30 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
 
 @testable import CleanWeather
 
-class CityForecastCreatorTests: XCTestCase {
+final class CityForecastCreatorTests: QuickSpec {
 
+    override func spec() {
+
+        var controller: UIViewController!
+
+        describe("getting CityForecastController") {
+
+            beforeEach {
+                controller = CityForecastCreator().getController(with: Mock.cityWeather2)
+            }
+
+            afterEach {
+                controller = nil
+            }
+
+            it("should return a valid controller") {
+                expect(controller).to(beAKindOf(CityForecastController.self))
+            }
+        }
+    }
 }

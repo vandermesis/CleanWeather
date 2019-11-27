@@ -36,7 +36,7 @@ final class CityListPresenterTests: QuickSpec {
             }
 
             it("should display rounded temperature with degree sign") {
-                expect(controller.displayCityCalled?[0].temp).to(contain("23°"))
+                expect(controller.displayCityCalled?[0].temp).to(equal("23°"))
             }
         }
     }

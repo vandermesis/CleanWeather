@@ -44,6 +44,10 @@ final class CityListWorkerTests: QuickSpec {
                 receivedError = nil
             }
 
+            it("shoud call networking to fetch city weather") {
+                expect(networking.fetchCurrentWeatherForAllCitiesCalled).to(beTrue())
+            }
+
             context("on success response") {
 
                 beforeEach {

@@ -6,8 +6,6 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import Foundation
-
 @testable import CleanWeather
 
 class FakePresenter: SpinnerPresenter, AlertPresenter {
