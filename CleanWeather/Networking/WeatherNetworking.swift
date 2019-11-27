@@ -62,9 +62,9 @@ final class WeatherNetworkingImpl: WeatherNetworking {
     
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?) {
     
-        var hour: [String] {
+        var hour: [Int] {
             let hours = 0...23
-            return hours.map { "\($0):00" }
+            return hours.map { $0 }
         }
         
         var randomTemp: Double {

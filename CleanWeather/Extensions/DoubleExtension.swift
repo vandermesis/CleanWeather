@@ -15,6 +15,6 @@ extension Double {
     }
     
     var percentString: String {
-        return "\(Int(self * 100))%"
+        return "\(Int((self * 100).rounded()))%"
     }
 }
