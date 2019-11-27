@@ -8,7 +8,7 @@
 
 @testable import CleanWeather
 
-final class FakeWeatherNetoworking: WeatherNetworking {
+final class FakeWeatherNetworking: WeatherNetworking {
 
     var fetchCurrentWeatherForAllCitiesCalled: Bool?
     var fetchCurrentWeatherForAllCitiesCompletion: FetchWeatherCompletion?

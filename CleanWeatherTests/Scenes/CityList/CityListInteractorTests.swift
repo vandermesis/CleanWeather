@@ -27,7 +27,7 @@ final class CityListInteractorTests: QuickSpec {
             interactor = CityListInteractorImpl(presenter: presenter, worker: worker, router: router)
         }
 
-        describe("getting City") {
+        describe("getting cities") {
 
             beforeEach {
                 interactor.getCitiesWeather()

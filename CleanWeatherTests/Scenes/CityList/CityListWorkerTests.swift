@@ -15,11 +15,11 @@ final class CityListWorkerTests: QuickSpec {
 
     override func spec() {
 
-        var networking: FakeWeatherNetoworking!
+        var networking: FakeWeatherNetworking!
         var worker: CityListWorkerImpl!
 
         beforeEach {
-            networking = FakeWeatherNetoworking()
+            networking = FakeWeatherNetworking()
             worker = CityListWorkerImpl(networking: networking)
         }
 

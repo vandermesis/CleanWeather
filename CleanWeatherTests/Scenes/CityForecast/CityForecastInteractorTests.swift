@@ -63,10 +63,9 @@ final class CityForecastInteractorTests: QuickSpec {
                     expect(presenter.toggleSpinnerStateCalled).to(beFalse())
                 }
 
-                it("should call presenter to display valid hourly city details list for valid id") {
+                it("should call presenter to display hourly city details list") {
                     expect(presenter.displayCityDetailsListCalled).notTo(beNil())
                     expect(presenter.displayCityDetailsListCalled?.count).to(equal(Mock.cityForecast.count))
-                    expect(Mock.cityWeather2.id).to(equal(Mock.cityForecast1.id))
                 }
 
                 it("should not call presenter to display any alert") {
