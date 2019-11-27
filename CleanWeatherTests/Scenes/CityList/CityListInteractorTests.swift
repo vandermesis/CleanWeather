@@ -93,7 +93,7 @@ final class CityListInteractorTests: QuickSpec {
                 }
 
                 it("should call router to navigate to city details") {
-                    expect(router.navigateToCityDetailsCityWeatherCalled?.city).to(equal(Mock.cityWeather4.city))
+                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal(Mock.cityWeather4.city))
                 }
             }
 
@@ -104,7 +104,7 @@ final class CityListInteractorTests: QuickSpec {
                 }
 
                 it("should not call router to navigate to city details") {
-                    expect(router.navigateToCityDetailsCityWeatherCalled).to(beNil())
+                    expect(router.navigateToCityForecastCityWeatherCalled).to(beNil())
                 }
             }
         }

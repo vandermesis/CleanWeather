@@ -6,12 +6,11 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import XCTest
 import Quick
 import Nimble
 
 @testable import CleanWeather
 
-class CityForecastRouterTests: XCTestCase {
+final class CityForecastRouterTests: QuickSpec {
 
 }

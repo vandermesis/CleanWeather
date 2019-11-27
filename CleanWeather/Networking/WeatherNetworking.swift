@@ -72,7 +72,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
         
         var randomPrecip: Double {
-            return Double.random(in: 0...100)
+            return Double.random(in: 0...1)
         }
         
         var randomIcon: String {

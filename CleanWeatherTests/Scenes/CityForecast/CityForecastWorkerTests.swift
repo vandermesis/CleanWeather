@@ -11,7 +11,7 @@ import Nimble
 
 @testable import CleanWeather
 
-class CityForecastWorkerTests: QuickSpec {
+final class CityForecastWorkerTests: QuickSpec {
 
     override func spec() {
 

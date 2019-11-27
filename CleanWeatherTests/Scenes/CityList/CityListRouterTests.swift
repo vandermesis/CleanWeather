@@ -27,10 +27,10 @@ final class CityListRouterTests: QuickSpec {
             router.controller = controller
         }
 
-        describe("should navigate to details") {
+        describe("navigate to city details") {
 
             beforeEach {
-                router.navigateToCityDetails(cityWeather: Mock.cityWeather1)
+                router.navigateToCityForecast(cityWeather: Mock.cityWeather1)
             }
 
             it("should move to expected controller") {

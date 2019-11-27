@@ -10,9 +10,9 @@
 
 final class FakeCityListRouter: CityListRouter {
 
-    var navigateToCityDetailsCityWeatherCalled: CityWeather?
+    var navigateToCityForecastCityWeatherCalled: CityWeather?
 
-    func navigateToCityDetails(cityWeather: CityWeather) {
-        navigateToCityDetailsCityWeatherCalled = cityWeather
+    func navigateToCityForecast(cityWeather: CityWeather) {
+        navigateToCityForecastCityWeatherCalled = cityWeather
     }
 }
