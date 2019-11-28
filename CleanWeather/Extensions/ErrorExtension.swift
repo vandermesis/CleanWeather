@@ -20,7 +20,10 @@ extension Error {
             return R.string.localizable.decodingError()
         } else if let appError = self as? AppError {
             return appError.message
+        } else if self is UnitTestError {
+            return R.string.localizable.unitTestError()
+        } else {
+            return R.string.localizable.unknownError()
         }
-        return R.string.localizable.unknownError()
     }
 }
