@@ -11,9 +11,6 @@
 "unknownError" = "Unknown Error";
 "decodingError" = "Decoding Error";
 "dataSourceError" = "Cell DataSource Error";
-"networkingError" = "Networking Error";
-"apiError" = "API didn't response";
-"unitTestError" = "Unit Test Error";
 
 // Titles
 "cleanWeather" = "CleanWeather";
