@@ -12,8 +12,6 @@ struct AppError: Error {
     let message: String
 }
 
-struct UnitTestError: Error {}
-
 extension Error {
     var userFriendlyMessage: String {
         if self is DecodingError {
