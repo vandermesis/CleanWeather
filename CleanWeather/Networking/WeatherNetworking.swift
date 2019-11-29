@@ -38,8 +38,8 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
         
         var randomIcon: String {
-            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
-            let random = Int.random(in: 0...9)
+            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind", "invalid"]
+            let random = Int.random(in: 0...10)
             return icon[random]
         }
         
@@ -62,9 +62,9 @@ final class WeatherNetworkingImpl: WeatherNetworking {
     
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?) {
     
-        var hour: [String] {
+        var hour: [Int] {
             let hours = 0...23
-            return hours.map { "\($0):00" }
+            return hours.map { $0 }
         }
         
         var randomTemp: Double {
@@ -72,7 +72,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
         
         var randomPrecip: Double {
-            return Double.random(in: 0...100)
+            return Double.random(in: 0...1)
         }
         
         var randomIcon: String {

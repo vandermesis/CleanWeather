@@ -9,6 +9,7 @@
 import UIKit
 
 final class SpinnerController: UIViewController {
+
     init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen

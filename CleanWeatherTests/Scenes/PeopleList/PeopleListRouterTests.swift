@@ -27,7 +27,7 @@ final class PeopleListRouterTests: QuickSpec {
             router.controller = controller
         }
         
-        describe("should navigate to details") {
+        describe("navigate to person details") {
             
             beforeEach {
                 router.navigateToPersonDetails(personId: "234")

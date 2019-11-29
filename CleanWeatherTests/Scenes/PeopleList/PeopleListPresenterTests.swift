@@ -36,10 +36,6 @@ final class PeopleListPresenterTests: QuickSpec {
             }
             
             it("should have valid names") {
-                //TODO: Remove this comment after understanding:
-                // our presenter converts Person to PersonDisplayable, which is joining first and last name, that's why I check it here
-                // but if you want you can add more checks
-                // and maybe better if you create your own unit test for 'PersonDisplayable' where you give a normal 'Person' and you validates if all fields are set properly :)
                 expect(controller.displayPeopleCalled?[4].name).to(equal("Dael Vignaux"))
             }
         }

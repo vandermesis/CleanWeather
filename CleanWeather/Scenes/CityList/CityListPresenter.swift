@@ -22,5 +22,4 @@ extension CityListPresenterImpl: CityListPresenter {
         let displayable = citiesWeather.map { CityWeatherDisplayable(object: $0)}
         controller?.displayCity(displayable)
     }
-    
 }

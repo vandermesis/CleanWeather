@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityListInteractor {
-    func getCity()
+    func getCitiesWeather()
     func didSelectCityCell(id: String)
 }
 
@@ -32,7 +32,7 @@ final class CityListInteractorImpl {
 
 extension CityListInteractorImpl: CityListInteractor {
     
-    func getCity() {
+    func getCitiesWeather() {
         presenter.toggleSpinner(true)
         worker.fetchCityWeather { [weak self] result in
             self?.presenter.toggleSpinner(false)
@@ -41,13 +41,13 @@ extension CityListInteractorImpl: CityListInteractor {
                 self?.cityWeather = city
                 self?.presenter.displayCitiesWeather(citiesWeather: city)
             case .failure(let error):
-                self?.presenter.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
+                self?.presenter.presentError(error)
             }
         }
     }
     
     func didSelectCityCell(id: String) {
         guard let weather = cityWeather.first(where: { $0.id == id }) else { return }
-        router.navigateToCityDetails(cityWeather: weather)
+        router.navigateToCityForecast(cityWeather: weather)
     }
 }

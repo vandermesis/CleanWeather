@@ -44,7 +44,9 @@ enum WeatherSymbol: String {
             return "cloud.snow"
         case .wind:
             return "wind"
-        default:
+        case .umbrella:
+            return "umbrella"
+        case .isEmpty:
             return "nosign"
         }
     }
