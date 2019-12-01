@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityHistoricalWorker {
-
+    func fetchCityHistoricalWeather(id: String, date: Date, completion: FetchHistoricalCompletion?)
 }
 
 final class CityHistoricalWorkerImpl {
@@ -22,5 +22,8 @@ final class CityHistoricalWorkerImpl {
 }
 
 extension CityHistoricalWorkerImpl: CityHistoricalWorker {
-    
+
+    func fetchCityHistoricalWeather(id: String, date: Date, completion: FetchHistoricalCompletion?) {
+        networking.fetchHistoricalWeatherForCity(id: id, date: date, completion: completion)
+    }
 }

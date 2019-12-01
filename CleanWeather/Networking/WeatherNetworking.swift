@@ -15,7 +15,7 @@ typealias FetchHistoricalCompletion = (Result<CityHistorical, Error>) -> Void
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
-    func fetchHistoricalWeatherForCity(id: String, completion: FetchHistoricalCompletion?)
+    func fetchHistoricalWeatherForCity(id: String, date: Date, completion: FetchHistoricalCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
@@ -97,13 +97,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
     }
 
-    func fetchHistoricalWeatherForCity(id: String, completion: FetchHistoricalCompletion?) {
-
-        var randomCity: String {
-            let city = ["Katowice", "Gdańsk", "Tokyo", "New York", "Ljubliana", "Berlin", "Sydney", "Szanghaj", "Moskwa", "Paryż"]
-            let random = Int.random(in: 0...9)
-            return city[random]
-        }
+    func fetchHistoricalWeatherForCity(id: String, date: Date, completion: FetchHistoricalCompletion?) {
 
         var randomTemp: Double {
             return Double.random(in: -30...30)
@@ -115,10 +109,10 @@ final class WeatherNetworkingImpl: WeatherNetworking {
             return icon[random]
         }
 
-        let randomCityWeahter = CityHistorical(id: id, city: randomCity, temperature: randomTemp, icon: randomIcon)
+        let randomHistoricalWeahter = CityHistorical(id: id, city: id, temperature: randomTemp, icon: randomIcon)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion?(Result.success(randomCityWeahter))
+            completion?(Result.success(randomHistoricalWeahter))
         }
     }
 }

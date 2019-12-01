@@ -40,7 +40,8 @@ final class CityHistoricalController: SharedViewController {
     }
 
     @IBAction private func datePickerChanged(_ sender: UIDatePicker) {
-        print(sender.date)
+        let datePickerDate = sender.date
+        interactor.getCityHistoricalWeather(date: datePickerDate)
     }
 
 }
