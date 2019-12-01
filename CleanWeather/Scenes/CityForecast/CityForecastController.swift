@@ -42,11 +42,20 @@ final class CityForecastController: SharedViewController {
         interactor.getCityDetails()
         interactor.getCityForecast()
         setupTableView()
+        setupNavigationBar()
+    }
+
+    @IBAction private func historyButtonPressed(_ sender: UIBarButtonItem) {
+        interactor.didPressHistoryButton()
     }
     
     func setupTableView() {
         tableView.register(cellType: CityForecastTableViewCell.self)
         tableView.dataSource = self
+    }
+
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(historyButtonPressed(_:)))
     }
 }
 

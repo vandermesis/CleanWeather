@@ -11,6 +11,7 @@ import Foundation
 protocol CityForecastInteractor {
     func getCityDetails()
     func getCityForecast()
+    func didPressHistoryButton()
 }
 
 final class CityForecastInteractorImpl {
@@ -49,5 +50,9 @@ extension CityForecastInteractorImpl: CityForecastInteractor {
                 self?.presenter.presentError(error)
             }
         }
+    }
+
+    func didPressHistoryButton() {
+        router.navigateToCityHistorical(cityWeather: cityDetails)
     }
 }

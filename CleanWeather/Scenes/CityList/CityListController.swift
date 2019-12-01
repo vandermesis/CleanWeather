@@ -51,7 +51,7 @@ final class CityListController: SharedViewController {
     
     func setupNavigationBar() {
         title = R.string.localizable.cleanWeather()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addButtonPressed(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed(_:)))
     }
 }
 

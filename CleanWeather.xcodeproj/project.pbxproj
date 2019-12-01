@@ -448,7 +448,7 @@
 		BA712A432384682E00213466 /* CityForecast */ = {
 			isa = PBXGroup;
 			children = (
-				BA76CF8D2385742D001DDC94 /* CityForecastDisplayable */,
+				BA76CF8D2385742D001DDC94 /* Displayable */,
 				BAF57DE1238695210054C3F6 /* CityForecastTableViewCell */,
 				BA712A442384686100213466 /* CityForecastCreator.swift */,
 				BAED7AAE238469CA00790744 /* CityForecastController.swift */,
@@ -474,13 +474,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		BA76CF8D2385742D001DDC94 /* CityForecastDisplayable */ = {
+		BA76CF8D2385742D001DDC94 /* Displayable */ = {
 			isa = PBXGroup;
 			children = (
 				BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */,
 				BA153645238602110060EC78 /* CityForecastListDisplayable.swift */,
 			);
-			path = CityForecastDisplayable;
+			path = Displayable;
 			sourceTree = "<group>";
 		};
 		BA7FC5A023881A5E00917A40 /* Scenes */ = {

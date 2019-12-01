@@ -32,6 +32,7 @@ final class CityHistoricalController: SharedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 }
 
 extension CityHistoricalController: CityHistoricalPresentable {

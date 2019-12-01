@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CityForecastRouter {
-    
+    func navigateToCityHistorical(cityWeather: CityWeather)
 }
 
 final class CityDetailsRouterImpl {
@@ -19,5 +19,9 @@ final class CityDetailsRouterImpl {
 }
 
 extension CityDetailsRouterImpl: CityForecastRouter {
-    
+
+    func navigateToCityHistorical(cityWeather: CityWeather) {
+        let cityHistoricalController = CityHistoricalCreator().getController(with: cityWeather)
+        controller?.navigationController?.pushViewController(cityHistoricalController, animated: true)
+    }
 }
