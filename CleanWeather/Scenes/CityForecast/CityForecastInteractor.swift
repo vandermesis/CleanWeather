@@ -14,12 +14,12 @@ protocol CityForecastInteractor {
 }
 
 final class CityForecastInteractorImpl {
-    
+
+    private let cityDetails: CityWeather
     private let presenter: CityForecastPresenter
     private let worker: CityForecastWorker
     private let router: CityForecastRouter
-    private let cityDetails: CityWeather
-    
+
     init(cityDetails: CityWeather,
          presenter: CityForecastPresenter,
          worker: CityForecastWorker,
