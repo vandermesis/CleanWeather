@@ -45,11 +45,11 @@ final class CityListController: SharedViewController {
         print("\(#function)")
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.register(cellType: CityListTableViewCell.self)
     }
     
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         title = R.string.localizable.cleanWeather()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed(_:)))
     }

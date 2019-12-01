@@ -6,8 +6,6 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
-import Foundation
-
 struct CityForecastDisplayable {
     
     let id: String
