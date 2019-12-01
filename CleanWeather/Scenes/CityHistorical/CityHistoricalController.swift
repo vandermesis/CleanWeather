@@ -14,6 +14,10 @@ protocol CityHistoricalPresentable: SpinnerPresentable & AlertPresentable {
 
 final class CityHistoricalController: SharedViewController {
 
+    @IBOutlet private weak var cityLable: UILabel!
+    @IBOutlet private weak var tempLabel: UILabel!
+    @IBOutlet private weak var weatherSymbol: UIImageView!
+
     private let interactor: CityHistorialInteractor
 
     init(interactor: CityHistorialInteractor) {
@@ -33,7 +37,11 @@ final class CityHistoricalController: SharedViewController {
         super.viewDidLoad()
 
     }
-    
+
+    @IBAction private func datePickerChanged(_ sender: UIDatePicker) {
+        print(sender.date)
+    }
+
 }
 
 extension CityHistoricalController: CityHistoricalPresentable {
