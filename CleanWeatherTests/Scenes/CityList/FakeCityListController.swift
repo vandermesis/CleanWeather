@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 @testable import CleanWeather
 
 final class FakeCityListController: UIViewController, CityListPresentable {

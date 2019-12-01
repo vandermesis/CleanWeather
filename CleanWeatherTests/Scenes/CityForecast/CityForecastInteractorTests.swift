@@ -15,15 +15,15 @@ final class CityForecastInteractorTests: QuickSpec {
 
     override func spec() {
 
-        var presenter: FakeCityForecastPresenter!
-        var worker: FakeCityForecastWorker!
         var router: FakeCityForecastRouter!
+        var worker: FakeCityForecastWorker!
+        var presenter: FakeCityForecastPresenter!
         var interactor: CityForecastInteractorImpl!
 
         beforeEach {
-            presenter = FakeCityForecastPresenter()
-            worker = FakeCityForecastWorker()
             router = FakeCityForecastRouter()
+            worker = FakeCityForecastWorker()
+            presenter = FakeCityForecastPresenter()
             interactor = CityForecastInteractorImpl(cityDetails: Mock.cityWeather2, presenter: presenter, worker: worker, router: router)
         }
 
@@ -88,6 +88,18 @@ final class CityForecastInteractorTests: QuickSpec {
                 it("should call presenter to display error") {
                     expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
                 }
+            }
+        }
+
+        describe("pressing history button") {
+
+            beforeEach {
+                interactor.didPressHistoryButton()
+                
+            }
+
+            it("should call router to navigate to city historical scene") {
+                expect(router.navigateToCityHistoricalCityWeatherCalled?.city).to(equal(Mock.cityWeather2.city))
             }
         }
     }

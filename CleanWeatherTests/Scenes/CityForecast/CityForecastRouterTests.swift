@@ -13,4 +13,29 @@ import Nimble
 
 final class CityForecastRouterTests: QuickSpec {
 
+    override func spec() {
+
+        var router: CityForecastRouterImpl!
+        var controller: UIViewController!
+        var navigationController: UINavigationController!
+
+        beforeEach {
+            router = CityForecastRouterImpl()
+            controller = CityForecastCreator().getController(with: Mock.cityWeather2)
+            navigationController = UINavigationController()
+            navigationController.viewControllers = [controller]
+            router.controller = controller
+        }
+
+        describe("navigate to city historical") {
+
+            beforeEach {
+                router.navigateToCityHistorical(cityWeather: Mock.cityWeather2)
+            }
+
+            it("should move to expected controller") {
+                expect(navigationController.topViewController).toEventually(beAKindOf(CityHistoricalController.self))
+            }
+        }
+    }
 }
