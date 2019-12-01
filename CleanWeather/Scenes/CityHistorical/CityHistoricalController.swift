@@ -9,12 +9,13 @@
 import UIKit
 
 protocol CityHistoricalPresentable: SpinnerPresentable & AlertPresentable {
-
+    func displayCityDetails(_ cityDetails: CityCurrentDisplayable)
+    func displayCityHistorical(_ cityHistorical: CityHistoricalDisplayable)
 }
 
 final class CityHistoricalController: SharedViewController {
 
-    @IBOutlet private weak var cityLable: UILabel!
+    @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
 
@@ -35,7 +36,7 @@ final class CityHistoricalController: SharedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        interactor.getCityDetails()
     }
 
     @IBAction private func datePickerChanged(_ sender: UIDatePicker) {
@@ -45,5 +46,16 @@ final class CityHistoricalController: SharedViewController {
 }
 
 extension CityHistoricalController: CityHistoricalPresentable {
-    
+
+    func displayCityDetails(_ cityDetails: CityCurrentDisplayable) {
+        cityLabel.text = cityDetails.name
+        tempLabel.text = cityDetails.temp
+        weatherSymbol.image = UIImage(systemName: cityDetails.symbol.icon)
+    }
+
+    func displayCityHistorical(_ cityHistorical: CityHistoricalDisplayable) {
+        cityLabel.text = cityHistorical.name
+        tempLabel.text = cityHistorical.temp
+        weatherSymbol.image = UIImage(systemName: cityHistorical.symbol.icon)
+    }
 }

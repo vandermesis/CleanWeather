@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityHistoricalController" customModule="CleanWeather" customModuleProvider="target">
             <connections>
-                <outlet property="cityLable" destination="7R1-er-BxA" id="QyM-RE-AyJ"/>
+                <outlet property="cityLabel" destination="7R1-er-BxA" id="QyM-RE-AyJ"/>
                 <outlet property="tempLabel" destination="6X8-sX-VuG" id="qCW-Vu-Ezj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherSymbol" destination="P2d-US-Uc0" id="Fcb-Tl-SGq"/>

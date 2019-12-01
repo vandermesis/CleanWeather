@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CityHistoricalPresenter: SpinnerPresenter, AlertPresenter {
-
+    func displayCityDetails(_ cityDetails: CityWeather)
 }
 
 final class CityHistoricalPresenterImpl<T: CityHistoricalPresentable>: SharedPresenter<T> {
@@ -18,4 +18,8 @@ final class CityHistoricalPresenterImpl<T: CityHistoricalPresentable>: SharedPre
 
 extension CityHistoricalPresenterImpl: CityHistoricalPresenter {
 
+    func displayCityDetails(_ cityDetails: CityWeather) {
+        let displayable = CityCurrentDisplayable(object: cityDetails)
+        controller?.displayCityDetails(displayable)
+    }
 }

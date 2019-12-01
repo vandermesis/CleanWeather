@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityHistorialInteractor {
-
+    func getCityDetails()
 }
 
 final class CityHistoricalInteractorImpl {
@@ -32,4 +32,7 @@ final class CityHistoricalInteractorImpl {
 
 extension CityHistoricalInteractorImpl: CityHistorialInteractor {
 
+    func getCityDetails() {
+        presenter.displayCityDetails(cityDetails)
+    }
 }
