@@ -36,12 +36,17 @@ final class CityHistoricalController: SharedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         interactor.getCityDetails()
     }
 
     @IBAction private func datePickerChanged(_ sender: UIDatePicker) {
         let datePickerDate = sender.date
         interactor.getCityHistoricalWeather(date: datePickerDate)
+    }
+
+    private func setupNavigationBar() {
+        title = R.string.localizable.timeMachine()
     }
 
 }

@@ -15,15 +15,15 @@ final class CityListInteractorTests: QuickSpec {
 
     override func spec() {
 
-        var router: FakeCityListRouter!
-        var worker: FakeCityListWorker!
         var presenter: FakeCityListPresenter!
+        var worker: FakeCityListWorker!
+        var router: FakeCityListRouter!
         var interactor: CityListInteractorImpl!
 
         beforeEach {
-            router = FakeCityListRouter()
-            worker = FakeCityListWorker()
             presenter = FakeCityListPresenter()
+            worker = FakeCityListWorker()
+            router = FakeCityListRouter()
             interactor = CityListInteractorImpl(presenter: presenter, worker: worker, router: router)
         }
 

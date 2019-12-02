@@ -15,15 +15,15 @@ final class CityForecastInteractorTests: QuickSpec {
 
     override func spec() {
 
-        var router: FakeCityForecastRouter!
-        var worker: FakeCityForecastWorker!
         var presenter: FakeCityForecastPresenter!
+        var worker: FakeCityForecastWorker!
+        var router: FakeCityForecastRouter!
         var interactor: CityForecastInteractorImpl!
 
         beforeEach {
-            router = FakeCityForecastRouter()
-            worker = FakeCityForecastWorker()
             presenter = FakeCityForecastPresenter()
+            worker = FakeCityForecastWorker()
+            router = FakeCityForecastRouter()
             interactor = CityForecastInteractorImpl(cityDetails: Mock.cityWeather2, presenter: presenter, worker: worker, router: router)
         }
 

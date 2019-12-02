@@ -55,7 +55,10 @@ final class CityForecastController: SharedViewController {
     }
 
     private func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(historyButtonPressed(_:)))
+        title = R.string.localizable.now()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+                                                            target: self,
+                                                            action: #selector(historyButtonPressed(_:)))
     }
 }
 
