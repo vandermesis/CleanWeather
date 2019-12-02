@@ -18,8 +18,11 @@ final class CityHistoricalController: SharedViewController {
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
+    @IBOutlet private weak var dateTextField: UITextField!
 
     private let interactor: CityHistorialInteractor
+
+    private let dateFormatter = DateFormatter()
 
     init(interactor: CityHistorialInteractor) {
         self.interactor = interactor
@@ -37,18 +40,19 @@ final class CityHistoricalController: SharedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        setupDatePicker()
         interactor.getCityDetails()
     }
 
-    @IBAction private func datePickerChanged(_ sender: UIDatePicker) {
-        let datePickerDate = sender.date
-        interactor.getCityHistoricalWeather(date: datePickerDate)
+    @IBAction private func doneButtonPressed(_ sender: UIButton) {
+        guard let dateString = dateTextField.text else { return }
+        guard let dateFromString = dateFormatter.date(from: dateString) else { return }
+        interactor.getCityHistoricalWeather(date: dateFromString)
     }
 
     private func setupNavigationBar() {
         title = R.string.localizable.timeMachine()
     }
-
 }
 
 extension CityHistoricalController: CityHistoricalPresentable {
@@ -63,5 +67,21 @@ extension CityHistoricalController: CityHistoricalPresentable {
         cityLabel.text = cityHistorical.name
         tempLabel.text = cityHistorical.temp
         weatherSymbol.image = UIImage(systemName: cityHistorical.symbol.icon)
+    }
+}
+
+private extension CityHistoricalController {
+
+    func setupDatePicker() {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.backgroundColor = .systemBackground
+        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+        dateTextField.inputView = datePicker
+    }
+
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        dateFormatter.dateStyle = .long
+        dateTextField.text = dateFormatter.string(from: sender.date)
     }
 }

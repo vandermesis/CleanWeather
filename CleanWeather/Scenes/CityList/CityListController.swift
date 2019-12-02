@@ -51,7 +51,6 @@ final class CityListController: SharedViewController {
     
     private func setupNavigationBar() {
         title = R.string.localizable.cleanWeather()
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addButtonPressed(_:)))
