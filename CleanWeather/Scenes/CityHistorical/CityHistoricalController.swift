@@ -20,11 +20,11 @@ final class CityHistoricalController: SharedViewController {
     @IBOutlet private weak var weatherSymbol: UIImageView!
     @IBOutlet private weak var dateTextField: UITextField!
 
-    private let interactor: CityHistorialInteractor
+    private let interactor: CityHistoricalInteractor
 
     private let dateFormatter = DateFormatter()
 
-    init(interactor: CityHistorialInteractor) {
+    init(interactor: CityHistoricalInteractor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CityHistorialInteractor {
+protocol CityHistoricalInteractor {
     func getCityDetails()
     func getCityHistoricalWeather(date: Date)
 }
@@ -31,7 +31,7 @@ final class CityHistoricalInteractorImpl {
     }
 }
 
-extension CityHistoricalInteractorImpl: CityHistorialInteractor {
+extension CityHistoricalInteractorImpl: CityHistoricalInteractor {
 
     func getCityDetails() {
         presenter.displayCityDetails(cityDetails)

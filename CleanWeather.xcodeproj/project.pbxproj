@@ -57,6 +57,18 @@
 		BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6E474B237E13E20083762F /* SpinnerController.swift */; };
 		BA6E474F237E185A0083762F /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6E474D237E185A0083762F /* CityListTableViewCell.swift */; };
 		BA6E4750237E185A0083762F /* CityListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6E474E237E185A0083762F /* CityListTableViewCell.xib */; };
+		BA7014F62395A1D700511E96 /* FakeCityHistoricalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7014F52395A1D700511E96 /* FakeCityHistoricalController.swift */; };
+		BA7014F82395A28200511E96 /* FakeCityHistoricalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7014F72395A28200511E96 /* FakeCityHistoricalInteractor.swift */; };
+		BA7014FA2395A3E000511E96 /* FakeCityHistoricalWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7014F92395A3E000511E96 /* FakeCityHistoricalWorker.swift */; };
+		BA7014FC2395A49500511E96 /* FakeCityHistoricalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7014FB2395A49500511E96 /* FakeCityHistoricalPresenter.swift */; };
+		BA7014FE2395A56200511E96 /* FakeCityHistoricalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7014FD2395A56200511E96 /* FakeCityHistoricalRouter.swift */; };
+		BA7015002395A5DE00511E96 /* CityHistoricalCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7014FF2395A5DE00511E96 /* CityHistoricalCreatorTests.swift */; };
+		BA7015022395A78000511E96 /* CityHistoricalInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7015012395A78000511E96 /* CityHistoricalInteractorTests.swift */; };
+		BA7015042395AB7F00511E96 /* Mock+CityHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7015032395AB7F00511E96 /* Mock+CityHistorical.swift */; };
+		BA7015062395AF1600511E96 /* CityHistoricalWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7015052395AF1600511E96 /* CityHistoricalWorkerTests.swift */; };
+		BA7015082395B3C100511E96 /* CityHistoricalPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7015072395B3C100511E96 /* CityHistoricalPresenterTests.swift */; };
+		BA70150A2395B99500511E96 /* CityCurrentDisplayableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7015092395B99500511E96 /* CityCurrentDisplayableTests.swift */; };
+		BA70150C2395BAA000511E96 /* CityHistoricalDisplayableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70150B2395BAA000511E96 /* CityHistoricalDisplayableTests.swift */; };
 		BA712A452384686100213466 /* CityForecastCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA712A442384686100213466 /* CityForecastCreator.swift */; };
 		BA74DD5B2381C90500CF1D91 /* SpinnerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */; };
 		BA75B958238E9EA700C3D598 /* Mock+CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75B957238E9EA700C3D598 /* Mock+CityForecast.swift */; };
@@ -187,6 +199,18 @@
 		BA6E474B237E13E20083762F /* SpinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
 		BA6E474D237E185A0083762F /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
 		BA6E474E237E185A0083762F /* CityListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityListTableViewCell.xib; sourceTree = "<group>"; };
+		BA7014F52395A1D700511E96 /* FakeCityHistoricalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityHistoricalController.swift; sourceTree = "<group>"; };
+		BA7014F72395A28200511E96 /* FakeCityHistoricalInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityHistoricalInteractor.swift; sourceTree = "<group>"; };
+		BA7014F92395A3E000511E96 /* FakeCityHistoricalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityHistoricalWorker.swift; sourceTree = "<group>"; };
+		BA7014FB2395A49500511E96 /* FakeCityHistoricalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityHistoricalPresenter.swift; sourceTree = "<group>"; };
+		BA7014FD2395A56200511E96 /* FakeCityHistoricalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityHistoricalRouter.swift; sourceTree = "<group>"; };
+		BA7014FF2395A5DE00511E96 /* CityHistoricalCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalCreatorTests.swift; sourceTree = "<group>"; };
+		BA7015012395A78000511E96 /* CityHistoricalInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalInteractorTests.swift; sourceTree = "<group>"; };
+		BA7015032395AB7F00511E96 /* Mock+CityHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+CityHistorical.swift"; sourceTree = "<group>"; };
+		BA7015052395AF1600511E96 /* CityHistoricalWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalWorkerTests.swift; sourceTree = "<group>"; };
+		BA7015072395B3C100511E96 /* CityHistoricalPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalPresenterTests.swift; sourceTree = "<group>"; };
+		BA7015092395B99500511E96 /* CityCurrentDisplayableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCurrentDisplayableTests.swift; sourceTree = "<group>"; };
+		BA70150B2395BAA000511E96 /* CityHistoricalDisplayableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalDisplayableTests.swift; sourceTree = "<group>"; };
 		BA712A442384686100213466 /* CityForecastCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastCreator.swift; sourceTree = "<group>"; };
 		BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpinnerController.xib; sourceTree = "<group>"; };
 		BA75B957238E9EA700C3D598 /* Mock+CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+CityForecast.swift"; sourceTree = "<group>"; };
@@ -357,6 +381,7 @@
 				60DDA2162388413500EF9898 /* Mock+Person.swift */,
 				BA389B02238BE02100A20E92 /* Mock+CityWeather.swift */,
 				BA75B957238E9EA700C3D598 /* Mock+CityForecast.swift */,
+				BA7015032395AB7F00511E96 /* Mock+CityHistorical.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -452,6 +477,24 @@
 			path = CityListTableViewCell;
 			sourceTree = "<group>";
 		};
+		BA7014F42395A1A100511E96 /* CityHistorical */ = {
+			isa = PBXGroup;
+			children = (
+				BA7014F52395A1D700511E96 /* FakeCityHistoricalController.swift */,
+				BA7014F72395A28200511E96 /* FakeCityHistoricalInteractor.swift */,
+				BA7014F92395A3E000511E96 /* FakeCityHistoricalWorker.swift */,
+				BA7014FB2395A49500511E96 /* FakeCityHistoricalPresenter.swift */,
+				BA7014FD2395A56200511E96 /* FakeCityHistoricalRouter.swift */,
+				BA7014FF2395A5DE00511E96 /* CityHistoricalCreatorTests.swift */,
+				BA7015012395A78000511E96 /* CityHistoricalInteractorTests.swift */,
+				BA7015052395AF1600511E96 /* CityHistoricalWorkerTests.swift */,
+				BA7015072395B3C100511E96 /* CityHistoricalPresenterTests.swift */,
+				BA7015092395B99500511E96 /* CityCurrentDisplayableTests.swift */,
+				BA70150B2395BAA000511E96 /* CityHistoricalDisplayableTests.swift */,
+			);
+			path = CityHistorical;
+			sourceTree = "<group>";
+		};
 		BA712A432384682E00213466 /* CityForecast */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +539,7 @@
 				BA7FC5A323881C3600917A40 /* PeopleList */,
 				BA7FC5AE23881DEC00917A40 /* CityList */,
 				BA7FC5BB23881EC800917A40 /* CityForecast */,
+				BA7014F42395A1A100511E96 /* CityHistorical */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -925,6 +969,7 @@
 				60E2CDBE2388321B00FF2ED1 /* FakePeopleListWorker.swift in Sources */,
 				BA53A9C9238F33130024F205 /* CityForecastListDisplayableTests.swift in Sources */,
 				BA7FC5B423881E6100917A40 /* CityListInteractorTests.swift in Sources */,
+				BA7014F82395A28200511E96 /* FakeCityHistoricalInteractor.swift in Sources */,
 				BA389B01238BDE6200A20E92 /* FakeWeatherNetworking.swift in Sources */,
 				BA389B05238BE60700A20E92 /* FakeCityListInteractor.swift in Sources */,
 				60DDA2202388437B00EF9898 /* FakePeopleListInteractor.swift in Sources */,
@@ -932,9 +977,13 @@
 				BA229A7023900F0B00E9AA88 /* DoubleExtensionTests.swift in Sources */,
 				60DDA21E238842C800EF9898 /* FakePresenter.swift in Sources */,
 				BA389B09238BE7DA00A20E92 /* FakeCityListPresenter.swift in Sources */,
+				BA7015042395AB7F00511E96 /* Mock+CityHistorical.swift in Sources */,
+				BA7015082395B3C100511E96 /* CityHistoricalPresenterTests.swift in Sources */,
+				BA7015002395A5DE00511E96 /* CityHistoricalCreatorTests.swift in Sources */,
 				60DDA225238848EB00EF9898 /* FakePeopleListController.swift in Sources */,
 				60DDA2192388421E00EF9898 /* FakePeopleListRouter.swift in Sources */,
 				BA7FC5B623881E8000917A40 /* CityListWorkerTests.swift in Sources */,
+				BA7014FA2395A3E000511E96 /* FakeCityHistoricalWorker.swift in Sources */,
 				BA7FC5C72388204600917A40 /* CityForecastPresenterTests.swift in Sources */,
 				BA389B03238BE02100A20E92 /* Mock+CityWeather.swift in Sources */,
 				BA7FC5A923881D5500917A40 /* PeopleListWorkerTests.swift in Sources */,
@@ -943,11 +992,14 @@
 				BA7A1FE0238D683F00E18E79 /* FakeCityForecastPresenter.swift in Sources */,
 				BA75B958238E9EA700C3D598 /* Mock+CityForecast.swift in Sources */,
 				BA389B0D238BE93400A20E92 /* FakeCityListController.swift in Sources */,
+				BA7015022395A78000511E96 /* CityHistoricalInteractorTests.swift in Sources */,
 				BA7A1FDA238D5E7200E18E79 /* FakeCityForecastController.swift in Sources */,
+				BA70150C2395BAA000511E96 /* CityHistoricalDisplayableTests.swift in Sources */,
 				BA7FC5BD23881EF400917A40 /* CityForecastCreatorTests.swift in Sources */,
 				BA7FC5A723881D0E00917A40 /* PeopleListInteractorTests.swift in Sources */,
 				BA7FC5B823881E9E00917A40 /* CityListPresenterTests.swift in Sources */,
 				BA7A1FDC238D660C00E18E79 /* FakeCityForecastInteractor.swift in Sources */,
+				BA7015062395AF1600511E96 /* CityHistoricalWorkerTests.swift in Sources */,
 				BA0E57D723912F36003E9D98 /* UnitTestError.swift in Sources */,
 				BA7FC5B023881E0F00917A40 /* CityListCreatorTests.swift in Sources */,
 				BA7FC5BA23881EB200917A40 /* CityListRouterTests.swift in Sources */,
@@ -955,11 +1007,15 @@
 				60DDA2172388413500EF9898 /* Mock+Person.swift in Sources */,
 				BA389B07238BE6C900A20E92 /* FakeCityListWorker.swift in Sources */,
 				BA229A74239012F300E9AA88 /* IntExtensionTests.swift in Sources */,
+				BA7014FE2395A56200511E96 /* FakeCityHistoricalRouter.swift in Sources */,
 				BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */,
 				BA7A1FDE238D672200E18E79 /* FakeCityForecastWorker.swift in Sources */,
 				BA7FC5C123881F7700917A40 /* CityForecastInteractorTests.swift in Sources */,
+				BA7014F62395A1D700511E96 /* FakeCityHistoricalController.swift in Sources */,
+				BA7014FC2395A49500511E96 /* FakeCityHistoricalPresenter.swift in Sources */,
 				BA7FC5AB23881D7D00917A40 /* PeopleListPresenterTests.swift in Sources */,
 				BA5A1494238B42D800483BBF /* PersonDisplayableTests.swift in Sources */,
+				BA70150A2395B99500511E96 /* CityCurrentDisplayableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

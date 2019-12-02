@@ -24,7 +24,10 @@ final class CityForecastInteractorTests: QuickSpec {
             presenter = FakeCityForecastPresenter()
             worker = FakeCityForecastWorker()
             router = FakeCityForecastRouter()
-            interactor = CityForecastInteractorImpl(cityDetails: Mock.cityWeather2, presenter: presenter, worker: worker, router: router)
+            interactor = CityForecastInteractorImpl(cityDetails: Mock.cityWeather2,
+                                                    presenter: presenter,
+                                                    worker: worker,
+                                                    router: router)
         }
 
         describe("getting city details") {
