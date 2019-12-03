@@ -48,7 +48,7 @@
                         <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="JWF-FL-MD6"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose  date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOf-jh-1hO">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose  date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOf-jh-1hO" customClass="NoActionsTextField" customModule="CleanWeather" customModuleProvider="target">
                     <rect key="frame" x="132" y="431" width="150" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="57i-87-nIz"/>
@@ -71,7 +71,7 @@
                 <constraint firstItem="wtq-PD-raF" firstAttribute="top" secondItem="kOf-jh-1hO" secondAttribute="bottom" constant="10" id="zLu-oz-QuC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="390" y="196"/>
+            <point key="canvasLocation" x="314" y="135"/>
         </view>
     </objects>
     <resources>
