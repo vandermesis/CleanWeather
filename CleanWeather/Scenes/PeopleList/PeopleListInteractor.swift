@@ -42,7 +42,7 @@ extension PeopleListInteractorImpl: PeopleListInteractor {
             switch result {
             case .success(let people):
                 self?.people = people
-                self?.presenter.displayPeople(people: people)
+                self?.presenter.presentPeople(people: people)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }

@@ -37,7 +37,7 @@ final class CityForecastInteractorTests: QuickSpec {
             }
 
             it("should call presenter to display valid city details") {
-                expect(presenter.displayCityDetailsCalled?.city).to(equal(Mock.cityWeather2.city))
+                expect(presenter.presentCityDetailsCalled?.city).to(equal(Mock.cityWeather2.city))
             }
         }
 
@@ -67,8 +67,8 @@ final class CityForecastInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display hourly city details list") {
-                    expect(presenter.displayCityDetailsListCalled).notTo(beNil())
-                    expect(presenter.displayCityDetailsListCalled?.count).to(equal(Mock.cityForecast.count))
+                    expect(presenter.presentCityDetailsListCalled).notTo(beNil())
+                    expect(presenter.presentCityDetailsListCalled?.count).to(equal(Mock.cityForecast.count))
                 }
 
                 it("should not call presenter to display any alert") {

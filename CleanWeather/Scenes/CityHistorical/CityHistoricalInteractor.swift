@@ -34,7 +34,7 @@ final class CityHistoricalInteractorImpl {
 extension CityHistoricalInteractorImpl: CityHistoricalInteractor {
 
     func getCityDetails() {
-        presenter.displayCityDetails(cityDetails)
+        presenter.presentCityDetails(cityDetails)
     }
 
     func getCityHistoricalWeather(date: Date) {
@@ -46,7 +46,7 @@ extension CityHistoricalInteractorImpl: CityHistoricalInteractor {
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let cityHistorical):
-                self?.presenter.displayCityHistoricalWeather(cityHistorical)
+                self?.presenter.presentCityHistoricalWeather(cityHistorical)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }

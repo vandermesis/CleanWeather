@@ -37,7 +37,7 @@ final class CityHistoricalInteractorTests: QuickSpec {
             }
 
             it("should call presenter to display city details") {
-                expect(presenter.displayCityDetailsCalled?.city).to(equal(Mock.cityWeather1.city))
+                expect(presenter.presentCityDetailsCalled?.city).to(equal(Mock.cityWeather1.city))
             }
         }
 
@@ -69,8 +69,8 @@ final class CityHistoricalInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display city historical weather") {
-                    expect(presenter.displayCityHistoricalWeatherCalled).notTo(beNil())
-                    expect(presenter.displayCityHistoricalWeatherCalled?.city).to(equal("Katowice"))
+                    expect(presenter.presentCityHistoricalWeatherCalled).notTo(beNil())
+                    expect(presenter.presentCityHistoricalWeatherCalled?.city).to(equal("Katowice"))
                 }
 
                 it("should not call presenter to display any alert") {

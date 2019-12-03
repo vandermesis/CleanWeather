@@ -58,8 +58,8 @@ final class PeopleListInteractorTests: QuickSpec {
                 }
                 
                 it("should call presenter to display valid people") {
-                    expect(presenter.displayPeopleCalled).toNot(beNil())
-                    expect(presenter.displayPeopleCalled?.count).to(equal(Mock.people.count))
+                    expect(presenter.presentPeopleCalled).toNot(beNil())
+                    expect(presenter.presentPeopleCalled?.count).to(equal(Mock.people.count))
                 }
             }
             
@@ -80,7 +80,7 @@ final class PeopleListInteractorTests: QuickSpec {
                 }
                 
                 it("should not call presenter to display people") {
-                    expect(presenter.displayPeopleCalled).to(beNil())
+                    expect(presenter.presentPeopleCalled).to(beNil())
                 }
             }
         }

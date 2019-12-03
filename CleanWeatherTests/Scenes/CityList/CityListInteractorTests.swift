@@ -52,8 +52,8 @@ final class CityListInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display valid cities") {
-                    expect(presenter.displayCitiesWeatherCalled).notTo(beNil())
-                    expect(presenter.displayCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
+                    expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
+                    expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
                 }
 
                 it("should not call presenter to display any alert") {

@@ -27,7 +27,7 @@ final class PeopleListPresenterTests: QuickSpec {
         describe("displaying people") {
             
             beforeEach {
-                presenter.displayPeople(people: Mock.people)
+                presenter.presentPeople(people: Mock.people)
             }
             
             it("should call controller to display people") {

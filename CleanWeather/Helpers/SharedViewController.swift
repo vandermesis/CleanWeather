@@ -8,6 +8,4 @@
 
 import UIKit
 
-class SharedViewController: UIViewController, SpinnerPresentable, AlertPresentable {
-   
-}
+class SharedViewController: UIViewController, SpinnerPresentable, AlertPresentable {}

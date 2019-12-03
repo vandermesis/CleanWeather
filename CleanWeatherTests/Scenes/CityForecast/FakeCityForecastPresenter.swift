@@ -12,14 +12,14 @@ import UIKit
 
 final class FakeCityForecastPresenter: FakePresenter, CityForecastPresenter {
 
-    var displayCityDetailsCalled: CityWeather?
-    var displayCityDetailsListCalled: [CityForecast]?
+    var presentCityDetailsCalled: CityWeather?
+    var presentCityDetailsListCalled: [CityForecast]?
 
-    func displayCityDetails(_ cityDetails: CityWeather) {
-        displayCityDetailsCalled = cityDetails
+    func presentCityDetails(_ cityDetails: CityWeather) {
+        presentCityDetailsCalled = cityDetails
     }
 
-    func displayCityDetailsList(_ forecast: [CityForecast]) {
-        displayCityDetailsListCalled = forecast
+    func presentCityDetailsList(_ forecast: [CityForecast]) {
+        presentCityDetailsListCalled = forecast
     }
 }
