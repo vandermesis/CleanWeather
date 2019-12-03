@@ -44,17 +44,6 @@ final class CityListController: SharedViewController {
         //TODO: Implement add new city functionality
         print("\(#function)")
     }
-    
-    private func setupTableView() {
-        tableView.register(cellType: CityListTableViewCell.self)
-    }
-    
-    private func setupNavigationBar() {
-        title = R.string.localizable.cleanWeather()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: self,
-                                                            action: #selector(addButtonPressed(_:)))
-    }
 }
 
 extension CityListController: CityListPresentable {
@@ -83,5 +72,19 @@ extension CityListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let id = citiesWeatherDataSource[indexPath.row].id
         interactor.didSelectCityCell(id: id)
+    }
+}
+
+private extension CityListController {
+
+    private func setupTableView() {
+        tableView.register(cellType: CityListTableViewCell.self)
+    }
+
+    private func setupNavigationBar() {
+        title = R.string.localizable.cleanWeather()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(addButtonPressed(_:)))
     }
 }

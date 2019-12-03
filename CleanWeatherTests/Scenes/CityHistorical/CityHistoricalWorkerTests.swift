@@ -43,7 +43,6 @@ final class CityHistoricalWorkerTests: QuickSpec {
             afterEach {
                 receivedCityHistoricalWeather = nil
                 receivedError = nil
-
             }
 
             it("should call networking to fetch city historical weather for date") {

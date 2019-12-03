@@ -49,10 +49,6 @@ final class CityHistoricalController: SharedViewController {
         guard let dateFromString = dateFormatter.date(from: dateString) else { return }
         interactor.getCityHistoricalWeather(date: dateFromString)
     }
-
-    private func setupNavigationBar() {
-        title = R.string.localizable.timeMachine()
-    }
 }
 
 extension CityHistoricalController: CityHistoricalPresentable {
@@ -72,7 +68,11 @@ extension CityHistoricalController: CityHistoricalPresentable {
 
 private extension CityHistoricalController {
 
-    func setupDatePicker() {
+    private func setupNavigationBar() {
+        title = R.string.localizable.timeMachine()
+    }
+
+    private func setupDatePicker() {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = .systemBackground
@@ -80,7 +80,7 @@ private extension CityHistoricalController {
         dateTextField.inputView = datePicker
     }
 
-    @objc func datePickerChanged(_ sender: UIDatePicker) {
+    @objc private func datePickerChanged(_ sender: UIDatePicker) {
         dateFormatter.dateStyle = .long
         dateTextField.text = dateFormatter.string(from: sender.date)
     }

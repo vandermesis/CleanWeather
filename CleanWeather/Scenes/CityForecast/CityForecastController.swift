@@ -48,18 +48,6 @@ final class CityForecastController: SharedViewController {
     @IBAction private func historyButtonPressed(_ sender: UIBarButtonItem) {
         interactor.didPressHistoryButton()
     }
-    
-    private func setupTableView() {
-        tableView.register(cellType: CityForecastTableViewCell.self)
-        tableView.dataSource = self
-    }
-
-    private func setupNavigationBar() {
-        title = R.string.localizable.now()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks,
-                                                            target: self,
-                                                            action: #selector(historyButtonPressed(_:)))
-    }
 }
 
 extension CityForecastController: CityForecastPresentable {
@@ -86,5 +74,21 @@ extension CityForecastController: UITableViewDataSource {
         let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
         cell.setupDetailsTableViewCell(with: cityForecastDataSource[indexPath.row])
         return cell
+    }
+}
+
+private extension CityForecastController {
+
+    private func setupTableView() {
+        tableView.register(cellType: CityForecastTableViewCell.self)
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+    }
+
+    private func setupNavigationBar() {
+        title = R.string.localizable.now()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+                                                            target: self,
+                                                            action: #selector(historyButtonPressed(_:)))
     }
 }

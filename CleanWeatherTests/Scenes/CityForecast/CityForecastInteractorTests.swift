@@ -98,7 +98,6 @@ final class CityForecastInteractorTests: QuickSpec {
 
             beforeEach {
                 interactor.didPressHistoryButton()
-                
             }
 
             it("should call router to navigate to city historical scene") {
