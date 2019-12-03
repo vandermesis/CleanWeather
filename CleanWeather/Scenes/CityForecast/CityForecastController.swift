@@ -47,6 +47,7 @@ final class CityForecastController: SharedViewController {
     func setupTableView() {
         tableView.register(cellType: CityForecastTableViewCell.self)
         tableView.dataSource = self
+        tableView.allowsSelection = false
     }
 }
 
