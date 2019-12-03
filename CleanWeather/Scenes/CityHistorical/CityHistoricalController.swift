@@ -22,7 +22,7 @@ final class CityHistoricalController: SharedViewController {
 
     private let interactor: CityHistoricalInteractor
 
-    private let dateFormatter = DateFormatter()
+    private var date: Date?
 
     init(interactor: CityHistoricalInteractor) {
         self.interactor = interactor
@@ -41,13 +41,8 @@ final class CityHistoricalController: SharedViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupDatePicker()
+        setupTextField()
         interactor.getCityDetails()
-    }
-
-    @IBAction private func doneButtonPressed(_ sender: UIButton) {
-        guard let dateString = dateTextField.text else { return }
-        guard let dateFromString = dateFormatter.date(from: dateString) else { return }
-        interactor.getCityHistoricalWeather(date: dateFromString)
     }
 }
 
@@ -66,13 +61,32 @@ extension CityHistoricalController: CityHistoricalPresentable {
     }
 }
 
+extension CityHistoricalController: UITextFieldDelegate {
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let date = date else { return }
+        interactor.getCityHistoricalWeather(date: date)
+    }
+}
+
 private extension CityHistoricalController {
+
+    private func setupTextField() {
+        dateTextField.delegate = self
+    }
 
     private func setupNavigationBar() {
         title = R.string.localizable.timeMachine()
     }
 
     private func setupDatePicker() {
+        let bar = UIToolbar()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        bar.items = [flexible, doneButton]
+        bar.sizeToFit()
+        dateTextField.inputAccessoryView = bar
+
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = .systemBackground
@@ -81,7 +95,10 @@ private extension CityHistoricalController {
     }
 
     @objc private func datePickerChanged(_ sender: UIDatePicker) {
-        dateFormatter.dateStyle = .long
-        dateTextField.text = dateFormatter.string(from: sender.date)
+        date = sender.date
+    }
+
+    @objc private func hideKeyboard() {
+        dateTextField.resignFirstResponder()
     }
 }
