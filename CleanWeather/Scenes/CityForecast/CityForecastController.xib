@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington DC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GG3-FO-UAQ">
-                    <rect key="frame" x="108.66666666666669" y="54" width="197" height="36"/>
+                    <rect key="frame" x="108.33333333333333" y="54" width="197.33333333333337" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                 <constraint firstItem="9Ik-LG-vz7" firstAttribute="top" secondItem="nFU-2l-XnE" secondAttribute="bottom" constant="10" id="tzM-0c-Qgv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-183" y="-14"/>
+            <point key="canvasLocation" x="-90" y="-84"/>
         </view>
     </objects>
     <resources>

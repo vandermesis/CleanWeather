@@ -24,10 +24,10 @@ final class PeopleListPresenterTests: QuickSpec {
             presenter.controller = controller
         }
         
-        describe("displaying people") {
+        describe("presenting people") {
             
             beforeEach {
-                presenter.displayPeople(people: Mock.people)
+                presenter.presentPeople(people: Mock.people)
             }
             
             it("should call controller to display people") {
@@ -41,7 +41,7 @@ final class PeopleListPresenterTests: QuickSpec {
         }
         
         
-        describe("displaying people") {
+        describe("presenting people") {
             
             beforeEach {
                 presenter.changeBackgroundColor(.blue)

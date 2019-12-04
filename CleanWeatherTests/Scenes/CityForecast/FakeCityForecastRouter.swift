@@ -9,5 +9,10 @@
 @testable import CleanWeather
 
 final class FakeCityForecastRouter: CityForecastRouter {
-    
+
+    var navigateToCityHistoricalCityWeatherCalled: CityWeather?
+
+    func navigateToCityHistorical(cityWeather: CityWeather) {
+        navigateToCityHistoricalCityWeatherCalled = cityWeather
+    }
 }

@@ -39,7 +39,7 @@ extension CityListInteractorImpl: CityListInteractor {
             switch result {
             case .success(let city):
                 self?.cityWeather = city
-                self?.presenter.displayCitiesWeather(citiesWeather: city)
+                self?.presenter.presentCitiesWeather(citiesWeather: city)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }

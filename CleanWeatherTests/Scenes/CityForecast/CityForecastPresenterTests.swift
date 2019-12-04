@@ -24,10 +24,10 @@ final class CityForecastPresenterTests: QuickSpec {
             presenter.controller = controller
         }
 
-        describe("displaying city details") {
+        describe("presenting city details") {
 
             beforeEach {
-                presenter.displayCityDetails(Mock.cityWeather3)
+                presenter.presentCityDetails(Mock.cityWeather3)
             }
 
             it("should call controller to display city details") {
@@ -40,10 +40,10 @@ final class CityForecastPresenterTests: QuickSpec {
             }
         }
 
-        describe("displaying city details list") {
+        describe("presenting city details list") {
 
             beforeEach {
-                presenter.displayCityDetailsList(Mock.cityForecast)
+                presenter.presentCityDetailsList(Mock.cityForecast)
             }
 
             it("should call controller to display city hourly forecast") {

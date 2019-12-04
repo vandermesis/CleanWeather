@@ -10,10 +10,12 @@ import Foundation
 
 typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
 typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
+typealias FetchHistoricalCompletion = (Result<CityHistorical, Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
+    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
@@ -92,6 +94,25 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion?(Result.success(randomCityHourDetails))
+        }
+    }
+
+    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?) {
+
+        var randomTemp: Double {
+            return Double.random(in: -30...30)
+        }
+
+        var randomIcon: String {
+            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind", "invalid"]
+            let random = Int.random(in: 0...10)
+            return icon[random]
+        }
+
+        let randomHistoricalWeahter = CityHistorical(id: id, city: id, temperature: randomTemp, icon: randomIcon)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion?(Result.success(randomHistoricalWeahter))
         }
     }
 }

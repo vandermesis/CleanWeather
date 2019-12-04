@@ -14,6 +14,8 @@
 
 // Titles
 "cleanWeather" = "CleanWeather";
+"timeMachine" = "Time Machine";
+"now" = "Now";
 
 // Alerts
 "addCity" = "Add new City";

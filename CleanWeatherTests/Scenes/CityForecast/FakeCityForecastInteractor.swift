@@ -12,6 +12,7 @@ final class FakeCityForecastInteractor: CityForecastInteractor {
 
     var getCityDetailsCalled: Bool?
     var getCityForecastCalled: Bool?
+    var didPressHistoryButtonCalled: Bool?
 
     func getCityDetails() {
         getCityDetailsCalled = true
@@ -19,5 +20,9 @@ final class FakeCityForecastInteractor: CityForecastInteractor {
 
     func getCityForecast() {
         getCityForecastCalled = true
+    }
+
+    func didPressHistoryButton() {
+        didPressHistoryButtonCalled = true
     }
 }

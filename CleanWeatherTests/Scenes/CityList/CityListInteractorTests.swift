@@ -15,15 +15,15 @@ final class CityListInteractorTests: QuickSpec {
 
     override func spec() {
 
-        var router: FakeCityListRouter!
-        var worker: FakeCityListWorker!
         var presenter: FakeCityListPresenter!
+        var worker: FakeCityListWorker!
+        var router: FakeCityListRouter!
         var interactor: CityListInteractorImpl!
 
         beforeEach {
-            router = FakeCityListRouter()
-            worker = FakeCityListWorker()
             presenter = FakeCityListPresenter()
+            worker = FakeCityListWorker()
+            router = FakeCityListRouter()
             interactor = CityListInteractorImpl(presenter: presenter, worker: worker, router: router)
         }
 
@@ -52,8 +52,8 @@ final class CityListInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display valid cities") {
-                    expect(presenter.displayCitiesWeatherCalled).notTo(beNil())
-                    expect(presenter.displayCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
+                    expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
+                    expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
                 }
 
                 it("should not call presenter to display any alert") {

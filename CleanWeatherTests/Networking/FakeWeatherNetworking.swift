@@ -6,6 +6,8 @@
 //  Copyright © 2019 vandermesis. All rights reserved.
 //
 
+import Foundation
+
 @testable import CleanWeather
 
 final class FakeWeatherNetworking: WeatherNetworking {
@@ -15,6 +17,10 @@ final class FakeWeatherNetworking: WeatherNetworking {
     var fetchForecastWeatherForCityCalled: Bool?
     var fetchForecastWeatherForCityIdCalled: String?
     var fetchForecastWeatherForCityCompletion: FetchForecastCompletion?
+    var fetchHistoricalWeatherForCityCalled: Bool?
+    var fetchHistoricalWeatherForCityIdCalled: String?
+    var fetchHistoricalWeatherForCityDateCalled: Double?
+    var fetchHistoricalWeatherForCityCompletion: FetchHistoricalCompletion?
 
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?) {
         fetchCurrentWeatherForAllCitiesCalled = true
@@ -25,5 +31,12 @@ final class FakeWeatherNetworking: WeatherNetworking {
         fetchForecastWeatherForCityCalled = true
         fetchForecastWeatherForCityIdCalled = id
         fetchForecastWeatherForCityCompletion = completion
+    }
+
+    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?) {
+        fetchHistoricalWeatherForCityCalled = true
+        fetchHistoricalWeatherForCityIdCalled = id
+        fetchHistoricalWeatherForCityDateCalled = date
+        fetchHistoricalWeatherForCityCompletion = completion
     }
 }

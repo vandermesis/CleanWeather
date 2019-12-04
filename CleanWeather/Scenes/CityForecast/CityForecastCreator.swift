@@ -14,9 +14,12 @@ struct CityForecastCreator {
         
         let networking = WeatherNetworkingImpl()
         let worker = CityForecastWorkerImpl(networking: networking)
-        let router = CityDetailsRouterImpl()
+        let router = CityForecastRouterImpl()
         let presenter = CityForecastPresenterImpl<CityForecastController>()
-        let interactor = CityForecastInteractorImpl(cityDetails: cityDetails, presenter: presenter, worker: worker, router: router)
+        let interactor = CityForecastInteractorImpl(cityDetails: cityDetails,
+                                                    presenter: presenter,
+                                                    worker: worker,
+                                                    router: router)
         let controller = CityForecastController(interactor: interactor)
         
         presenter.controller = controller

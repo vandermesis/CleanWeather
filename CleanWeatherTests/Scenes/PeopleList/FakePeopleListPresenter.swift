@@ -12,14 +12,14 @@ import UIKit
 final class FakePeopleListPresenter: FakePresenter, PeopleListPresenter {
  
     var changeBackgroundColorCalled: UIColor?
-    var displayPeopleCalled: [Person]?
+    var presentPeopleCalled: [Person]?
     
     func changeBackgroundColor(_ color: UIColor) {
         changeBackgroundColorCalled = color
     }
     
-    func displayPeople(people: [Person]) {
-        displayPeopleCalled = people
+    func presentPeople(people: [Person]) {
+        presentPeopleCalled = people
     }
     
 }

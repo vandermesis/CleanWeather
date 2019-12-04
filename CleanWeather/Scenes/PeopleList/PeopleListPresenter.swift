@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 protocol PeopleListPresenter: SpinnerPresenter, AlertPresenter {
-    func displayPeople(people: [Person])
+    func presentPeople(people: [Person])
     func changeBackgroundColor(_ color: UIColor)
 }
 
@@ -20,7 +20,7 @@ final class PeopleListPresenterImpl<T: PeopleListPresentable>: SharedPresenter<T
 
 extension PeopleListPresenterImpl: PeopleListPresenter {
 
-    func displayPeople(people: [Person]) {
+    func presentPeople(people: [Person]) {
         let displayable = people.map { PersonDisplayable.convert(from: $0) }
         controller?.displayPeople(displayable)
     }

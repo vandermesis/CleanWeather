@@ -24,7 +24,10 @@ final class CityForecastInteractorTests: QuickSpec {
             presenter = FakeCityForecastPresenter()
             worker = FakeCityForecastWorker()
             router = FakeCityForecastRouter()
-            interactor = CityForecastInteractorImpl(cityDetails: Mock.cityWeather2, presenter: presenter, worker: worker, router: router)
+            interactor = CityForecastInteractorImpl(cityDetails: Mock.cityWeather2,
+                                                    presenter: presenter,
+                                                    worker: worker,
+                                                    router: router)
         }
 
         describe("getting city details") {
@@ -34,7 +37,7 @@ final class CityForecastInteractorTests: QuickSpec {
             }
 
             it("should call presenter to display valid city details") {
-                expect(presenter.displayCityDetailsCalled?.city).to(equal(Mock.cityWeather2.city))
+                expect(presenter.presentCityDetailsCalled?.city).to(equal(Mock.cityWeather2.city))
             }
         }
 
@@ -64,8 +67,8 @@ final class CityForecastInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display hourly city details list") {
-                    expect(presenter.displayCityDetailsListCalled).notTo(beNil())
-                    expect(presenter.displayCityDetailsListCalled?.count).to(equal(Mock.cityForecast.count))
+                    expect(presenter.presentCityDetailsListCalled).notTo(beNil())
+                    expect(presenter.presentCityDetailsListCalled?.count).to(equal(Mock.cityForecast.count))
                 }
 
                 it("should not call presenter to display any alert") {
@@ -88,6 +91,17 @@ final class CityForecastInteractorTests: QuickSpec {
                 it("should call presenter to display error") {
                     expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
                 }
+            }
+        }
+
+        describe("pressing history button") {
+
+            beforeEach {
+                interactor.didPressHistoryButton()
+            }
+
+            it("should call router to navigate to city historical scene") {
+                expect(router.navigateToCityHistoricalCityWeatherCalled?.city).to(equal(Mock.cityWeather2.city))
             }
         }
     }
