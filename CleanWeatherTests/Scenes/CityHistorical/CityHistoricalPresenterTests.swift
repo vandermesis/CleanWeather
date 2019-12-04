@@ -20,7 +20,7 @@ final class CityHistoricalPresenterTests: QuickSpec {
 
         beforeEach {
             controller = FakeCityHistoricalController()
-            presenter = CityHistoricalPresenterImpl<FakeCityHistoricalController>()
+            presenter = CityHistoricalPresenterImpl<FakeCityHistoricalController>(dateFormatter: DateFormatterSingleton())
             presenter.controller = controller
         }
 

@@ -14,7 +14,14 @@ protocol CityHistoricalPresenter: SpinnerPresenter, AlertPresenter {
     func presentFormattedDate(_ date: Date)
 }
 
-final class CityHistoricalPresenterImpl<T: CityHistoricalPresentable>: SharedPresenter<T> {}
+final class CityHistoricalPresenterImpl<T: CityHistoricalPresentable>: SharedPresenter<T> {
+
+    var dateFormatter: DateFormatterSingleton
+
+    init (dateFormatter: DateFormatterSingleton) {
+        self.dateFormatter = dateFormatter
+    }
+}
 
 extension CityHistoricalPresenterImpl: CityHistoricalPresenter {
 
@@ -29,10 +36,7 @@ extension CityHistoricalPresenterImpl: CityHistoricalPresenter {
     }
 
     func presentFormattedDate(_ date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-
-        let stringFromDate = dateFormatter.string(from: date)
+        let stringFromDate = dateFormatter.formatToString(date: date)
         controller?.displayFormattedDate(stringFromDate)
     }
 }
