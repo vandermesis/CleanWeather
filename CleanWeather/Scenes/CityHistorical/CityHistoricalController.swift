@@ -105,6 +105,7 @@ private extension CityHistoricalController {
 
     @objc private func datePickerChanged(_ sender: UIDatePicker) {
         date = sender.date
+        print(date)
         interactor.didSelectDate(date: sender.date)
     }
 

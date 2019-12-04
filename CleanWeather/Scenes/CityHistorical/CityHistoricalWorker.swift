@@ -25,6 +25,7 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
 
     func fetchCityHistoricalWeather(id: String, date: Date, completion: FetchHistoricalCompletion?) {
         let convertedDate = unixFormatDate(date: date)
+        print(convertedDate)
         networking.fetchHistoricalWeatherForCity(id: id, date: convertedDate, completion: completion)
     }
 }

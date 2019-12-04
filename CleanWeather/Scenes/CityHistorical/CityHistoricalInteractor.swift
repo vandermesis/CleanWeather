@@ -55,6 +55,6 @@ extension CityHistoricalInteractorImpl: CityHistoricalInteractor {
     }
 
     func didSelectDate(date: Date) {
-        presenter.presentFormatedDate(date)
+        presenter.presentFormattedDate(date)
     }
 }

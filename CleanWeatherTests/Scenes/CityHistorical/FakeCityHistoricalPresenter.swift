@@ -24,7 +24,7 @@ final class FakeCityHistoricalPresenter: FakePresenter, CityHistoricalPresenter 
         presentCityHistoricalWeatherCalled = cityHistorical
     }
 
-    func presentFormatedDate(_ date: Date) {
+    func presentFormattedDate(_ date: Date) {
         presentFormatedDateCalled = date
     }
 }

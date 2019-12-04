@@ -29,7 +29,7 @@ final class CityHistoricalWorkerTests: QuickSpec {
             var receivedError: Error?
 
             beforeEach {
-                worker.fetchCityHistoricalWeather(id: Mock.cityHistorical1.id, date: Date()) {
+                worker.fetchCityHistoricalWeather(id: Mock.cityHistorical1.id, date: Date(timeIntervalSince1970: 1358081652.0)) {
                     result in
                     switch result {
                     case .success(let cityHistorical):

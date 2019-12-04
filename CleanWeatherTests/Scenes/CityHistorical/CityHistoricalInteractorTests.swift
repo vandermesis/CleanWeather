@@ -15,7 +15,7 @@ final class CityHistoricalInteractorTests: QuickSpec {
 
     override func spec() {
 
-        let date = Date()
+        let date = Date(timeIntervalSince1970: 1358081652.0)
 
         var presenter: FakeCityHistoricalPresenter!
         var worker: FakeCityHistoricalWorker!

@@ -59,12 +59,13 @@ final class CityHistoricalPresenterTests: QuickSpec {
         describe("presenting formatted date") {
 
             beforeEach {
-                let date = Date()
-                presenter.presentFormatedDate(date)
+                let date = Date(timeIntervalSince1970: 1358081652.0)
+                presenter.presentFormattedDate(date)
             }
 
             it("should display date formatted to String") {
                 expect(controller.displayFormattedDateDateCalled).to(beAKindOf(String.self))
+                expect(controller.displayFormattedDateDateCalled).to(equal("January 13, 2013"))
             }
         }
     }
