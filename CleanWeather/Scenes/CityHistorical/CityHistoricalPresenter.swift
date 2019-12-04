@@ -31,6 +31,7 @@ extension CityHistoricalPresenterImpl: CityHistoricalPresenter {
     func presentFormatedDate(_ date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
+        
         let stringFromDate = dateFormatter.string(from: date)
         controller?.displayFormattedDate(stringFromDate)
     }

@@ -14,6 +14,7 @@ final class FakeCityHistoricalInteractor: CityHistoricalInteractor {
 
     var getCityDetailsCalled: Bool?
     var getCityHistoricalWeatherDateCalled: Date?
+    var didSelectDateDateCalled: Date?
 
     func getCityDetails() {
         getCityDetailsCalled = true
@@ -21,5 +22,9 @@ final class FakeCityHistoricalInteractor: CityHistoricalInteractor {
 
     func getCityHistoricalWeather(date: Date) {
         getCityHistoricalWeatherDateCalled = date
+    }
+
+    func didSelectDate(date: Date) {
+        didSelectDateDateCalled = date
     }
 }

@@ -14,6 +14,7 @@ final class FakeCityHistoricalController: UIViewController, CityHistoricalPresen
 
     var displayCityDetailsCalled: CityCurrentDisplayable?
     var displayCityHistoricalCalled: CityHistoricalDisplayable?
+    var displayFormattedDateDateCalled: String?
 
     func displayCityDetails(_ cityDetails: CityCurrentDisplayable) {
         displayCityDetailsCalled = cityDetails
@@ -21,5 +22,9 @@ final class FakeCityHistoricalController: UIViewController, CityHistoricalPresen
 
     func displayCityHistorical(_ cityHistorical: CityHistoricalDisplayable) {
         displayCityHistoricalCalled = cityHistorical
+    }
+
+    func displayFormattedDate(_ date: String) {
+        displayFormattedDateDateCalled = date
     }
 }

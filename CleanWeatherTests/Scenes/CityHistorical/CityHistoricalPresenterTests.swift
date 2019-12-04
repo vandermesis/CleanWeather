@@ -24,7 +24,7 @@ final class CityHistoricalPresenterTests: QuickSpec {
             presenter.controller = controller
         }
 
-        describe("displaying city details") {
+        describe("presenting city details") {
 
             beforeEach {
                 presenter.presentCityDetails(Mock.cityWeather3)
@@ -40,7 +40,7 @@ final class CityHistoricalPresenterTests: QuickSpec {
             }
         }
 
-        describe("displaying city historical weather") {
+        describe("presenting city historical weather") {
 
             beforeEach {
                 presenter.presentCityHistoricalWeather(Mock.cityHistorical3)
@@ -53,6 +53,18 @@ final class CityHistoricalPresenterTests: QuickSpec {
 
             it("should display rounded temperature with degree sign") {
                 expect(controller.displayCityHistoricalCalled?.temp).to(equal("-10°"))
+            }
+        }
+
+        describe("presenting formatted date") {
+
+            beforeEach {
+                let date = Date()
+                presenter.presentFormatedDate(date)
+            }
+
+            it("should display date formatted to String") {
+                expect(controller.displayFormattedDateDateCalled).to(beAKindOf(String.self))
             }
         }
     }

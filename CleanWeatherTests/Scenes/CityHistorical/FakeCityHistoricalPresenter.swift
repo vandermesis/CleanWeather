@@ -14,6 +14,7 @@ final class FakeCityHistoricalPresenter: FakePresenter, CityHistoricalPresenter 
 
     var presentCityDetailsCalled: CityWeather?
     var presentCityHistoricalWeatherCalled: CityHistorical?
+    var presentFormatedDateCalled: Date?
 
     func presentCityDetails(_ cityDetails: CityWeather) {
         presentCityDetailsCalled = cityDetails
@@ -21,5 +22,9 @@ final class FakeCityHistoricalPresenter: FakePresenter, CityHistoricalPresenter 
 
     func presentCityHistoricalWeather(_ cityHistorical: CityHistorical) {
         presentCityHistoricalWeatherCalled = cityHistorical
+    }
+
+    func presentFormatedDate(_ date: Date) {
+        presentFormatedDateCalled = date
     }
 }

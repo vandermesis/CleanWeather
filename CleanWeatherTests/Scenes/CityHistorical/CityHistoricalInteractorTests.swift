@@ -15,6 +15,8 @@ final class CityHistoricalInteractorTests: QuickSpec {
 
     override func spec() {
 
+        let date = Date()
+
         var presenter: FakeCityHistoricalPresenter!
         var worker: FakeCityHistoricalWorker!
         var router: FakeCityHistoricalRouter!
@@ -44,7 +46,6 @@ final class CityHistoricalInteractorTests: QuickSpec {
         describe("getting city historical weather") {
 
             beforeEach {
-                let date = Date()
                 interactor.getCityHistoricalWeather(date: date)
             }
 
@@ -93,6 +94,17 @@ final class CityHistoricalInteractorTests: QuickSpec {
                 it("should call presenter to display error") {
                     expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
                 }
+            }
+        }
+
+        describe("selecting date") {
+
+            beforeEach {
+                interactor.didSelectDate(date: date)
+            }
+
+            it("should call presenter to format date to string") {
+                expect(presenter.presentFormatedDateCalled).to(beAKindOf(Date.self))
             }
         }
     }

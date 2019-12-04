@@ -48,7 +48,7 @@ final class CityHistoricalWorkerTests: QuickSpec {
             it("should call networking to fetch city historical weather for date") {
                 expect(networking.fetchHistoricalWeatherForCityCalled).to(beTrue())
                 expect(networking.fetchHistoricalWeatherForCityIdCalled).to(equal(Mock.cityHistorical1.id))
-                expect(networking.fetchHistoricalWeatherForCityDateCalled).to(beAKindOf(Date.self))
+                expect(networking.fetchHistoricalWeatherForCityDateCalled).to(beAKindOf(Double.self))
             }
 
             context("on success response") {

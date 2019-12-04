@@ -24,7 +24,7 @@ final class CityListPresenterTests: QuickSpec {
             presenter.controller = controller
         }
 
-        describe("displaying cities") {
+        describe("presenting cities") {
 
             beforeEach {
                 presenter.presentCitiesWeather(citiesWeather: Mock.citiesWeather)

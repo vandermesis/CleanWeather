@@ -24,7 +24,7 @@ final class CityForecastPresenterTests: QuickSpec {
             presenter.controller = controller
         }
 
-        describe("displaying city details") {
+        describe("presenting city details") {
 
             beforeEach {
                 presenter.presentCityDetails(Mock.cityWeather3)
@@ -40,7 +40,7 @@ final class CityForecastPresenterTests: QuickSpec {
             }
         }
 
-        describe("displaying city details list") {
+        describe("presenting city details list") {
 
             beforeEach {
                 presenter.presentCityDetailsList(Mock.cityForecast)
