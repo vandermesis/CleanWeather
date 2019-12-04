@@ -38,7 +38,7 @@
                     <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" weight="thin"/>
                 </imageView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose  date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOf-jh-1hO" customClass="NoActionsTextField" customModule="CleanWeather" customModuleProvider="target">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose  date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOf-jh-1hO" customClass="SharedTextField" customModule="CleanWeather" customModuleProvider="target">
                     <rect key="frame" x="132" y="431" width="150" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="57i-87-nIz"/>
