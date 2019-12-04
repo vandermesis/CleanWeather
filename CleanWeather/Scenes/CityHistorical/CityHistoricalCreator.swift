@@ -12,7 +12,7 @@ struct CityHistoricalCreator {
 
     func getController(with cityDetails: CityWeather) -> CityHistoricalController {
 
-        let dateFormatter = DateFormatterSingleton()
+        let dateFormatter = DateFormatterHelper.shared
         let networking = WeatherNetworkingImpl()
         let worker = CityHistoricalWorkerImpl(networking: networking)
         let router = CityHistoricalRouterImpl()

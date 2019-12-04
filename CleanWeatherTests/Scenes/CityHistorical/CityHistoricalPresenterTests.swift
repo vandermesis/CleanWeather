@@ -20,7 +20,7 @@ final class CityHistoricalPresenterTests: QuickSpec {
 
         beforeEach {
             controller = FakeCityHistoricalController()
-            presenter = CityHistoricalPresenterImpl<FakeCityHistoricalController>(dateFormatter: DateFormatterSingleton())
+            presenter = CityHistoricalPresenterImpl<FakeCityHistoricalController>(dateFormatter: DateFormatterHelper.shared)
             presenter.controller = controller
         }
 
@@ -65,7 +65,7 @@ final class CityHistoricalPresenterTests: QuickSpec {
 
             it("should display date formatted to String") {
                 expect(controller.displayFormattedDateDateCalled).to(beAKindOf(String.self))
-                expect(controller.displayFormattedDateDateCalled).to(equal("January 13, 2013"))
+                expect(controller.displayFormattedDateDateCalled).to(equal("13 January 2013"))
             }
         }
     }
