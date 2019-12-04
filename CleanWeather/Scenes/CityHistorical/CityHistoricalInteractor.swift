@@ -11,6 +11,7 @@ import Foundation
 protocol CityHistoricalInteractor {
     func getCityDetails()
     func getCityHistoricalWeather(date: Date)
+    func didSelectDate(date: Date)
 }
 
 final class CityHistoricalInteractorImpl {
@@ -51,5 +52,9 @@ extension CityHistoricalInteractorImpl: CityHistoricalInteractor {
                 self?.presenter.presentError(error)
             }
         }
+    }
+
+    func didSelectDate(date: Date) {
+        presenter.presentFormatedDate(date)
     }
 }

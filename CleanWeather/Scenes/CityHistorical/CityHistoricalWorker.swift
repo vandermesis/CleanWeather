@@ -24,6 +24,14 @@ final class CityHistoricalWorkerImpl {
 extension CityHistoricalWorkerImpl: CityHistoricalWorker {
 
     func fetchCityHistoricalWeather(id: String, date: Date, completion: FetchHistoricalCompletion?) {
-        networking.fetchHistoricalWeatherForCity(id: id, date: date, completion: completion)
+        let convertedDate = unixFormatDate(date: date)
+        networking.fetchHistoricalWeatherForCity(id: id, date: convertedDate, completion: completion)
+    }
+}
+
+private extension CityHistoricalWorkerImpl {
+
+    private func unixFormatDate(date: Date) -> Double {
+        return date.timeIntervalSince1970
     }
 }

@@ -39,7 +39,7 @@ extension CityListWorkerImpl: CityListWorker {
 
 private extension CityListWorkerImpl {
     
-    func sortCity(city: [CityWeather]) -> [CityWeather] {
+    private func sortCity(city: [CityWeather]) -> [CityWeather] {
         return city.sorted(by: { $0.city < $1.city })
     }
 }

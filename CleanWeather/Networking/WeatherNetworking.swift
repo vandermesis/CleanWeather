@@ -15,7 +15,7 @@ typealias FetchHistoricalCompletion = (Result<CityHistorical, Error>) -> Void
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
-    func fetchHistoricalWeatherForCity(id: String, date: Date, completion: FetchHistoricalCompletion?)
+    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
@@ -97,7 +97,7 @@ final class WeatherNetworkingImpl: WeatherNetworking {
         }
     }
 
-    func fetchHistoricalWeatherForCity(id: String, date: Date, completion: FetchHistoricalCompletion?) {
+    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?) {
 
         var randomTemp: Double {
             return Double.random(in: -30...30)

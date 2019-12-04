@@ -11,6 +11,7 @@ import UIKit
 protocol CityHistoricalPresentable: SpinnerPresentable & AlertPresentable {
     func displayCityDetails(_ cityDetails: CityCurrentDisplayable)
     func displayCityHistorical(_ cityHistorical: CityHistoricalDisplayable)
+    func displayFormattedDate(_ date: String)
 }
 
 final class CityHistoricalController: SharedViewController {
@@ -59,6 +60,10 @@ extension CityHistoricalController: CityHistoricalPresentable {
         tempLabel.text = cityHistorical.temp
         weatherSymbol.image = UIImage(systemName: cityHistorical.symbol.icon)
     }
+
+    func displayFormattedDate(_ date: String) {
+        dateTextField.text = date
+    }
 }
 
 extension CityHistoricalController: UITextFieldDelegate {
@@ -83,19 +88,24 @@ private extension CityHistoricalController {
         let bar = UIToolbar()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+
         bar.items = [flexible, doneButton]
         bar.sizeToFit()
+
         dateTextField.inputAccessoryView = bar
 
         let datePicker = UIDatePicker()
+
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = .systemBackground
         datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+
         dateTextField.inputView = datePicker
     }
 
     @objc private func datePickerChanged(_ sender: UIDatePicker) {
         date = sender.date
+        interactor.didSelectDate(date: sender.date)
     }
 
     @objc private func hideKeyboard() {
