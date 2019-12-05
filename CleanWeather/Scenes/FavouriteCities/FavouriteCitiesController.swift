@@ -39,5 +39,5 @@ final class FavouriteCitiesController: SharedViewController {
 }
 
 extension FavouriteCitiesController: FavouriteCitiesPresentable {
-    
+
 }

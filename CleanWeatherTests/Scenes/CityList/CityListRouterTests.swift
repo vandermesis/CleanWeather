@@ -37,5 +37,16 @@ final class CityListRouterTests: QuickSpec {
                 expect(navigationController.topViewController).toEventually(beAKindOf(CityForecastController.self))
             }
         }
+
+        describe("navigate to favourite cities") {
+
+            beforeEach {
+                router.navigateToFavouriteCities()
+            }
+
+            it("should move to expected controller") {
+                expect(navigationController.topViewController).toEventually(beAKindOf(FavouriteCitiesController.self))
+            }
+        }
     }
 }

@@ -11,8 +11,13 @@
 final class FakeCityListRouter: CityListRouter {
 
     var navigateToCityForecastCityWeatherCalled: CityWeather?
+    var navigateToFavouriteCitiesCalled: Bool?
 
     func navigateToCityForecast(cityWeather: CityWeather) {
         navigateToCityForecastCityWeatherCalled = cityWeather
+    }
+
+    func navigateToFavouriteCities() {
+        navigateToFavouriteCitiesCalled = true
     }
 }
