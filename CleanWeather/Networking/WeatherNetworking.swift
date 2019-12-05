@@ -11,11 +11,13 @@ import Foundation
 typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
 typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
 typealias FetchHistoricalCompletion = (Result<CityHistorical, Error>) -> Void
+typealias FetchCitiesCompletion = (Result<[City], Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
     func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?)
+    func fetchCities(completion: FetchCitiesCompletion?)
 }
 
 final class WeatherNetworkingImpl: WeatherNetworking {
@@ -113,6 +115,22 @@ final class WeatherNetworkingImpl: WeatherNetworking {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion?(Result.success(randomHistoricalWeahter))
+        }
+    }
+
+    func fetchCities(completion: FetchCitiesCompletion?) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion?(Result.success([
+            City(name: "Katowice", latitude: 50.2605, longitude: 19.0159),
+            City(name: "New York", latitude: 40.730610, longitude: -73.935242),
+            City(name: "Gdańsk", latitude: 54.372158, longitude: 18.638306),
+            City(name: "Tokyo", latitude: 35.652832, longitude: 139.839478),
+            City(name: "Ljubliana", latitude: 50.2605, longitude: 19.0159),
+            City(name: "Berlin", latitude: 40.730610, longitude: -73.935242),
+            City(name: "Shanghai", latitude: 54.372158, longitude: 18.638306),
+            City(name: "Sydney", latitude: 35.652832, longitude: 139.839478)
+            ]))
         }
     }
 }

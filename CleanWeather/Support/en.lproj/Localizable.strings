@@ -16,6 +16,7 @@
 "cleanWeather" = "CleanWeather";
 "timeMachine" = "Time Machine";
 "now" = "Now";
+"favouriteCities" = "Favourite Cities";
 
 // Alerts
 "addCity" = "Add new City";

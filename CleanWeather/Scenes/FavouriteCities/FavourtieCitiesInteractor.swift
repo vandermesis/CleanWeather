@@ -9,10 +9,14 @@
 import Foundation
 
 protocol FavouriteCitiesInteractor {
-
+    func getCities()
+    func didSelectCity(name: String)
 }
 
 final class FavouriteCitiesInteractorImpl {
+
+    private var city = [City]()
+    private var favouriteCities = [FavouriteCity]()
 
     private let presenter: FavouriteCitiesPresenter
     private let worker: FavouriteCitiesWorker
@@ -28,5 +32,28 @@ final class FavouriteCitiesInteractorImpl {
 }
 
 extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
-    
+
+    func getCities() {
+        presenter.toggleSpinner(true)
+        favouriteCities = worker.loadFavouriteCities()
+        worker.fetchCity { [weak self] result in
+            self?.presenter.toggleSpinner(false)
+            switch result {
+            case .success(let city):
+                self?.city = city
+                //FIXME: Force unwrap!
+                self?.presenter.presentCities(city: city, favourites: self!.favouriteCities)
+            case .failure(let error):
+                self?.presenter.presentError(error)
+            }
+        }
+    }
+
+    func didSelectCity(name: String) {
+        guard let selectedCity = city.first(where: { $0.name == name }) else { return }
+        let favouriteCity = FavouriteCity(name: selectedCity.name, lat: selectedCity.latitude, lon: selectedCity.longitude, favourite: true)
+        worker.saveFavouriteCity(city: favouriteCity)
+        favouriteCities = worker.loadFavouriteCities()
+        presenter.presentCities(city: city, favourites: favouriteCities)
+    }
 }

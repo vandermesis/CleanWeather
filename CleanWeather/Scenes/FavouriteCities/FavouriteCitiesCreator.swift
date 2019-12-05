@@ -13,7 +13,8 @@ struct FavouriteCitiesCreator {
     func getController() -> FavouriteCitiesController {
 
         let networking = WeatherNetworkingImpl()
-        let worker = FavouriteCitiesWorkerImpl(networking: networking)
+        let database = CityDatabaseImpl()
+        let worker = FavouriteCitiesWorkerImpl(networking: networking, database: database)
         let router = FavouriteCitiesRouterImpl()
         let presenter = FavouriteCitiesPresenterImpl<FavouriteCitiesController>()
         let interactor = FavouriteCitiesInteractorImpl(presenter: presenter,
