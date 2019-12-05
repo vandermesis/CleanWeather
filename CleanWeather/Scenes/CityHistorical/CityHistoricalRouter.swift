@@ -16,7 +16,6 @@ protocol CityHistoricalRouter {
 final class CityHistoricalRouterImpl {
 
     weak var controller: UIViewController?
-    
 }
 
 extension CityHistoricalRouterImpl: CityHistoricalRouter {

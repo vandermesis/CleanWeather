@@ -15,7 +15,6 @@ protocol CityForecastRouter {
 final class CityForecastRouterImpl {
     
     weak var controller: UIViewController?
-    
 }
 
 extension CityForecastRouterImpl: CityForecastRouter {
