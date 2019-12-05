@@ -41,8 +41,7 @@ final class CityListController: SharedViewController {
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
-        //TODO: Implement add new city functionality
-        print("\(#function)")
+        interactor.didPressAddButton()
     }
 }
 
