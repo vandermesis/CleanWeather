@@ -61,7 +61,7 @@ extension FavouriteCitiesController: UITableViewDataSource {
 extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor.didSelectCity(name: citiesDataSource[indexPath.row].name)
+        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id)
     }
 }
 

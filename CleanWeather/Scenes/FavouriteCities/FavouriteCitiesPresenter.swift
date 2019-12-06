@@ -9,35 +9,30 @@
 import UIKit
 
 protocol FavouriteCitiesPresenter: SpinnerPresenter, AlertPresenter {
-    func presentCities(city: [City], favourites: [FavouriteCity])
+    func presentCities(city: [City], favourites: [City]?)
 }
 
-final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedPresenter<T> {
-
-    private var displayable = [FavouriteCitiesListDisplayable]()
-}
+final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedPresenter<T> {}
 
 extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
-    func presentCities(city: [City], favourites: [FavouriteCity]) {
-        if favourites.isEmpty {
-            let city = city.map { FavouriteCitiesListDisplayable(name: $0.name, checked: false)}
-            displayable = city
+    func presentCities(city: [City], favourites: [City]?) {
+
+        guard let favouriteCities = favourites else { return }
+
+        if favouriteCities.isEmpty {
+            let city = city.map { FavouriteCitiesListDisplayable(id: $0.id, name: $0.name, checked: false)}
+            controller?.displayCities(city)
         }
-        for value in city {
-            for fav in favourites {
-                if fav.name == value.name {
-                    let favouriteCity = FavouriteCitiesListDisplayable(name: fav.name, checked: fav.favourite)
-                    displayable.append(favouriteCity)
-                } else {
-                    if !displayable.contains(where: { $0.name == value.name }) {
-                        let city = FavouriteCitiesListDisplayable(name: value.name, checked: false)
-                        displayable.append(city)
-                    }
-                }
-            }
-        }
-        controller?.displayCities(displayable)
-        displayable = [FavouriteCitiesListDisplayable]()
+
+        //FIXME: How to preserve original order after merge both arrays?
+        let extracated = city.filter { !favouriteCities.contains($0) }
+
+        let extractedDisplayable = extracated.map { FavouriteCitiesListDisplayable(id: $0.id, name: $0.name, checked: false) }
+        let favoritesDisplayable = favouriteCities.map { FavouriteCitiesListDisplayable(id: $0.id, name: $0.name, checked: true) }
+
+        let merged = extractedDisplayable + favoritesDisplayable
+
+        controller?.displayCities(merged)
     }
 }

@@ -12,8 +12,9 @@ struct FavouriteCitiesCreator {
 
     func getController() -> FavouriteCitiesController {
 
+        let userDefaults = UserDefaults.standard
         let networking = WeatherNetworkingImpl()
-        let database = CityDatabaseImpl()
+        let database = FavouriteCityRepositoryImpl(userDefaults: userDefaults)
         let worker = FavouriteCitiesWorkerImpl(networking: networking, database: database)
         let router = FavouriteCitiesRouterImpl()
         let presenter = FavouriteCitiesPresenterImpl<FavouriteCitiesController>()

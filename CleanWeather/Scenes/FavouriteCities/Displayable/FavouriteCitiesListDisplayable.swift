@@ -8,6 +8,7 @@
 
 struct FavouriteCitiesListDisplayable {
 
+    let id: String
     let name: String
     let checked: Bool
 

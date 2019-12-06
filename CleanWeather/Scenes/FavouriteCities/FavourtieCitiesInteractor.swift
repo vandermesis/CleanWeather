@@ -10,13 +10,12 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(name: String)
+    func didSelectCity(id: String)
 }
 
 final class FavouriteCitiesInteractorImpl {
 
     private var allCities = [City]()
-    private var favouriteCities = [FavouriteCity]()
 
     private let presenter: FavouriteCitiesPresenter
     private let worker: FavouriteCitiesWorker
@@ -35,25 +34,24 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
 
     func getCities() {
         presenter.toggleSpinner(true)
-        favouriteCities = worker.loadFavouriteCities()
+        let favouriteCities = worker.fetchFavouriteCities()
         worker.fetchAllCities { [weak self] result in
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
                 guard let self = self else { return }
                 self.allCities = city
-                self.presenter.presentCities(city: city, favourites: self.favouriteCities)
+                self.presenter.presentCities(city: city, favourites: favouriteCities)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }
         }
     }
 
-    func didSelectCity(name: String) {
-        guard let selectedCity = allCities.first(where: { $0.name == name }) else { return }
-        let favouriteCity = FavouriteCity(name: selectedCity.name, lat: selectedCity.latitude, lon: selectedCity.longitude, favourite: true)
-        worker.toogleFavourite(for: favouriteCity)
-        favouriteCities = worker.loadFavouriteCities()
+    func didSelectCity(id: String) {
+        guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
+        worker.toogleFavourite(for: selectedCity)
+        let favouriteCities = worker.fetchFavouriteCities()
         presenter.presentCities(city: allCities, favourites: favouriteCities)
     }
 }

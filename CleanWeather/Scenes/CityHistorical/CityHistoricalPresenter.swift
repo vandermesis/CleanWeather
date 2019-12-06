@@ -16,7 +16,7 @@ protocol CityHistoricalPresenter: SpinnerPresenter, AlertPresenter {
 
 final class CityHistoricalPresenterImpl<T: CityHistoricalPresentable>: SharedPresenter<T> {
 
-    var dateFormatter: DateFormatterHelper
+    private var dateFormatter: DateFormatterHelper
 
     init (dateFormatter: DateFormatterHelper) {
         self.dateFormatter = dateFormatter
