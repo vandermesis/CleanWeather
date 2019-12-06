@@ -28,10 +28,6 @@ final class CityForecastController: SharedViewController {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
-
-    deinit {
-        print("CityForecastController DEALLOCATED")
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
