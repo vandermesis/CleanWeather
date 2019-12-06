@@ -82,7 +82,6 @@ private extension CityForecastController {
     private func setupTableView() {
         tableView.register(cellType: CityForecastTableViewCell.self)
         tableView.dataSource = self
-        tableView.allowsSelection = false
     }
 
     private func setupNavigationBar() {

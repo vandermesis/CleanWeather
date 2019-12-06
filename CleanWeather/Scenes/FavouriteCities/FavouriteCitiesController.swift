@@ -66,7 +66,6 @@ extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         interactor.didSelectCity(name: citiesDataSource[indexPath.row].name)
-        citiesTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
