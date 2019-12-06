@@ -9,8 +9,8 @@
 import Foundation
 
 protocol FavouriteCitiesWorker {
-    func fetchCity(completion: FetchCitiesCompletion?)
-    func saveFavouriteCity(city: FavouriteCity)
+    func fetchAllCities(completion: FetchCitiesCompletion?)
+    func toogleFavourite(for city: FavouriteCity)
     func loadFavouriteCities() -> [FavouriteCity]
 }
 
@@ -27,11 +27,11 @@ final class FavouriteCitiesWorkerImpl {
 
 extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
 
-    func fetchCity(completion: FetchCitiesCompletion?) {
+    func fetchAllCities(completion: FetchCitiesCompletion?) {
         networking.fetchCities(completion: completion)
     }
 
-    func saveFavouriteCity(city: FavouriteCity) {
+    func toogleFavourite(for city: FavouriteCity) {
         database.saveFavouriteCity(city: city)
     }
 

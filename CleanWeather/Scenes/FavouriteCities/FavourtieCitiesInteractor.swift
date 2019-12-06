@@ -36,7 +36,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     func getCities() {
         presenter.toggleSpinner(true)
         favouriteCities = worker.loadFavouriteCities()
-        worker.fetchCity { [weak self] result in
+        worker.fetchAllCities { [weak self] result in
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
@@ -52,7 +52,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     func didSelectCity(name: String) {
         guard let selectedCity = city.first(where: { $0.name == name }) else { return }
         let favouriteCity = FavouriteCity(name: selectedCity.name, lat: selectedCity.latitude, lon: selectedCity.longitude, favourite: true)
-        worker.saveFavouriteCity(city: favouriteCity)
+        worker.toogleFavourite(for: favouriteCity)
         favouriteCities = worker.loadFavouriteCities()
         presenter.presentCities(city: city, favourites: favouriteCities)
     }
