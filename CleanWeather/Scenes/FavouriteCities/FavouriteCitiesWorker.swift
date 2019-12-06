@@ -17,7 +17,7 @@ protocol FavouriteCitiesWorker {
 final class FavouriteCitiesWorkerImpl {
 
     private let networking: WeatherNetworking
-    private var database: CityDatabase
+    private let database: CityDatabase
 
     init(networking: WeatherNetworking, database: CityDatabase) {
         self.networking = networking

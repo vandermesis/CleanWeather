@@ -20,15 +20,23 @@ final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedP
 extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
     func presentCities(city: [City], favourites: [FavouriteCity]) {
-
-        //FIXME: Is it possible to do it with map/filter?
+        if favourites.isEmpty {
+            let city = city.map { FavouriteCitiesListDisplayable(name: $0.name , checked: false)}
+            displayable = city
+        }
         for value in city {
-            if favourites.contains(where: { $0.name == value.name }) {
-                let favouriteCity = FavouriteCitiesListDisplayable(name: value.name, checked: true)
-                displayable.append(favouriteCity)
-            } else {
-                let city = FavouriteCitiesListDisplayable(name: value.name, checked: false)
-                displayable.append(city)
+            for fav in favourites {
+                if fav.name == value.name {
+                    let favouriteCity = FavouriteCitiesListDisplayable(name: fav.name, checked: fav.favourite)
+                    displayable.append(favouriteCity)
+                    print("favorites")
+                } else {
+                    if !displayable.contains(where: { $0.name == value.name }) {
+                        let city = FavouriteCitiesListDisplayable(name: value.name, checked: false)
+                        displayable.append(city)
+                        print("cities")
+                    }
+                }
             }
         }
         controller?.displayCities(displayable)

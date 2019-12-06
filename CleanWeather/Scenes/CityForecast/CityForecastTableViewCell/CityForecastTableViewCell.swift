@@ -15,7 +15,7 @@ class CityForecastTableViewCell: UITableViewCell {
     @IBOutlet private weak var precipLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
     
-    func setupCityForecastTableViewCell(with cityForecastListDisplayable: CityForecastListDisplayable) {
+    func setupCityForecastCell(with cityForecastListDisplayable: CityForecastListDisplayable) {
         hourLabel.text = cityForecastListDisplayable.hour
         tempLabel.text = cityForecastListDisplayable.temp
         precipLabel.text = cityForecastListDisplayable.precip

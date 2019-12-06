@@ -41,8 +41,8 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             switch result {
             case .success(let city):
                 self?.city = city
-                //FIXME: Force unwrap!
-                self?.presenter.presentCities(city: city, favourites: self!.favouriteCities)
+                guard let favourites = self?.favouriteCities else { return }
+                self?.presenter.presentCities(city: city, favourites: favourites)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }

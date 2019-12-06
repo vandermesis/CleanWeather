@@ -17,17 +17,14 @@ final class CityDatabaseImpl: CityDatabase {
 
     var favouriteCities = [FavouriteCity]()
 
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Cities.plist")
 
     func saveFavouriteCity(city: FavouriteCity) {
-
         if !favouriteCities.contains(where: { $0.name == city.name }) {
             favouriteCities.append(city)
         } else {
-            for record in favouriteCities where record.name == city.name {
-                print("Unlike city")
-                //FIXME: Why I can't assign to property: record is let constant?
-//                record.favourite = false
+            for i in 0..<favouriteCities.count where favouriteCities[i].name == city.name {
+                favouriteCities[i].favourite.toggle()
             }
         }
 
