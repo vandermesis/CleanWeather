@@ -61,7 +61,7 @@ extension CityListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
-        cell.setupCityListCell(with: citiesWeatherDataSource[indexPath.row])
+        cell.setup(with: citiesWeatherDataSource[indexPath.row])
         return cell
     }
 }

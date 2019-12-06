@@ -13,7 +13,7 @@ class FavouriteCitiesTableViewCell: UITableViewCell {
     @IBOutlet private weak var cityNameLabel: UILabel!
     @IBOutlet private weak var cityFavouriteImage: UIImageView!
 
-    func setupFavouriteCitiesCell(with favouriteCitiesListDisplayable: FavouriteCitiesListDisplayable) {
+    func setup(with favouriteCitiesListDisplayable: FavouriteCitiesListDisplayable) {
         cityNameLabel.text = favouriteCitiesListDisplayable.name
         cityFavouriteImage.image = UIImage(systemName: favouriteCitiesListDisplayable.favouriteIcon)
     }

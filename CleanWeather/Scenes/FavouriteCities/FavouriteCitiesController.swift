@@ -57,7 +57,7 @@ extension FavouriteCitiesController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: FavouriteCitiesTableViewCell.self, for: indexPath)
-        cell.setupFavouriteCitiesCell(with: citiesDataSource[indexPath.row])
+        cell.setup(with: citiesDataSource[indexPath.row])
         return cell
     }
 }

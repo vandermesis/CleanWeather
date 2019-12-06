@@ -72,7 +72,7 @@ extension CityForecastController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
-        cell.setupCityForecastCell(with: cityForecastDataSource[indexPath.row])
+        cell.setup(with: cityForecastDataSource[indexPath.row])
         return cell
     }
 }
