@@ -31,7 +31,7 @@ extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
         let extractedDisplayable = extracated.map { FavouriteCitiesListDisplayable(id: $0.id, name: $0.name, checked: false) }
         let favoritesDisplayable = favouriteCities.map { FavouriteCitiesListDisplayable(id: $0.id, name: $0.name, checked: true) }
 
-        let merged = extractedDisplayable + favoritesDisplayable
+        let merged = favoritesDisplayable + extractedDisplayable
 
         controller?.displayCities(merged)
     }

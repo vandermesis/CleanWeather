@@ -15,6 +15,6 @@ class FavouriteCitiesTableViewCell: UITableViewCell {
 
     func setup(with favouriteCitiesListDisplayable: FavouriteCitiesListDisplayable) {
         cityNameLabel.text = favouriteCitiesListDisplayable.name
-        cityFavouriteImage.image = UIImage(systemName: favouriteCitiesListDisplayable.favouriteIcon)
+        cityFavouriteImage.image = favouriteCitiesListDisplayable.favouriteIcon
     }
 }
