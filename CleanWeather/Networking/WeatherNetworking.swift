@@ -25,7 +25,8 @@ final class WeatherNetworkingImpl: WeatherNetworking {
     //TODO: Build networking and remove mock
     
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?) {
-        
+
+        //TODO: Change random id to ids matching cities from favourite cities
         var randomId: String {
             let id = UUID()
             return id.uuidString

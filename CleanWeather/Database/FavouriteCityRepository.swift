@@ -37,9 +37,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func addFavouriteCity(city: City) {
         var favourites = getFavouriteCities()
-        if favourites.isEmpty {
-            saveFavouriteCities(cities: [City]())
-        } else {
+        if !favourites.contains(city) {
             favourites.append(city)
             saveFavouriteCities(cities: favourites)
         }
@@ -47,7 +45,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func removeFavouriteCity(city: City) {
         let favourites = getFavouriteCities()
-        let filtered = favourites.filter { $0.name != city.name }
+        let filtered = favourites.filter { $0.id != city.id }
         saveFavouriteCities(cities: filtered)
     }
 }
