@@ -11,7 +11,7 @@ import Foundation
 protocol FavouriteCitiesWorker {
     func fetchAllCities(completion: FetchCitiesCompletion?)
     func toogleFavourite(for city: City)
-    func fetchFavouriteCities() -> [City]?
+    func fetchFavouriteCities() -> [City]
 }
 
 final class FavouriteCitiesWorkerImpl {
@@ -32,7 +32,7 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
     }
 
     func toogleFavourite(for city: City) {
-        guard let favouriteCities = database.getFavouriteCities() else { return }
+        let favouriteCities = database.getFavouriteCities()
         if favouriteCities.contains(where: { $0.id == city.id }) {
             database.removeFavouriteCity(city: city)
         } else {
@@ -40,7 +40,7 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
         }
     }
 
-    func fetchFavouriteCities() -> [City]? {
+    func fetchFavouriteCities() -> [City] {
         return database.getFavouriteCities()
     }
 }

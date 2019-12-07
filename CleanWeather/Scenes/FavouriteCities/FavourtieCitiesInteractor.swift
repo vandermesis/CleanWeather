@@ -41,7 +41,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             case .success(let city):
                 guard let self = self else { return }
                 self.allCities = city
-                self.presenter.presentCities(city: city, favourites: favouriteCities)
+                self.presenter.presentCities(allCities: city, favourites: favouriteCities)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }
@@ -52,6 +52,6 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
         worker.toogleFavourite(for: selectedCity)
         let favouriteCities = worker.fetchFavouriteCities()
-        presenter.presentCities(city: allCities, favourites: favouriteCities)
+        presenter.presentCities(allCities: allCities, favourites: favouriteCities)
     }
 }

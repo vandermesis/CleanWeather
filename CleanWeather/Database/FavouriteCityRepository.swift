@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FavouriteCityRepository {
-    func getFavouriteCities() -> [City]?
+    func getFavouriteCities() -> [City]
     func addFavouriteCity(city: City)
     func removeFavouriteCity(city: City)
 }
@@ -25,31 +25,27 @@ final class FavouriteCityRepositoryImpl {
 
 extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
-    func getFavouriteCities() -> [City]? {
-        if let savedCities = defaults.object(forKey: "FavouriteCities") as? Data {
-            let decoder = JSONDecoder()
-            if let favouriteCities = try? decoder.decode([City].self, from: savedCities) {
-                return favouriteCities
-            }
-        }
-        return nil
+    func getFavouriteCities() -> [City] {
+        guard let savedCities = defaults.object(forKey: "FavouriteCities") as? Data else { return [City]() }
+        let decoder = JSONDecoder()
+        guard let favouriteCities = try? decoder.decode([City].self, from: savedCities) else { return [City]() }
+        return favouriteCities
     }
 
     func addFavouriteCity(city: City) {
-        if var favourites = getFavouriteCities() {
+        var favourites = getFavouriteCities()
+        if favourites.isEmpty {
+            saveFavouriteCities(cities: [City]())
+        } else {
             favourites.append(city)
             saveFavouriteCities(cities: favourites)
-        } else {
-            saveFavouriteCities(cities: [City]())
         }
     }
 
     func removeFavouriteCity(city: City) {
-        if let favourites = getFavouriteCities() {
-            let filtered = favourites.filter { $0.name != city.name }
-            saveFavouriteCities(cities: filtered)
-        }
-
+        let favourites = getFavouriteCities()
+        let filtered = favourites.filter { $0.name != city.name }
+        saveFavouriteCities(cities: filtered)
     }
 }
 
