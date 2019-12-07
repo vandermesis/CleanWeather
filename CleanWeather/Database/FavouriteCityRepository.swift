@@ -30,7 +30,7 @@ final class FavouriteCityRepositoryImpl {
 extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func getFavouriteCities() -> [City] {
-        guard let savedCities = defaults.object(forKey: "FavouriteCities") as? Data else { return [City]() }
+        guard let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else { return [City]() }
         guard let favouriteCities = try? decoder.decode([City].self, from: savedCities) else { return [City]() }
         return favouriteCities
     }
@@ -54,6 +54,10 @@ private extension FavouriteCityRepositoryImpl {
 
     private func saveFavouriteCities(cities: [City]) {
         guard let encoded = try? encoder.encode(cities) else { return }
-        defaults.set(encoded, forKey: "FavouriteCities")
+        defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
     }
+}
+
+private extension String {
+    static let favouriteCityRepositoryKey = "FavouriteCities"
 }
