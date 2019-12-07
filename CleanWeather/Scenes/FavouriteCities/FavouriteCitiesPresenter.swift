@@ -18,7 +18,9 @@ extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
     func presentCities(allCities: [City], favourites: [City]) {
 
-        let displayableCities = allCities.map { FavouriteCitiesListDisplayable(id: $0.id, name: $0.name, checked: favourites.contains($0)) }
+        let displayableCities = allCities.map { FavouriteCitiesListDisplayable(id: $0.id,
+                                                                               name: $0.name,
+                                                                               checked: favourites.contains($0)) }
 
         controller?.displayCities(displayableCities)
     }
