@@ -17,13 +17,11 @@ protocol FavouriteCityRepository {
 final class FavouriteCityRepositoryImpl {
 
     private let defaults: UserDefaults
-    private let decoder: JSONDecoder
-    private let encoder: JSONEncoder
+    private let jsonHelper: JSONHelper
 
-    init(userDefaults: UserDefaults, decoder: JSONDecoder, encoder: JSONEncoder) {
+    init(userDefaults: UserDefaults, jsonHelper: JSONHelper) {
         self.defaults = userDefaults
-        self.decoder = decoder
-        self.encoder = encoder
+        self.jsonHelper = jsonHelper
     }
 }
 
@@ -31,7 +29,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func getFavouriteCities() -> [City] {
         guard let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else { return [City]() }
-        guard let favouriteCities = try? decoder.decode([City].self, from: savedCities) else { return [City]() }
+        guard let favouriteCities = try? jsonHelper.decoder.decode([City].self, from: savedCities) else { return [City]() }
         return favouriteCities
     }
 
@@ -53,7 +51,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 private extension FavouriteCityRepositoryImpl {
 
     private func saveFavouriteCities(cities: [City]) {
-        guard let encoded = try? encoder.encode(cities) else { return }
+        guard let encoded = try? jsonHelper.encoder.encode(cities) else { return }
         defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
     }
 }
