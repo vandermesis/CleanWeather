@@ -8,10 +8,12 @@
 
 import Foundation
 
+typealias FetchFavouriteCitiesCompletion = (Result<[City], Error>) -> Void
+
 protocol FavouriteCitiesWorker {
     func fetchAllCities(completion: FetchCitiesCompletion?)
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
     func toogleFavourite(for city: City)
-    func fetchFavouriteCities() -> [City]
 }
 
 final class FavouriteCitiesWorkerImpl {
@@ -31,6 +33,11 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
         networking.fetchCities(completion: completion)
     }
 
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
+        let favouriteCities = database.getFavouriteCities()
+        completion?(.success(favouriteCities))
+    }
+
     func toogleFavourite(for city: City) {
         let favouriteCities = database.getFavouriteCities()
         if favouriteCities.contains(where: { $0.id == city.id }) {
@@ -38,9 +45,5 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
         } else {
             database.addFavouriteCity(city: city)
         }
-    }
-
-    func fetchFavouriteCities() -> [City] {
-        return database.getFavouriteCities()
     }
 }
