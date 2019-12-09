@@ -12,9 +12,15 @@ struct FavouriteCitiesListDisplayable {
 
     let id: String
     let name: String
-    let checked: Bool
+    let state: Bool
+
+    init(city: City, state: Bool) {
+        id = city.id
+        name = city.name
+        self.state = state
+    }
 
     var favouriteIcon: UIImage? {
-        return checked ? R.image.heartFilled() : R.image.heartOutline()
+        return state ? R.image.heartFilled() : R.image.heartOutline()
     }
 }

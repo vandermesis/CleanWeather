@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias FetchFavouriteCitiesCompletion = (Result<[City], Error>) -> Void
-
 protocol FavouriteCitiesWorker {
     func fetchAllCities(completion: FetchCitiesCompletion?)
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)

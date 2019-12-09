@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias FetchFavouriteCitiesCompletion = (Result<[City], Error>) -> Void
+
 protocol FavouriteCityRepository {
     func getFavouriteCities() -> [City]
     func addFavouriteCity(city: City)
