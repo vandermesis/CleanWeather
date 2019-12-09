@@ -12,15 +12,15 @@ struct FavouriteCitiesListDisplayable {
 
     let id: String
     let name: String
-    let state: Bool
+    let isFavourite: Bool
 
     init(city: City, state: Bool) {
         id = city.id
         name = city.name
-        self.state = state
+        self.isFavourite = state
     }
 
     var favouriteIcon: UIImage? {
-        return state ? R.image.heartFilled() : R.image.heartOutline()
+        return isFavourite ? R.image.heartFilled() : R.image.heartOutline()
     }
 }

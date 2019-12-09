@@ -9,19 +9,21 @@
 import Foundation
 
 typealias FetchFavouriteCitiesCompletion = (Result<[City], Error>) -> Void
+typealias SaveFavouriteCitiesCompletion = (Result<NoResponse, Error>) -> Void
 
 protocol FavouriteCityRepository {
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
-    func addFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?)
-    func removeFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?)
+    func saveFavourite(favouriteCities: [City], completion: SaveFavouriteCitiesCompletion?)
 }
 
 final class FavouriteCityRepositoryImpl {
 
     private let defaults: UserDefaults
-    private let jsonHelper: JSONHelper
+    private let jsonHelper: SerializerHelper
 
-    init(userDefaults: UserDefaults, jsonHelper: JSONHelper) {
+    private let queue = DispatchQueue(label: .applicationLabel, qos: .background, attributes: .concurrent)
+
+    init(userDefaults: UserDefaults, jsonHelper: SerializerHelper) {
         self.defaults = userDefaults
         self.jsonHelper = jsonHelper
     }
@@ -30,48 +32,36 @@ final class FavouriteCityRepositoryImpl {
 extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
-        guard let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else { return }
-        guard let favouriteCities = try? jsonHelper.decoder.decode([City].self, from: savedCities) else { return }
-        completion?(Result.success(favouriteCities))
-    }
-
-    func addFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?) {
-        fetchFavouriteCities { result in
-            switch result {
-            case .success(var favourites):
-                if !favourites.contains(city) {
-                    favourites.append(city)
-                    self.saveFavouriteCities(cities: favourites)
-                    completion?(Result.success(favourites))
-                }
-            case .failure(let error):
-                completion?(Result.failure(error))
+        queue.async {
+            guard let savedCities = self.defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else {
+                completion?(Result.failure(UserDefaultsError.readUserDefaults))
+                return
+            }
+            guard let favouriteCities = try? self.jsonHelper.decoder.decode([City].self, from: savedCities) else {
+                completion?(Result.failure(SerializerError.jsonDecodingError))
+                return
+            }
+            DispatchQueue.main.async {
+                completion?(Result.success(favouriteCities))
             }
         }
     }
 
-    func removeFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?) {
-        fetchFavouriteCities { result in
-            switch result {
-            case .success(let favourites):
-                let filtered = favourites.filter { $0.id != city.id }
-                self.saveFavouriteCities(cities: filtered)
-                completion?(Result.success(filtered))
-            case .failure(let error):
-                completion?(Result.failure(error))
+    func saveFavourite(favouriteCities: [City], completion: SaveFavouriteCitiesCompletion?) {
+        queue.async {
+            guard let encoded = try? self.jsonHelper.encoder.encode(favouriteCities) else {
+                completion?(Result.failure(SerializerError.jsonEncodingError))
+                return
+            }
+            self.defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
+            DispatchQueue.main.async {
+                completion?(Result.success(NoResponse()))
             }
         }
-    }
-}
-
-private extension FavouriteCityRepositoryImpl {
-
-    private func saveFavouriteCities(cities: [City]) {
-        guard let encoded = try? jsonHelper.encoder.encode(cities) else { return }
-        defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
     }
 }
 
 private extension String {
     static let favouriteCityRepositoryKey = "FavouriteCities"
+    static let applicationLabel = "com.vandermesis.CleanWeather.queue"
 }

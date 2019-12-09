@@ -10,6 +10,9 @@
 "error" = "Error";
 "unknownError" = "Unknown Error";
 "decodingError" = "Decoding Error";
+"encodingError" = "Encoding Error";
+"serializerError" = "Serializer Error";
+"userDefaultsError" = "User Defaults Error";
 "dataSourceError" = "Cell DataSource Error";
 
 // Titles

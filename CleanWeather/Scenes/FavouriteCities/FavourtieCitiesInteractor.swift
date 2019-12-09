@@ -16,6 +16,7 @@ protocol FavouriteCitiesInteractor {
 final class FavouriteCitiesInteractorImpl {
 
     private var allCities = [City]()
+    private var favouriteCities = [City]()
 
     private let presenter: FavouriteCitiesPresenter
     private let worker: FavouriteCitiesWorker
@@ -35,30 +36,49 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     func getCities() {
         presenter.toggleSpinner(true)
         worker.fetchAllCities { [weak self] result in
+            self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
                 guard let self = self else { return }
-                self.worker.fetchFavouriteCities { [weak self] result in
-                    switch result {
-                    case .success(let favourites):
-                        self?.allCities = city
-                        self?.presenter.presentCities(allCities: city, favourites: favourites)
-                        self?.presenter.toggleSpinner(false)
-                    case .failure(let error):
-                        self?.presenter.presentError(error)
-                        self?.presenter.toggleSpinner(false)
-                    }
-                }
+                self.allCities = city
+                self.getFavouriteCities()
             case .failure(let error):
                 self?.presenter.presentError(error)
-                self?.presenter.toggleSpinner(false)
             }
         }
     }
 
     func didSelectCity(id: String, state: Bool) {
-        //FIXME: I can send How can I call presenter.presentCities without fetching favourites?
+        let newState = !state
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
-        worker.setFavouriteState(for: selectedCity, newState: state)
+        if newState && !favouriteCities.contains(selectedCity) {
+            favouriteCities.append(selectedCity)
+        } else if !newState, let cityIndex = favouriteCities.firstIndex( where: { $0.id == id }) {
+            favouriteCities.remove(at: cityIndex)
+        }
+        worker.saveFavourite(favouriteCities: favouriteCities) { [weak self] result in
+            switch result {
+            case .success:
+                self?.getCities()
+            case .failure(let error):
+                self?.presenter.presentError(error)
+            }
+        }
+    }
+}
+
+private extension FavouriteCitiesInteractorImpl {
+
+    private func getFavouriteCities() {
+        self.worker.fetchFavouriteCities { [weak self] result in
+            switch result {
+            case .success(let favourites):
+                guard let self = self else { return }
+                self.favouriteCities = favourites
+                self.presenter.presentCities(allCities: self.allCities, favourites: favourites)
+            case .failure(let error):
+                self?.presenter.presentError(error)
+            }
+        }
     }
 }

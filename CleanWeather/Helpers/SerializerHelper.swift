@@ -1,5 +1,5 @@
 //
-//  JSONHelper.swift
+//  SerializerHelper.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 08/12/2019.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class JSONHelper {
+final class SerializerHelper {
 
-    static let shared = JSONHelper()
+    static let shared = SerializerHelper()
 
     let decoder: JSONDecoder
     let encoder: JSONEncoder

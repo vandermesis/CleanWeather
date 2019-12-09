@@ -11,7 +11,7 @@ import Foundation
 protocol FavouriteCitiesWorker {
     func fetchAllCities(completion: FetchCitiesCompletion?)
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
-    func setFavouriteState(for city: City, newState: Bool)
+    func saveFavourite(favouriteCities: [City], completion: SaveFavouriteCitiesCompletion?)
 }
 
 final class FavouriteCitiesWorkerImpl {
@@ -35,11 +35,7 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
         repository.fetchFavouriteCities(completion: completion)
     }
 
-    func setFavouriteState(for city: City, newState: Bool) {
-        if newState {
-            repository.removeFavouriteCity(city: city, completion: nil)
-        } else {
-            repository.addFavouriteCity(city: city, completion: nil)
-        }
+    func saveFavourite(favouriteCities: [City], completion: SaveFavouriteCitiesCompletion?) {
+        repository.saveFavourite(favouriteCities: favouriteCities, completion: completion)
     }
 }
