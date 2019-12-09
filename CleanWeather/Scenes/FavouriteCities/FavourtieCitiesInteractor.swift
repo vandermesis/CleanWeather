@@ -10,7 +10,7 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(id: String)
+    func didSelectCity(id: String, state: Bool)
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -34,40 +34,31 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
 
     func getCities() {
         presenter.toggleSpinner(true)
-        let favouriteCities = fetchFavouriteCities()
         worker.fetchAllCities { [weak self] result in
-            self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
                 guard let self = self else { return }
-                self.allCities = city
-                self.presenter.presentCities(allCities: city, favourites: favouriteCities)
+                self.worker.fetchFavouriteCities { [weak self] result in
+                    switch result {
+                    case .success(let favourites):
+                        self?.allCities = city
+                        self?.presenter.presentCities(allCities: city, favourites: favourites)
+                        self?.presenter.toggleSpinner(false)
+                    case .failure(let error):
+                        self?.presenter.presentError(error)
+                        self?.presenter.toggleSpinner(false)
+                    }
+                }
             case .failure(let error):
                 self?.presenter.presentError(error)
+                self?.presenter.toggleSpinner(false)
             }
         }
     }
 
-    func didSelectCity(id: String) {
+    func didSelectCity(id: String, state: Bool) {
+        //FIXME: I can send How can I call presenter.presentCities without fetching favourites?
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
-        worker.toogleFavourite(for: selectedCity)
-        let favouriteCities = fetchFavouriteCities()
-        presenter.presentCities(allCities: self.allCities, favourites: favouriteCities)
-    }
-}
-
-private extension FavouriteCitiesInteractorImpl {
-
-    private func fetchFavouriteCities() -> [City] {
-        var favouriteCities = [City]()
-        worker.fetchFavouriteCities { result in
-            switch result {
-            case .success(let favourites):
-                favouriteCities = favourites
-            case .failure(let error):
-                self.presenter.presentError(error)
-            }
-        }
-        return favouriteCities
+        worker.setFavouriteState(for: selectedCity, newState: state)
     }
 }

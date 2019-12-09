@@ -11,9 +11,9 @@ import Foundation
 typealias FetchFavouriteCitiesCompletion = (Result<[City], Error>) -> Void
 
 protocol FavouriteCityRepository {
-    func getFavouriteCities() -> [City]
-    func addFavouriteCity(city: City)
-    func removeFavouriteCity(city: City)
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
+    func addFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?)
+    func removeFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?)
 }
 
 final class FavouriteCityRepositoryImpl {
@@ -29,24 +29,38 @@ final class FavouriteCityRepositoryImpl {
 
 extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
-    func getFavouriteCities() -> [City] {
-        guard let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else { return [City]() }
-        guard let favouriteCities = try? jsonHelper.decoder.decode([City].self, from: savedCities) else { return [City]() }
-        return favouriteCities
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
+        guard let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else { return }
+        guard let favouriteCities = try? jsonHelper.decoder.decode([City].self, from: savedCities) else { return }
+        completion?(Result.success(favouriteCities))
     }
 
-    func addFavouriteCity(city: City) {
-        var favourites = getFavouriteCities()
-        if !favourites.contains(city) {
-            favourites.append(city)
-            saveFavouriteCities(cities: favourites)
+    func addFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?) {
+        fetchFavouriteCities { result in
+            switch result {
+            case .success(var favourites):
+                if !favourites.contains(city) {
+                    favourites.append(city)
+                    self.saveFavouriteCities(cities: favourites)
+                    completion?(Result.success(favourites))
+                }
+            case .failure(let error):
+                completion?(Result.failure(error))
+            }
         }
     }
 
-    func removeFavouriteCity(city: City) {
-        let favourites = getFavouriteCities()
-        let filtered = favourites.filter { $0.id != city.id }
-        saveFavouriteCities(cities: filtered)
+    func removeFavouriteCity(city: City, completion: FetchFavouriteCitiesCompletion?) {
+        fetchFavouriteCities { result in
+            switch result {
+            case .success(let favourites):
+                let filtered = favourites.filter { $0.id != city.id }
+                self.saveFavouriteCities(cities: filtered)
+                completion?(Result.success(filtered))
+            case .failure(let error):
+                completion?(Result.failure(error))
+            }
+        }
     }
 }
 

@@ -11,17 +11,17 @@ import Foundation
 protocol FavouriteCitiesWorker {
     func fetchAllCities(completion: FetchCitiesCompletion?)
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
-    func toogleFavourite(for city: City)
+    func setFavouriteState(for city: City, newState: Bool)
 }
 
 final class FavouriteCitiesWorkerImpl {
 
     private let networking: WeatherNetworking
-    private let database: FavouriteCityRepository
+    private let repository: FavouriteCityRepository
 
     init(networking: WeatherNetworking, database: FavouriteCityRepository) {
         self.networking = networking
-        self.database = database
+        self.repository = database
     }
 }
 
@@ -32,16 +32,14 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
     }
 
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
-        let favouriteCities = database.getFavouriteCities()
-        completion?(.success(favouriteCities))
+        repository.fetchFavouriteCities(completion: completion)
     }
 
-    func toogleFavourite(for city: City) {
-        let favouriteCities = database.getFavouriteCities()
-        if favouriteCities.contains(where: { $0.id == city.id }) {
-            database.removeFavouriteCity(city: city)
+    func setFavouriteState(for city: City, newState: Bool) {
+        if newState {
+            repository.removeFavouriteCity(city: city, completion: nil)
         } else {
-            database.addFavouriteCity(city: city)
+            repository.addFavouriteCity(city: city, completion: nil)
         }
     }
 }
