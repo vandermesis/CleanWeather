@@ -15,6 +15,7 @@ protocol FavouriteCitiesPresentable: SpinnerPresentable & AlertPresentable {
 final class FavouriteCitiesController: SharedViewController {
 
     @IBOutlet private weak var citiesTableView: UITableView!
+    @IBOutlet private weak var saveButton: UIButton!
 
     private let interactor: FavouriteCitiesInteractor
 
@@ -24,6 +25,7 @@ final class FavouriteCitiesController: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
+        setupButton()
         interactor.getCities()
     }
 
@@ -34,6 +36,10 @@ final class FavouriteCitiesController: SharedViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @IBAction private func saveButtonPressed(_ sender: UIButton) {
+        interactor.didPressSaveButton()
     }
 }
 
@@ -61,7 +67,7 @@ extension FavouriteCitiesController: UITableViewDataSource {
 extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id, state: citiesDataSource[indexPath.row].isFavourite)
+        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id)
     }
 }
 
@@ -75,5 +81,13 @@ private extension FavouriteCitiesController {
 
     private func setupNavigationBar() {
         title = R.string.localizable.favouriteCities()
+    }
+
+    private func setupButton() {
+        saveButton.layer.cornerRadius = 20
+        saveButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        saveButton.layer.shadowOpacity = 0.5
+        saveButton.layer.shadowRadius = 7
+        saveButton.layer.shadowColor = UIColor.systemRed.cgColor
     }
 }

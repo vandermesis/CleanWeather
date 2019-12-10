@@ -54,7 +54,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
                 return
             }
             self.defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 completion?(Result.success(NoResponse()))
             }
         }

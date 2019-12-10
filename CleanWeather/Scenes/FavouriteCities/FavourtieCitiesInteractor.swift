@@ -10,7 +10,8 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(id: String, state: Bool)
+    func didSelectCity(id: String)
+    func didPressSaveButton()
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -48,22 +49,29 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func didSelectCity(id: String, state: Bool) {
-        let newState = !state
+    func didSelectCity(id: String) {
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
-        if newState && !favouriteCities.contains(selectedCity) {
+        if !favouriteCities.contains(selectedCity) {
             favouriteCities.append(selectedCity)
-        } else if !newState, let cityIndex = favouriteCities.firstIndex( where: { $0.id == id }) {
+        } else {
+            guard let cityIndex = favouriteCities.firstIndex(where: { $0.id == id }) else { return }
             favouriteCities.remove(at: cityIndex)
         }
-        worker.saveFavourite(favouriteCities: favouriteCities) { [weak self] result in
+        presenter.presentCities(allCities: allCities, favourites: favouriteCities)
+    }
+
+    func didPressSaveButton() {
+        presenter.toggleSpinner(true)
+        worker.saveFavourite(favouriteCities: favouriteCities) { result in
             switch result {
-            case .success:
-                self?.getCities()
+            case .success(let response):
+                //FIXME: Is it posible to not handle .success here if there is no respone?
+                print(response)
             case .failure(let error):
-                self?.presenter.presentError(error)
+                self.presenter.presentError(error)
             }
         }
+        presenter.toggleSpinner(false)
     }
 }
 
