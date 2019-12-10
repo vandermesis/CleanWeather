@@ -21,8 +21,6 @@ final class FavouriteCityRepositoryImpl {
     private let defaults: UserDefaults
     private let jsonHelper: SerializerHelper
 
-    private let queue = DispatchQueue(label: .applicationLabel, qos: .background, attributes: .concurrent)
-
     init(userDefaults: UserDefaults, jsonHelper: SerializerHelper) {
         self.defaults = userDefaults
         self.jsonHelper = jsonHelper
@@ -32,31 +30,27 @@ final class FavouriteCityRepositoryImpl {
 extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
-        queue.async {
-            guard let savedCities = self.defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else {
-                completion?(Result.failure(UserDefaultsError.readUserDefaults))
-                return
-            }
-            guard let favouriteCities = try? self.jsonHelper.decoder.decode([City].self, from: savedCities) else {
-                completion?(Result.failure(SerializerError.jsonDecodingError))
-                return
-            }
-            DispatchQueue.main.async {
-                completion?(Result.success(favouriteCities))
-            }
+        guard let savedCities = self.defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else {
+            completion?(Result.failure(UserDefaultsError.readUserDefaults))
+            return
+        }
+        guard let favouriteCities = try? self.jsonHelper.decoder.decode([City].self, from: savedCities) else {
+            completion?(Result.failure(SerializerError.jsonDecodingError))
+            return
+        }
+        DispatchQueue.main.async {
+            completion?(Result.success(favouriteCities))
         }
     }
 
     func saveFavourite(favouriteCities: [City], completion: SaveFavouriteCitiesCompletion?) {
-        queue.async {
-            guard let encoded = try? self.jsonHelper.encoder.encode(favouriteCities) else {
-                completion?(Result.failure(SerializerError.jsonEncodingError))
-                return
-            }
-            self.defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                completion?(Result.success(NoResponse()))
-            }
+        guard let encoded = try? self.jsonHelper.encoder.encode(favouriteCities) else {
+            completion?(Result.failure(SerializerError.jsonEncodingError))
+            return
+        }
+        self.defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
+        DispatchQueue.main.async {
+            completion?(Result.success(NoResponse()))
         }
     }
 }
