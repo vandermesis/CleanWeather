@@ -63,15 +63,15 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     func didPressSaveButton() {
         presenter.toggleSpinner(true)
         worker.saveFavourite(favouriteCities: favouriteCities) { result in
+            self.presenter.toggleSpinner(false)
             switch result {
             case .success(let response):
-                //FIXME: Is it posible to not handle .success here if there is no respone?
+                //FIXME: Is it posible to not handle .success here if there is no respone? Or how to handle no response?
                 print(response)
             case .failure(let error):
                 self.presenter.presentError(error)
             }
         }
-        presenter.toggleSpinner(false)
     }
 }
 
