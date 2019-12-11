@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct FavouriteCitiesListDisplayable {
+struct FavouriteCitiesListDisplayable: Equatable {
 
     let id: String
     let name: String

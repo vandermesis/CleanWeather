@@ -12,9 +12,11 @@ import UIKit
 
 final class FakeFavouriteCitiesController: UIViewController, FavouriteCitiesPresentable {
 
-    var displayCitiesCalled: [FavouriteCitiesListDisplayable]?
+    var displayCitiesCalled: Bool?
+    var displayCitiesFavouriteCitiesDisplayable: [FavouriteCitiesListDisplayable]?
 
     func displayCities(_ city: [FavouriteCitiesListDisplayable]) {
-        displayCitiesCalled = city
+        displayCitiesCalled = true
+        displayCitiesFavouriteCitiesDisplayable = city
     }
 }
