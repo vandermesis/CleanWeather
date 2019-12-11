@@ -41,35 +41,60 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 expect(worker.fetchAllCitiesCalled).to(beTrue())
             }
 
-            context("on success response") {
+            context("on success fetchAllCities response") {
 
                 beforeEach {
                     worker.fetchAllCitiesCompletion?(.success(Mock.allCities))
-                    worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
                 }
 
                 it("should call presenter to hide spinner") {
                     expect(presenter.toggleSpinnerStateCalled).to(beFalse())
                 }
 
-                it("should call presenter to present all cities") {
-                    expect(presenter.presentCitiesAllCitiesCalled).notTo(beNil())
-                    expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
+                it("presenter should not present cities") {
+                    expect(presenter.presentCitiesCalled).to(beNil())
                 }
 
-                it("should call presenter to present favourite cities") {
-                    expect(presenter.presentCitiesFavouritesCalled).notTo(beNil())
-                    expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(Mock.favouriteCities.count))
+                context("on success fetchFavouriteCities response") {
+
+                    beforeEach {
+                        worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                    }
+
+                    it("should call presenter to present all cities") {
+                        expect(presenter.presentCitiesAllCities).notTo(beNil())
+                        expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
+                    }
+
+                    it("should call presenter to present favourite cities") {
+                        expect(presenter.presentCitiesFavourites).notTo(beNil())
+                        expect(presenter.presentCitiesFavourites?.count).to(equal(Mock.favouriteCities.count))
+                    }
+
+                    it("should not call presenter to present any alert") {
+                        expect(presenter.presentAlertTitleCalled).to(beNil())
+                        expect(presenter.presentAlertMessageCalled).to(beNil())
+                        expect(presenter.presentErrorCalled).to(beNil())
+                    }
                 }
 
-                it("should not call presenter to present any alert") {
-                    expect(presenter.presentAlertTitleCalled).to(beNil())
-                    expect(presenter.presentAlertMessageCalled).to(beNil())
-                    expect(presenter.presentErrorCalled).to(beNil())
+                context("on failure fetch favourite cities response") {
+
+                    beforeEach {
+                        worker.fetchFavouriteCitiesCompletion?(.failure(UnitTestError()))
+                    }
+
+                    it("should call presenter to hide spinner") {
+                        expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                    }
+
+                    it("should call presenter to display error") {
+                        expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
+                    }
                 }
             }
 
-            context("on failure response") {
+            context("on failure fetchAllCities response") {
 
                 beforeEach {
                     worker.fetchAllCitiesCompletion?(.failure(UnitTestError()))
@@ -102,12 +127,12 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities without tapped city") {
-                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(3))
-                        expect(presenter.presentCitiesFavouritesCalled).notTo(contain(Mock.city1))
+                        expect(presenter.presentCitiesFavourites?.count).to(equal(3))
+                        expect(presenter.presentCitiesFavourites).notTo(contain(Mock.city1))
                     }
                 }
 
@@ -118,12 +143,12 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities with tapped city") {
-                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(5))
-                        expect(presenter.presentCitiesFavouritesCalled).to(contain(Mock.city8))
+                        expect(presenter.presentCitiesFavourites?.count).to(equal(5))
+                        expect(presenter.presentCitiesFavourites).to(contain(Mock.city8))
                     }
 
                 }
@@ -136,11 +161,11 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to present all cities") {
-                    expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
+                    expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
                 }
 
                 it("should call presenter to present favourite cities without any change") {
-                    expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(Mock.favouriteCities.count))
+                    expect(presenter.presentCitiesFavourites?.count).to(equal(Mock.favouriteCities.count))
                 }
             }
         }

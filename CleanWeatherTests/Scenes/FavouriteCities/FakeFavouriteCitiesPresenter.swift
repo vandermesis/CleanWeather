@@ -12,11 +12,13 @@ import UIKit
 
 final class FakeFavouriteCitiesPresenter: FakePresenter, FavouriteCitiesPresenter {
 
-    var presentCitiesAllCitiesCalled: [City]?
-    var presentCitiesFavouritesCalled: [City]?
+    var presentCitiesCalled: Bool?
+    var presentCitiesAllCities: [City]?
+    var presentCitiesFavourites: [City]?
 
     func presentCities(allCities: [City], favourites: [City]) {
-        presentCitiesAllCitiesCalled = allCities
-        presentCitiesFavouritesCalled = favourites
+        presentCitiesCalled = true
+        presentCitiesAllCities = allCities
+        presentCitiesFavourites = favourites
     }
 }
