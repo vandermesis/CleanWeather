@@ -14,10 +14,10 @@ struct FavouriteCitiesListDisplayable: Equatable {
     let name: String
     let isFavourite: Bool
 
-    init(city: City, state: Bool) {
+    init(city: City, isFavourite: Bool) {
         id = city.id
         name = city.name
-        self.isFavourite = state
+        self.isFavourite = isFavourite
     }
 
     var favouriteIcon: UIImage? {

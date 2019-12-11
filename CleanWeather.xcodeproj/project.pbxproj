@@ -112,7 +112,7 @@
 		BAAD0BAC239455B800ED804E /* CityHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD0BAB239455B800ED804E /* CityHistorical.swift */; };
 		BAAD0BAF2394565C00ED804E /* CityHistoricalDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD0BAE2394565C00ED804E /* CityHistoricalDisplayable.swift */; };
 		BAAD0BB12394577700ED804E /* CityCurrentDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD0BB02394577700ED804E /* CityCurrentDisplayable.swift */; };
-		BABF1014239F10A700D7FB5B /* NoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1013239F10A700D7FB5B /* NoResponse.swift */; };
+		BABF1014239F10A700D7FB5B /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1013239F10A700D7FB5B /* Empty.swift */; };
 		BAC16BE123820FDF00420AA6 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */; };
 		BAC16BE3238214C100420AA6 /* SharedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC16BE2238214C100420AA6 /* SharedPresenter.swift */; };
 		BAC45BAF23986E8F0008E87D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC45BAE23986E8F0008E87D /* City.swift */; };
@@ -278,7 +278,7 @@
 		BAAD0BAB239455B800ED804E /* CityHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistorical.swift; sourceTree = "<group>"; };
 		BAAD0BAE2394565C00ED804E /* CityHistoricalDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalDisplayable.swift; sourceTree = "<group>"; };
 		BAAD0BB02394577700ED804E /* CityCurrentDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCurrentDisplayable.swift; sourceTree = "<group>"; };
-		BABF1013239F10A700D7FB5B /* NoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResponse.swift; sourceTree = "<group>"; };
+		BABF1013239F10A700D7FB5B /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		BAC16BE2238214C100420AA6 /* SharedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPresenter.swift; sourceTree = "<group>"; };
 		BAC45BAE23986E8F0008E87D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -378,9 +378,9 @@
 			children = (
 				609DA547237440A900C5773D /* PeopleList */,
 				BAF3A18B237B22470093420E /* CityList */,
+				BAC45BAD23986E2B0008E87D /* FavouriteCities */,
 				BA712A432384682E00213466 /* CityForecast */,
 				BAF0DBEB2393DA1A000F63B0 /* CityHistorical */,
-				BAC45BAD23986E2B0008E87D /* FavouriteCities */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -600,7 +600,7 @@
 				606B800B2383FDCC00C8B952 /* AlertPresentable.swift */,
 				BA6CFD5623970A14004B7BD7 /* SharedTextField.swift */,
 				BA91496A2397E8930029D666 /* DateFormatterHelper.swift */,
-				BABF1013239F10A700D7FB5B /* NoResponse.swift */,
+				BABF1013239F10A700D7FB5B /* Empty.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -627,9 +627,9 @@
 			children = (
 				BA7FC5A323881C3600917A40 /* PeopleList */,
 				BA7FC5AE23881DEC00917A40 /* CityList */,
+				BA3C109D23A00CDE003E0B7D /* FavouriteCities */,
 				BA7FC5BB23881EC800917A40 /* CityForecast */,
 				BA7014F42395A1A100511E96 /* CityHistorical */,
-				BA3C109D23A00CDE003E0B7D /* FavouriteCities */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1075,7 +1075,7 @@
 				BAF3A191237B24C70093420E /* CityListWorker.swift in Sources */,
 				BAF20D4523992EA300A8485A /* FavouriteCitiesPresenter.swift in Sources */,
 				BA712A452384686100213466 /* CityForecastCreator.swift in Sources */,
-				BABF1014239F10A700D7FB5B /* NoResponse.swift in Sources */,
+				BABF1014239F10A700D7FB5B /* Empty.swift in Sources */,
 				BAAD0BAF2394565C00ED804E /* CityHistoricalDisplayable.swift in Sources */,
 				BAF3A18D237B233F0093420E /* CityListInteractor.swift in Sources */,
 				60EAC7A323744B6A00E48021 /* PersonDisplayable.swift in Sources */,

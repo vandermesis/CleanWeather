@@ -9,7 +9,7 @@
 import Foundation
 
 typealias FetchFavouriteCitiesCompletion = (Result<[City], Error>) -> Void
-typealias SaveFavouriteCitiesCompletion = (Result<NoResponse, Error>) -> Void
+typealias SaveFavouriteCitiesCompletion = (Result<Empty, Error>) -> Void
 
 protocol FavouriteCityRepository {
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
@@ -30,14 +30,24 @@ final class FavouriteCityRepositoryImpl {
 extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
-        guard let savedCities = self.defaults.object(forKey: .favouriteCityRepositoryKey) as? Data else {
+
+        let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey)
+
+        if savedCities == nil {
+            completion?(Result.success([City]()))
+            return
+        }
+
+        guard let favourites = savedCities as? Data else {
             completion?(Result.failure(UserDefaultsError.readUserDefaults))
             return
         }
-        guard let favouriteCities = try? self.jsonHelper.decoder.decode([City].self, from: savedCities) else {
+
+        guard let favouriteCities = try? jsonHelper.decoder.decode([City].self, from: favourites) else {
             completion?(Result.failure(SerializerError.jsonDecodingError))
             return
         }
+
         DispatchQueue.main.async {
             completion?(Result.success(favouriteCities))
         }
@@ -50,7 +60,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
         }
         self.defaults.set(encoded, forKey: .favouriteCityRepositoryKey)
         DispatchQueue.main.async {
-            completion?(Result.success(NoResponse()))
+            completion?(Result.success(Empty()))
         }
     }
 }

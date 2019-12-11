@@ -26,7 +26,7 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
         describe("presenting cities") {
 
-            let displayableFavourites = Mock.favouriteCities.map { (FavouriteCitiesListDisplayable(city: $0, state: true)) }
+            let displayableFavourites = Mock.favouriteCities.map { (FavouriteCitiesListDisplayable(city: $0, isFavourite: true)) }
 
             beforeEach {
                 presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities)

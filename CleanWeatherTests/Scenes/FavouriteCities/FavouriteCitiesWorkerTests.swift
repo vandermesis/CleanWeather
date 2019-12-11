@@ -141,7 +141,7 @@ final class FavouriteCitiesWorkerTests: QuickSpec {
 
         describe("saving favourite") {
 
-            var receivedResponse: NoResponse?
+            var receivedResponse: Empty?
             var receivedError: Error?
 
             beforeEach {
@@ -168,11 +168,11 @@ final class FavouriteCitiesWorkerTests: QuickSpec {
             context("on success response") {
 
                 beforeEach {
-                    repository.saveFavouriteCompletion?(.success(NoResponse()))
+                    repository.saveFavouriteCompletion?(.success(Empty()))
                 }
 
                 it("should return no response") {
-                    expect(receivedResponse).to(beAKindOf(NoResponse.self))
+                    expect(receivedResponse).to(beAKindOf(Empty.self))
                 }
 
                 it("should return no errors") {

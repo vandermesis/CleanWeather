@@ -19,7 +19,7 @@ final class FavouriteCitiesListDisplayableTests: QuickSpec {
 
         describe("init of FavouriteCitiesListDisplayable") {
             beforeEach {
-                displayable = FavouriteCitiesListDisplayable(city: Mock.city7, state: true)
+                displayable = FavouriteCitiesListDisplayable(city: Mock.city7, isFavourite: true)
             }
 
             it("should return valid id string") {

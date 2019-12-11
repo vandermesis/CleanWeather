@@ -165,7 +165,7 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
             context("on success response") {
 
                 beforeEach {
-                    worker.saveFavourtieCompletion?(.success(NoResponse()))
+                    worker.saveFavourtieCompletion?(.success(Empty()))
                 }
 
                 it("should call presenter to hide spinner") {

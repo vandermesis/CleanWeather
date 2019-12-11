@@ -21,14 +21,6 @@ final class FavouriteCitiesController: SharedViewController {
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
-        setupNavigationBar()
-        setupButton()
-        interactor.getCities()
-    }
-
     init(interactor: FavouriteCitiesInteractor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
@@ -36,6 +28,14 @@ final class FavouriteCitiesController: SharedViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+        setupNavigationBar()
+        setupButton()
+        interactor.getCities()
     }
 
     @IBAction private func saveButtonPressed(_ sender: UIButton) {

@@ -20,4 +20,3 @@ final class SerializerHelper {
         encoder = JSONEncoder()
     }
 }
-
