@@ -20,7 +20,7 @@ struct FavouriteCitiesListDisplayable: Equatable {
         self.isFavourite = isFavourite
     }
 
-    var favouriteIcon: UIImage? {
+    lazy var favouriteIcon: UIImage? = {
         return isFavourite ? R.image.heartFilled() : R.image.heartOutline()
-    }
+    }()
 }
