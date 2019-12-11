@@ -91,6 +91,7 @@
 		BA7A1FDE238D672200E18E79 /* FakeCityForecastWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FDD238D672200E18E79 /* FakeCityForecastWorker.swift */; };
 		BA7A1FE0238D683F00E18E79 /* FakeCityForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FDF238D683F00E18E79 /* FakeCityForecastPresenter.swift */; };
 		BA7A1FE2238D68F100E18E79 /* FakeCityForecastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FE1238D68F100E18E79 /* FakeCityForecastRouter.swift */; };
+		BA7E4BA723A1394D0060D157 /* SharedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7E4BA623A1394D0060D157 /* SharedButton.swift */; };
 		BA7FC5A223881C2C00917A40 /* PeopleListCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */; };
 		BA7FC5A723881D0E00917A40 /* PeopleListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */; };
 		BA7FC5A923881D5500917A40 /* PeopleListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */; };
@@ -257,6 +258,7 @@
 		BA7A1FDD238D672200E18E79 /* FakeCityForecastWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastWorker.swift; sourceTree = "<group>"; };
 		BA7A1FDF238D683F00E18E79 /* FakeCityForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastPresenter.swift; sourceTree = "<group>"; };
 		BA7A1FE1238D68F100E18E79 /* FakeCityForecastRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastRouter.swift; sourceTree = "<group>"; };
+		BA7E4BA623A1394D0060D157 /* SharedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedButton.swift; sourceTree = "<group>"; };
 		BA7FC5A123881C2C00917A40 /* PeopleListCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListCreatorTests.swift; sourceTree = "<group>"; };
 		BA7FC5A623881D0E00917A40 /* PeopleListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListInteractorTests.swift; sourceTree = "<group>"; };
 		BA7FC5A823881D5500917A40 /* PeopleListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListWorkerTests.swift; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 				BA6CFD5623970A14004B7BD7 /* SharedTextField.swift */,
 				BA91496A2397E8930029D666 /* DateFormatterHelper.swift */,
 				BABF1013239F10A700D7FB5B /* Empty.swift */,
+				BA7E4BA623A1394D0060D157 /* SharedButton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 				BAF0DBED2393DA7F000F63B0 /* CityHistoricalCreator.swift in Sources */,
 				BAF20D4123992CD500A8485A /* FavourtieCitiesInteractor.swift in Sources */,
 				BA6E474F237E185A0083762F /* CityListTableViewCell.swift in Sources */,
+				BA7E4BA723A1394D0060D157 /* SharedButton.swift in Sources */,
 				BAF3A197237B27880093420E /* CityListCreator.swift in Sources */,
 				BA91496B2397E8930029D666 /* DateFormatterHelper.swift in Sources */,
 				BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */,

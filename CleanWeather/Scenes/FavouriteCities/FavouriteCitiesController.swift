@@ -34,7 +34,6 @@ final class FavouriteCitiesController: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
-        setupButton()
         interactor.getCities()
     }
 
@@ -81,13 +80,5 @@ private extension FavouriteCitiesController {
 
     private func setupNavigationBar() {
         title = R.string.localizable.favouriteCities()
-    }
-
-    private func setupButton() {
-        saveButton.layer.cornerRadius = 20
-        saveButton.layer.shadowOffset = CGSize(width: 0, height: 5)
-        saveButton.layer.shadowOpacity = 0.5
-        saveButton.layer.shadowRadius = 7
-        saveButton.layer.shadowColor = UIColor.systemRed.cgColor
     }
 }
