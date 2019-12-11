@@ -65,9 +65,8 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         worker.saveFavourite(favouriteCities: favouriteCities) { result in
             self.presenter.toggleSpinner(false)
             switch result {
-            case .success(let response):
-                //FIXME: Is it posible to not handle .success here if there is no respone? Or how to handle no response?
-                print(response)
+            case .success:
+                return
             case .failure(let error):
                 self.presenter.presentError(error)
             }
