@@ -62,13 +62,13 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesAllCities).notTo(beNil())
-                        expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCitiesCalled).notTo(beNil())
+                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities") {
-                        expect(presenter.presentCitiesFavourites).notTo(beNil())
-                        expect(presenter.presentCitiesFavourites?.count).to(equal(Mock.favouriteCities.count))
+                        expect(presenter.presentCitiesFavouritesCalled).notTo(beNil())
+                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(Mock.favouriteCities.count))
                     }
 
                     it("should not call presenter to present any alert") {
@@ -127,12 +127,12 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities without tapped city") {
-                        expect(presenter.presentCitiesFavourites?.count).to(equal(3))
-                        expect(presenter.presentCitiesFavourites).notTo(contain(Mock.city1))
+                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(3))
+                        expect(presenter.presentCitiesFavouritesCalled).notTo(contain(Mock.city1))
                     }
                 }
 
@@ -143,12 +143,12 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities with tapped city") {
-                        expect(presenter.presentCitiesFavourites?.count).to(equal(5))
-                        expect(presenter.presentCitiesFavourites).to(contain(Mock.city8))
+                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(5))
+                        expect(presenter.presentCitiesFavouritesCalled).to(contain(Mock.city8))
                     }
 
                 }
@@ -161,11 +161,11 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to present all cities") {
-                    expect(presenter.presentCitiesAllCities?.count).to(equal(Mock.allCities.count))
+                    expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                 }
 
                 it("should call presenter to present favourite cities without any change") {
-                    expect(presenter.presentCitiesFavourites?.count).to(equal(Mock.favouriteCities.count))
+                    expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(Mock.favouriteCities.count))
                 }
             }
         }

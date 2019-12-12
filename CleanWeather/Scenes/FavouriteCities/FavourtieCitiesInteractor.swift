@@ -77,7 +77,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
 private extension FavouriteCitiesInteractorImpl {
 
     private func getFavouriteCities() {
-        self.worker.fetchFavouriteCities { [weak self] result in
+        worker.fetchFavouriteCities { [weak self] result in
             switch result {
             case .success(let favourites):
                 guard let self = self else { return }
