@@ -10,12 +10,17 @@ import UIKit
 
 final class SharedButton: UIButton {
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setup()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        privateInit()
     }
 
-    func setup() {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        privateInit()
+    }
+
+    private func privateInit() {
         self.layer.cornerRadius = 20
         self.layer.shadowOffset = CGSize(width: 0, height: 5)
         self.layer.shadowOpacity = 0.5
