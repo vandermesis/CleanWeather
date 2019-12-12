@@ -196,12 +196,20 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 it("should call presenter to hide spinner") {
                     expect(presenter.toggleSpinnerStateCalled).to(beFalse())
                 }
+
+                it("should call router to pop to city list controller") {
+                    expect(router.navigateBackToCityListCalled).to(beTrue())
+                }
             }
 
             context("on failure response") {
 
                 beforeEach {
                     worker.saveFavourtieCompletion?(.failure(UnitTestError()))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
                 }
 
                 it("should call presenter to present error") {

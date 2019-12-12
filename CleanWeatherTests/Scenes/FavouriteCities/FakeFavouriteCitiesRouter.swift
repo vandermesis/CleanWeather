@@ -10,4 +10,11 @@ import Foundation
 
 @testable import CleanWeather
 
-final class FakeFavouriteCitiesRouter: FavouriteCitiesRouter {}
+final class FakeFavouriteCitiesRouter: FavouriteCitiesRouter {
+
+    var navigateBackToCityListCalled: Bool?
+
+    func navigateBackToCityList() {
+        navigateBackToCityListCalled = true
+    }
+}
