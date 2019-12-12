@@ -8,9 +8,8 @@
 
 import UIKit
 
-//TODO: To be removed if not needed
 protocol FavouriteCitiesRouter {
-
+    func navigateBackToCityList()
 }
 
 final class FavouriteCitiesRouterImpl {
@@ -19,5 +18,9 @@ final class FavouriteCitiesRouterImpl {
 }
 
 extension FavouriteCitiesRouterImpl: FavouriteCitiesRouter {
-    
+
+    func navigateBackToCityList() {
+        guard let controllerToPopTo = controller?.navigationController?.viewControllers.first(where: { $0 is CityListController }) else { return }
+        controller?.navigationController?.popToViewController(controllerToPopTo, animated: true)
+    }
 }

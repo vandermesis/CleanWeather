@@ -66,7 +66,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             self.presenter.toggleSpinner(false)
             switch result {
             case .success:
-                return
+                self.router.navigateBackToCityList()
             case .failure(let error):
                 self.presenter.presentError(error)
             }
