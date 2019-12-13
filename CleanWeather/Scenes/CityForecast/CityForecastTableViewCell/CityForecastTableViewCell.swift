@@ -15,10 +15,10 @@ class CityForecastTableViewCell: UITableViewCell {
     @IBOutlet private weak var precipLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
     
-    func setupDetailsTableViewCell(with cityDetailsListDisplayable: CityForecastListDisplayable) {
-        hourLabel.text = cityDetailsListDisplayable.hour
-        tempLabel.text = cityDetailsListDisplayable.temp
-        precipLabel.text = cityDetailsListDisplayable.precip
-        weatherSymbol.image = UIImage(systemName: cityDetailsListDisplayable.symbol.icon)
+    func setup(with cityForecastListDisplayable: CityForecastListDisplayable) {
+        hourLabel.text = cityForecastListDisplayable.hour
+        tempLabel.text = cityForecastListDisplayable.temp
+        precipLabel.text = cityForecastListDisplayable.precip
+        weatherSymbol.image = UIImage(systemName: cityForecastListDisplayable.symbol.icon)
     }
 }

@@ -28,10 +28,6 @@ final class CityForecastController: SharedViewController {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
-
-    deinit {
-        print("CityForecastController DEALLOCATED")
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,7 +68,7 @@ extension CityForecastController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
-        cell.setupDetailsTableViewCell(with: cityForecastDataSource[indexPath.row])
+        cell.setup(with: cityForecastDataSource[indexPath.row])
         return cell
     }
 }
@@ -82,7 +78,6 @@ private extension CityForecastController {
     private func setupTableView() {
         tableView.register(cellType: CityForecastTableViewCell.self)
         tableView.dataSource = self
-        tableView.allowsSelection = false
     }
 
     private func setupNavigationBar() {

@@ -11,6 +11,7 @@ import Foundation
 protocol CityListInteractor {
     func getCitiesWeather()
     func didSelectCityCell(id: String)
+    func didPressAddButton()
 }
 
 final class CityListInteractorImpl {
@@ -49,5 +50,9 @@ extension CityListInteractorImpl: CityListInteractor {
     func didSelectCityCell(id: String) {
         guard let weather = cityWeather.first(where: { $0.id == id }) else { return }
         router.navigateToCityForecast(cityWeather: weather)
+    }
+
+    func didPressAddButton() {
+        router.navigateToFavouriteCities()
     }
 }

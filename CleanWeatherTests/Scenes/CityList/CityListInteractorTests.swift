@@ -108,5 +108,16 @@ final class CityListInteractorTests: QuickSpec {
                 }
             }
         }
+
+        describe("pressing add button") {
+
+            beforeEach {
+                interactor.didPressAddButton()
+            }
+
+            it("should call router to navigate to favourite cities") {
+                expect(router.navigateToFavouriteCitiesCalled).to(beTrue())
+            }
+        }
     }
 }

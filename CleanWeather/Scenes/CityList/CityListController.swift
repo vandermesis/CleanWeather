@@ -25,10 +25,6 @@ final class CityListController: SharedViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    deinit {
-        print("CityListController DEALLOCATED")
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -41,8 +37,7 @@ final class CityListController: SharedViewController {
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
-        //TODO: Implement add new city functionality
-        print("\(#function)")
+        interactor.didPressAddButton()
     }
 }
 
