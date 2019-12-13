@@ -20,12 +20,14 @@ final class APIClient {
 
         urlComponents.scheme = request.scheme
         urlComponents.host = request.url
-        urlComponents.queryItems = request.parameters
         urlComponents.path = request.path
-
+        if let parameters = request.parameters {
+            urlComponents.setQueryItems(with: parameters)
+        }
+        
         guard let url = urlComponents.url else { fatalError("no url") }
 
-        print(url)
+        print(url.absoluteString)
 
         dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
 

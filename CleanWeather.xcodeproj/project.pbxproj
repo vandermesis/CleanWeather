@@ -118,6 +118,7 @@
 		BAAD0BAC239455B800ED804E /* CityHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD0BAB239455B800ED804E /* CityHistorical.swift */; };
 		BAAD0BAF2394565C00ED804E /* CityHistoricalDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD0BAE2394565C00ED804E /* CityHistoricalDisplayable.swift */; };
 		BAAD0BB12394577700ED804E /* CityCurrentDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD0BB02394577700ED804E /* CityCurrentDisplayable.swift */; };
+		BAAE1B2323A3C2AB00DA22C9 /* URLComponentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE1B2223A3C2AB00DA22C9 /* URLComponentsExtension.swift */; };
 		BABF1014239F10A700D7FB5B /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1013239F10A700D7FB5B /* Empty.swift */; };
 		BAC16BE123820FDF00420AA6 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */; };
 		BAC16BE3238214C100420AA6 /* SharedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC16BE2238214C100420AA6 /* SharedPresenter.swift */; };
@@ -290,6 +291,7 @@
 		BAAD0BAB239455B800ED804E /* CityHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistorical.swift; sourceTree = "<group>"; };
 		BAAD0BAE2394565C00ED804E /* CityHistoricalDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHistoricalDisplayable.swift; sourceTree = "<group>"; };
 		BAAD0BB02394577700ED804E /* CityCurrentDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCurrentDisplayable.swift; sourceTree = "<group>"; };
+		BAAE1B2223A3C2AB00DA22C9 /* URLComponentsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentsExtension.swift; sourceTree = "<group>"; };
 		BABF1013239F10A700D7FB5B /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		BAC16BE023820FDF00420AA6 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		BAC16BE2238214C100420AA6 /* SharedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPresenter.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 				BA960AF9238720C2009A69C9 /* DoubleExtension.swift */,
 				BA53A9C6238F2D020024F205 /* IntExtension.swift */,
 				BA2D2C9A238072FD00204BA0 /* TableViewControllerExtension.swift */,
+				BAAE1B2223A3C2AB00DA22C9 /* URLComponentsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				BAED7AB32384761800790744 /* CityForecastInteractor.swift in Sources */,
 				BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */,
 				BAF20D4723992FC900A8485A /* FavouriteCitiesRouter.swift in Sources */,
+				BAAE1B2323A3C2AB00DA22C9 /* URLComponentsExtension.swift in Sources */,
 				BAF3A193237B25880093420E /* CityListRouter.swift in Sources */,
 				BAF20D4D2399424E00A8485A /* FavouriteCitiesTableViewCell.swift in Sources */,
 				BAED7AB72384792000790744 /* CityForecastPresenter.swift in Sources */,

@@ -13,11 +13,15 @@ struct APIConstants {
     //OpenDataSoft
     static let odsURL = "public.opendatasoft.com"
     static let odsPath = "/api/records/1.0/search/"
-    static let odsQueryItems = [URLQueryItem(name: "dataset", value: "worldcitiespop"),
-                                     URLQueryItem(name: "lang", value: "pl"),
-                                     URLQueryItem(name: "sort", value: "population"),
-                                     URLQueryItem(name: "facet", value: "country"),
-                                     URLQueryItem(name: "refine.country", value: "pl")]
+
+    //FIXME: To be removed after proper setup
+    static let odsQueryParams: [String: String] = [
+        "dataset": "worldcitiespop",
+        "lang": "pl",
+        "sort": "population",
+        "facet": "country",
+        "refine.country": "pl"
+    ]
 
     //DarkSky
     static let dsURL =  "https://api.darksky.net"

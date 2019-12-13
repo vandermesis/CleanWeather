@@ -27,9 +27,9 @@ struct Request<T> {
 
     let url: String
     let path: String
-    let scheme: Scheme.RawValue
-    let method: HTTPMethod
-    let parameters: [URLQueryItem]?
+    let scheme: String
+    let method: String
+    let parameters: [String: String]?
     let parameterEncoding: Encoding
     let completion: CompletionCompletion?
 
@@ -37,13 +37,13 @@ struct Request<T> {
          path: String,
          scheme: Scheme = .https,
          method: HTTPMethod = .get,
-         parameters: [URLQueryItem]? = nil,
+         parameters: [String: String]? = nil,
          parameterEncoding: Encoding = .json,
          completion: CompletionCompletion? = nil) {
         self.url = url
         self.path = path
         self.scheme = scheme.rawValue
-        self.method = method
+        self.method = method.rawValue
         self.parameters = parameters
         self.parameterEncoding = parameterEncoding
         self.completion = { result in
