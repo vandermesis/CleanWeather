@@ -11,19 +11,17 @@ import Foundation
 final class APIClient {
 
     private let defaultSession = URLSession(configuration: .default)
-    private let path = "/api/records/1.0/search/"
 
     private var dataTask: URLSessionTask?
     
-    func perform(request: Request) {
+    func perform<T>(request: Request<T>) {
 
         var urlComponents = URLComponents()
-        var allCities = [City]()
 
-        urlComponents.scheme = "https"
+        urlComponents.scheme = request.scheme
         urlComponents.host = request.url
-        urlComponents.queryItems = Parameters.queryItems
-        urlComponents.path = path
+        urlComponents.queryItems = request.parameters
+        urlComponents.path = request.path
 
         guard let url = urlComponents.url else { fatalError("no url") }
 
@@ -44,9 +42,5 @@ final class APIClient {
             }
         }
         dataTask?.resume()
-
-        DispatchQueue.main.async {
-            request.completion?(.success(allCities))
-        }
     }
 }

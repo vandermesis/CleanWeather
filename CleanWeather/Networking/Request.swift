@@ -8,11 +8,12 @@
 
 import Foundation
 
+enum Scheme: String {
+    case https
+}
+
 enum HTTPMethod: String {
     case get
-    case post
-    case put
-    case delete
 }
 
 enum Encoding: String {
@@ -20,49 +21,35 @@ enum Encoding: String {
     case xml
 }
 
-struct Request {
+struct Request<T> {
 
-    typealias CompletionCompletion = (Result<[City], Error>) -> Void
+    typealias CompletionCompletion = (Result<T, Error>) -> Void
 
     let url: String
+    let path: String
+    let scheme: Scheme.RawValue
     let method: HTTPMethod
-    let parameters: Parameters?
+    let parameters: [URLQueryItem]?
     let parameterEncoding: Encoding
-    let log: Bool
-    let requireAuthorization: Bool
-    let isMultipartRequest: Bool
-    let isCurityRefreshingRequest: Bool
     let completion: CompletionCompletion?
 
     init(url: String,
+         path: String,
+         scheme: Scheme = .https,
          method: HTTPMethod = .get,
-         parameters: Parameters? = nil,
+         parameters: [URLQueryItem]? = nil,
          parameterEncoding: Encoding = .json,
-         log: Bool = true,
-         requireAuthorization: Bool = false,
-         isMultipartRequest: Bool = false,
-         isCurityRefreshingRequest: Bool = false,
          completion: CompletionCompletion? = nil) {
-        let absoluteUrl = url.appendBackendUrlIfNeeded()
-        self.url = absoluteUrl
+        self.url = url
+        self.path = path
+        self.scheme = scheme.rawValue
         self.method = method
         self.parameters = parameters
         self.parameterEncoding = parameterEncoding
-        self.log = log
-        self.requireAuthorization = requireAuthorization
-        self.isMultipartRequest = isMultipartRequest
-        self.isCurityRefreshingRequest = isCurityRefreshingRequest
         self.completion = { result in
             DispatchQueue.main.async {
                 completion?(result)
             }
         }
-    }
-}
-
-extension String {
-    func appendBackendUrlIfNeeded() -> String {
-        // Some logic
-        return self
     }
 }

@@ -59,9 +59,8 @@
 		BA3C10B123A05933003E0B7D /* Mock+City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C10B023A05933003E0B7D /* Mock+City.swift */; };
 		BA3C10B323A065E7003E0B7D /* Mock+Favourite+City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C10B223A065E7003E0B7D /* Mock+Favourite+City.swift */; };
 		BA3E9BA223A2ADDC009F695C /* BaseNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */; };
-		BA3E9BA423A2B06B009F695C /* APIUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA323A2B06A009F695C /* APIUrls.swift */; };
+		BA3E9BA423A2B06B009F695C /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA323A2B06A009F695C /* APIConstants.swift */; };
 		BA3E9BA623A2B151009F695C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA523A2B151009F695C /* Request.swift */; };
-		BA3E9BA823A2B4F3009F695C /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA723A2B4F3009F695C /* Parameters.swift */; };
 		BA3E9BAC23A303BE009F695C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BAB23A303BE009F695C /* APIClient.swift */; };
 		BA4A904D2374905500753E39 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4A904C2374905500753E39 /* Colors.xcassets */; };
 		BA53A9C5238F297E0024F205 /* CityForecastDisplayableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53A9C4238F297E0024F205 /* CityForecastDisplayableTests.swift */; };
@@ -232,9 +231,8 @@
 		BA3C10B023A05933003E0B7D /* Mock+City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+City.swift"; sourceTree = "<group>"; };
 		BA3C10B223A065E7003E0B7D /* Mock+Favourite+City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mock+Favourite+City.swift"; sourceTree = "<group>"; };
 		BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworking.swift; sourceTree = "<group>"; };
-		BA3E9BA323A2B06A009F695C /* APIUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrls.swift; sourceTree = "<group>"; };
+		BA3E9BA323A2B06A009F695C /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		BA3E9BA523A2B151009F695C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		BA3E9BA723A2B4F3009F695C /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		BA3E9BAB23A303BE009F695C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		BA4A904C2374905500753E39 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BA53A9C4238F297E0024F205 /* CityForecastDisplayableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastDisplayableTests.swift; sourceTree = "<group>"; };
@@ -403,12 +401,11 @@
 			isa = PBXGroup;
 			children = (
 				BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */,
-				BA3E9BA723A2B4F3009F695C /* Parameters.swift */,
-				BA3E9BA523A2B151009F695C /* Request.swift */,
-				BA3E9BA323A2B06A009F695C /* APIUrls.swift */,
 				BA3E9BAB23A303BE009F695C /* APIClient.swift */,
+				BA3E9BA523A2B151009F695C /* Request.swift */,
 				609DA54523743F5600C5773D /* PeopleNetworking.swift */,
 				BAF3A187237B170A0093420E /* WeatherNetworking.swift */,
+				BA3E9BA323A2B06A009F695C /* APIConstants.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1059,7 +1056,6 @@
 				BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */,
 				BAF20D4723992FC900A8485A /* FavouriteCitiesRouter.swift in Sources */,
 				BAF3A193237B25880093420E /* CityListRouter.swift in Sources */,
-				BA3E9BA823A2B4F3009F695C /* Parameters.swift in Sources */,
 				BAF20D4D2399424E00A8485A /* FavouriteCitiesTableViewCell.swift in Sources */,
 				BAED7AB72384792000790744 /* CityForecastPresenter.swift in Sources */,
 				BAED7AB0238469CA00790744 /* CityForecastController.swift in Sources */,
@@ -1086,7 +1082,7 @@
 				BAF20D51239950A900A8485A /* FavouriteCitiesListDisplayable.swift in Sources */,
 				60EAC79A2374413B00E48021 /* PeopleListInteractor.swift in Sources */,
 				BAF3A18F237B23CD0093420E /* CityListPresenter.swift in Sources */,
-				BA3E9BA423A2B06B009F695C /* APIUrls.swift in Sources */,
+				BA3E9BA423A2B06B009F695C /* APIConstants.swift in Sources */,
 				BAAD0BAC239455B800ED804E /* CityHistorical.swift in Sources */,
 				BA960AFA238720C2009A69C9 /* DoubleExtension.swift in Sources */,
 				BAF0DBFB2393E4EE000F63B0 /* CityHistoricalPresenter.swift in Sources */,

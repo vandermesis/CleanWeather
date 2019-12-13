@@ -120,7 +120,7 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     }
 
     func fetchCities(completion: FetchCitiesCompletion?) {
-        let httpRequest = Request(url: APIUrls.opendata, method: .get, completion: completion)
+        let httpRequest = Request<Any>(url: APIConstants.odsURL, path: APIConstants.odsPath, parameters: APIConstants.odsQueryItems)
         client.perform(request: httpRequest)
 
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
