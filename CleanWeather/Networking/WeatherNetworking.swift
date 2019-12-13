@@ -120,7 +120,13 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     }
 
     func fetchCities(completion: FetchCitiesCompletion?) {
-        let httpRequest = Request<Any>(url: APIConstants.odsURL, path: APIConstants.odsPath, parameters: APIConstants.odsQueryParams)
+        let httpRequest = Request<Any>(url: "https://public.opendatasoft.com",
+                                       path: "/api/records/1.0/search/",
+                                       parameters: ["dataset": "worldcitiespop",
+                                                    "lang": "pl",
+                                                    "sort": "population",
+                                                    "facet": "country",
+                                                    "refine.country": "pl"])
         client.perform(request: httpRequest)
 
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

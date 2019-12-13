@@ -13,23 +13,24 @@ final class APIClient {
     private let defaultSession = URLSession(configuration: .default)
 
     private var dataTask: URLSessionTask?
+    private var urlComponents = URLComponents()
     
     func perform<T>(request: Request<T>) {
 
-        var urlComponents = URLComponents()
+        let apiURL = request.url
 
-        urlComponents.scheme = request.scheme
-        urlComponents.host = request.url
         urlComponents.path = request.path
         if let parameters = request.parameters {
             urlComponents.setQueryItems(with: parameters)
         }
         
-        guard let url = urlComponents.url else { fatalError("no url") }
+        guard let url = urlComponents.url?.absoluteString else { return }
+        let compoundURL = apiURL + url
+        guard let absoluteURL = URL(string: compoundURL) else { return }
 
-        print(url.absoluteString)
+        print(absoluteURL)
 
-        dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
+        dataTask = defaultSession.dataTask(with: absoluteURL) { [weak self] data, response, error in
 
             defer {
                 self?.dataTask = nil
