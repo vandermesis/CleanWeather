@@ -20,7 +20,7 @@ protocol WeatherNetworking {
     func fetchCities(completion: FetchCitiesCompletion?)
 }
 
-final class WeatherNetworkingImpl: WeatherNetworking {
+final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     
     //TODO: Build networking and remove mock
     
@@ -120,18 +120,20 @@ final class WeatherNetworkingImpl: WeatherNetworking {
     }
 
     func fetchCities(completion: FetchCitiesCompletion?) {
+        let httpRequest = Request(url: APIUrls.opendata, method: .get, completion: completion)
+        client.perform(request: httpRequest)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion?(Result.success([
-            City(id: "13803CB5-42DA-46CD-8CE2-0B31C34CDB9F", name: "Katowice", latitude: 50.2605, longitude: 19.0159),
-            City(id: "CED7073D-B70C-4F25-A5C7-817827112286", name: "New York", latitude: 40.730610, longitude: -73.935242),
-            City(id: "9DA9F26C-579E-402A-88B0-E5138F79EF28", name: "Gdańsk", latitude: 54.372158, longitude: 18.638306),
-            City(id: "627314F6-7720-4C92-A331-51B3A4E1C916", name: "Tokyo", latitude: 35.652832, longitude: 139.839478),
-            City(id: "5E36DA9F-F4FA-4213-A54B-2D6902FC61B5", name: "Ljubliana", latitude: 50.2605, longitude: 19.0159),
-            City(id: "F87F6F82-3B17-4964-B45C-FDA0A1469792", name: "Berlin", latitude: 40.730610, longitude: -73.935242),
-            City(id: "5709509B-2333-409F-AC79-1EF65DD0E6B9", name: "Shanghai", latitude: 54.372158, longitude: 18.638306),
-            City(id: "0D39A3C2-67BF-4EB7-8926-F3F1381A398E", name: "Sydney", latitude: 35.652832, longitude: 139.839478)
-            ]))
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            completion?(Result.success([
+//            City(id: "13803CB5-42DA-46CD-8CE2-0B31C34CDB9F", name: "Katowice", latitude: 50.2605, longitude: 19.0159),
+//            City(id: "CED7073D-B70C-4F25-A5C7-817827112286", name: "New York", latitude: 40.730610, longitude: -73.935242),
+//            City(id: "9DA9F26C-579E-402A-88B0-E5138F79EF28", name: "Gdańsk", latitude: 54.372158, longitude: 18.638306),
+//            City(id: "627314F6-7720-4C92-A331-51B3A4E1C916", name: "Tokyo", latitude: 35.652832, longitude: 139.839478),
+//            City(id: "5E36DA9F-F4FA-4213-A54B-2D6902FC61B5", name: "Ljubliana", latitude: 50.2605, longitude: 19.0159),
+//            City(id: "F87F6F82-3B17-4964-B45C-FDA0A1469792", name: "Berlin", latitude: 40.730610, longitude: -73.935242),
+//            City(id: "5709509B-2333-409F-AC79-1EF65DD0E6B9", name: "Shanghai", latitude: 54.372158, longitude: 18.638306),
+//            City(id: "0D39A3C2-67BF-4EB7-8926-F3F1381A398E", name: "Sydney", latitude: 35.652832, longitude: 139.839478)
+//            ]))
+//        }
     }
 }
