@@ -19,13 +19,13 @@ struct Request<T> {
     let url: String
     let path: String
     let method: String
-    let parameters: [String: String]?
+    let parameters: [String: Any]?
     let completion: CompletionCompletion?
 
     init(url: String,
          path: String,
          method: HTTPMethod = .get,
-         parameters: [String: String]? = nil,
+         parameters: [String: Any]? = nil,
          completion: CompletionCompletion? = nil) {
         self.url = url
         self.path = path

@@ -20,8 +20,9 @@ final class APIClient {
         let apiURL = request.url
 
         urlComponents.path = request.path
+
         if let parameters = request.parameters {
-            urlComponents.setQueryItems(with: parameters)
+            urlComponents.queryItemsDictionary = parameters
         }
         
         guard let url = urlComponents.url?.absoluteString else { return }
