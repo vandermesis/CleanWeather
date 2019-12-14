@@ -12,23 +12,20 @@ enum HTTPMethod: String {
     case get
 }
 
-struct Request<T> {
+struct Request<T: Codable> {
 
-    typealias CompletionCompletion = (Result<T, Error>) -> Void
+    typealias CodableAPICompletion = (Result<T, Error>) -> Void
 
     let url: String
-    let path: String
     let method: String
     let parameters: [String: Any]?
-    let completion: CompletionCompletion?
+    let completion: CodableAPICompletion?
 
     init(url: String,
-         path: String,
-         method: HTTPMethod = .get,
-         parameters: [String: Any]? = nil,
-         completion: CompletionCompletion? = nil) {
+         method: HTTPMethod, // to bym nei robil opcjonalne, niech to bedzie wymuszane
+         parameters: [String: Any]? = nil, // parametry są opcjonalne wiec podawać nei trzeba
+         completion: CodableAPICompletion? = nil) {
         self.url = url
-        self.path = path
         self.method = method.rawValue
         self.parameters = parameters
         self.completion = { result in

@@ -15,6 +15,7 @@
 		609DA54A237440BA00C5773D /* PeopleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA548237440BA00C5773D /* PeopleListController.swift */; };
 		609DA54B237440BA00C5773D /* PeopleListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609DA549237440BA00C5773D /* PeopleListController.xib */; };
 		609DA54D237440C800C5773D /* PeopleListCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA54C237440C800C5773D /* PeopleListCreator.swift */; };
+		60D4AC6323A5101400D591BB /* CitiesAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D4AC6223A5101400D591BB /* CitiesAPIResponse.swift */; };
 		60DDA2152388410600EF9898 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2142388410600EF9898 /* Mock.swift */; };
 		60DDA2172388413500EF9898 /* Mock+Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2162388413500EF9898 /* Mock+Person.swift */; };
 		60DDA2192388421E00EF9898 /* FakePeopleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2182388421E00EF9898 /* FakePeopleListRouter.swift */; };
@@ -181,6 +182,7 @@
 		609DA548237440BA00C5773D /* PeopleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListController.swift; sourceTree = "<group>"; };
 		609DA549237440BA00C5773D /* PeopleListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleListController.xib; sourceTree = "<group>"; };
 		609DA54C237440C800C5773D /* PeopleListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListCreator.swift; sourceTree = "<group>"; };
+		60D4AC6223A5101400D591BB /* CitiesAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesAPIResponse.swift; sourceTree = "<group>"; };
 		60DDA2142388410600EF9898 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		60DDA2162388413500EF9898 /* Mock+Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+Person.swift"; sourceTree = "<group>"; };
 		60DDA2182388421E00EF9898 /* FakePeopleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePeopleListRouter.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 		609DA53F23743DEA00C5773D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				60D4AC6423A5103100D591BB /* APIResponses */,
 				609DA54323743E2D00C5773D /* Person.swift */,
 				BAC45BAE23986E8F0008E87D /* City.swift */,
 				BAF3A185237B10970093420E /* CityWeather.swift */,
@@ -402,12 +405,9 @@
 		609DA54123743DF100C5773D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */,
-				BA3E9BAB23A303BE009F695C /* APIClient.swift */,
-				BA3E9BA523A2B151009F695C /* Request.swift */,
 				609DA54523743F5600C5773D /* PeopleNetworking.swift */,
 				BAF3A187237B170A0093420E /* WeatherNetworking.swift */,
-				BA3E9BA323A2B06A009F695C /* APIConstants.swift */,
+				60D4AC6123A506BB00D591BB /* Base */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -440,6 +440,25 @@
 				60EAC79F2374418100E48021 /* PeopleListRouter.swift */,
 			);
 			path = PeopleList;
+			sourceTree = "<group>";
+		};
+		60D4AC6123A506BB00D591BB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */,
+				BA3E9BA523A2B151009F695C /* Request.swift */,
+				BA3E9BAB23A303BE009F695C /* APIClient.swift */,
+				BA3E9BA323A2B06A009F695C /* APIConstants.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		60D4AC6423A5103100D591BB /* APIResponses */ = {
+			isa = PBXGroup;
+			children = (
+				60D4AC6223A5101400D591BB /* CitiesAPIResponse.swift */,
+			);
+			path = APIResponses;
 			sourceTree = "<group>";
 		};
 		60DDA213238840FD00EF9898 /* Mocks */ = {
@@ -1089,6 +1108,7 @@
 				BA3E9BA423A2B06B009F695C /* APIConstants.swift in Sources */,
 				BAAD0BAC239455B800ED804E /* CityHistorical.swift in Sources */,
 				BA960AFA238720C2009A69C9 /* DoubleExtension.swift in Sources */,
+				60D4AC6323A5101400D591BB /* CitiesAPIResponse.swift in Sources */,
 				BAF0DBFB2393E4EE000F63B0 /* CityHistoricalPresenter.swift in Sources */,
 				BAF0DBF92393E22B000F63B0 /* CityHistoricalWorker.swift in Sources */,
 				606B800C2383FDCC00C8B952 /* AlertPresentable.swift in Sources */,
