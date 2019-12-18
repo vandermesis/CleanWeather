@@ -9,13 +9,16 @@
 import Foundation
 
 protocol CityListInteractor {
+    func getFavouriteCities()
     func getCitiesWeather()
     func didSelectCityCell(id: String)
     func didPressAddButton()
+
 }
 
 final class CityListInteractorImpl {
-    
+
+    private var favouriteCities = [City]()
     private var cityWeather = [CityWeather]()
     
     private let presenter: CityListPresenter
@@ -32,7 +35,27 @@ final class CityListInteractorImpl {
 }
 
 extension CityListInteractorImpl: CityListInteractor {
-    
+
+    func getFavouriteCities() {
+        presenter.toggleSpinner(true)
+        worker.fetchFavouriteCities { [weak self] result in
+            self?.presenter.toggleSpinner(false)
+            switch result {
+            case .success(let favourites):
+                guard let self = self else { return }
+                self.favouriteCities = favourites
+
+                //TODO: To be rebuild when proper networking for getCitiesWeather will be added
+                let temporaryConversion = favourites.map { CityWeather(id: $0.id, city: $0.name, temperature: 13, icon: "partly-cloudy-day")}
+
+                self.presenter.presentCitiesWeather(citiesWeather: temporaryConversion)
+            case .failure(let error):
+                self?.presenter.presentError(error)
+            }
+        }
+    }
+
+    //TODO: To be rebuild when proper networking for getCitiesWeather will be added
     func getCitiesWeather() {
         presenter.toggleSpinner(true)
         worker.fetchCityWeather { [weak self] result in

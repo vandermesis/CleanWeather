@@ -11,9 +11,12 @@ import Foundation
 struct CityListCreator {
     
     func getController() -> CityListController {
-        
+
+        let userDefaults = UserDefaults.standard
+        let jsonHelper = SerializerHelper.shared
+        let database = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
         let networking = WeatherNetworkingImpl()
-        let worker = CityListWorkerImpl(networking: networking)
+        let worker = CityListWorkerImpl(networking: networking, database: database)
         let router = CityListRouterImpl()
         let presenter = CityListPresenterImpl<CityListController>()
         let interactor = CityListInteractorImpl(presenter: presenter,
