@@ -14,6 +14,10 @@
 "serializerError" = "Serializer Error";
 "userDefaultsError" = "User Defaults Error";
 "dataSourceError" = "Cell DataSource Error";
+"apiError" = "Api responded with Error";
+"invalidURL" = "Invalid URL";
+"missingApiResponse" = "Api not responded";
+"missingApiData" = "Api responded with no data";
 
 // Titles
 "cleanWeather" = "CleanWeather";
@@ -24,4 +28,3 @@
 // Alerts
 "addCity" = "Add new City";
 "ok" = "OK";
-

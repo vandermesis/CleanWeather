@@ -11,13 +11,13 @@ import Foundation
 typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
 typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
 typealias FetchHistoricalCompletion = (Result<CityHistorical, Error>) -> Void
-typealias FetchCitiesCompletion = (Result<[City], Error>) -> Void
+typealias FetchCitiesResponseCompletion = (Result<CitiesAPIResponse, Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
     func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
     func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?)
-    func fetchCities(completion: FetchCitiesCompletion?)
+    func fetchCities(completion: FetchCitiesResponseCompletion?)
 }
 
 final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
@@ -119,13 +119,8 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
         }
     }
     
-    func fetchCities(completion: FetchCitiesCompletion?) {
+    func fetchCities(completion: FetchCitiesResponseCompletion?) {
         let url = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=worldcitiespop&lang=pl&sort=population&facet=country&refine.country=pl"
-        
-        // w RESTowym API parametry mozna przekazywać na dwojaki sposób, albo URLU i tak się dzieje jak robimy GETa, bo GET nie ma body
-        // jak jest POST to mozna parametry zserializowac w JSONA i wyslac je w body
-        // ogolnie dobrze jest zrobic tez zeby nie bylo tak jak jest teraz i wrzucic te urlcomponents, ale chyba na poczatku mozna to zostawic
-        // ja nie uzywam w ogole query items i components
         let httpRequest = Request(url: url, method: .get, completion: completion)
         client.perform(request: httpRequest)
     }
