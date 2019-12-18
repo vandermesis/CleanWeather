@@ -46,7 +46,10 @@ extension CityListInteractorImpl: CityListInteractor {
                 self.favouriteCities = favourites
 
                 //TODO: To be rebuild when proper networking for getCitiesWeather will be added
-                let temporaryConversion = favourites.map { CityWeather(id: $0.id, city: $0.name, temperature: 13, icon: "partly-cloudy-day")}
+                let temporaryConversion = favourites.map { CityWeather(id: $0.id,
+                                                                       city: $0.name,
+                                                                       temperature: 13,
+                                                                       icon: "partly-cloudy-day")}
 
                 self.presenter.presentCitiesWeather(citiesWeather: temporaryConversion)
             case .failure(let error):
@@ -71,8 +74,15 @@ extension CityListInteractorImpl: CityListInteractor {
     }
     
     func didSelectCityCell(id: String) {
-        guard let weather = cityWeather.first(where: { $0.id == id }) else { return }
-        router.navigateToCityForecast(cityWeather: weather)
+        guard let weather = favouriteCities.first(where: { $0.id == id }) else { return }
+
+        //TODO: To be rebuild when proper networking for getCitiesWeather will be added
+        let temporaryConversion = CityWeather(id: weather.id,
+                                              city: weather.name,
+                                              temperature: -13,
+                                              icon: "partly-cloudy-day")
+
+        router.navigateToCityForecast(cityWeather: temporaryConversion)
     }
 
     func didPressAddButton() {

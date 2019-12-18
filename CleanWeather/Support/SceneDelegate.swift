@@ -15,6 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
+        //TODO: To be removed when not needed
+        let repositoryFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        print(repositoryFilePath?.absoluteString as Any)
+
         let startingController = setupStartingController()
         displayStartingController(controller: startingController, at: windowScene)
     }

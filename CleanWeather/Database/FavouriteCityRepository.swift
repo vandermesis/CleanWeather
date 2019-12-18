@@ -31,10 +31,6 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
 
-        //TODO: To be removed when not needed
-        let repositoryFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        print(repositoryFilePath?.absoluteString as Any)
-
         let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey)
 
         if savedCities == nil {

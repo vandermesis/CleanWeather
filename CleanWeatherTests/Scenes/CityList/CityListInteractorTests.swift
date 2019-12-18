@@ -134,18 +134,18 @@ final class CityListInteractorTests: QuickSpec {
         describe("selecting city cell") {
 
             beforeEach {
-                interactor.getCitiesWeather()
-                worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
+                interactor.getFavouriteCities()
+                worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
             }
 
             context("on valid id tapped") {
 
                 beforeEach {
-                    interactor.didSelectCityCell(id: Mock.cityWeather4.id)
+                    interactor.didSelectCityCell(id: Mock.favouriteity2.id)
                 }
 
                 it("should call router to navigate to city details") {
-                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal(Mock.cityWeather4.city))
+                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal(Mock.favouriteity2.name))
                 }
             }
 
