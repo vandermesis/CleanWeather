@@ -27,6 +27,58 @@ final class CityListInteractorTests: QuickSpec {
             interactor = CityListInteractorImpl(presenter: presenter, worker: worker, router: router)
         }
 
+        describe("getting favourite cities") {
+
+            beforeEach {
+                interactor.getFavouriteCities()
+            }
+
+            it("should call presenter to show spinner") {
+                expect(presenter.toggleSpinnerStateCalled).to(beTrue())
+            }
+
+            it("should call worker to get cities") {
+                expect(worker.fetchCityFavouriteCitiesCalled).to(beTrue())
+            }
+
+            context("on success response") {
+
+                beforeEach {
+                    worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                }
+
+                it("should call presenter to display valid cities") {
+                    expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
+                    expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.favouriteCities.count))
+                }
+
+                it("should not call presenter to display any alert") {
+                    expect(presenter.presentAlertMessageCalled).to(beNil())
+                    expect(presenter.presentAlertTitleCalled).to(beNil())
+                    expect(presenter.presentErrorCalled).to(beNil())
+                }
+            }
+
+            context("on failure response") {
+
+                beforeEach {
+                    worker.fetchCityFavouriteCitiesCompletion?(.failure(UnitTestError()))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                }
+
+                it("should call presenter to display error") {
+                    expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
+                }
+            }
+        }
+
         describe("getting cities") {
 
             beforeEach {

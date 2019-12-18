@@ -33,7 +33,7 @@ extension FavouriteCityRepositoryImpl: FavouriteCityRepository {
 
         //TODO: To be removed when not needed
         let repositoryFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        print(repositoryFilePath?.absoluteString)
+        print(repositoryFilePath?.absoluteString as Any)
 
         let savedCities = defaults.object(forKey: .favouriteCityRepositoryKey)
 
