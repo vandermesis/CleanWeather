@@ -33,7 +33,6 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
         networking.fetchCities { result in
             switch result {
             case .success(let apiResponse):
-                print(apiResponse)
                 let allCities = apiResponse.records.map { City(id: $0.recordid,
                                                                name: $0.fields.accentcity,
                                                                latitude: $0.fields.latitude,
