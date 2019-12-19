@@ -54,8 +54,8 @@ final class CityHistoricalInteractorTests: QuickSpec {
             }
 
             it("should call worker to fetch historical weather") {
-                //TODO: Change to Mock.cityWeather1.id after proper setup of DB and removing networking mock
-                expect(worker.fetchCityHistoricalWeatherIdCalled).to(equal(Mock.cityWeather1.city))
+                expect(worker.fetchCityHistoricalWeatherCalled).to(beTrue())
+                expect(worker.fetchCityHistoricalWeatherCityDetailsCalled).to(beAKindOf(CityWeather.self))
                 expect(worker.fetchCityHistoricalWeatherDateCalled).to(beAKindOf(Date.self))
             }
 

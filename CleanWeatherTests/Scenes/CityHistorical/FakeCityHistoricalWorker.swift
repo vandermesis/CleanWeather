@@ -12,12 +12,14 @@ import Foundation
 
 final class FakeCityHistoricalWorker: CityHistoricalWorker {
 
-    var fetchCityHistoricalWeatherIdCalled: String?
+    var fetchCityHistoricalWeatherCalled: Bool?
+    var fetchCityHistoricalWeatherCityDetailsCalled: CityWeather?
     var fetchCityHistoricalWeatherDateCalled: Date?
     var fetchCityHistoricalWeatherCompletion: FetchHistoricalCompletion?
 
-    func fetchCityHistoricalWeather(id: String, date: Date, completion: FetchHistoricalCompletion?) {
-        fetchCityHistoricalWeatherIdCalled = id
+    func fetchCityHistoricalWeather(cityDetails: CityWeather, date: Date, completion: FetchHistoricalCompletion?) {
+        fetchCityHistoricalWeatherCalled = true
+        fetchCityHistoricalWeatherCityDetailsCalled = cityDetails
         fetchCityHistoricalWeatherDateCalled = date
         fetchCityHistoricalWeatherCompletion = completion
     }
