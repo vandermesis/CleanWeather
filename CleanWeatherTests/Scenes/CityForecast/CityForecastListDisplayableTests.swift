@@ -27,10 +27,9 @@ final class CityForecastListDisplayableTests: QuickSpec {
                 expect(cityForecastListDisplayable.id).to(equal("c1f2934e-b2f4-47d2-961f-22c72d2411b5"))
             }
 
-            //FIXME: Uncomment after hour conversion fix
-//            it("should return valid hour string") {
-//                expect(cityForecastListDisplayable.hour).to(equal("15:00"))
-//            }
+            it("should return valid hour string") {
+                expect(cityForecastListDisplayable.hour).to(equal("13:00"))
+            }
 
             it("should return valid rounded temp with degree sign") {
                 expect(cityForecastListDisplayable.temp).to(equal("14°"))

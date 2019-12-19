@@ -26,7 +26,6 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?) {
 
-        //TODO: Change random id to ids matching cities from favourite cities
         var randomId: String {
             let id = UUID()
             return id.uuidString
@@ -72,7 +71,6 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
         let urlPath = "https://api.darksky.net/forecast/598abc19ca5e8af71b5f7110f11d1ccf/"
         let urlParams = "?exclude=minutely,flags,alerts&lang=en&units=si"
         let httpRequest = Request(url: urlPath + coordinates + urlParams, method: .get, completion: completion)
-        print(httpRequest.url)
         client.perform(request: httpRequest)
     }
 
