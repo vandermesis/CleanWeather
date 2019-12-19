@@ -48,6 +48,8 @@ extension CityListInteractorImpl: CityListInteractor {
                 //TODO: To be rebuild when proper networking for getCitiesWeather will be added
                 let temporaryConversion = favourites.map { CityWeather(id: $0.id,
                                                                        city: $0.name,
+                                                                       latitude: $0.latitude,
+                                                                       longitude: $0.longitude,
                                                                        temperature: 13,
                                                                        icon: "partly-cloudy-day")}
 
@@ -79,6 +81,8 @@ extension CityListInteractorImpl: CityListInteractor {
         //TODO: To be rebuild when proper networking for getCitiesWeather will be added
         let temporaryConversion = CityWeather(id: weather.id,
                                               city: weather.name,
+                                              latitude: weather.latitude,
+                                              longitude: weather.longitude,
                                               temperature: -13,
                                               icon: "partly-cloudy-day")
 

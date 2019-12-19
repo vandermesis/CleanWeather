@@ -16,7 +16,7 @@ struct CityForecastListDisplayable {
     
     init(object: CityForecast) {
         id = object.id
-        hour = object.hour.hourString
+        hour = String(object.hour)
         temp = object.hourTemp.temperatureString
         precip = object.hourPrecipProbability.percentString
         symbol = object.symbol
