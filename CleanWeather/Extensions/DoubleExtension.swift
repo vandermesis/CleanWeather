@@ -17,4 +17,6 @@ extension Double {
     var percentString: String {
         return "\(Int((self * 100).rounded()))%"
     }
+
+    static let weekInterval: Double = 604800
 }
