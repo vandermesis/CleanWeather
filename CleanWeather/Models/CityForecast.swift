@@ -9,7 +9,7 @@
 struct CityForecast: Codable {
     
     let id: String
-    let forecastHour: Double
+    let forecastDateTimestamp: Double
     let forecastHourTemp: Double
     let forecastHourPrecipProbability: Double
     let icon: String

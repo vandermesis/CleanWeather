@@ -17,7 +17,7 @@ struct CityForecastListDisplayable {
     
     init(object: CityForecast) {
         id = object.id
-        hour = dateFormatter.getHourStringFromUnixTime(timeIntervalSince1970: object.forecastHour,
+        hour = dateFormatter.getHourStringFromUnixTime(timeIntervalSince1970: object.forecastDateTimestamp,
                                                        timezone: .CET,
                                                        format: .hour)
         temp = object.forecastHourTemp.temperatureString

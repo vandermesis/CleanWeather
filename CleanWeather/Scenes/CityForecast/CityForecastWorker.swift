@@ -30,7 +30,7 @@ extension CityForecastWorkerImpl: CityForecastWorker {
             switch result {
             case .success(let apiResponse):
                 let cityHourlyForecast = apiResponse.hourly.data.map { CityForecast(id: coordinates,
-                                                                                    forecastHour: $0.time,
+                                                                                    forecastDateTimestamp: $0.time,
                                                                                     forecastHourTemp: $0.temperature,
                                                                                     forecastHourPrecipProbability: $0.precipProbability,
                                                                                     icon: $0.icon)}
