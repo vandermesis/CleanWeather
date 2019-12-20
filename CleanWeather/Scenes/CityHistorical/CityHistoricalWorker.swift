@@ -27,8 +27,8 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
 
     func fetchCityHistoricalWeather(cityDetails: CityWeather, date: Date, completion: FetchHistoricalCompletion?) {
         let convertedDate = unixFormatDate(date: date)
-        let coordinates = "\(cityDetails.latitude),\(cityDetails.longitude)"
-        networking.fetchHistoricalWeatherForCity(coordinates: coordinates, date: convertedDate) { result in
+        let coordinates = Coordinates(lat: cityDetails.latitude, lon: cityDetails.longitude)
+        networking.fetchHistoricalWeatherForCity(coordinates: coordinates.coordinatesString(), date: convertedDate) { result in
             switch result {
             case .success(let apiResponse):
                 print(apiResponse)
