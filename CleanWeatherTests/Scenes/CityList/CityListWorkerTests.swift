@@ -22,7 +22,7 @@ final class CityListWorkerTests: QuickSpec {
         beforeEach {
             networking = FakeWeatherNetworking()
             repository = FakeFavouriteCityRepository()
-            worker = CityListWorkerImpl(networking: networking, database: repository)
+            worker = CityListWorkerImpl(networking: networking, repository: repository)
         }
 
         describe("fetching favourite cities") {

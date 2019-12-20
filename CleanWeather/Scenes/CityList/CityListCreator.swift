@@ -14,9 +14,9 @@ struct CityListCreator {
 
         let userDefaults = UserDefaults.standard
         let jsonHelper = SerializerHelper.shared
-        let database = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
+        let repository = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
         let networking = WeatherNetworkingImpl()
-        let worker = CityListWorkerImpl(networking: networking, database: database)
+        let worker = CityListWorkerImpl(networking: networking, repository: repository)
         let router = CityListRouterImpl()
         let presenter = CityListPresenterImpl<CityListController>()
         let interactor = CityListInteractorImpl(presenter: presenter,

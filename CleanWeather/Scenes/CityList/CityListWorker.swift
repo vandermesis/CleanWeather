@@ -18,9 +18,9 @@ final class CityListWorkerImpl {
     private let networking: WeatherNetworking
     private let repository: FavouriteCityRepository
 
-    init(networking: WeatherNetworking, database: FavouriteCityRepository) {
+    init(networking: WeatherNetworking, repository: FavouriteCityRepository) {
         self.networking = networking
-        self.repository = database
+        self.repository = repository
     }
 }
 

@@ -9,9 +9,9 @@
 struct CityForecast: Codable {
     
     let id: String
-    let hour: Double
-    let hourTemp: Double
-    let hourPrecipProbability: Double
+    let forecastHour: Double
+    let forecastHourTemp: Double
+    let forecastHourPrecipProbability: Double
     let icon: String
     
     var symbol: WeatherSymbol {

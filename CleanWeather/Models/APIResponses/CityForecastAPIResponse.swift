@@ -8,13 +8,13 @@
 
 struct CityForecastAPIResponse: Codable, Equatable {
 
-    let hourly: Hour
+    let hourly: HourlyForecast
 
-    struct Hour: Codable, Equatable {
+    struct HourlyForecast: Codable, Equatable {
 
-        let data: [WeatherData]
+        let data: [ForecastData]
 
-        struct WeatherData: Codable, Equatable {
+        struct ForecastData: Codable, Equatable {
 
             let time: Double
             let icon: String

@@ -39,10 +39,11 @@ extension CityListInteractorImpl: CityListInteractor {
     func getFavouriteCities() {
         presenter.toggleSpinner(true)
         worker.fetchFavouriteCities { [weak self] result in
-            self?.presenter.toggleSpinner(false)
+            guard let self = self else { return }
+            self.presenter.toggleSpinner(false)
             switch result {
             case .success(let favourites):
-                guard let self = self else { return }
+
                 self.favouriteCities = favourites
 
                 //TODO: To be rebuild when proper networking for getCitiesWeather will be added
@@ -55,7 +56,7 @@ extension CityListInteractorImpl: CityListInteractor {
 
                 self.presenter.presentCitiesWeather(citiesWeather: temporaryConversion)
             case .failure(let error):
-                self?.presenter.presentError(error)
+                self.presenter.presentError(error)
             }
         }
     }

@@ -14,7 +14,7 @@ final class FakeCityForecastWorker: CityForecastWorker {
     var fetchCityHourDetailsListCoordinatesCalled: String?
     var fetchCityHourDetailsListCompletion: FetchForecastCompletion?
 
-    func fetchCityHourDetailsList(coordinates: String, completion: FetchForecastCompletion?) {
+    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?) {
         fetchCityHourDetailsListCalled = true
         fetchCityHourDetailsListCoordinatesCalled = coordinates
         fetchCityHourDetailsListCompletion = completion

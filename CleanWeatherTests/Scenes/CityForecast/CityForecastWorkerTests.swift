@@ -29,7 +29,7 @@ final class CityForecastWorkerTests: QuickSpec {
             var receivedError: Error?
 
             beforeEach {
-                worker.fetchCityHourDetailsList(coordinates: Mock.cityWeather2.id) { result in
+                worker.fetchCityHourlyForecast(coordinates: Mock.cityWeather2.id) { result in
                     switch result {
                     case .success(let cityHourForecast):
                         receivedCityHourDetailsList = cityHourForecast
@@ -46,7 +46,7 @@ final class CityForecastWorkerTests: QuickSpec {
 
             it("should call networking to fetch city hour details list for valid id") {
                 expect(networking.fetchForecastWeatherForCityCalled).to(beTrue())
-                expect(networking.fetchForecastWeatherForCityIdCalled).to(equal(Mock.cityWeather2.id))
+                expect(networking.fetchForecastWeatherForCityCoordinatesCalled).to(equal(Mock.cityWeather2.id))
             }
 
             context("on success response") {
