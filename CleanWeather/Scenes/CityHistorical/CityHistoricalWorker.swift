@@ -26,12 +26,10 @@ final class CityHistoricalWorkerImpl {
 extension CityHistoricalWorkerImpl: CityHistoricalWorker {
 
     func fetchCityHistoricalWeather(cityDetails: CityWeather, date: Date, completion: FetchHistoricalCompletion?) {
-        let convertedDate = unixFormatDate(date: date)
         let coordinates = Coordinates(lat: cityDetails.latitude, lon: cityDetails.longitude)
-        networking.fetchHistoricalWeatherForCity(coordinates: coordinates.coordinatesString(), date: convertedDate) { result in
+        networking.fetchHistoricalWeatherForCity(coordinates: coordinates.coordinatesString(), date: date.timeIntervalSince1970) { result in
             switch result {
             case .success(let apiResponse):
-                print(apiResponse)
                 guard let temp = apiResponse.currently.temperature else {
                     completion?(.failure(MissingAPIData()))
                     return
@@ -45,12 +43,5 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
                 completion?(.failure(error))
             }
         }
-    }
-}
-
-private extension CityHistoricalWorkerImpl {
-
-    private func unixFormatDate(date: Date) -> Double {
-        return date.timeIntervalSince1970
     }
 }
