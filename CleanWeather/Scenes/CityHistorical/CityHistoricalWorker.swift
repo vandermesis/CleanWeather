@@ -28,8 +28,6 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
     func fetchCityHistoricalWeather(cityDetails: CityWeather, date: Date, completion: FetchHistoricalCompletion?) {
         let convertedDate = unixFormatDate(date: date)
         let coordinates = "\(cityDetails.latitude),\(cityDetails.longitude)"
-        let id = cityDetails.id
-        let name = cityDetails.city
         networking.fetchHistoricalWeatherForCity(coordinates: coordinates, date: convertedDate) { result in
             switch result {
             case .success(let apiResponse):
@@ -38,8 +36,8 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
                     completion?(.failure(MissingAPIData()))
                     return
                 }
-                let cityHistoricalWeather = CityHistorical(id: id,
-                                                           city: name,
+                let cityHistoricalWeather = CityHistorical(id: cityDetails.id,
+                                                           city: cityDetails.city,
                                                            temperature: temp,
                                                            icon: apiResponse.currently.icon ?? "")
                 completion?(.success(cityHistoricalWeather))
