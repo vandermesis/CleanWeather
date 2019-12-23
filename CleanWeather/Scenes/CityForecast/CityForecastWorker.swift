@@ -30,9 +30,9 @@ extension CityForecastWorkerImpl: CityForecastWorker {
             switch result {
             case .success(let apiResponse):
                 let cityHourlyForecast = apiResponse.hourly.data.map { CityForecast(id: coordinates,
-                                                                                    forecastDateTimestamp: $0.time,
-                                                                                    forecastHourTemp: $0.temperature,
-                                                                                    forecastHourPrecipProbability: $0.precipProbability,
+                                                                                    dateTimestamp: $0.time,
+                                                                                    temperature: $0.temperature,
+                                                                                    precipProbability: $0.precipProbability,
                                                                                     icon: $0.icon)}
                 completion?(.success(cityHourlyForecast))
             case .failure(let error):

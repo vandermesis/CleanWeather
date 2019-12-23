@@ -17,11 +17,11 @@ struct CityForecastListDisplayable {
     
     init(object: CityForecast) {
         id = object.id
-        hour = dateFormatter.getHourStringFromUnixTime(timeIntervalSince1970: object.forecastDateTimestamp,
+        hour = dateFormatter.getHourStringFromUnixTime(timeIntervalSince1970: object.dateTimestamp,
                                                        timezone: .CET,
                                                        format: .hour)
-        temp = object.forecastHourTemp.temperatureString
-        precip = object.forecastHourPrecipProbability.percentString
+        temp = object.temperature.temperatureString
+        precip = object.precipProbability.percentString
         symbol = object.symbol
     }
 }
