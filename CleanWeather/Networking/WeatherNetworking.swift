@@ -40,7 +40,6 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
         let urlParams = "?exclude=minutely,hourly,daily,flags,alerts&lang=en&units=si"
         let urlDate = ",\(Int(date))"
         let httpRequest = Request(url: darkskyUrlPath + coordinates + urlDate + urlParams, method: .get, completion: completion)
-        print(httpRequest.url)
         client.perform(request: httpRequest)
     }
     

@@ -30,7 +30,6 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
         networking.fetchHistoricalWeatherForCity(coordinates: coordinates.stringValue, date: date.timeIntervalSince1970) { result in
             switch result {
             case .success(let apiResponse):
-                print(apiResponse)
                 guard let temp = apiResponse.currently.temperature else {
                     completion?(.failure(MissingAPIData()))
                     return

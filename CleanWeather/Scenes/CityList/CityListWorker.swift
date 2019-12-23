@@ -34,18 +34,37 @@ extension CityListWorkerImpl: CityListWorker {
 
     func fetchCitiesWeather(cities: [City], completion: FetchWeatherCompletion?) {
 
-        //TODO: Replace with proper logic for all cities
-        let coordinates = Coordinates(lat: 50, lon: 10)
-        
-        networking.fetchCurrentWeatherForCity(coordinates: coordinates.stringValue) { [weak self] result in
+        var counter = 0
+        var citiesWeather = [CityWeather]()
 
-            switch result {
-            case .success(let apiResponse):
-                print(apiResponse)
-            case .failure(let error):
-                completion?(.failure(error))
+        cities.forEach { city in
+            let coordinates = Coordinates(lat: city.latitude, lon: city.longitude)
+            networking.fetchCurrentWeatherForCity(coordinates: coordinates.stringValue) { result in
+                switch result {
+                case .success(let apiResponse):
+                    print(apiResponse)
+                    guard let cityTemp = apiResponse.currently.temperature else {
+                        completion?(.failure(MissingAPIData()))
+                        return
+                    }
+                    let cityWeather = CityWeather(id: city.id,
+                                                  city: city.name,
+                                                  latitude: city.latitude,
+                                                  longitude: city.longitude,
+                                                  temperature: cityTemp,
+                                                  icon: apiResponse.currently.icon ?? "")
+                    citiesWeather.append(cityWeather)
+                    counter += 1
+
+                    if counter == cities.count {
+                        completion?(.success(citiesWeather))
+                    }
+
+                case .failure(let error):
+                    completion?(.failure(error))
+                }
             }
-            
+        }
 //            guard let self = self, case .success(let city) = result else {
 //                completion?(result)
 //                return
@@ -53,7 +72,7 @@ extension CityListWorkerImpl: CityListWorker {
             
 //            let sortedCity = self.sortCity(city: city)
 //            completion?(.success(sortedCity))
-        }
+
     }
 }
 

@@ -72,7 +72,8 @@ private extension APIClient {
         }
         
         if let niceString = data.prettyStringValue {
-            print(niceString)
+            //TODO: Uncomment for niceString
+            //print(niceString)
         }
         
         do {
