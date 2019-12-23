@@ -37,7 +37,6 @@ final class CityListController: SharedViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         interactor.getFavouriteCities()
-        interactor.getCitiesWeather()
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {

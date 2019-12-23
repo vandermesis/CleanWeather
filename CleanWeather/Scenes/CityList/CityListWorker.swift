@@ -42,7 +42,6 @@ extension CityListWorkerImpl: CityListWorker {
             networking.fetchCurrentWeatherForCity(coordinates: coordinates.stringValue) { result in
                 switch result {
                 case .success(let apiResponse):
-                    print(apiResponse)
                     guard let cityTemp = apiResponse.currently.temperature else {
                         completion?(.failure(MissingAPIData()))
                         return
@@ -55,24 +54,15 @@ extension CityListWorkerImpl: CityListWorker {
                                                   icon: apiResponse.currently.icon ?? "")
                     citiesWeather.append(cityWeather)
                     counter += 1
-
                     if counter == cities.count {
-                        completion?(.success(citiesWeather))
+                        let sortedCities = self.sortCity(city: citiesWeather)
+                        completion?(.success(sortedCities))
                     }
-
                 case .failure(let error):
                     completion?(.failure(error))
                 }
             }
         }
-//            guard let self = self, case .success(let city) = result else {
-//                completion?(result)
-//                return
-//            }
-            
-//            let sortedCity = self.sortCity(city: city)
-//            completion?(.success(sortedCity))
-
     }
 }
 

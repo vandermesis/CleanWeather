@@ -10,7 +10,6 @@ import Foundation
 
 protocol CityListInteractor {
     func getFavouriteCities()
-    func getCitiesWeather()
     func didSelectCityCell(id: String)
     func didPressAddButton()
 
@@ -48,8 +47,20 @@ extension CityListInteractorImpl: CityListInteractor {
             }
         }
     }
+    
+    func didSelectCityCell(id: String) {
+        guard let weather = cityWeather.first(where: { $0.id == id }) else { return }
+        router.navigateToCityForecast(cityWeather: weather)
+    }
 
-    func getCitiesWeather() {
+    func didPressAddButton() {
+        router.navigateToFavouriteCities()
+    }
+}
+
+private extension CityListInteractorImpl {
+
+    private func getCitiesWeather() {
         presenter.toggleSpinner(true)
         worker.fetchCitiesWeather(cities: favouriteCities) { [weak self] result in
             guard let self = self else { return }
@@ -62,14 +73,5 @@ extension CityListInteractorImpl: CityListInteractor {
                 self.presenter.presentError(error)
             }
         }
-    }
-    
-    func didSelectCityCell(id: String) {
-        guard let weather = cityWeather.first(where: { $0.id == id }) else { return }
-        router.navigateToCityForecast(cityWeather: weather)
-    }
-
-    func didPressAddButton() {
-        router.navigateToFavouriteCities()
     }
 }
