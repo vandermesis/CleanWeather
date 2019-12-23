@@ -26,7 +26,7 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     
     func fetchCurrentWeatherForCity(coordinates: String, completion: FetchWeatherResponseCompletion?) {
         let urlParams = "?exclude=minutely,hourly,daily,flags,alerts&lang=en&units=si"
-        let httpRequest = Request(url: darkskyUrlPath + urlParams, method: .get, completion: completion)
+        let httpRequest = Request(url: darkskyUrlPath + coordinates + urlParams, method: .get, completion: completion)
         client.perform(request: httpRequest)
     }
     

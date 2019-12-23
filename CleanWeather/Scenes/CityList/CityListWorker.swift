@@ -12,7 +12,7 @@ typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
 
 protocol CityListWorker {
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
-    func fetchCityWeather(completion: FetchWeatherCompletion?)
+    func fetchCitiesWeather(cities: [City], completion: FetchWeatherCompletion?)
 }
 
 final class CityListWorkerImpl {
@@ -32,7 +32,7 @@ extension CityListWorkerImpl: CityListWorker {
         repository.fetchFavouriteCities(completion: completion)
     }
 
-    func fetchCityWeather(completion: FetchWeatherCompletion?) {
+    func fetchCitiesWeather(cities: [City], completion: FetchWeatherCompletion?) {
 
         //TODO: Replace with proper logic for all cities
         let coordinates = Coordinates(lat: 50, lon: 10)
