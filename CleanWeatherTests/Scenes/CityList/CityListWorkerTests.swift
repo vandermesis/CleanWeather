@@ -106,13 +106,13 @@ final class CityListWorkerTests: QuickSpec {
             }
 
             it("shoud call networking to fetch city weather") {
-                expect(networking.fetchCurrentWeatherForAllCitiesCalled).to(beTrue())
+                expect(networking.fetchCurrentWeatherForCityCalled).to(beTrue())
             }
 
             context("on success response") {
 
                 beforeEach {
-                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.success(Mock.citiesWeather))
+                    networking.fetchCurrentWeatherForCityCompletion?(.success(Mock.CityListApiResponse))
                 }
 
                 it("should return cities list") {
@@ -132,7 +132,7 @@ final class CityListWorkerTests: QuickSpec {
             context("on error response") {
 
                 beforeEach {
-                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.failure(UnitTestError()))
+                    networking.fetchCurrentWeatherForCityCompletion?(.failure(UnitTestError()))
                 }
 
                 it("should not return cities list") {

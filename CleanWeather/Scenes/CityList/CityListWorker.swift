@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
+
 protocol CityListWorker {
     func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
     func fetchCityWeather(completion: FetchWeatherCompletion?)
@@ -31,15 +33,26 @@ extension CityListWorkerImpl: CityListWorker {
     }
 
     func fetchCityWeather(completion: FetchWeatherCompletion?) {
-        networking.fetchCurrentWeatherForAllCities { [weak self] result in
-            
-            guard let self = self, case .success(let city) = result else {
-                completion?(result)
-                return
+
+        //TODO: Replace with proper logic for all cities
+        let coordinates = Coordinates(lat: 50, lon: 10)
+        
+        networking.fetchCurrentWeatherForCity(coordinates: coordinates.stringValue) { [weak self] result in
+
+            switch result {
+            case .success(let apiResponse):
+                print(apiResponse)
+            case .failure(let error):
+                completion?(.failure(error))
             }
             
-            let sortedCity = self.sortCity(city: city)
-            completion?(.success(sortedCity))
+//            guard let self = self, case .success(let city) = result else {
+//                completion?(result)
+//                return
+//            }
+            
+//            let sortedCity = self.sortCity(city: city)
+//            completion?(.success(sortedCity))
         }
     }
 }

@@ -10,5 +10,5 @@
 
 extension Mock {
 
-    static let CityHistoricalApiResponse = CityHistoricalAPIResponse(currently: CleanWeather.CityHistoricalAPIResponse.CurrentWeather(temperature: -6.38, icon: "cloudy"))
+    static let CityHistoricalApiResponse = CityHistoricalAPIResponse(currently: CleanWeather.CurrentWeather(temperature: -6.38, icon: "cloudy"))
 }
