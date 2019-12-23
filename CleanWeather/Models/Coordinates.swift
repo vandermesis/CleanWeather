@@ -13,7 +13,7 @@ struct Coordinates {
     var lat: Double
     var lon: Double
 
-    func coordinatesString() -> String {
+    var stringValue: String {
         return "\(lat),\(lon)"
     }
 }

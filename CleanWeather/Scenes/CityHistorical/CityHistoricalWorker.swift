@@ -27,7 +27,7 @@ extension CityHistoricalWorkerImpl: CityHistoricalWorker {
 
     func fetchCityHistoricalWeather(cityDetails: CityWeather, date: Date, completion: FetchHistoricalCompletion?) {
         let coordinates = Coordinates(lat: cityDetails.latitude, lon: cityDetails.longitude)
-        networking.fetchHistoricalWeatherForCity(coordinates: coordinates.coordinatesString(), date: date.timeIntervalSince1970) { result in
+        networking.fetchHistoricalWeatherForCity(coordinates: coordinates.stringValue, date: date.timeIntervalSince1970) { result in
             switch result {
             case .success(let apiResponse):
                 guard let temp = apiResponse.currently.temperature else {

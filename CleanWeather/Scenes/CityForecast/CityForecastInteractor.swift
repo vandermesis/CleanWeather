@@ -41,7 +41,7 @@ extension CityForecastInteractorImpl: CityForecastInteractor {
     func getCityForecast() {
         let coordinates = Coordinates(lat: cityDetails.latitude, lon: cityDetails.longitude)
         presenter.toggleSpinner(true)
-        worker.fetchCityHourlyForecast(coordinates: coordinates.coordinatesString()) { [weak self] result in
+        worker.fetchCityHourlyForecast(coordinates: coordinates.stringValue) { [weak self] result in
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let detailsList):
