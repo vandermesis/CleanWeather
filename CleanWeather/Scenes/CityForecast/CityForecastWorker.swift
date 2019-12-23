@@ -8,8 +8,10 @@
 
 import Foundation
 
+typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
+
 protocol CityForecastWorker {
-    func fetchCityHourDetailsList(id: String, completion: FetchForecastCompletion?)
+    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?)
 }
 
 final class CityForecastWorkerImpl {
@@ -23,7 +25,19 @@ final class CityForecastWorkerImpl {
 
 extension CityForecastWorkerImpl: CityForecastWorker {
     
-    func fetchCityHourDetailsList(id: String, completion: FetchForecastCompletion?) {
-        networking.fetchForecastWeatherForCity(id: id, completion: completion)
+    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?) {
+        networking.fetchForecastWeatherForCity(coordinates: coordinates) { result in
+            switch result {
+            case .success(let apiResponse):
+                let cityHourlyForecast = apiResponse.hourly.data.map { CityForecast(id: coordinates,
+                                                                                    dateTimestamp: $0.time,
+                                                                                    temperature: $0.temperature,
+                                                                                    precipProbability: $0.precipProbability,
+                                                                                    icon: $0.icon)}
+                completion?(.success(cityHourlyForecast))
+            case .failure(let error):
+                completion?(.failure(error))
+            }
+        }
     }
 }

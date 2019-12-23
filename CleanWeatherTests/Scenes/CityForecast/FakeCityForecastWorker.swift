@@ -11,12 +11,12 @@
 final class FakeCityForecastWorker: CityForecastWorker {
 
     var fetchCityHourDetailsListCalled: Bool?
-    var fetchCityHourDetailsListIdCalled: String?
+    var fetchCityHourDetailsListCoordinatesCalled: String?
     var fetchCityHourDetailsListCompletion: FetchForecastCompletion?
 
-    func fetchCityHourDetailsList(id: String, completion: FetchForecastCompletion?) {
+    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?) {
         fetchCityHourDetailsListCalled = true
-        fetchCityHourDetailsListIdCalled = id
+        fetchCityHourDetailsListCoordinatesCalled = coordinates
         fetchCityHourDetailsListCompletion = completion
     }
 }

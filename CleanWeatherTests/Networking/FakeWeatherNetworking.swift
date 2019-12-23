@@ -15,12 +15,12 @@ final class FakeWeatherNetworking: WeatherNetworking {
     var fetchCurrentWeatherForAllCitiesCalled: Bool?
     var fetchCurrentWeatherForAllCitiesCompletion: FetchWeatherCompletion?
     var fetchForecastWeatherForCityCalled: Bool?
-    var fetchForecastWeatherForCityIdCalled: String?
-    var fetchForecastWeatherForCityCompletion: FetchForecastCompletion?
+    var fetchForecastWeatherForCityCoordinatesCalled: String?
+    var fetchForecastWeatherForCityCompletion: FetchForecastResponseCompletion?
     var fetchHistoricalWeatherForCityCalled: Bool?
-    var fetchHistoricalWeatherForCityIdCalled: String?
+    var fetchHistoricalWeatherForCityCoordinatesCalled: String?
     var fetchHistoricalWeatherForCityDateCalled: Double?
-    var fetchHistoricalWeatherForCityCompletion: FetchHistoricalCompletion?
+    var fetchHistoricalWeatherForCityCompletion: FetchHistoricalResponseCompletion?
     var fetchCitiesCalled: Bool?
     var fetchCitiesCompletion: FetchCitiesResponseCompletion?
 
@@ -29,15 +29,15 @@ final class FakeWeatherNetworking: WeatherNetworking {
         fetchCurrentWeatherForAllCitiesCompletion = completion
     }
 
-    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?) {
+    func fetchForecastWeatherForCity(coordinates: String, completion: FetchForecastResponseCompletion?) {
         fetchForecastWeatherForCityCalled = true
-        fetchForecastWeatherForCityIdCalled = id
+        fetchForecastWeatherForCityCoordinatesCalled = coordinates
         fetchForecastWeatherForCityCompletion = completion
     }
 
-    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?) {
+    func fetchHistoricalWeatherForCity(coordinates: String, date: Double, completion: FetchHistoricalResponseCompletion?) {
         fetchHistoricalWeatherForCityCalled = true
-        fetchHistoricalWeatherForCityIdCalled = id
+        fetchHistoricalWeatherForCityCoordinatesCalled = coordinates
         fetchHistoricalWeatherForCityDateCalled = date
         fetchHistoricalWeatherForCityCompletion = completion
     }

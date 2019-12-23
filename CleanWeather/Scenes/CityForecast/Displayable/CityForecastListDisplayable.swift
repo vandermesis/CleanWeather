@@ -7,7 +7,8 @@
 //
 
 struct CityForecastListDisplayable {
-    
+
+    let dateFormatter = DateFormatterHelper.shared
     let id: String
     let hour: String
     let temp: String
@@ -16,9 +17,11 @@ struct CityForecastListDisplayable {
     
     init(object: CityForecast) {
         id = object.id
-        hour = object.hour.hourString
-        temp = object.hourTemp.temperatureString
-        precip = object.hourPrecipProbability.percentString
+        hour = dateFormatter.getHourStringFromUnixTime(timeIntervalSince1970: object.dateTimestamp,
+                                                       timezone: .CET,
+                                                       format: .hour)
+        temp = object.temperature.temperatureString
+        precip = object.precipProbability.percentString
         symbol = object.symbol
     }
 }

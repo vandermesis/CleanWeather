@@ -51,9 +51,9 @@ final class CityForecastInteractorTests: QuickSpec {
                 expect(presenter.toggleSpinnerStateCalled).to(beTrue())
             }
 
-            it("should call worker to fetch city hourly details list for valid id") {
+            it("should call worker to fetch city hourly details list for valid coordinates") {
                 expect(worker.fetchCityHourDetailsListCalled).to(beTrue())
-                expect(worker.fetchCityHourDetailsListIdCalled).to(equal(Mock.cityWeather2.id))
+                expect(worker.fetchCityHourDetailsListCoordinatesCalled).to(equal("40.0,5.0"))
             }
 
             context("on success response") {

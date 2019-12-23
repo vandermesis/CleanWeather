@@ -9,20 +9,27 @@
 import Foundation
 
 protocol CityListWorker {
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?)
     func fetchCityWeather(completion: FetchWeatherCompletion?)
 }
 
 final class CityListWorkerImpl {
-    
+
     private let networking: WeatherNetworking
-    
-    init(networking: WeatherNetworking) {
+    private let repository: FavouriteCityRepository
+
+    init(networking: WeatherNetworking, repository: FavouriteCityRepository) {
         self.networking = networking
+        self.repository = repository
     }
 }
 
 extension CityListWorkerImpl: CityListWorker {
-    
+
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
+        repository.fetchFavouriteCities(completion: completion)
+    }
+
     func fetchCityWeather(completion: FetchWeatherCompletion?) {
         networking.fetchCurrentWeatherForAllCities { [weak self] result in
             

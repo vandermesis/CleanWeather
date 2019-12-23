@@ -39,11 +39,8 @@ extension CityHistoricalInteractorImpl: CityHistoricalInteractor {
     }
 
     func getCityHistoricalWeather(date: Date) {
-        
-        //TODO: Change to cityDetails.id after proper setup of DB and removing networking mock
-        let id = cityDetails.city
         presenter.toggleSpinner(true)
-        worker.fetchCityHistoricalWeather(id: id, date: date) { [weak self] result in
+        worker.fetchCityHistoricalWeather(cityDetails: cityDetails, date: date) { [weak self] result in
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let cityHistorical):

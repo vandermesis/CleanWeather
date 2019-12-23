@@ -17,7 +17,7 @@
 "apiError" = "Api responded with Error";
 "invalidURL" = "Invalid URL";
 "missingApiResponse" = "Api not responded";
-"missingApiData" = "Api responded with no data";
+"missingApiData" = "No data for that request";
 
 // Titles
 "cleanWeather" = "CleanWeather";

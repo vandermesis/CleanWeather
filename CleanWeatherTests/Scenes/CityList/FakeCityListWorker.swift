@@ -12,6 +12,13 @@ final class FakeCityListWorker: CityListWorker {
 
     var fetchCityWeatherCalled: Bool?
     var fetchCityWeatherCompletion: FetchWeatherCompletion?
+    var fetchCityFavouriteCitiesCalled: Bool?
+    var fetchCityFavouriteCitiesCompletion: FetchFavouriteCitiesCompletion?
+
+    func fetchFavouriteCities(completion: FetchFavouriteCitiesCompletion?) {
+        fetchCityFavouriteCitiesCalled = true
+        fetchCityFavouriteCitiesCompletion = completion
+    }
 
     func fetchCityWeather(completion: FetchWeatherCompletion?) {
         fetchCityWeatherCalled = true

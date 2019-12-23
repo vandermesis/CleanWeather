@@ -11,7 +11,7 @@ import Foundation
 struct CityForecastCreator {
     
     func getController(with cityDetails: CityWeather) -> CityForecastController {
-        
+
         let networking = WeatherNetworkingImpl()
         let worker = CityForecastWorkerImpl(networking: networking)
         let router = CityForecastRouterImpl()

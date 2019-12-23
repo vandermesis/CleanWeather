@@ -93,6 +93,7 @@ private extension CityHistoricalController {
         let datePicker = UIDatePicker()
 
         datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date(timeIntervalSinceNow: .weekInterval)
         datePicker.backgroundColor = .systemBackground
         datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
 

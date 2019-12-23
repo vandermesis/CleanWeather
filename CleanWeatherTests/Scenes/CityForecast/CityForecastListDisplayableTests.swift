@@ -28,7 +28,7 @@ final class CityForecastListDisplayableTests: QuickSpec {
             }
 
             it("should return valid hour string") {
-                expect(cityForecastListDisplayable.hour).to(equal("15:00"))
+                expect(cityForecastListDisplayable.hour).to(equal("13:00"))
             }
 
             it("should return valid rounded temp with degree sign") {

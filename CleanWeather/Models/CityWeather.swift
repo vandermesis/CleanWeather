@@ -10,6 +10,8 @@ struct CityWeather: Codable {
     
     let id: String
     let city: String
+    let latitude: Double
+    let longitude: Double
     let temperature: Double
     let icon: String
     

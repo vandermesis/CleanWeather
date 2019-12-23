@@ -9,14 +9,14 @@
 import Foundation
 
 typealias FetchWeatherCompletion = (Result<[CityWeather], Error>) -> Void
-typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
-typealias FetchHistoricalCompletion = (Result<CityHistorical, Error>) -> Void
+typealias FetchForecastResponseCompletion = (Result<CityForecastAPIResponse, Error>) -> Void
+typealias FetchHistoricalResponseCompletion = (Result<CityHistoricalAPIResponse, Error>) -> Void
 typealias FetchCitiesResponseCompletion = (Result<CitiesAPIResponse, Error>) -> Void
 
 protocol WeatherNetworking {
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?)
-    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?)
-    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?)
+    func fetchForecastWeatherForCity(coordinates: String, completion: FetchForecastResponseCompletion?)
+    func fetchHistoricalWeatherForCity(coordinates: String, date: Double, completion: FetchHistoricalResponseCompletion?)
     func fetchCities(completion: FetchCitiesResponseCompletion?)
 }
 
@@ -26,7 +26,6 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     
     func fetchCurrentWeatherForAllCities(completion: FetchWeatherCompletion?) {
 
-        //TODO: Change random id to ids matching cities from favourite cities
         var randomId: String {
             let id = UUID()
             return id.uuidString
@@ -53,6 +52,8 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
             for _ in 0...20 {
                 let cityWeather = CityWeather(id: randomId,
                                               city: randomCity,
+                                              latitude: 50,
+                                              longitude: 10,
                                               temperature: randomTemp,
                                               icon: randomIcon)
                 array.append(cityWeather)
@@ -65,58 +66,20 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
         }
     }
     
-    func fetchForecastWeatherForCity(id: String, completion: FetchForecastCompletion?) {
-    
-        var hour: [Int] {
-            let hours = 0...23
-            return hours.map { $0 }
-        }
-        
-        var randomTemp: Double {
-            return Double.random(in: -30...30)
-        }
-        
-        var randomPrecip: Double {
-            return Double.random(in: 0...1)
-        }
-        
-        var randomIcon: String {
-            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind"]
-            let random = Int.random(in: 0...9)
-            return icon[random]
-        }
-        
-        var randomCityHourDetails: [CityForecast] {
-            var array = [CityForecast]()
-            for i in 0...23 {
-                let cityWeatherHour = CityForecast(id: id, hour: hour[i], hourTemp: randomTemp, hourPrecipProbability: randomPrecip, icon: randomIcon)
-                array.append(cityWeatherHour)
-            }
-            return array
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion?(Result.success(randomCityHourDetails))
-        }
+    func fetchForecastWeatherForCity(coordinates: String, completion: FetchForecastResponseCompletion?) {
+        let urlPath = "https://api.darksky.net/forecast/598abc19ca5e8af71b5f7110f11d1ccf/"
+        let urlParams = "?exclude=currently,minutely,daily,flags,alerts&lang=en&units=si"
+        let httpRequest = Request(url: urlPath + coordinates + urlParams, method: .get, completion: completion)
+        client.perform(request: httpRequest)
     }
 
-    func fetchHistoricalWeatherForCity(id: String, date: Double, completion: FetchHistoricalCompletion?) {
-
-        var randomTemp: Double {
-            return Double.random(in: -30...30)
-        }
-
-        var randomIcon: String {
-            let icon = ["clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "fog", "rain", "sleet", "snow", "wind", "invalid"]
-            let random = Int.random(in: 0...10)
-            return icon[random]
-        }
-
-        let randomHistoricalWeahter = CityHistorical(id: id, city: id, temperature: randomTemp, icon: randomIcon)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion?(Result.success(randomHistoricalWeahter))
-        }
+    func fetchHistoricalWeatherForCity(coordinates: String, date: Double, completion: FetchHistoricalResponseCompletion?) {
+        let urlPath = "https://api.darksky.net/forecast/598abc19ca5e8af71b5f7110f11d1ccf/"
+        let urlParams = "?exclude=minutely,hourly,daily,flags,alerts&lang=en&units=si"
+        let urlDate = ",\(Int(date))"
+        let httpRequest = Request(url: urlPath + coordinates + urlDate + urlParams, method: .get, completion: completion)
+        print(httpRequest.url)
+        client.perform(request: httpRequest)
     }
     
     func fetchCities(completion: FetchCitiesResponseCompletion?) {

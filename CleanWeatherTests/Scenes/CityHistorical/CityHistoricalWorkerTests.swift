@@ -29,7 +29,7 @@ final class CityHistoricalWorkerTests: QuickSpec {
             var receivedError: Error?
 
             beforeEach {
-                worker.fetchCityHistoricalWeather(id: Mock.cityHistorical1.id, date: Date(timeIntervalSince1970: 1358081652.0)) {
+                worker.fetchCityHistoricalWeather(cityDetails: Mock.cityWeather1, date: Date(timeIntervalSince1970: 1358081652.0)) {
                     result in
                     switch result {
                     case .success(let cityHistorical):
@@ -47,19 +47,19 @@ final class CityHistoricalWorkerTests: QuickSpec {
 
             it("should call networking to fetch city historical weather for date") {
                 expect(networking.fetchHistoricalWeatherForCityCalled).to(beTrue())
-                expect(networking.fetchHistoricalWeatherForCityIdCalled).to(equal(Mock.cityHistorical1.id))
+                expect(networking.fetchHistoricalWeatherForCityCoordinatesCalled).to(equal("50.0,10.0"))
                 expect(networking.fetchHistoricalWeatherForCityDateCalled).to(beAKindOf(Double.self))
             }
 
             context("on success response") {
 
                 beforeEach {
-                    networking.fetchHistoricalWeatherForCityCompletion?(.success(Mock.cityHistorical4))
+                    networking.fetchHistoricalWeatherForCityCompletion?(.success(Mock.CityHistoricalApiResponse))
                 }
 
                 it("should return city historical weather") {
                     expect(receivedCityHistoricalWeather).notTo(beNil())
-                    expect(receivedCityHistoricalWeather?.city).to(equal("Tokio"))
+                    expect(receivedCityHistoricalWeather?.city).to(equal("Katowice"))
                 }
 
                 it("should return no errors") {

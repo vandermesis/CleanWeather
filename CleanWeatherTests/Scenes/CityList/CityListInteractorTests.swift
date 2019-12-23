@@ -27,6 +27,58 @@ final class CityListInteractorTests: QuickSpec {
             interactor = CityListInteractorImpl(presenter: presenter, worker: worker, router: router)
         }
 
+        describe("getting favourite cities") {
+
+            beforeEach {
+                interactor.getFavouriteCities()
+            }
+
+            it("should call presenter to show spinner") {
+                expect(presenter.toggleSpinnerStateCalled).to(beTrue())
+            }
+
+            it("should call worker to get cities") {
+                expect(worker.fetchCityFavouriteCitiesCalled).to(beTrue())
+            }
+
+            context("on success response") {
+
+                beforeEach {
+                    worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                }
+
+                it("should call presenter to display valid cities") {
+                    expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
+                    expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.favouriteCities.count))
+                }
+
+                it("should not call presenter to display any alert") {
+                    expect(presenter.presentAlertMessageCalled).to(beNil())
+                    expect(presenter.presentAlertTitleCalled).to(beNil())
+                    expect(presenter.presentErrorCalled).to(beNil())
+                }
+            }
+
+            context("on failure response") {
+
+                beforeEach {
+                    worker.fetchCityFavouriteCitiesCompletion?(.failure(UnitTestError()))
+                }
+
+                it("should call presenter to hide spinner") {
+                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                }
+
+                it("should call presenter to display error") {
+                    expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
+                }
+            }
+        }
+
         describe("getting cities") {
 
             beforeEach {
@@ -82,18 +134,18 @@ final class CityListInteractorTests: QuickSpec {
         describe("selecting city cell") {
 
             beforeEach {
-                interactor.getCitiesWeather()
-                worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
+                interactor.getFavouriteCities()
+                worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
             }
 
             context("on valid id tapped") {
 
                 beforeEach {
-                    interactor.didSelectCityCell(id: Mock.cityWeather4.id)
+                    interactor.didSelectCityCell(id: Mock.favouriteity2.id)
                 }
 
                 it("should call router to navigate to city details") {
-                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal(Mock.cityWeather4.city))
+                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal(Mock.favouriteity2.name))
                 }
             }
 
