@@ -34,13 +34,13 @@ final class CityListInteractorTests: QuickSpec {
             }
 
             it("should call worker to get cities") {
-                expect(worker.fetchCityFavouriteCitiesCalled).to(beTrue())
+                expect(worker.fetchFavouriteCitiesCalled).to(beTrue())
             }
 
             context("on success response") {
 
                 beforeEach {
-                    worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                    worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
                 }
 
                 it("presenter should not present cities") {
@@ -94,7 +94,7 @@ final class CityListInteractorTests: QuickSpec {
             context("on failure response") {
 
                 beforeEach {
-                    worker.fetchCityFavouriteCitiesCompletion?(.failure(UnitTestError()))
+                    worker.fetchFavouriteCitiesCompletion?(.failure(UnitTestError()))
                 }
 
                 it("should call presenter to display error") {
@@ -107,7 +107,7 @@ final class CityListInteractorTests: QuickSpec {
 
             beforeEach {
                 interactor.getFavouriteCities()
-                worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
                 worker.fetchCitiesWeatherCompletion?(.success(Mock.citiesWeather))
             }
 
@@ -115,13 +115,11 @@ final class CityListInteractorTests: QuickSpec {
 
                 beforeEach {
                     interactor.didSelectCityCell(id: Mock.favouriteCity2.id)
-                    print("HERE->", router.navigateToCityForecastCityWeatherCalled)
                 }
 
-//                FIXME: Why I can't get New York here?
-//                it("should call router to navigate to city details") {
-//                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal("New York"))
-//                }
+                it("should call router to navigate to city details") {
+                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal("New York"))
+                }
             }
 
             context("on invalid id tapped") {
