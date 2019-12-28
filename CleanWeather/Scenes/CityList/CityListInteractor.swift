@@ -17,7 +17,6 @@ protocol CityListInteractor {
 
 final class CityListInteractorImpl {
 
-    private var favouriteCities = [City]()
     private var cityWeather = [CityWeather]()
     
     private let presenter: CityListPresenter
@@ -40,8 +39,7 @@ extension CityListInteractorImpl: CityListInteractor {
             guard let self = self else { return }
             switch result {
             case .success(let favourites):
-                self.favouriteCities = favourites
-                self.getCitiesWeather()
+                self.getCitiesWeather(cities: favourites)
             case .failure(let error):
                 self.presenter.presentError(error)
             }
@@ -60,9 +58,9 @@ extension CityListInteractorImpl: CityListInteractor {
 
 private extension CityListInteractorImpl {
 
-    private func getCitiesWeather() {
+    private func getCitiesWeather(cities: [City]) {
         presenter.toggleSpinner(true)
-        worker.fetchCitiesWeather(cities: favouriteCities) { [weak self] result in
+        worker.fetchCitiesWeather(cities: cities) { [weak self] result in
             guard let self = self else { return }
             self.presenter.toggleSpinner(false)
             switch result {
