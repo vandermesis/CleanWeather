@@ -140,6 +140,9 @@ final class CityListWorkerTests: QuickSpec {
 
                 beforeEach {
                     networking.fetchCurrentWeatherForCityCompletion?(.failure(UnitTestError()))
+                    networking.fetchCurrentWeatherForCityCompletion?(.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion?(.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion?(.success(Mock.cityListApiResponse))
                 }
 
                 it("should not return cities list") {
@@ -147,7 +150,7 @@ final class CityListWorkerTests: QuickSpec {
                 }
 
                 it("should return error") {
-                    expect(receivedError).to(beAKindOf(UnitTestError.self))
+                    expect(receivedError).toEventually(beAKindOf(UnitTestError.self))
                 }
             }
         }
