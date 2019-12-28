@@ -37,7 +37,7 @@ extension FavouriteCitiesWorkerImpl: FavouriteCitiesWorker {
                                                                name: $0.fields.accentcity,
                                                                latitude: $0.fields.latitude,
                                                                longitude: $0.fields.longitude)}
-                completion?(.success(allCities))
+                completion?(.success(allCities.sortCitiesByName()))
             case .failure(let error):
                 completion?(.failure(error))
             }

@@ -33,10 +33,13 @@ extension CityListWorkerImpl: CityListWorker {
     }
 
     func fetchCitiesWeather(cities: [City], completion: FetchWeatherCompletion?) {
+       var responses = [Result<CityWeather, Error>]()
         cities.forEach { city in
             let coordinates = Coordinates(lat: city.latitude, lon: city.longitude)
             networking.fetchCurrentWeatherForCity(coordinates: coordinates.stringValue) { response in
-                self.handleCityWeatherResponse(city: city, response: response, completion: completion)
+                let cityWeatherResult = self.convertToCityWeatherResult(city: city, response: response)
+                responses.append(cityWeatherResult)
+                self.handleCityWeatherResponse(cities: cities, responses: responses, completion: completion)
             }
         }
     }
@@ -44,13 +47,44 @@ extension CityListWorkerImpl: CityListWorker {
 
 private extension CityListWorkerImpl {
 
-    //TODO: Apply sortCity method after proper build of fetchCitiesWeather method
-    private func sortCity(city: [CityWeather]) -> [CityWeather] {
-        return city.sorted(by: { $0.city < $1.city })
+    private func handleCityWeatherResponse(cities: [City], responses: [Result<CityWeather, Error>], completion: FetchWeatherCompletion?) {
+        guard cities.count == responses.count else { return }
+        let citiesWeatherListResult = convertToCityWeatherListResult(responses: responses)
+        completion?(citiesWeatherListResult)
     }
 
-    private func handleCityWeatherResponse(city: City, response: Result<CityListAPIResponse, Error>, completion: FetchWeatherCompletion?) {
-        var responses = [Result<CityListAPIResponse, Error>]()
-        responses.append(response)
+    private func convertToCityWeatherResult(city: City, response: Result<CityListAPIResponse, Error>) -> Result<CityWeather, Error> {
+        switch response {
+        case .failure(let error):
+            return .failure(error)
+        case .success(let apiResponse):
+            guard let temp = apiResponse.currently.temperature else {
+                return .failure(MissingAPIData())
+            }
+            let cityWeather = CityWeather(id: city.id,
+                                          city: city.name,
+                                          latitude: city.latitude,
+                                          longitude: city.longitude,
+                                          temperature: temp,
+                                          icon: apiResponse.currently.icon ?? "")
+            return .success(cityWeather)
+        }
+    }
+
+    private func convertToCityWeatherListResult(responses: [Result<CityWeather, Error>]) -> Result<[CityWeather], Error> {
+        var citiesWeather = [CityWeather]()
+        var errors = [Error]()
+        responses.forEach { response in
+            switch response {
+            case .success(let cityWeather):
+                citiesWeather.append(cityWeather)
+            case .failure(let error):
+                errors.append(error)
+            }
+        }
+        if let firstError = errors.first {
+            return .failure(firstError)
+        }
+        return .success(citiesWeather.sortCitiesWeatherByName())
     }
 }
