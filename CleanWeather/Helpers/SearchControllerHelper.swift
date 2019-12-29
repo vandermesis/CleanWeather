@@ -10,7 +10,7 @@ import UIKit
 
 final class SearchControllerHelper {
 
-    static let shared = SearchControllerHelper()
+    static let shared = SearchControllerHelper().searchController
 
     private let searchController: UISearchController
 

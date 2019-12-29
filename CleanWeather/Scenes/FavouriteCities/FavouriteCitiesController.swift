@@ -18,12 +18,19 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var saveButton: UIButton!
 
     private let interactor: FavouriteCitiesInteractor
-    private let searchController: SearchControllerHelper
+    private let searchController: UISearchController
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
+    private var filteredCities = [FavouriteCitiesListDisplayable]()
+    private var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    private var isFiltered: Bool {
+        return true
+    }
 
     init(interactor: FavouriteCitiesInteractor,
-         searchController: SearchControllerHelper) {
+         searchController: UISearchController) {
         self.interactor = interactor
         self.searchController = searchController
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +44,7 @@ final class FavouriteCitiesController: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
+        setupSearchController()
         interactor.getCities()
     }
 
@@ -73,6 +81,16 @@ extension FavouriteCitiesController: UITableViewDelegate {
     }
 }
 
+extension FavouriteCitiesController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let userText = searchBar.text else { return }
+        print(userText)
+        filterContentForSearchText(userText)
+    }
+}
+
 private extension FavouriteCitiesController {
 
     private func setupTableView() {
@@ -85,4 +103,18 @@ private extension FavouriteCitiesController {
         title = R.string.localizable.favouriteCities()
     }
 
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Cities"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredCities = citiesDataSource.filter { (city: FavouriteCitiesListDisplayable) -> Bool in
+            return city.name.lowercased().contains(searchText.lowercased())
+        }
+        citiesTableView.reloadData()
+    }
 }
