@@ -14,7 +14,7 @@ final class SearchControllerHelper {
 
     private let searchController: UISearchController
 
-    private init() {
-        self.searchController = UISearchController()
+    private init(searchResultsController: UIViewController? = nil) {
+        self.searchController = UISearchController(searchResultsController: searchResultsController)
     }
 }

@@ -18,11 +18,14 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var saveButton: UIButton!
 
     private let interactor: FavouriteCitiesInteractor
+    private let searchController: SearchControllerHelper
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
 
-    init(interactor: FavouriteCitiesInteractor) {
+    init(interactor: FavouriteCitiesInteractor,
+         searchController: SearchControllerHelper) {
         self.interactor = interactor
+        self.searchController = searchController
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -81,4 +84,5 @@ private extension FavouriteCitiesController {
     private func setupNavigationBar() {
         title = R.string.localizable.favouriteCities()
     }
+
 }
