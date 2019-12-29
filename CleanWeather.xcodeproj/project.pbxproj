@@ -129,6 +129,7 @@
 		BAC45BAF23986E8F0008E87D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC45BAE23986E8F0008E87D /* City.swift */; };
 		BAC45BB2239870300008E87D /* FavouriteCitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC45BB0239870300008E87D /* FavouriteCitiesController.swift */; };
 		BAC45BB3239870300008E87D /* FavouriteCitiesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC45BB1239870300008E87D /* FavouriteCitiesController.xib */; };
+		BAD256D923B94E2C004960E9 /* SearchControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD256D823B94E2C004960E9 /* SearchControllerHelper.swift */; };
 		BAED7AB0238469CA00790744 /* CityForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAED7AAE238469CA00790744 /* CityForecastController.swift */; };
 		BAED7AB1238469CA00790744 /* CityForecastController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAED7AAF238469CA00790744 /* CityForecastController.xib */; };
 		BAED7AB32384761800790744 /* CityForecastInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAED7AB22384761800790744 /* CityForecastInteractor.swift */; };
@@ -308,6 +309,7 @@
 		BAC45BAE23986E8F0008E87D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		BAC45BB0239870300008E87D /* FavouriteCitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCitiesController.swift; sourceTree = "<group>"; };
 		BAC45BB1239870300008E87D /* FavouriteCitiesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteCitiesController.xib; sourceTree = "<group>"; };
+		BAD256D823B94E2C004960E9 /* SearchControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerHelper.swift; sourceTree = "<group>"; };
 		BAED7AAE238469CA00790744 /* CityForecastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastController.swift; sourceTree = "<group>"; };
 		BAED7AAF238469CA00790744 /* CityForecastController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityForecastController.xib; sourceTree = "<group>"; };
 		BAED7AB22384761800790744 /* CityForecastInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastInteractor.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				BA91496A2397E8930029D666 /* DateFormatterHelper.swift */,
 				BABF1013239F10A700D7FB5B /* Empty.swift */,
 				BA7E4BA623A1394D0060D157 /* SharedButton.swift */,
+				BAD256D823B94E2C004960E9 /* SearchControllerHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1148,6 +1151,7 @@
 				BAF20D4123992CD500A8485A /* FavourtieCitiesInteractor.swift in Sources */,
 				BA6E474F237E185A0083762F /* CityListTableViewCell.swift in Sources */,
 				BA7E4BA723A1394D0060D157 /* SharedButton.swift in Sources */,
+				BAD256D923B94E2C004960E9 /* SearchControllerHelper.swift in Sources */,
 				BAF3A197237B27880093420E /* CityListCreator.swift in Sources */,
 				BA91496B2397E8930029D666 /* DateFormatterHelper.swift in Sources */,
 				BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */,
