@@ -21,12 +21,8 @@ final class FavouriteCitiesController: SharedViewController {
     private let searchController: UISearchController
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
-    private var filteredCities = [FavouriteCitiesListDisplayable]()
     private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
-    }
-    private var isFiltered: Bool {
-        return true
     }
 
     init(interactor: FavouriteCitiesInteractor,
@@ -85,9 +81,8 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        guard let userText = searchBar.text else { return }
-        print(userText)
-        filterContentForSearchText(userText)
+        guard let userSearch = searchBar.text else { return }
+        interactor.searchFavouriteCities(cityName: userSearch)
     }
 }
 
@@ -109,12 +104,5 @@ private extension FavouriteCitiesController {
         searchController.searchBar.placeholder = "Search Cities"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-    }
-
-    private func filterContentForSearchText(_ searchText: String) {
-        filteredCities = citiesDataSource.filter { (city: FavouriteCitiesListDisplayable) -> Bool in
-            return city.name.lowercased().contains(searchText.lowercased())
-        }
-        citiesTableView.reloadData()
     }
 }

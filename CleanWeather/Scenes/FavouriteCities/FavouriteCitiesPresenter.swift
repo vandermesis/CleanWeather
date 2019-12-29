@@ -10,6 +10,7 @@ import UIKit
 
 protocol FavouriteCitiesPresenter: SpinnerPresenter, AlertPresenter {
     func presentCities(allCities: [City], favourites: [City])
+    func presentCitiesForSearch(cityName: String, allCities: [City], favourites: [City])
 }
 
 final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedPresenter<T> {}
@@ -17,9 +18,25 @@ final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedP
 extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
     func presentCities(allCities: [City], favourites: [City]) {
+        let mergedCities = mergeFavouriteCities(allCities: allCities, favourites: favourites)
+        controller?.displayCities(mergedCities)
+    }
 
-        let displayableCities = allCities.map { FavouriteCitiesListDisplayable(city: $0, isFavourite: favourites.contains($0)) }
+    func presentCitiesForSearch(cityName: String, allCities: [City], favourites: [City]) {
+        let mergedCities = mergeFavouriteCities(allCities: allCities, favourites: favourites)
+        if cityName.isEmpty {
+            controller?.displayCities(mergedCities)
+        }
+        let searchedCities = mergedCities.filter { (cities: FavouriteCitiesListDisplayable) -> Bool in
+            return cities.name.lowercased().contains(cityName.lowercased())
+        }
+        controller?.displayCities(searchedCities)
+    }
+}
 
-        controller?.displayCities(displayableCities)
+private extension FavouriteCitiesPresenterImpl {
+
+    private func mergeFavouriteCities(allCities: [City], favourites: [City]) -> [FavouriteCitiesListDisplayable] {
+        return allCities.map { FavouriteCitiesListDisplayable(city: $0, isFavourite: favourites.contains($0)) }
     }
 }
