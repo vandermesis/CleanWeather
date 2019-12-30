@@ -18,7 +18,7 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var saveButton: UIButton!
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
-    private var userSearch = ""
+    private var userSearch: String = ""
     private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -93,6 +93,16 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
     }
 }
 
+extension FavouriteCitiesController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        var state: Bool {
+            selectedScope == 1 ? true : false
+        }
+        interactor.filterFavouriteCities(favourite: state, filteringState: isFiltering)
+    }
+}
+
 private extension FavouriteCitiesController {
 
     private func setupTableView() {
@@ -108,7 +118,9 @@ private extension FavouriteCitiesController {
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Cities"
+        searchController.searchBar.placeholder = R.string.localizable.searchCities()
+        searchController.searchBar.scopeButtonTitles = [R.string.localizable.all(), R.string.localizable.favourites()]
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }

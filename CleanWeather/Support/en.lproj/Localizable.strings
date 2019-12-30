@@ -24,7 +24,12 @@
 "timeMachine" = "Time Machine";
 "now" = "Now";
 "favouriteCities" = "Favourite Cities";
+"all" = "All";
+"favourites" = "Favourites";
 
 // Alerts
 "addCity" = "Add new City";
 "ok" = "OK";
+
+// Placeholders
+"searchCities" = "Search Cities";
