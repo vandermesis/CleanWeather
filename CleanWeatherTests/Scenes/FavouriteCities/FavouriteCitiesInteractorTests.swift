@@ -217,5 +217,21 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 }
             }
         }
+
+        describe("searching favourite cities") {
+
+            beforeEach {
+                interactor.getCities()
+                worker.fetchAllCitiesCompletion?(.success(Mock.allCities))
+                worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                interactor.searchFavouriteCities(cityName: "Kat", filteringState: true)
+            }
+
+            it("should call presenter to present cities containing search text") {
+                expect(presenter.presentCitiesCalled).to(beTrue())
+                expect(presenter.presentCitiesCityNameCalled).to(equal("Kat"))
+                expect(presenter.presentCitiesFilteringStateCalled).to(beTrue())
+            }
+        }
     }
 }
