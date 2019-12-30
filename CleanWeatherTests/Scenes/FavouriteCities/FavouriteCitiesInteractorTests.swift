@@ -123,7 +123,7 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 context("if tapped city is favourite") {
 
                     beforeEach {
-                        interactor.didSelectCity(id: Mock.city1.id)
+                        interactor.didSelectCity(id: Mock.city1.id, userSearch: "", filteringState: false)
                     }
 
                     it("should call presenter to present all cities") {
@@ -139,7 +139,7 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 context("if tapped city is not favourtie") {
 
                     beforeEach {
-                        interactor.didSelectCity(id: Mock.city8.id)
+                        interactor.didSelectCity(id: Mock.city8.id, userSearch: "", filteringState: false)
                     }
 
                     it("should call presenter to present all cities") {
@@ -157,7 +157,7 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
             context("on invalid id tapped") {
 
                 beforeEach {
-                    interactor.didSelectCity(id: "invalid-ID")
+                    interactor.didSelectCity(id: "invalid-ID", userSearch: "", filteringState: false)
                 }
 
                 it("should call presenter to present all cities") {
