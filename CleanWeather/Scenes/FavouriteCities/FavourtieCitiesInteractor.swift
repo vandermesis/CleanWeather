@@ -12,7 +12,7 @@ protocol FavouriteCitiesInteractor {
     func getCities()
     func didSelectCity(id: String)
     func didPressSaveButton()
-    func searchFavouriteCities(cityName: String)
+    func searchFavouriteCities(cityName: String, filteringState: Bool)
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -74,8 +74,11 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func searchFavouriteCities(cityName: String) {
-        presenter.presentCitiesForSearch(cityName: cityName, allCities: allCities, favourites: favouriteCities)
+    func searchFavouriteCities(cityName: String, filteringState: Bool) {
+        presenter.presentCitiesForSearch(cityName: cityName,
+                                         allCities: allCities,
+                                         favourites: favouriteCities,
+                                         filteringState: filteringState)
     }
 }
 

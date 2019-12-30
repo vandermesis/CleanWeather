@@ -24,6 +24,9 @@ final class FavouriteCitiesController: SharedViewController {
     private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
+    private var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
 
     init(interactor: FavouriteCitiesInteractor,
          searchController: UISearchController) {
@@ -82,7 +85,7 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         guard let userSearch = searchBar.text else { return }
-        interactor.searchFavouriteCities(cityName: userSearch)
+        interactor.searchFavouriteCities(cityName: userSearch, filteringState: isFiltering)
     }
 }
 
