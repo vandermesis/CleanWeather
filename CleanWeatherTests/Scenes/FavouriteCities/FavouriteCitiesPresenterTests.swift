@@ -28,20 +28,42 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
             let displayableFavourites = Mock.favouriteCities.map { (FavouriteCitiesListDisplayable(city: $0, isFavourite: true)) }
 
-            beforeEach {
-                presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities)
+            context("when user is not searching for cities") {
+
+                beforeEach {
+                    presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities)
+                }
+
+                it("should call controller to display cities") {
+                    expect(controller.displayCitiesCalled).to(beTrue())
+                }
+
+                it("should display all cities from all cities") {
+                    expect(controller.displayCitiesFavouriteCitiesDisplayable?.count).to(equal(Mock.allCities.count))
+                }
+
+                it("should display all cities from favourite cities") {
+                    expect(controller.displayCitiesFavouriteCitiesDisplayable).to(contain(displayableFavourites))
+                }
             }
 
-            it("should call controller to display cities") {
-                expect(controller.displayCitiesCalled).to(beTrue())
-            }
+            context("when user is searching for cities") {
 
-            it("should display all cities from allCities") {
-                expect(controller.displayCitiesFavouriteCitiesDisplayable?.count).to(equal(Mock.allCities.count))
-            }
+                beforeEach {
+                    presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities, cityName: "Kat", filteringState: true)
+                }
 
-            it("should display all cities from favourites") {
-                expect(controller.displayCitiesFavouriteCitiesDisplayable).to(contain(displayableFavourites))
+                it("should call controller to display cities") {
+                    expect(controller.displayCitiesCalled).to(beTrue())
+                }
+
+                it("should display only one filtered city") {
+                    expect(controller.displayCitiesFavouriteCitiesDisplayable?.count).to(equal(1))
+                }
+
+                it("should display city containing user search text") {
+                    expect(controller.displayCitiesFavouriteCitiesDisplayable).to(contain(FavouriteCitiesListDisplayable(city: Mock.city1, isFavourite: true)))
+                }
             }
         }
     }

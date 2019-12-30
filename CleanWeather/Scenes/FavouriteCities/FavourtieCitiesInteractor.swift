@@ -38,14 +38,14 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     func getCities() {
         presenter.toggleSpinner(true)
         worker.fetchAllCities { [weak self] result in
-            self?.presenter.toggleSpinner(false)
+            guard let self = self else { return }
+            self.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
-                guard let self = self else { return }
                 self.allCities = city
                 self.getFavouriteCities()
             case .failure(let error):
-                self?.presenter.presentError(error)
+                self.presenter.presentError(error)
             }
         }
     }
@@ -83,13 +83,13 @@ private extension FavouriteCitiesInteractorImpl {
 
     private func getFavouriteCities() {
         worker.fetchFavouriteCities { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let favourites):
-                guard let self = self else { return }
                 self.favouriteCities = favourites
                 self.presenter.presentCities(allCities: self.allCities, favourites: favourites)
             case .failure(let error):
-                self?.presenter.presentError(error)
+                self.presenter.presentError(error)
             }
         }
     }
