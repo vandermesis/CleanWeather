@@ -17,16 +17,17 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var citiesTableView: UITableView!
     @IBOutlet private weak var saveButton: UIButton!
 
-    private let interactor: FavouriteCitiesInteractor
-    private let searchController: UISearchController
-
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
+    private var userSearch = ""
     private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     private var isFiltering: Bool {
         return searchController.isActive && !isSearchBarEmpty
     }
+
+    private let interactor: FavouriteCitiesInteractor
+    private let searchController: UISearchController
 
     init(interactor: FavouriteCitiesInteractor,
          searchController: UISearchController) {
@@ -76,7 +77,9 @@ extension FavouriteCitiesController: UITableViewDataSource {
 extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id)
+        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id,
+                                 userSearch: userSearch,
+                                 filteringState: isFiltering)
     }
 }
 
@@ -85,6 +88,7 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         guard let userSearch = searchBar.text else { return }
+        self.userSearch = userSearch
         interactor.searchFavouriteCities(cityName: userSearch, filteringState: isFiltering)
     }
 }

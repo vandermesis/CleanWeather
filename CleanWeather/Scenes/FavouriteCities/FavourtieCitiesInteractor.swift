@@ -10,7 +10,7 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(id: String)
+    func didSelectCity(id: String, userSearch: String, filteringState: Bool)
     func didPressSaveButton()
     func searchFavouriteCities(cityName: String, filteringState: Bool)
 }
@@ -50,7 +50,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func didSelectCity(id: String) {
+    func didSelectCity(id: String, userSearch: String, filteringState: Bool) {
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
         if !favouriteCities.contains(selectedCity) {
             favouriteCities.append(selectedCity)
@@ -58,7 +58,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             guard let cityIndex = favouriteCities.firstIndex(where: { $0.id == id }) else { return }
             favouriteCities.remove(at: cityIndex)
         }
-        presenter.presentCities(allCities: allCities, favourites: favouriteCities)
+        presenter.presentCities(allCities: allCities, favourites: favouriteCities, cityName: userSearch, filteringState: filteringState)
     }
 
     func didPressSaveButton() {
@@ -75,10 +75,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     }
 
     func searchFavouriteCities(cityName: String, filteringState: Bool) {
-        presenter.presentCitiesForSearch(cityName: cityName,
-                                         allCities: allCities,
-                                         favourites: favouriteCities,
-                                         filteringState: filteringState)
+        presenter.presentCities(allCities: allCities, favourites: favouriteCities, cityName: cityName, filteringState: filteringState)
     }
 }
 
