@@ -96,10 +96,10 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
 extension FavouriteCitiesController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        var state: Bool {
+        var isFavourite: Bool {
             selectedScope == 1 ? true : false
         }
-        interactor.filterFavouriteCities(favourite: state, filteringState: isFiltering)
+        interactor.filterFavouriteCities(favourite: isFavourite, filteringState: isFiltering)
     }
 }
 

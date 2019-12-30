@@ -24,10 +24,10 @@ extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
     func presentCities(allCities: [City], favourites: [City], cityName: String, filteringState: Bool) {
         let mergedCities = mergeFavouriteCities(allCities: allCities, favourites: favourites)
-        let searchedCities = mergedCities.filter { (cities: FavouriteCitiesListDisplayable) -> Bool in
-            return cities.name.lowercased().contains(cityName.lowercased())
-        }
         if filteringState {
+            let searchedCities = mergedCities.filter { (cities: FavouriteCitiesListDisplayable) -> Bool in
+                return cities.name.lowercased().contains(cityName.lowercased())
+            }
             controller?.displayCities(searchedCities)
         } else {
             controller?.displayCities(mergedCities)
