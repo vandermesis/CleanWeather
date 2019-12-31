@@ -12,8 +12,13 @@ protocol FavouriteCitiesInteractor {
     func getCities()
     func didSelectCity(id: String, userSearch: String, filteringState: Bool)
     func didPressSaveButton()
-    func searchFavouriteCities(cityName: String, filteringState: Bool)
-    func filterFavouriteCities(favourite: Bool, filteringState: Bool)
+    func searchFavouriteCities(cityName: String, filteringState: Bool, favouriteState: Bool)
+}
+
+extension FavouriteCitiesInteractor {
+    func searchFavouriteCities(cityName: String, filteringState: Bool, favouriteState: Bool = false) {
+        searchFavouriteCities(cityName: cityName, filteringState: filteringState, favouriteState: favouriteState)
+    }
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -59,7 +64,10 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             guard let cityIndex = favouriteCities.firstIndex(where: { $0.id == id }) else { return }
             favouriteCities.remove(at: cityIndex)
         }
-        presenter.presentCities(allCities: allCities, favourites: favouriteCities, cityName: userSearch, filteringState: filteringState)
+        presenter.presentCities(allCities: allCities,
+                                favourites: favouriteCities,
+                                cityName: userSearch,
+                                filteringState: filteringState)
     }
 
     func didPressSaveButton() {
@@ -75,12 +83,12 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func searchFavouriteCities(cityName: String, filteringState: Bool) {
-        presenter.presentCities(allCities: allCities, favourites: favouriteCities, cityName: cityName, filteringState: filteringState)
-    }
-
-    func filterFavouriteCities(favourite: Bool, filteringState: Bool) {
-        presenter.presentCities(allCities: allCities, favourites: favouriteCities, filteringState: filteringState)
+    func searchFavouriteCities(cityName: String, filteringState: Bool, favouriteState: Bool) {
+        presenter.presentCities(allCities: allCities,
+                                favourites: favouriteCities,
+                                cityName: cityName,
+                                filteringState: filteringState,
+                                favouriteState: favouriteState)
     }
 }
 

@@ -19,11 +19,13 @@ final class FavouriteCitiesController: SharedViewController {
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
     private var userSearch: String = ""
+    private var isFavourite: Bool = false
     private var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     private var isFiltering: Bool {
-        return searchController.isActive && !isSearchBarEmpty
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!isSearchBarEmpty || searchBarScopeIsFiltering)
     }
 
     private let interactor: FavouriteCitiesInteractor
@@ -89,17 +91,14 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         guard let userSearch = searchBar.text else { return }
         self.userSearch = userSearch
-        interactor.searchFavouriteCities(cityName: userSearch, filteringState: isFiltering)
+        interactor.searchFavouriteCities(cityName: userSearch, filteringState: isFiltering, favouriteState: isFavourite)
     }
 }
 
 extension FavouriteCitiesController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        var isFavourite: Bool {
-            selectedScope == 1 ? true : false
-        }
-        interactor.filterFavouriteCities(favourite: isFavourite, filteringState: isFiltering)
+        isFavourite = selectedScope == 1 ? true : false
     }
 }
 
