@@ -85,6 +85,6 @@ private extension CityListWorkerImpl {
         if let firstError = errors.first {
             return .failure(firstError)
         }
-        return .success(citiesWeather.sortCitiesWeatherByName())
+        return .success(citiesWeather.sortByName())
     }
 }
