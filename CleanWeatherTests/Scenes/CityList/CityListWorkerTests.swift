@@ -25,64 +25,64 @@ final class CityListWorkerTests: QuickSpec {
             worker = CityListWorkerImpl(networking: networking, repository: repository)
         }
 
-//        describe("fetching favourite cities") {
-//
-//            var receivedFavouriteCities: [City]?
-//            var receivedError: Error?
-//
-//            beforeEach {
-//                worker.fetchFavouriteCities { result in
-//                    switch result {
-//                    case .success(let favouriteCities):
-//                        receivedFavouriteCities = favouriteCities
-//                    case .failure(let error):
-//                        receivedError = error
-//                    }
-//                }
-//            }
-//
-//            afterEach {
-//                receivedFavouriteCities = nil
-//                receivedError = nil
-//            }
-//
-//            it("should call repository to fetch favourite cities") {
-//                expect(repository.fetchFavouriteCitiesCalled).to(beTrue())
-//            }
-//
-//            context("on success response") {
-//
-//                beforeEach {
-//                    repository.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
-//                }
-//
-//                it("should return favourite cities") {
-//                    expect(receivedFavouriteCities).notTo(beNil())
-//                    expect(receivedFavouriteCities?.count).to(equal(Mock.favouriteCities.count))
-//                }
-//
-//                it("should return no errors") {
-//                    expect(receivedError).to(beNil())
-//                }
-//            }
-//
-//            context("on failure response") {
-//
-//                beforeEach {
-//                    repository.fetchFavouriteCitiesCompletion?(.failure(UnitTestError()))
-//                }
-//
-//                it("should not return all cities") {
-//                    expect(receivedFavouriteCities).to(beNil())
-//                }
-//
-//                it("should return error") {
-//                    expect(receivedError).to(beAKindOf(UnitTestError.self))
-//                }
-//            }
-//
-//
-//        }
+        describe("fetching favourite cities") {
+
+            var receivedFavouriteCities: [City]?
+            var receivedError: Error?
+
+            beforeEach {
+                worker.fetchFavouriteCities { result in
+                    switch result {
+                    case .success(let favouriteCities):
+                        receivedFavouriteCities = favouriteCities
+                    case .failure(let error):
+                        receivedError = error
+                    }
+                }
+            }
+
+            afterEach {
+                receivedFavouriteCities = nil
+                receivedError = nil
+            }
+
+            it("should call repository to fetch favourite cities") {
+                expect(repository.fetchFavouriteCitiesCalled).to(beTrue())
+            }
+
+            context("on success response") {
+
+                beforeEach {
+                    repository.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                }
+
+                it("should return favourite cities") {
+                    expect(receivedFavouriteCities).notTo(beNil())
+                    expect(receivedFavouriteCities?.count).to(equal(Mock.favouriteCities.count))
+                }
+
+                it("should return no errors") {
+                    expect(receivedError).to(beNil())
+                }
+            }
+
+            context("on failure response") {
+
+                beforeEach {
+                    repository.fetchFavouriteCitiesCompletion?(.failure(UnitTestError()))
+                }
+
+                it("should not return all cities") {
+                    expect(receivedFavouriteCities).to(beNil())
+                }
+
+                it("should return error") {
+                    expect(receivedError).to(beAKindOf(UnitTestError.self))
+                }
+            }
+
+
+        }
 
         describe("fetching favourite cities weather") {
 
@@ -119,6 +119,10 @@ final class CityListWorkerTests: QuickSpec {
                     networking.fetchCurrentWeatherForCityCompletion[3](.success(Mock.cityListApiResponse))
                 }
 
+                afterEach {
+                    networking.fetchCurrentWeatherForCityCompletion = []
+                }
+
                 it("should return cities list") {
                     expect(receivedCitiesWeather).toNot(beNil())
                     expect(receivedCitiesWeather?.count).to(equal(Mock.citiesWeather.count))
@@ -140,6 +144,10 @@ final class CityListWorkerTests: QuickSpec {
                     networking.fetchCurrentWeatherForCityCompletion[1](.success(Mock.cityListApiResponse))
                     networking.fetchCurrentWeatherForCityCompletion[2](.success(Mock.cityListApiResponse))
                     networking.fetchCurrentWeatherForCityCompletion[3](.failure(UnitTestError()))
+                }
+
+                afterEach {
+                    networking.fetchCurrentWeatherForCityCompletion = []
                 }
 
                 it("should not return cities list") {
