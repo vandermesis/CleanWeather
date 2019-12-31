@@ -14,7 +14,7 @@ final class FakeWeatherNetworking: WeatherNetworking {
 
     var fetchCurrentWeatherForCityCalled: Bool?
     var fetchCurrentWeatherForCityCoordinatesCalled: String?
-    var fetchCurrentWeatherForCityCompletion: FetchWeatherResponseCompletion?
+    var fetchCurrentWeatherForCityCompletion = [FetchWeatherResponseCompletion]()
     var fetchForecastWeatherForCityCalled: Bool?
     var fetchForecastWeatherForCityCoordinatesCalled: String?
     var fetchForecastWeatherForCityCompletion: FetchForecastResponseCompletion?
@@ -26,9 +26,10 @@ final class FakeWeatherNetworking: WeatherNetworking {
     var fetchCitiesCompletion: FetchCitiesResponseCompletion?
 
     func fetchCurrentWeatherForCity(coordinates: String, completion: FetchWeatherResponseCompletion?) {
+        guard let completion = completion else { return }
         fetchCurrentWeatherForCityCalled = true
         fetchCurrentWeatherForCityCoordinatesCalled = coordinates
-        fetchCurrentWeatherForCityCompletion = completion
+        fetchCurrentWeatherForCityCompletion.append(completion)
     }
 
     func fetchForecastWeatherForCity(coordinates: String, completion: FetchForecastResponseCompletion?) {
