@@ -17,7 +17,7 @@ struct City: Codable, Equatable {
 }
 
 extension Array where Element == City {
-    func sortCitiesByName() -> [City] {
+    func sortByName() -> [City] {
         return self.sorted(by: { $0.name < $1.name })
     }
 }

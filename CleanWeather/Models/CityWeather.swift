@@ -21,7 +21,7 @@ struct CityWeather: Codable {
 }
 
 extension Array where Element == CityWeather {
-    func sortCitiesWeatherByName() -> [CityWeather] {
+    func sortByName() -> [CityWeather] {
         return self.sorted(by: { $0.city < $1.city })
     }
 }

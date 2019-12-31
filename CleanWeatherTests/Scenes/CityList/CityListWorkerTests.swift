@@ -90,7 +90,7 @@ final class CityListWorkerTests: QuickSpec {
             var receivedError: Error?
 
             beforeEach {
-                worker.fetchCitiesWeather(cities: Mock.favouriteCities){ result in
+                worker.fetchCitiesWeather(cities: Mock.favouriteCities) { result in
                     switch result {
                     case .success(let cities):
                         receivedCitiesWeather = cities
