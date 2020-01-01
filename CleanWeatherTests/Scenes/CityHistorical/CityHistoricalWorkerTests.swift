@@ -54,7 +54,7 @@ final class CityHistoricalWorkerTests: QuickSpec {
             context("on success response") {
 
                 beforeEach {
-                    networking.fetchHistoricalWeatherForCityCompletion?(.success(Mock.CityHistoricalApiResponse))
+                    networking.fetchHistoricalWeatherForCityCompletion?(.success(Mock.cityHistoricalApiResponse))
                 }
 
                 it("should return city historical weather") {

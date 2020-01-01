@@ -9,10 +9,4 @@
 struct CityHistoricalAPIResponse: Codable, Equatable {
 
     let currently: CurrentWeather
-
-    struct CurrentWeather: Codable, Equatable {
-
-        let temperature: Double?
-        let icon: String?
-    }
 }

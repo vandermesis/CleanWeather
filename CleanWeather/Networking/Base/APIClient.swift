@@ -70,10 +70,11 @@ private extension APIClient {
             request.completion?(.failure(MissingAPIData()))
             return
         }
-        
-        if let niceString = data.prettyStringValue {
-            print(niceString)
-        }
+
+//        TODO: Uncomment for niceString
+//        if let niceString = data.prettyStringValue {
+//            print(niceString)
+//        }
         
         do {
             let decodedObject = try jsonDeserializer.decode(T.self, from: data)

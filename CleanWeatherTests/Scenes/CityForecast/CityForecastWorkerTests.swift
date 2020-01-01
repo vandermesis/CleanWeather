@@ -52,12 +52,12 @@ final class CityForecastWorkerTests: QuickSpec {
             context("on success response") {
 
                 beforeEach {
-                    networking.fetchForecastWeatherForCityCompletion?(.success(Mock.CityForecastApiResponse))
+                    networking.fetchForecastWeatherForCityCompletion?(.success(Mock.cityForecastApiResponse))
                 }
 
                 it("should return city hour details list") {
                     expect(receivedCityHourDetailsList).notTo(beNil())
-                    expect(receivedCityHourDetailsList?.count).to(equal(Mock.CityForecastApiResponse.hourly.data.count))
+                    expect(receivedCityHourDetailsList?.count).to(equal(Mock.cityForecastApiResponse.hourly.data.count))
                 }
 
                 it("should return no errors") {

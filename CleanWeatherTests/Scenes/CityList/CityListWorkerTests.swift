@@ -84,16 +84,16 @@ final class CityListWorkerTests: QuickSpec {
 
         }
 
-        describe("fetching cities") {
+        describe("fetching favourite cities weather") {
 
-            var receivedCities: [CityWeather]?
+            var receivedCitiesWeather: [CityWeather]?
             var receivedError: Error?
 
             beforeEach {
-                worker.fetchCityWeather { result in
+                worker.fetchCitiesWeather(cities: Mock.favouriteCities) { result in
                     switch result {
                     case .success(let cities):
-                        receivedCities = cities
+                        receivedCitiesWeather = cities
                     case .failure(let error):
                         receivedError = error
                     }
@@ -101,27 +101,35 @@ final class CityListWorkerTests: QuickSpec {
             }
 
             afterEach {
-                receivedCities = nil
+                receivedCitiesWeather = nil
                 receivedError = nil
             }
 
-            it("shoud call networking to fetch city weather") {
-                expect(networking.fetchCurrentWeatherForAllCitiesCalled).to(beTrue())
+            it("should call networking to fetch city weather") {
+                expect(networking.fetchCurrentWeatherForCityCalled).to(beTrue())
+
             }
 
             context("on success response") {
 
                 beforeEach {
-                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.success(Mock.citiesWeather))
+                    networking.fetchCurrentWeatherForCityCompletion[0](.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion[1](.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion[2](.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion[3](.success(Mock.cityListApiResponse))
+                }
+
+                afterEach {
+                    networking.fetchCurrentWeatherForCityCompletion = []
                 }
 
                 it("should return cities list") {
-                    expect(receivedCities).toNot(beNil())
-                    expect(receivedCities?.count).to(equal(Mock.citiesWeather.count))
+                    expect(receivedCitiesWeather).toNot(beNil())
+                    expect(receivedCitiesWeather?.count).to(equal(Mock.citiesWeather.count))
                 }
 
                 it("should return Gdańsk as first city") {
-                    expect(receivedCities?.first?.city).to(equal("Gdańsk"))
+                    expect(receivedCitiesWeather?.first?.city).to(equal("Gdańsk"))
                 }
 
                 it("should return no errors") {
@@ -132,15 +140,22 @@ final class CityListWorkerTests: QuickSpec {
             context("on error response") {
 
                 beforeEach {
-                    networking.fetchCurrentWeatherForAllCitiesCompletion?(.failure(UnitTestError()))
+                    networking.fetchCurrentWeatherForCityCompletion[0](.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion[1](.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion[2](.success(Mock.cityListApiResponse))
+                    networking.fetchCurrentWeatherForCityCompletion[3](.failure(UnitTestError()))
+                }
+
+                afterEach {
+                    networking.fetchCurrentWeatherForCityCompletion = []
                 }
 
                 it("should not return cities list") {
-                    expect(receivedCities).to(beNil())
+                    expect(receivedCitiesWeather).to(beNil())
                 }
 
                 it("should return error") {
-                    expect(receivedError).to(beAKindOf(UnitTestError.self))
+                    expect(receivedError).toEventually(beAKindOf(UnitTestError.self))
                 }
             }
         }
