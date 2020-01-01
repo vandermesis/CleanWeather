@@ -9,37 +9,23 @@
 import UIKit
 
 protocol FavouriteCitiesPresenter: SpinnerPresenter, AlertPresenter {
-    func presentCities(allCities: [City],
-                       favourites: [City],
-                       filteringPhrase: String?,
-                       favouriteState: Bool?)
-}
-
-extension FavouriteCitiesPresenter {
-    func presentCities(allCities: [City],
-                       favourites: [City],
-                       filteringPhrase: String? = nil,
-                       favouriteState: Bool? = nil) {
-        presentCities(allCities: allCities,
-                      favourites: favourites,
-                      filteringPhrase: filteringPhrase,
-                      favouriteState: favouriteState)
-    }
+    func presentCities(favouriteCities: FavouriteCities)
 }
 
 final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedPresenter<T> {}
 
 extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
-    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String?, favouriteState: Bool?) {
-        let mergedCities = mergeFavouriteCities(allCities: allCities, favourites: favourites)
-        guard let filteringPhrase = filteringPhrase else {
+    func presentCities(favouriteCities: FavouriteCities) {
+        let mergedCities = mergeFavouriteCities(allCities: favouriteCities.allCities,
+                                                favourites: favouriteCities.favourites)
+        guard let filteringPhrase = favouriteCities.filteringPhrase else {
             controller?.displayCities(mergedCities)
             return
         }
         if !filteringPhrase.isEmpty {
             let filteredCities = mergedCities.filter {
-                if favouriteState == true {
+                if favouriteCities.favouriteState == true {
                     return $0.name.lowercased().contains(filteringPhrase.lowercased()) && $0.isFavourite
                 } else {
                     return $0.name.lowercased().contains(filteringPhrase.lowercased())
@@ -47,7 +33,7 @@ extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
             }
             controller?.displayCities(filteredCities)
         } else {
-            if favouriteState == true {
+            if favouriteCities.favouriteState == true {
                 let filteredCities = mergedCities.filter { $0.isFavourite }
                 controller?.displayCities(filteredCities)
             } else {

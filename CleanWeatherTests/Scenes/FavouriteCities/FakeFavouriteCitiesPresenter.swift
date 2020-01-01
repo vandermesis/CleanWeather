@@ -13,16 +13,10 @@ import UIKit
 final class FakeFavouriteCitiesPresenter: FakePresenter, FavouriteCitiesPresenter {
 
     var presentCitiesCalled: Bool?
-    var presentCitiesAllCitiesCalled: [City]?
-    var presentCitiesFavouritesCalled: [City]?
-    var presentCitiesFilteringPhraseCalled: String?
-    var presentCitiesFavouriteStateCalled: Bool?
+    var presentCitiesFavouriteCitiesCalled: FavouriteCities?
 
-    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String?, favouriteState: Bool?) {
+    func presentCities(favouriteCities: FavouriteCities) {
         presentCitiesCalled = true
-        presentCitiesAllCitiesCalled = allCities
-        presentCitiesFavouritesCalled = favourites
-        presentCitiesFilteringPhraseCalled = filteringPhrase
-        presentCitiesFavouriteStateCalled = favouriteState
+        presentCitiesFavouriteCitiesCalled = favouriteCities
     }
 }

@@ -58,10 +58,11 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             guard let cityIndex = favouriteCities.firstIndex(where: { $0.id == id }) else { return }
             favouriteCities.remove(at: cityIndex)
         }
-        presenter.presentCities(allCities: allCities,
-                                favourites: favouriteCities,
-                                filteringPhrase: filteringPhrase,
-                                favouriteState: favouriteState)
+        let cities = FavouriteCities(allCities: allCities,
+                                     favourites: favouriteCities,
+                                     filteringPhrase: filteringPhrase,
+                                     favouriteState: favouriteState)
+        presenter.presentCities(favouriteCities: cities)
     }
 
     func didPressSaveButton() {
@@ -78,10 +79,11 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     }
 
     func filterFavouriteCities(filteringPhrase: String?, favouriteState: Bool?) {
-        presenter.presentCities(allCities: allCities,
-                                favourites: favouriteCities,
-                                filteringPhrase: filteringPhrase,
-                                favouriteState: favouriteState)
+        let cities = FavouriteCities(allCities: allCities,
+                                     favourites: favouriteCities,
+                                     filteringPhrase: filteringPhrase,
+                                     favouriteState: favouriteState)
+        presenter.presentCities(favouriteCities: cities)
     }
 }
 
@@ -93,7 +95,9 @@ private extension FavouriteCitiesInteractorImpl {
             switch result {
             case .success(let favourites):
                 self.favouriteCities = favourites
-                self.presenter.presentCities(allCities: self.allCities, favourites: favourites)
+                let cities = FavouriteCities(allCities: self.allCities,
+                                             favourites: self.favouriteCities)
+                self.presenter.presentCities(favouriteCities: cities)
             case .failure(let error):
                 self.presenter.presentError(error)
             }
