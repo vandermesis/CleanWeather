@@ -9,12 +9,21 @@
 import UIKit
 
 protocol FavouriteCitiesPresenter: SpinnerPresenter, AlertPresenter {
-    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String?, favouriteState: Bool?)
+    func presentCities(allCities: [City],
+                       favourites: [City],
+                       filteringPhrase: String?,
+                       favouriteState: Bool?)
 }
 
 extension FavouriteCitiesPresenter {
-    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String? = nil, favouriteState: Bool? = nil) {
-        presentCities(allCities: allCities, favourites: favourites, filteringPhrase: filteringPhrase, favouriteState: favouriteState)
+    func presentCities(allCities: [City],
+                       favourites: [City],
+                       filteringPhrase: String? = nil,
+                       favouriteState: Bool? = nil) {
+        presentCities(allCities: allCities,
+                      favourites: favourites,
+                      filteringPhrase: filteringPhrase,
+                      favouriteState: favouriteState)
     }
 }
 
