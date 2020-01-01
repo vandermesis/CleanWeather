@@ -9,12 +9,12 @@
 import UIKit
 
 protocol FavouriteCitiesPresenter: SpinnerPresenter, AlertPresenter {
-    func presentCities(allCities: [City], favourites: [City], cityName: String, filteringState: Bool, favouriteState: Bool)
+    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String?, favouriteState: Bool?)
 }
 
 extension FavouriteCitiesPresenter {
-    func presentCities(allCities: [City], favourites: [City], cityName: String = "", filteringState: Bool = false, favouriteState: Bool = false) {
-        presentCities(allCities: allCities, favourites: favourites, cityName: cityName, filteringState: filteringState, favouriteState: favouriteState)
+    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String? = nil, favouriteState: Bool? = nil) {
+        presentCities(allCities: allCities, favourites: favourites, filteringPhrase: filteringPhrase, favouriteState: favouriteState)
     }
 }
 
@@ -22,20 +22,28 @@ final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedP
 
 extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
-    func presentCities(allCities: [City], favourites: [City], cityName: String, filteringState: Bool, favouriteState: Bool) {
+    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String?, favouriteState: Bool?) {
         let mergedCities = mergeFavouriteCities(allCities: allCities, favourites: favourites)
-        if filteringState {
-            let searchedCities = mergedCities.filter { (city: FavouriteCitiesListDisplayable) -> Bool in
-                let doesFavouriteMatch = favouriteState == false || city.isFavourite == favouriteState
-                if cityName.isEmpty {
-                    return doesFavouriteMatch
+        guard let filteringPhrase = filteringPhrase else {
+            controller?.displayCities(mergedCities)
+            return
+        }
+        if !filteringPhrase.isEmpty {
+            let filteredCities = mergedCities.filter {
+                if favouriteState == true {
+                    return $0.name.lowercased().contains(filteringPhrase.lowercased()) && $0.isFavourite
                 } else {
-                    return doesFavouriteMatch && city.name.lowercased().contains(cityName.lowercased())
+                    return $0.name.lowercased().contains(filteringPhrase.lowercased())
                 }
             }
-            controller?.displayCities(searchedCities)
+            controller?.displayCities(filteredCities)
         } else {
-            controller?.displayCities(mergedCities)
+            if favouriteState == true {
+                let filteredCities = mergedCities.filter { $0.isFavourite }
+                controller?.displayCities(filteredCities)
+            } else {
+                controller?.displayCities(mergedCities)
+            }
         }
     }
 }

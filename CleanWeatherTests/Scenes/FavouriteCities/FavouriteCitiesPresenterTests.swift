@@ -50,7 +50,7 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
             context("when user is searching for cities") {
 
                 beforeEach {
-                    presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities, cityName: "Kat", filteringState: true)
+                    presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities, filteringPhrase: "Kat", favouriteState: true)
                 }
 
                 it("should call controller to display cities") {

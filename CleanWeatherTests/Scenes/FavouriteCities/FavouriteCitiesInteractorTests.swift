@@ -123,7 +123,9 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 context("if tapped city is favourite") {
 
                     beforeEach {
-                        interactor.didSelectCity(id: Mock.city1.id, userSearch: "", filteringState: false)
+                        interactor.didSelectCity(id: Mock.city1.id,
+                                                 filteringPhrase: "",
+                                                 favouriteState: true)
                     }
 
                     it("should call presenter to present all cities") {
@@ -139,7 +141,9 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 context("if tapped city is not favourtie") {
 
                     beforeEach {
-                        interactor.didSelectCity(id: Mock.city8.id, userSearch: "", filteringState: false)
+                        interactor.didSelectCity(id: Mock.city8.id,
+                                                 filteringPhrase: "",
+                                                 favouriteState: false)
                     }
 
                     it("should call presenter to present all cities") {
@@ -157,7 +161,9 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
             context("on invalid id tapped") {
 
                 beforeEach {
-                    interactor.didSelectCity(id: "invalid-ID", userSearch: "", filteringState: false)
+                    interactor.didSelectCity(id: "invalid-ID",
+                                             filteringPhrase: "",
+                                             favouriteState: true)
                 }
 
                 it("should call presenter to present all cities") {
@@ -224,13 +230,12 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 interactor.getCities()
                 worker.fetchAllCitiesCompletion?(.success(Mock.allCities))
                 worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
-                interactor.searchFavouriteCities(cityName: "Kat", filteringState: true)
+                interactor.filterFavouriteCities(filteringPhrase: "Kat", favouriteState: false)
             }
 
             it("should call presenter to present cities containing search text") {
                 expect(presenter.presentCitiesCalled).to(beTrue())
-                expect(presenter.presentCitiesCityNameCalled).to(equal("Kat"))
-                expect(presenter.presentCitiesFilteringStateCalled).to(beTrue())
+                expect(presenter.presentCitiesFilteringPhraseCalled).to(equal("Kat"))
             }
         }
     }

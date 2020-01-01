@@ -15,16 +15,14 @@ final class FakeFavouriteCitiesPresenter: FakePresenter, FavouriteCitiesPresente
     var presentCitiesCalled: Bool?
     var presentCitiesAllCitiesCalled: [City]?
     var presentCitiesFavouritesCalled: [City]?
-    var presentCitiesCityNameCalled: String?
-    var presentCitiesFilteringStateCalled: Bool?
+    var presentCitiesFilteringPhraseCalled: String?
     var presentCitiesFavouriteStateCalled: Bool?
 
-    func presentCities(allCities: [City], favourites: [City], cityName: String, filteringState: Bool, favouriteState: Bool) {
+    func presentCities(allCities: [City], favourites: [City], filteringPhrase: String?, favouriteState: Bool?) {
         presentCitiesCalled = true
         presentCitiesAllCitiesCalled = allCities
         presentCitiesFavouritesCalled = favourites
-        presentCitiesCityNameCalled = cityName
-        presentCitiesFilteringStateCalled = filteringState
+        presentCitiesFilteringPhraseCalled = filteringPhrase
         presentCitiesFavouriteStateCalled = favouriteState
     }
 }

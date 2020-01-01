@@ -18,15 +18,8 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var saveButton: UIButton!
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
-    private var userSearch: String = ""
-    private var isFavourite: Bool = false
-    private var isSearchBarEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    private var isFiltering: Bool {
-        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
-        return searchController.isActive && (!isSearchBarEmpty || searchBarScopeIsFiltering)
-    }
+    private var isFavourite: Bool?
+    private var filteringPhrase: String?
 
     private let interactor: FavouriteCitiesInteractor
     private let searchController: UISearchController
@@ -80,18 +73,18 @@ extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         interactor.didSelectCity(id: citiesDataSource[indexPath.row].id,
-                                 userSearch: userSearch,
-                                 filteringState: isFiltering)
+                                 filteringPhrase: filteringPhrase,
+                                 favouriteState: isFavourite)
     }
 }
 
 extension FavouriteCitiesController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        guard let userSearch = searchBar.text else { return }
-        self.userSearch = userSearch
-        interactor.searchFavouriteCities(cityName: userSearch, filteringState: isFiltering, favouriteState: isFavourite)
+        let filteringPhrase = searchController.searchBar.text
+        self.filteringPhrase = filteringPhrase
+        interactor.filterFavouriteCities(filteringPhrase: filteringPhrase,
+                                         favouriteState: isFavourite)
     }
 }
 

@@ -10,15 +10,9 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(id: String, userSearch: String, filteringState: Bool)
+    func didSelectCity(id: String, filteringPhrase: String?, favouriteState: Bool?)
     func didPressSaveButton()
-    func searchFavouriteCities(cityName: String, filteringState: Bool, favouriteState: Bool)
-}
-
-extension FavouriteCitiesInteractor {
-    func searchFavouriteCities(cityName: String, filteringState: Bool, favouriteState: Bool = false) {
-        searchFavouriteCities(cityName: cityName, filteringState: filteringState, favouriteState: favouriteState)
-    }
+    func filterFavouriteCities(filteringPhrase: String?, favouriteState: Bool?)
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -56,7 +50,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func didSelectCity(id: String, userSearch: String, filteringState: Bool) {
+    func didSelectCity(id: String, filteringPhrase: String?, favouriteState: Bool?) {
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
         if !favouriteCities.contains(selectedCity) {
             favouriteCities.append(selectedCity)
@@ -66,8 +60,8 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
         presenter.presentCities(allCities: allCities,
                                 favourites: favouriteCities,
-                                cityName: userSearch,
-                                filteringState: filteringState)
+                                filteringPhrase: filteringPhrase,
+                                favouriteState: favouriteState)
     }
 
     func didPressSaveButton() {
@@ -83,11 +77,10 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func searchFavouriteCities(cityName: String, filteringState: Bool, favouriteState: Bool) {
+    func filterFavouriteCities(filteringPhrase: String?, favouriteState: Bool?) {
         presenter.presentCities(allCities: allCities,
                                 favourites: favouriteCities,
-                                cityName: cityName,
-                                filteringState: filteringState,
+                                filteringPhrase: filteringPhrase,
                                 favouriteState: favouriteState)
     }
 }
