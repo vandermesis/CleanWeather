@@ -53,12 +53,12 @@ final class FavouriteCitiesWorkerTests: QuickSpec {
             context("on success response") {
 
                 beforeEach {
-                    networking.fetchCitiesCompletion?(.success(Mock.AllCitiesApiResponse))
+                    networking.fetchCitiesCompletion?(.success(Mock.allCitiesApiResponse))
                 }
 
                 it("should return all cities") {
                     expect(receivedAllCities).notTo(beNil())
-                    expect(receivedAllCities?.count).to(equal(Mock.AllCitiesApiResponse.records.count))
+                    expect(receivedAllCities?.count).to(equal(Mock.allCitiesApiResponse.records.count))
                 }
 
                 it("should return no errors") {

@@ -22,8 +22,8 @@ struct Request<T: Codable> {
     let completion: CodableAPICompletion?
 
     init(url: String,
-         method: HTTPMethod, // to bym nei robil opcjonalne, niech to bedzie wymuszane
-         parameters: [String: Any]? = nil, // parametry są opcjonalne wiec podawać nei trzeba
+         method: HTTPMethod,
+         parameters: [String: Any]? = nil,
          completion: CodableAPICompletion? = nil) {
         self.url = url
         self.method = method.rawValue

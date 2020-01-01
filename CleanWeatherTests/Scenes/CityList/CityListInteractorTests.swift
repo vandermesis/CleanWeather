@@ -33,27 +33,18 @@ final class CityListInteractorTests: QuickSpec {
                 interactor.getFavouriteCities()
             }
 
-            it("should call presenter to show spinner") {
-                expect(presenter.toggleSpinnerStateCalled).to(beTrue())
-            }
-
             it("should call worker to get cities") {
-                expect(worker.fetchCityFavouriteCitiesCalled).to(beTrue())
+                expect(worker.fetchFavouriteCitiesCalled).to(beTrue())
             }
 
             context("on success response") {
 
                 beforeEach {
-                    worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                    worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
                 }
 
-                it("should call presenter to hide spinner") {
-                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
-                }
-
-                it("should call presenter to display valid cities") {
-                    expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
-                    expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.favouriteCities.count))
+                it("presenter should not present cities") {
+                    expect(presenter.presentCitiesWeatherCalled).to(beNil())
                 }
 
                 it("should not call presenter to display any alert") {
@@ -61,68 +52,49 @@ final class CityListInteractorTests: QuickSpec {
                     expect(presenter.presentAlertTitleCalled).to(beNil())
                     expect(presenter.presentErrorCalled).to(beNil())
                 }
-            }
 
-            context("on failure response") {
+                context("on success getCitiesWeather response") {
 
-                beforeEach {
-                    worker.fetchCityFavouriteCitiesCompletion?(.failure(UnitTestError()))
+                    beforeEach {
+                        worker.fetchCitiesWeatherCompletion?(.success(Mock.citiesWeather))
+                    }
+
+                    it("should call worker to get cities") {
+                        expect(worker.fetchCitiesWeatherCalled).to(beTrue())
+                    }
+
+                    it("should call presenter to display valid cities") {
+                        expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
+                        expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
+                    }
+
+                    it("should not call presenter to display any alert") {
+                        expect(presenter.presentAlertMessageCalled).to(beNil())
+                        expect(presenter.presentAlertTitleCalled).to(beNil())
+                        expect(presenter.presentErrorCalled).to(beNil())
+                    }
                 }
 
-                it("should call presenter to hide spinner") {
-                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
-                }
+                context("on failure getCitiesWeather response") {
 
-                it("should call presenter to display error") {
-                    expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
-                }
-            }
-        }
+                    beforeEach {
+                        worker.fetchCitiesWeatherCompletion?(.failure(UnitTestError()))
+                    }
 
-        describe("getting cities") {
+                    it("should call presenter to hide spinner") {
+                        expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                    }
 
-            beforeEach {
-                interactor.getCitiesWeather()
-            }
-
-            it("should call presenter to show spinner") {
-                expect(presenter.toggleSpinnerStateCalled).to(beTrue())
-            }
-
-            it("should call worker to get cities") {
-                expect(worker.fetchCityWeatherCalled).to(beTrue())
-            }
-
-            context("on success response") {
-
-                beforeEach {
-                    worker.fetchCityWeatherCompletion?(.success(Mock.citiesWeather))
-                }
-
-                it("should call presenter to hide spinner") {
-                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
-                }
-
-                it("should call presenter to display valid cities") {
-                    expect(presenter.presentCitiesWeatherCalled).notTo(beNil())
-                    expect(presenter.presentCitiesWeatherCalled?.count).to(equal(Mock.citiesWeather.count))
-                }
-
-                it("should not call presenter to display any alert") {
-                    expect(presenter.presentAlertMessageCalled).to(beNil())
-                    expect(presenter.presentAlertTitleCalled).to(beNil())
-                    expect(presenter.presentErrorCalled).to(beNil())
+                    it("should call presenter to display error") {
+                        expect(presenter.presentErrorCalled).to(beAKindOf(UnitTestError.self))
+                    }
                 }
             }
 
             context("on failure response") {
 
                 beforeEach {
-                    worker.fetchCityWeatherCompletion?(.failure(UnitTestError()))
-                }
-
-                it("should call presenter to hide spinner") {
-                    expect(presenter.toggleSpinnerStateCalled).to(beFalse())
+                    worker.fetchFavouriteCitiesCompletion?(.failure(UnitTestError()))
                 }
 
                 it("should call presenter to display error") {
@@ -135,17 +107,18 @@ final class CityListInteractorTests: QuickSpec {
 
             beforeEach {
                 interactor.getFavouriteCities()
-                worker.fetchCityFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                worker.fetchFavouriteCitiesCompletion?(.success(Mock.favouriteCities))
+                worker.fetchCitiesWeatherCompletion?(.success(Mock.citiesWeather))
             }
 
             context("on valid id tapped") {
 
                 beforeEach {
-                    interactor.didSelectCityCell(id: Mock.favouriteity2.id)
+                    interactor.didSelectCityCell(id: Mock.favouriteCity2.id)
                 }
 
                 it("should call router to navigate to city details") {
-                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal(Mock.favouriteity2.name))
+                    expect(router.navigateToCityForecastCityWeatherCalled?.city).to(equal("New York"))
                 }
             }
 
