@@ -7,26 +7,26 @@
 */
 
 // CityList
-"CityListController.title" = "CleanWeather";
+"CityListControllerTitle" = "CleanWeather";
 
 // FavouriteCities
-"FavouriteCities.title" = "Favourite Cities";
+"FavouriteCitiesTitle" = "Favourite Cities";
 
 // CityForecast
-"CityForecastController.title" = "Now";
+"CityForecastControllerTitle" = "Now";
 
 // CityHistorical
-"CityHistoricalController.title" = "Time Machine";
+"CityHistoricalControllerTitle" = "Time Machine";
 
 // Alerts
-"SharedPresenter.error.title" = "Error";
-"AlertPresentable.action.title.ok" = "OK";
+"SharedPresenterErrorTitle" = "Error";
+"AlertPresentableActionTitleOk" = "OK";
 
 // Errors
-"Error.unknown" = "Unknown Error";
-"Error.serializer" = "Serializer Error";
-"Error.userDefaults" = "User Defaults Error";
-"Error.api" = "Api responded with Error";
-"Error.invalidURL" = "Invalid URL";
-"Error.missingApiResponse" = "Api not responded";
-"Error.missingApiData" = "No data for that request";
+"ErrorUnknown" = "Unknown Error";
+"ErrorSerializer" = "Serializer Error";
+"ErrorUserDefaults" = "User Defaults Error";
+"ErrorApi" = "Api responded with Error";
+"ErrorInvalidURL" = "Invalid URL";
+"ErrorMissingApiResponse" = "Api not responded";
+"ErrorMissingApiData" = "No data for that request";
