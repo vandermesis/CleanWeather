@@ -52,7 +52,7 @@ extension FavouriteCitiesController: FavouriteCitiesPresentable {
 
     func displayCities(_ city: [FavouriteCitiesListDisplayable]) {
         citiesDataSource = city
-        citiesTableView.reloadData()
+        citiesTableView.reloadData(with: .automatic)
     }
 }
 

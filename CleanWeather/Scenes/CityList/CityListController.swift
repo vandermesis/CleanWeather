@@ -50,7 +50,7 @@ extension CityListController: CityListPresentable {
     
     func displayCity(_ citiesWeather: [CityWeatherDisplayable]) {
         citiesWeatherDataSource = citiesWeather
-        tableView.reloadData()
+        tableView.reloadData(with: .automatic)
     }
 }
 
