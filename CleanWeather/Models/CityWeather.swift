@@ -19,3 +19,9 @@ struct CityWeather: Codable {
         return WeatherSymbol(rawValue: icon) ?? .isEmpty
     }
 }
+
+extension Array where Element == CityWeather {
+    func sortByName() -> [CityWeather] {
+        return self.sorted(by: { $0.city < $1.city })
+    }
+}

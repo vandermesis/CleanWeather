@@ -15,3 +15,9 @@ struct City: Codable, Equatable {
     let latitude: Double
     let longitude: Double
 }
+
+extension Array where Element == City {
+    func sortByName() -> [City] {
+        return self.sorted(by: { $0.name < $1.name })
+    }
+}

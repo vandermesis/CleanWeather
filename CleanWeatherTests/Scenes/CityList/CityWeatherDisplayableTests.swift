@@ -24,7 +24,7 @@ final class CityWeatherDisplayableTests: QuickSpec {
             }
 
             it("should return valid id string") {
-                expect(displayable.id).to(equal("05197501-e7b0-4bfd-84e0-e07038270f2d"))
+                expect(displayable.id).to(equal("9DA9F26C-579E-402A-88B0-E5138F79EF28"))
             }
 
             it("should return valid name string") {

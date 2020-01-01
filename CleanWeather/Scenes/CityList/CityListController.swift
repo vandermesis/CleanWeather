@@ -37,8 +37,6 @@ final class CityListController: SharedViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         interactor.getFavouriteCities()
-        //TODO: To be activated when proper networking for getCitiesWeather will be added
-        //interactor.getCitiesWeather()
     }
     
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
