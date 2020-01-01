@@ -6,25 +6,27 @@
   Copyright © 2019 vandermesis. All rights reserved.
 */
 
-// Errors
-"error" = "Error";
-"unknownError" = "Unknown Error";
-"decodingError" = "Decoding Error";
-"encodingError" = "Encoding Error";
-"serializerError" = "Serializer Error";
-"userDefaultsError" = "User Defaults Error";
-"dataSourceError" = "Cell DataSource Error";
-"apiError" = "Api responded with Error";
-"invalidURL" = "Invalid URL";
-"missingApiResponse" = "Api not responded";
-"missingApiData" = "No data for that request";
+// CityList
+"CityListController.title" = "CleanWeather";
 
-// Titles
-"cleanWeather" = "CleanWeather";
-"timeMachine" = "Time Machine";
-"now" = "Now";
-"favouriteCities" = "Favourite Cities";
+// FavouriteCities
+"FavouriteCities.title" = "Favourite Cities";
+
+// CityForecast
+"CityForecastController.title" = "Now";
+
+// CityHistorical
+"CityHistoricalController.title" = "Time Machine";
 
 // Alerts
-"addCity" = "Add new City";
-"ok" = "OK";
+"SharedPresenter.error.title" = "Error";
+"AlertPresentable.action.title.ok" = "OK";
+
+// Errors
+"Error.unknown" = "Unknown Error";
+"Error.serializer" = "Serializer Error";
+"Error.userDefaults" = "User Defaults Error";
+"Error.api" = "Api responded with Error";
+"Error.invalidURL" = "Invalid URL";
+"Error.missingApiResponse" = "Api not responded";
+"Error.missingApiData" = "No data for that request";

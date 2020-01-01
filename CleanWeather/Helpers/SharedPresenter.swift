@@ -30,6 +30,6 @@ class SharedPresenter<T: SpinnerPresentable & AlertPresentable>: SpinnerPresente
     }
     
     func presentError(_ error: Error) {
-        controller?.presentAlert(title: R.string.localizable.error(), message: error.userFriendlyMessage)
+        controller?.presentAlert(title: R.string.localizable.sharedPresenterErrorTitle(), message: error.userFriendlyMessage)
     }
 }

@@ -81,7 +81,7 @@ private extension CityForecastController {
     }
 
     private func setupNavigationBar() {
-        title = R.string.localizable.now()
+        title = R.string.localizable.cityForecastControllerTitle()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks,
                                                             target: self,
                                                             action: #selector(historyButtonPressed(_:)))

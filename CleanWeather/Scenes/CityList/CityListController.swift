@@ -82,7 +82,7 @@ private extension CityListController {
     }
 
     private func setupNavigationBar() {
-        title = R.string.localizable.cleanWeather()
+        title = R.string.localizable.cityListControllerTitle()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addButtonPressed(_:)))
