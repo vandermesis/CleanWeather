@@ -6,25 +6,27 @@
   Copyright © 2019 vandermesis. All rights reserved.
 */
 
-// Errors
-"error" = "Error";
-"unknownError" = "Unknown Error";
-"decodingError" = "Decoding Error";
-"encodingError" = "Encoding Error";
-"serializerError" = "Serializer Error";
-"userDefaultsError" = "User Defaults Error";
-"dataSourceError" = "Cell DataSource Error";
-"apiError" = "Api responded with Error";
-"invalidURL" = "Invalid URL";
-"missingApiResponse" = "Api not responded";
-"missingApiData" = "No data for that request";
+// CityList
+"CityList.Title" = "CleanWeather";
 
-// Titles
-"cleanWeather" = "CleanWeather";
-"timeMachine" = "Time Machine";
-"now" = "Now";
-"favouriteCities" = "Favourite Cities";
+// FavouriteCities
+"FavouriteCitiesTitle" = "Favourite Cities";
+
+// CityForecast
+"CityForecast.Title" = "Now";
+
+// CityHistorical
+"CityHistorical.Title" = "Time Machine";
 
 // Alerts
-"addCity" = "Add new City";
-"ok" = "OK";
+"SharedPresenter.Error.Title" = "Error";
+"AlertPresentable.Action.Title.Ok" = "OK";
+
+// Errors
+"Error.Unknown" = "Unknown Error";
+"Error.Serializer" = "Serializer Error";
+"Error.UserDefaults" = "User Defaults Error";
+"Error.Api" = "Api responded with Error";
+"Error.InvalidURL" = "Invalid URL";
+"Error.MissingApiResponse" = "Api not responded";
+"Error.MissingApiData" = "No data for that request";

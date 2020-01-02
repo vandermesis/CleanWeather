@@ -77,7 +77,7 @@ private extension CityHistoricalController {
     }
 
     private func setupNavigationBar() {
-        title = R.string.localizable.timeMachine()
+        title = R.string.localizable.cityHistoricalTitle()
     }
 
     private func setupDatePicker() {

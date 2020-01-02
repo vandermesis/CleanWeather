@@ -16,7 +16,7 @@ extension AlertPresentable {
     
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: nil)
+        let action = UIAlertAction(title: R.string.localizable.alertPresentableActionTitleOk(), style: .default, handler: nil)
         alert.addAction(action)
         navigationController?.present(alert, animated: true, completion: nil)
     }
