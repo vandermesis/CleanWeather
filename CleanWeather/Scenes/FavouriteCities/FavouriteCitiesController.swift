@@ -110,8 +110,9 @@ private extension FavouriteCitiesController {
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = R.string.localizable.searchCities()
-        searchController.searchBar.scopeButtonTitles = [R.string.localizable.all(), R.string.localizable.favourites()]
+        searchController.searchBar.placeholder = R.string.localizable.favouriteCitiesSearchBarPlaceholder()
+        searchController.searchBar.scopeButtonTitles = [R.string.localizable.favouriteCitiesScopeBarTitleAll(),
+                                                        R.string.localizable.favouriteCitiesScopeBarTitleFavourites()]
         searchController.searchBar.selectedScopeButtonIndex = 0
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.delegate = self
