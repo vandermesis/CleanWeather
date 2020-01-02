@@ -32,7 +32,7 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and all cities scope is selected") {
 
-                    let cities = FavouriteCities(allCities: Mock.allCities,
+                    let cities = CitiesFilter(allCities: Mock.allCities,
                                                  favourites: Mock.favouriteCities)
 
                     beforeEach {
@@ -54,7 +54,7 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and favourite cities scope is selected") {
 
-                    let cities = FavouriteCities(allCities: Mock.allCities,
+                    let cities = CitiesFilter(allCities: Mock.allCities,
                                                  favourites: Mock.favouriteCities,
                                                  filteringPhrase: "",
                                                  favouriteState: true)
@@ -81,7 +81,7 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and all cities scope is selected") {
 
-                    let cities = FavouriteCities(allCities: Mock.allCities,
+                    let cities = CitiesFilter(allCities: Mock.allCities,
                                                  favourites: Mock.favouriteCities,
                                                  filteringPhrase: "Kat",
                                                  favouriteState: false)
@@ -106,7 +106,7 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and favourite cities scope is selected") {
 
-                    let cities = FavouriteCities(allCities: Mock.allCities,
+                    let cities = CitiesFilter(allCities: Mock.allCities,
                                                  favourites: Mock.favouriteCities,
                                                  filteringPhrase: "a",
                                                  favouriteState: true)

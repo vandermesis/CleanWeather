@@ -13,9 +13,9 @@ import UIKit
 final class FakeFavouriteCitiesPresenter: FakePresenter, FavouriteCitiesPresenter {
 
     var presentCitiesCalled: Bool?
-    var presentCitiesFavouriteCitiesCalled: FavouriteCities?
+    var presentCitiesFavouriteCitiesCalled: CitiesFilter?
 
-    func presentCities(favouriteCities: FavouriteCities) {
+    func presentCities(favouriteCities: CitiesFilter) {
         presentCitiesCalled = true
         presentCitiesFavouriteCitiesCalled = favouriteCities
     }

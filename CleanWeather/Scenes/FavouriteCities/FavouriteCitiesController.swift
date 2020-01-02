@@ -72,9 +72,8 @@ extension FavouriteCitiesController: UITableViewDataSource {
 extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id,
-                                 filteringPhrase: filteringPhrase,
-                                 favouriteState: isFavourite)
+        let citiesFilter = CitiesFilter(filteringPhrase: filteringPhrase, favouriteState: isFavourite)
+        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id, citiesFilter: citiesFilter)
     }
 }
 
@@ -83,8 +82,8 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let filteringPhrase = searchController.searchBar.text
         self.filteringPhrase = filteringPhrase
-        interactor.filterFavouriteCities(filteringPhrase: filteringPhrase,
-                                         favouriteState: isFavourite)
+        let citiesFilter = CitiesFilter(filteringPhrase: filteringPhrase, favouriteState: isFavourite)
+        interactor.filterFavouriteCities(citiesFilter: citiesFilter)
     }
 }
 

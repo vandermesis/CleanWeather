@@ -10,9 +10,9 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(id: String, filteringPhrase: String?, favouriteState: Bool?)
+    func didSelectCity(id: String, citiesFilter: CitiesFilter?)
     func didPressSaveButton()
-    func filterFavouriteCities(filteringPhrase: String?, favouriteState: Bool?)
+    func filterFavouriteCities(citiesFilter: CitiesFilter?)
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -50,7 +50,7 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func didSelectCity(id: String, filteringPhrase: String?, favouriteState: Bool?) {
+    func didSelectCity(id: String, citiesFilter: CitiesFilter?) {
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
         if !favouriteCities.contains(selectedCity) {
             favouriteCities.append(selectedCity)
@@ -58,11 +58,9 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             guard let cityIndex = favouriteCities.firstIndex(where: { $0.id == id }) else { return }
             favouriteCities.remove(at: cityIndex)
         }
-        let cities = FavouriteCities(allCities: allCities,
-                                     favourites: favouriteCities,
-                                     filteringPhrase: filteringPhrase,
-                                     favouriteState: favouriteState)
-        presenter.presentCities(favouriteCities: cities)
+        presenter.presentCities(allCities: allCities,
+                                favourites: favouriteCities,
+                                citiesFilter: citiesFilter)
     }
 
     func didPressSaveButton() {
@@ -78,12 +76,8 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
         }
     }
 
-    func filterFavouriteCities(filteringPhrase: String?, favouriteState: Bool?) {
-        let cities = FavouriteCities(allCities: allCities,
-                                     favourites: favouriteCities,
-                                     filteringPhrase: filteringPhrase,
-                                     favouriteState: favouriteState)
-        presenter.presentCities(favouriteCities: cities)
+    func filterFavouriteCities(citiesFilter: CitiesFilter?) {
+        presenter.presentCities(allCities: allCities, favourites: favouriteCities, citiesFilter: citiesFilter)
     }
 }
 
@@ -95,9 +89,7 @@ private extension FavouriteCitiesInteractorImpl {
             switch result {
             case .success(let favourites):
                 self.favouriteCities = favourites
-                let cities = FavouriteCities(allCities: self.allCities,
-                                             favourites: self.favouriteCities)
-                self.presenter.presentCities(favouriteCities: cities)
+                self.presenter.presentCities(allCities: self.allCities, favourites: favourites)
             case .failure(let error):
                 self.presenter.presentError(error)
             }
