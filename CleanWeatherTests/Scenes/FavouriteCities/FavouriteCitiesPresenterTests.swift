@@ -32,11 +32,8 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and all cities scope is selected") {
 
-                    let cities = CitiesFilter(allCities: Mock.allCities,
-                                                 favourites: Mock.favouriteCities)
-
                     beforeEach {
-                        presenter.presentCities(favouriteCities: cities)
+                        presenter.presentCities(allCities: Mock.allCities, favourites: Mock.favouriteCities)
                     }
 
                     it("should call controller to display cities") {
@@ -54,13 +51,13 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and favourite cities scope is selected") {
 
-                    let cities = CitiesFilter(allCities: Mock.allCities,
-                                                 favourites: Mock.favouriteCities,
-                                                 filteringPhrase: "",
-                                                 favouriteState: true)
+                    let citiesFilter = CitiesFilter(filteringPhrase: "",
+                                                    favouriteState: true)
 
                     beforeEach {
-                        presenter.presentCities(favouriteCities: cities)
+                        presenter.presentCities(allCities: Mock.allCities,
+                                                favourites: Mock.favouriteCities,
+                                                citiesFilter: citiesFilter)
                     }
 
                     it("should call controller to display cities") {
@@ -81,13 +78,13 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and all cities scope is selected") {
 
-                    let cities = CitiesFilter(allCities: Mock.allCities,
-                                                 favourites: Mock.favouriteCities,
-                                                 filteringPhrase: "Kat",
-                                                 favouriteState: false)
+                    let citiesFilter = CitiesFilter(filteringPhrase: "Kat",
+                                                    favouriteState: false)
 
                     beforeEach {
-                        presenter.presentCities(favouriteCities: cities)
+                        presenter.presentCities(allCities: Mock.allCities,
+                                                favourites: Mock.favouriteCities,
+                                                citiesFilter: citiesFilter)
                     }
 
                     it("should call controller to display cities") {
@@ -106,13 +103,13 @@ final class FavouriteCitiesPresenterTests: QuickSpec {
 
                 context("and favourite cities scope is selected") {
 
-                    let cities = CitiesFilter(allCities: Mock.allCities,
-                                                 favourites: Mock.favouriteCities,
-                                                 filteringPhrase: "a",
-                                                 favouriteState: true)
+                    let citiesFilter = CitiesFilter(filteringPhrase: "a",
+                                              favouriteState: true)
 
                     beforeEach {
-                        presenter.presentCities(favouriteCities: cities)
+                        presenter.presentCities(allCities: Mock.allCities,
+                                                favourites: Mock.favouriteCities,
+                                                citiesFilter: citiesFilter)
                     }
 
                     it("should call controller to display cities") {

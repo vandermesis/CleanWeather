@@ -62,13 +62,13 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesFavouriteCitiesCalled).notTo(beNil())
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.allCities.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCitiesCalled).notTo(beNil())
+                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities") {
-                        expect(presenter.presentCitiesFavouriteCitiesCalled).notTo(beNil())
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.favourites.count).to(equal(Mock.favouriteCities.count))
+                        expect(presenter.presentCitiesFavouritesCalled).notTo(beNil())
+                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(Mock.favouriteCities.count))
                     }
 
                     it("should not call presenter to present any alert") {
@@ -123,36 +123,34 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                 context("if tapped city is favourite") {
 
                     beforeEach {
-                        interactor.didSelectCity(id: Mock.city1.id,
-                                                 filteringPhrase: "",
-                                                 favouriteState: true)
+                        let citiesFilter = CitiesFilter(filteringPhrase: "", favouriteState: true)
+                        interactor.didSelectCity(id: Mock.city1.id, citiesFilter: citiesFilter)
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.allCities.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities without tapped city") {
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.favourites.count).to(equal(3))
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.favourites).notTo(contain(Mock.city1))
+                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(3))
+                        expect(presenter.presentCitiesFavouritesCalled).notTo(contain(Mock.city1))
                     }
                 }
 
                 context("if tapped city is not favourtie") {
 
                     beforeEach {
-                        interactor.didSelectCity(id: Mock.city8.id,
-                                                 filteringPhrase: "",
-                                                 favouriteState: false)
+                        let citiesFilter = CitiesFilter(filteringPhrase: "", favouriteState: false)
+                        interactor.didSelectCity(id: Mock.city8.id, citiesFilter: citiesFilter)
                     }
 
                     it("should call presenter to present all cities") {
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.allCities.count).to(equal(Mock.allCities.count))
+                        expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                     }
 
                     it("should call presenter to present favourite cities with tapped city") {
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.favourites.count).to(equal(5))
-                        expect(presenter.presentCitiesFavouriteCitiesCalled?.favourites).to(contain(Mock.city8))
+                        expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(5))
+                        expect(presenter.presentCitiesFavouritesCalled).to(contain(Mock.city8))
                     }
 
                 }
@@ -161,17 +159,16 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
             context("on invalid id tapped") {
 
                 beforeEach {
-                    interactor.didSelectCity(id: "invalid-ID",
-                                             filteringPhrase: "",
-                                             favouriteState: true)
+                    let citiesFilter = CitiesFilter(filteringPhrase: "", favouriteState: true)
+                    interactor.didSelectCity(id: "invalid-ID", citiesFilter: citiesFilter)
                 }
 
                 it("should call presenter to present all cities") {
-                    expect(presenter.presentCitiesFavouriteCitiesCalled?.allCities.count).to(equal(Mock.allCities.count))
+                    expect(presenter.presentCitiesAllCitiesCalled?.count).to(equal(Mock.allCities.count))
                 }
 
                 it("should call presenter to present favourite cities without any change") {
-                    expect(presenter.presentCitiesFavouriteCitiesCalled?.favourites.count).to(equal(Mock.favouriteCities.count))
+                    expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(Mock.favouriteCities.count))
                 }
             }
         }
@@ -235,24 +232,26 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
             context("when user entered filtering phrase") {
 
                 beforeEach {
-                    interactor.filterFavouriteCities(filteringPhrase: "Kat", favouriteState: false)
+                    let citiesFilter = CitiesFilter(filteringPhrase: "Kat", favouriteState: false)
+                    interactor.filterFavouriteCities(citiesFilter: citiesFilter)
                 }
 
                 it("should call presenter to present cities containing search text") {
                     expect(presenter.presentCitiesCalled).to(beTrue())
-                    expect(presenter.presentCitiesFavouriteCitiesCalled?.filteringPhrase).to(equal("Kat"))
+                    expect(presenter.presentCitiesCitiesFilterCalled?.filteringPhrase).to(equal("Kat"))
                 }
             }
 
             context("when user selected favourites searching bar scope") {
 
                 beforeEach {
-                    interactor.filterFavouriteCities(filteringPhrase: "kat", favouriteState: true)
+                    let citiesFilter = CitiesFilter(filteringPhrase: "kat", favouriteState: true)
+                    interactor.filterFavouriteCities(citiesFilter: citiesFilter)
                 }
 
                 it("should call presenter to present user favourite cities") {
                     expect(presenter.presentCitiesCalled).to(beTrue())
-                    expect(presenter.presentCitiesFavouriteCitiesCalled?.favouriteState).to(beTrue())
+                    expect(presenter.presentCitiesCitiesFilterCalled?.favouriteState).to(beTrue())
                 }
                 
             }
