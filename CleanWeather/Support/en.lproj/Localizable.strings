@@ -6,6 +6,14 @@
   Copyright © 2019 vandermesis. All rights reserved.
 */
 
+// CityList
+"CityList.Title" = "CleanWeather";
+
+// FavouriteCities
+"FavouriteCitiesTitle" = "Favourite Cities";
+
+// CityForecast
+"CityForecast.Title" = "Now";
 // Errors
 "error" = "Error";
 "unknownError" = "Unknown Error";
@@ -19,6 +27,8 @@
 "missingApiResponse" = "Api not responded";
 "missingApiData" = "No data for that request";
 
+// CityHistorical
+"CityHistorical.Title" = "Time Machine";
 // Titles
 "cleanWeather" = "CleanWeather";
 "timeMachine" = "Time Machine";
@@ -28,8 +38,14 @@
 "favourites" = "Favourites";
 
 // Alerts
-"addCity" = "Add new City";
-"ok" = "OK";
+"SharedPresenter.Error.Title" = "Error";
+"AlertPresentable.Action.Title.Ok" = "OK";
 
-// Placeholders
-"searchCities" = "Search Cities";
+// Errors
+"Error.Unknown" = "Unknown Error";
+"Error.Serializer" = "Serializer Error";
+"Error.UserDefaults" = "User Defaults Error";
+"Error.Api" = "Api responded with Error";
+"Error.InvalidURL" = "Invalid URL";
+"Error.MissingApiResponse" = "Api not responded";
+"Error.MissingApiData" = "No data for that request";

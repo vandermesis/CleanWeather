@@ -104,7 +104,7 @@ private extension FavouriteCitiesController {
     }
 
     private func setupNavigationBar() {
-        title = R.string.localizable.favouriteCities()
+        title = R.string.localizable.favouriteCitiesTitle()
     }
 
     private func setupSearchController() {
