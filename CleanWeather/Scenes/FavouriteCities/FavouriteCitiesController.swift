@@ -112,8 +112,11 @@ private extension FavouriteCitiesController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = R.string.localizable.searchCities()
         searchController.searchBar.scopeButtonTitles = [R.string.localizable.all(), R.string.localizable.favourites()]
+        searchController.searchBar.selectedScopeButtonIndex = 0
+        searchController.searchBar.showsScopeBar = true
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
     }
 }
