@@ -15,6 +15,7 @@ struct FavouriteCitiesCreator {
         let userDefaults = UserDefaults.standard
         let jsonHelper = SerializerHelper.shared
         let searchController = SearchControllerHelper.shared
+        let citiesFilter = CitiesFilter()
         let networking = WeatherNetworkingImpl()
         let database = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
         let worker = FavouriteCitiesWorkerImpl(networking: networking, database: database)
@@ -23,8 +24,9 @@ struct FavouriteCitiesCreator {
         let interactor = FavouriteCitiesInteractorImpl(presenter: presenter,
                                                        worker: worker,
                                                        router: router)
-        let controller = FavouriteCitiesController(interactor: interactor, searchController: searchController)
-
+        let controller = FavouriteCitiesController(interactor: interactor,
+                                                   searchController: searchController,
+                                                   citiesFilter: citiesFilter)
         presenter.controller = controller
         router.controller = controller
 

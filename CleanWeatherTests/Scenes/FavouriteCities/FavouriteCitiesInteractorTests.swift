@@ -152,7 +152,6 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                         expect(presenter.presentCitiesFavouritesCalled?.count).to(equal(5))
                         expect(presenter.presentCitiesFavouritesCalled).to(contain(Mock.city8))
                     }
-
                 }
             }
 
@@ -253,7 +252,6 @@ final class FavouriteCitiesInteractorTests: QuickSpec {
                     expect(presenter.presentCitiesCalled).to(beTrue())
                     expect(presenter.presentCitiesCitiesFilterCalled?.favouriteState).to(beTrue())
                 }
-                
             }
         }
     }

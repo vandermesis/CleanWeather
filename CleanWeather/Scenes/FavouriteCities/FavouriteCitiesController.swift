@@ -18,16 +18,17 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var saveButton: UIButton!
 
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
-    private var isFavourite: Bool?
-    private var filteringPhrase: String?
+    private var citiesFilter: CitiesFilter
 
     private let interactor: FavouriteCitiesInteractor
     private let searchController: UISearchController
 
     init(interactor: FavouriteCitiesInteractor,
-         searchController: UISearchController) {
+         searchController: UISearchController,
+         citiesFilter: CitiesFilter) {
         self.interactor = interactor
         self.searchController = searchController
+        self.citiesFilter = citiesFilter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -72,7 +73,6 @@ extension FavouriteCitiesController: UITableViewDataSource {
 extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let citiesFilter = CitiesFilter(filteringPhrase: filteringPhrase, favouriteState: isFavourite)
         interactor.didSelectCity(id: citiesDataSource[indexPath.row].id, citiesFilter: citiesFilter)
     }
 }
@@ -81,8 +81,7 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         let filteringPhrase = searchController.searchBar.text
-        self.filteringPhrase = filteringPhrase
-        let citiesFilter = CitiesFilter(filteringPhrase: filteringPhrase, favouriteState: isFavourite)
+        citiesFilter.filteringPhrase = filteringPhrase
         interactor.filterFavouriteCities(citiesFilter: citiesFilter)
     }
 }
@@ -90,7 +89,7 @@ extension FavouriteCitiesController: UISearchResultsUpdating {
 extension FavouriteCitiesController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        isFavourite = selectedScope == 1 ? true : false
+        citiesFilter.favouriteState = selectedScope == 1 ? true : false
     }
 }
 
