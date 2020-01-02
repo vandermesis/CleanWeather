@@ -15,6 +15,11 @@ struct FavouriteCities {
     let filteringPhrase: String?
     let favouriteState: Bool?
 
+    var mergeCitiesData: [FavouriteCitiesListDisplayable] {
+        return allCities.map { FavouriteCitiesListDisplayable(city: $0,
+                                                              isFavourite: favourites.contains($0)) }
+    }
+
     init (allCities: [City],
           favourites: [City],
           filteringPhrase: String? = nil,

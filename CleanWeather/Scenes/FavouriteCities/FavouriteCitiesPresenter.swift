@@ -17,35 +17,39 @@ final class FavouriteCitiesPresenterImpl<T: FavouriteCitiesPresentable>: SharedP
 extension FavouriteCitiesPresenterImpl: FavouriteCitiesPresenter {
 
     func presentCities(favouriteCities: FavouriteCities) {
-        let mergedCities = mergeFavouriteCities(allCities: favouriteCities.allCities,
-                                                favourites: favouriteCities.favourites)
-        guard let filteringPhrase = favouriteCities.filteringPhrase else {
-            controller?.displayCities(mergedCities)
-            return
-        }
-        if !filteringPhrase.isEmpty {
-            let filteredCities = mergedCities.filter {
-                if favouriteCities.favouriteState == true {
-                    return $0.name.lowercased().contains(filteringPhrase.lowercased()) && $0.isFavourite
-                } else {
-                    return $0.name.lowercased().contains(filteringPhrase.lowercased())
-                }
-            }
-            controller?.displayCities(filteredCities)
-        } else {
-            if favouriteCities.favouriteState == true {
-                let filteredCities = mergedCities.filter { $0.isFavourite }
-                controller?.displayCities(filteredCities)
-            } else {
-                controller?.displayCities(mergedCities)
-            }
-        }
+        let cities = filterCities(favouriteCities: favouriteCities)
+        controller?.displayCities(cities)
     }
 }
 
 private extension FavouriteCitiesPresenterImpl {
 
-    private func mergeFavouriteCities(allCities: [City], favourites: [City]) -> [FavouriteCitiesListDisplayable] {
-        return allCities.map { FavouriteCitiesListDisplayable(city: $0, isFavourite: favourites.contains($0)) }
+    private func filterCities(favouriteCities: FavouriteCities) -> [FavouriteCitiesListDisplayable] {
+        guard let filteringPhrase = favouriteCities.filteringPhrase else {
+            return favouriteCities.mergeCitiesData
+        }
+        if !filteringPhrase.isEmpty {
+            return searchCitiesForPhrase(favouriteCities: favouriteCities)
+        } else {
+            return searchCitiesForFavouriteState(favouriteCities: favouriteCities)
+        }
+    }
+
+    private func searchCitiesForPhrase(favouriteCities: FavouriteCities) -> [FavouriteCitiesListDisplayable] {
+        guard let filteringPhrase = favouriteCities.filteringPhrase else {
+            return favouriteCities.mergeCitiesData
+        }
+        let favourites = searchCitiesForFavouriteState(favouriteCities: favouriteCities)
+        return favourites.filter {
+            $0.name.lowercased().contains(filteringPhrase.lowercased())
+        }
+    }
+
+    private func searchCitiesForFavouriteState(favouriteCities: FavouriteCities) -> [FavouriteCitiesListDisplayable] {
+        if favouriteCities.favouriteState == true {
+            return favouriteCities.mergeCitiesData.filter { $0.isFavourite }
+        } else {
+            return favouriteCities.mergeCitiesData
+        }
     }
 }
