@@ -10,8 +10,9 @@ import Foundation
 
 protocol FavouriteCitiesInteractor {
     func getCities()
-    func didSelectCity(id: String)
+    func didSelectCity(id: String, citiesFilter: CitiesFilter?)
     func didPressSaveButton()
+    func filterFavouriteCities(citiesFilter: CitiesFilter?)
 }
 
 final class FavouriteCitiesInteractorImpl {
@@ -37,19 +38,19 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
     func getCities() {
         presenter.toggleSpinner(true)
         worker.fetchAllCities { [weak self] result in
-            self?.presenter.toggleSpinner(false)
+            guard let self = self else { return }
+            self.presenter.toggleSpinner(false)
             switch result {
             case .success(let city):
-                guard let self = self else { return }
                 self.allCities = city
                 self.getFavouriteCities()
             case .failure(let error):
-                self?.presenter.presentError(error)
+                self.presenter.presentError(error)
             }
         }
     }
 
-    func didSelectCity(id: String) {
+    func didSelectCity(id: String, citiesFilter: CitiesFilter?) {
         guard let selectedCity = allCities.first(where: { $0.id == id }) else { return }
         if !favouriteCities.contains(selectedCity) {
             favouriteCities.append(selectedCity)
@@ -57,7 +58,9 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             guard let cityIndex = favouriteCities.firstIndex(where: { $0.id == id }) else { return }
             favouriteCities.remove(at: cityIndex)
         }
-        presenter.presentCities(allCities: allCities, favourites: favouriteCities)
+        presenter.presentCities(allCities: allCities,
+                                favourites: favouriteCities,
+                                citiesFilter: citiesFilter)
     }
 
     func didPressSaveButton() {
@@ -72,19 +75,23 @@ extension FavouriteCitiesInteractorImpl: FavouriteCitiesInteractor {
             }
         }
     }
+
+    func filterFavouriteCities(citiesFilter: CitiesFilter?) {
+        presenter.presentCities(allCities: allCities, favourites: favouriteCities, citiesFilter: citiesFilter)
+    }
 }
 
 private extension FavouriteCitiesInteractorImpl {
 
     private func getFavouriteCities() {
         worker.fetchFavouriteCities { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let favourites):
-                guard let self = self else { return }
                 self.favouriteCities = favourites
                 self.presenter.presentCities(allCities: self.allCities, favourites: favourites)
             case .failure(let error):
-                self?.presenter.presentError(error)
+                self.presenter.presentError(error)
             }
         }
     }

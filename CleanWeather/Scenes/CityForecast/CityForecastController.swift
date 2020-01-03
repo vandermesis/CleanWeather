@@ -56,7 +56,7 @@ extension CityForecastController: CityForecastPresentable {
     
     func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
         cityForecastDataSource = cityForecast
-        tableView.reloadData()
+        tableView.reloadData(with: .automatic)
     }
 }
 

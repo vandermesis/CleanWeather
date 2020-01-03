@@ -70,8 +70,7 @@ private extension APIClient {
             request.completion?(.failure(MissingAPIData()))
             return
         }
-
-//        TODO: Uncomment for niceString
+        //TODO: Uncomment for niceString
 //        if let niceString = data.prettyStringValue {
 //            print(niceString)
 //        }

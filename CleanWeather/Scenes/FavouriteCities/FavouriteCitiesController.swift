@@ -17,12 +17,18 @@ final class FavouriteCitiesController: SharedViewController {
     @IBOutlet private weak var citiesTableView: UITableView!
     @IBOutlet private weak var saveButton: UIButton!
 
-    private let interactor: FavouriteCitiesInteractor
-
     private var citiesDataSource = [FavouriteCitiesListDisplayable]()
+    private var citiesFilter: CitiesFilter
 
-    init(interactor: FavouriteCitiesInteractor) {
+    private let interactor: FavouriteCitiesInteractor
+    private let searchController: UISearchController
+
+    init(interactor: FavouriteCitiesInteractor,
+         searchController: UISearchController,
+         citiesFilter: CitiesFilter) {
         self.interactor = interactor
+        self.searchController = searchController
+        self.citiesFilter = citiesFilter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,6 +40,7 @@ final class FavouriteCitiesController: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
+        setupSearchController()
         interactor.getCities()
     }
 
@@ -46,7 +53,7 @@ extension FavouriteCitiesController: FavouriteCitiesPresentable {
 
     func displayCities(_ city: [FavouriteCitiesListDisplayable]) {
         citiesDataSource = city
-        citiesTableView.reloadData()
+        citiesTableView.reloadData(with: .automatic)
     }
 }
 
@@ -66,7 +73,23 @@ extension FavouriteCitiesController: UITableViewDataSource {
 extension FavouriteCitiesController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id)
+        interactor.didSelectCity(id: citiesDataSource[indexPath.row].id, citiesFilter: citiesFilter)
+    }
+}
+
+extension FavouriteCitiesController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let filteringPhrase = searchController.searchBar.text
+        citiesFilter.filteringPhrase = filteringPhrase
+        interactor.filterFavouriteCities(citiesFilter: citiesFilter)
+    }
+}
+
+extension FavouriteCitiesController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        citiesFilter.favouriteState = selectedScope == 1 ? true : false
     }
 }
 
@@ -80,5 +103,19 @@ private extension FavouriteCitiesController {
 
     private func setupNavigationBar() {
         title = R.string.localizable.favouriteCitiesTitle()
+    }
+
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = R.string.localizable.favouriteCitiesSearchBarPlaceholder()
+        searchController.searchBar.scopeButtonTitles = [R.string.localizable.favouriteCitiesScopeBarTitleAll(),
+                                                        R.string.localizable.favouriteCitiesScopeBarTitleFavourites()]
+        searchController.searchBar.selectedScopeButtonIndex = 0
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
     }
 }

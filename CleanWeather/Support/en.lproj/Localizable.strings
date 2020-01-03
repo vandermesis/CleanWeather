@@ -10,7 +10,10 @@
 "CityList.Title" = "CleanWeather";
 
 // FavouriteCities
-"FavouriteCitiesTitle" = "Favourite Cities";
+"FavouriteCities.Title" = "Favourite Cities";
+"FavouriteCities.SearchBar.Placeholder" = "Search Cities";
+"FavouriteCities.ScopeBar.Title.All" = "All";
+"FavouriteCities.ScopeBar.Title.Favourites" = "Favourites";
 
 // CityForecast
 "CityForecast.Title" = "Now";

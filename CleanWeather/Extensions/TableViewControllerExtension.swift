@@ -42,4 +42,8 @@ public extension UITableView {
             fatalError("Failed to dequeue cell!") }
         return cell
     }
+
+    func reloadData(with animation: UITableView.RowAnimation) {
+        reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
+    }
 }
