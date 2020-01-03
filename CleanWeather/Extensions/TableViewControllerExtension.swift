@@ -8,23 +8,6 @@
 
 import UIKit
 
-public protocol ClassNameProtocol {
-    static var className: String { get }
-    var className: String { get }
-}
-
-public extension ClassNameProtocol {
-    static var className: String {
-        return String(describing: self)
-    }
-
-    var className: String {
-        return type(of: self).className
-    }
-}
-
-extension NSObject: ClassNameProtocol {}
-
 public extension UITableView {
     
     func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
@@ -39,7 +22,8 @@ public extension UITableView {
 
     func dequeue<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as? T else {
-            fatalError("Failed to dequeue cell!") }
+            fatalError("Failed to dequeue table view cell!")
+        }
         return cell
     }
 

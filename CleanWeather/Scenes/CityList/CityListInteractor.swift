@@ -59,6 +59,7 @@ extension CityListInteractorImpl: CityListInteractor {
 private extension CityListInteractorImpl {
 
     private func getCitiesWeather(cities: [City]) {
+        if cities.isEmpty { return }
         presenter.toggleSpinner(true)
         worker.fetchCitiesWeather(cities: cities) { [weak self] result in
             guard let self = self else { return }

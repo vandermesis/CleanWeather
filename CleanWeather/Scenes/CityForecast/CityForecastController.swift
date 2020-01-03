@@ -18,8 +18,9 @@ final class CityForecastController: SharedViewController {
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
-    @IBOutlet private weak var tableView: UITableView!
-    
+    @IBOutlet private weak var dailyForecastTableView: UITableView!
+    @IBOutlet private weak var hourlyForecastCollectionView: UICollectionView!
+
     private let interactor: CityForecastInteractor
     
     private var cityForecastDataSource = [CityForecastListDisplayable]()
@@ -38,6 +39,7 @@ final class CityForecastController: SharedViewController {
         interactor.getCityDetails()
         interactor.getCityForecast()
         setupTableView()
+        setupCollectionView()
         setupNavigationBar()
     }
 
@@ -56,7 +58,8 @@ extension CityForecastController: CityForecastPresentable {
     
     func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
         cityForecastDataSource = cityForecast
-        tableView.reloadData(with: .automatic)
+        dailyForecastTableView.reloadData(with: .automatic)
+        hourlyForecastCollectionView.reloadData()
     }
 }
 
@@ -73,11 +76,28 @@ extension CityForecastController: UITableViewDataSource {
     }
 }
 
+extension CityForecastController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cityForecastDataSource.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeue(with: CityForecastCollectionViewCell.self, for: indexPath)
+        return cell
+    }
+}
+
 private extension CityForecastController {
 
     private func setupTableView() {
-        tableView.register(cellType: CityForecastTableViewCell.self)
-        tableView.dataSource = self
+        dailyForecastTableView.register(cellType: CityForecastTableViewCell.self)
+        dailyForecastTableView.dataSource = self
+    }
+
+    private func setupCollectionView() {
+        hourlyForecastCollectionView.register(cellType: CityForecastCollectionViewCell.self)
+        hourlyForecastCollectionView.dataSource = self
     }
 
     private func setupNavigationBar() {

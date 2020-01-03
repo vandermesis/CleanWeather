@@ -11,7 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityForecastController" customModule="CleanWeather" customModuleProvider="target">
             <connections>
                 <outlet property="cityLabel" destination="GG3-FO-UAQ" id="pBQ-lj-ZPD"/>
-                <outlet property="tableView" destination="kcY-gQ-iEf" id="2Fp-7b-oni"/>
+                <outlet property="dailyForecastTableView" destination="kcY-gQ-iEf" id="2Fp-7b-oni"/>
+                <outlet property="hourlyForecastCollectionView" destination="kQq-ih-yyW" id="Mph-tk-Vuj"/>
                 <outlet property="tempLabel" destination="nFU-2l-XnE" id="lmf-3d-BQh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherSymbol" destination="9Ik-LG-vz7" id="iTh-Jo-uaw"/>
@@ -30,20 +31,33 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFU-2l-XnE">
-                    <rect key="frame" x="160.66666666666666" y="100" width="93" height="96"/>
+                    <rect key="frame" x="178" y="100" width="58.333333333333343" height="60"/>
                     <color key="backgroundColor" name="backgroundColor"/>
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-LG-vz7">
-                    <rect key="frame" x="156" y="208.66666666666669" width="102" height="99"/>
+                    <rect key="frame" x="175.33333333333334" y="171.66666666666666" width="63.666666666666657" height="62"/>
                     <color key="backgroundColor" name="backgroundColor"/>
                     <color key="tintColor" name="textColor"/>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80" weight="thin"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50" weight="thin"/>
                 </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kQq-ih-yyW">
+                    <rect key="frame" x="0.0" y="239.66666666666663" width="414" height="110"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="110" id="0N3-cu-B7H"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SY8-NI-Cwo">
+                        <size key="itemSize" width="50" height="130"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kcY-gQ-iEf">
-                    <rect key="frame" x="0.0" y="321.66666666666669" width="414" height="540.33333333333326"/>
+                    <rect key="frame" x="0.0" y="349.66666666666669" width="414" height="512.33333333333326"/>
                     <color key="backgroundColor" name="backgroundColor"/>
                 </tableView>
             </subviews>
@@ -57,20 +71,23 @@
                 <constraint firstItem="kcY-gQ-iEf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ol2-g9-ss3"/>
                 <constraint firstItem="GG3-FO-UAQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="T1L-lL-R2d"/>
                 <constraint firstItem="nFU-2l-XnE" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="TUm-7i-NR9"/>
-                <constraint firstItem="kcY-gQ-iEf" firstAttribute="top" secondItem="9Ik-LG-vz7" secondAttribute="bottom" constant="20" id="WPh-2d-Kjt"/>
+                <constraint firstItem="kQq-ih-yyW" firstAttribute="top" secondItem="9Ik-LG-vz7" secondAttribute="bottom" constant="10" id="TXF-yC-9Kp"/>
+                <constraint firstItem="kQq-ih-yyW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VXf-Qp-qdY"/>
+                <constraint firstItem="kcY-gQ-iEf" firstAttribute="top" secondItem="kQq-ih-yyW" secondAttribute="bottom" id="Zi8-nD-P6i"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kQq-ih-yyW" secondAttribute="trailing" id="rgC-D0-zVN"/>
                 <constraint firstItem="9Ik-LG-vz7" firstAttribute="top" secondItem="nFU-2l-XnE" secondAttribute="bottom" constant="10" id="tzM-0c-Qgv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-90" y="-84"/>
+            <point key="canvasLocation" x="-91.304347826086968" y="-84.375"/>
         </view>
     </objects>
     <resources>
         <image name="cloud.rain" catalog="system" width="64" height="62"/>
         <namedColor name="backgroundColor">
-            <color red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
