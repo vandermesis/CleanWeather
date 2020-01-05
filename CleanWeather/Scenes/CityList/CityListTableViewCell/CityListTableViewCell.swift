@@ -19,5 +19,4 @@ class CityListTableViewCell: UITableViewCell {
         tempLabel.text = cityWeatherDisplayable.temp
         weatherSymbol.image = UIImage(systemName: cityWeatherDisplayable.symbol.icon)
     }
-    
 }

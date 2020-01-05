@@ -11,7 +11,8 @@ import Foundation
 enum DateFormat: String {
     case full = "dd.MM.yyyy HH:mm"
     case long = "dd MMMM yyyy"
-    case hour = "HH:00"
+    case hour = "HH"
+    case day = "EEEE d.MM"
     case apiFormat = "yyyy-MM-DD'T'HH:mm:ss"
 }
 
@@ -39,7 +40,7 @@ final class DateFormatterHelper {
         return formatter.date(from: string)
     }
 
-    func getHourStringFromUnixTime(timeIntervalSince1970: Double, timezone: TimeZoneID, format: DateFormat) -> String {
+    func getTimeStringFromUnixTime(timeIntervalSince1970: Double, timezone: TimeZoneID, format: DateFormat) -> String {
         let time = Date(timeIntervalSince1970: timeIntervalSince1970)
         formatter.dateFormat = format.rawValue
         formatter.timeZone = TimeZone(identifier: timezone.rawValue)

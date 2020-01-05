@@ -8,10 +8,11 @@
 
 import Foundation
 
-typealias FetchForecastCompletion = (Result<[CityForecast], Error>) -> Void
+typealias CityForecast = ([CityHourlyForecast], [CityDailyForecast])
+typealias FetchForecastCompletion = (Result<CityForecast, Error>) -> Void
 
 protocol CityForecastWorker {
-    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?)
+    func fetchCityForecast(coordinates: String, completion: FetchForecastCompletion?)
 }
 
 final class CityForecastWorkerImpl {
@@ -25,16 +26,24 @@ final class CityForecastWorkerImpl {
 
 extension CityForecastWorkerImpl: CityForecastWorker {
     
-    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?) {
+    func fetchCityForecast(coordinates: String, completion: FetchForecastCompletion?) {
         networking.fetchForecastWeatherForCity(coordinates: coordinates) { result in
             switch result {
             case .success(let apiResponse):
-                let cityHourlyForecast = apiResponse.hourly.data.map { CityForecast(id: coordinates,
-                                                                                    dateTimestamp: $0.time,
-                                                                                    temperature: $0.temperature,
-                                                                                    precipProbability: $0.precipProbability,
-                                                                                    icon: $0.icon)}
-                completion?(.success(cityHourlyForecast))
+                print(apiResponse)
+                let cityHourlyForecast = apiResponse.hourly.data.map { CityHourlyForecast(coordinates: coordinates,
+                                                                                          dateTimestamp: $0.time,
+                                                                                          temperature: $0.temperature,
+                                                                                          precipProbability: $0.precipProbability,
+                                                                                          icon: $0.icon)}
+                let cityDailyForecast = apiResponse.daily.data.map { CityDailyForecast(coordinates: coordinates,
+                                                                                       dateTimestamp: $0.time,
+                                                                                       maxTemperature: $0.temperatureHigh,
+                                                                                       minTemperatyre: $0.temperatureLow,
+                                                                                       precipProbability: $0.precipProbability,
+                                                                                       icon: $0.icon)}
+                let cityForecast = (cityHourlyForecast, cityDailyForecast)
+                completion?(.success(cityForecast))
             case .failure(let error):
                 completion?(.failure(error))
             }

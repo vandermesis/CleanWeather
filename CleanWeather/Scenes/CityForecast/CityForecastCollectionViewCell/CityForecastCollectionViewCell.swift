@@ -15,7 +15,7 @@ class CityForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var precipLabel: UILabel!
 
-    func setup(with cityForecastListDisplayable: CityForecastListDisplayable) {
+    func setup(with cityForecastListDisplayable: CityHourlyForecastListDisplayable) {
         hourLabel.text = cityForecastListDisplayable.hour
         tempLabel.text = cityForecastListDisplayable.temp
         precipLabel.text = cityForecastListDisplayable.precip

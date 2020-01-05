@@ -40,23 +40,33 @@ final class CityForecastPresenterTests: QuickSpec {
             }
         }
 
-        describe("presenting city details list") {
+        describe("presenting city forecast list") {
 
             beforeEach {
-                presenter.presentCityDetailsList(Mock.cityForecast)
+                let cityForecast = CityForecast(Mock.cityHourlyForecast, Mock.cityDailyForecast)
+                presenter.presentCityForecastList(cityForecast)
             }
 
             it("should call controller to display city hourly forecast") {
-                expect(controller.displayCityForecastCalled).notTo(beNil())
-                expect(controller.displayCityForecastCalled?.count).to(equal(Mock.cityForecast.count))
+                expect(controller.displayCityForecastHourlyForecastCalled).notTo(beNil())
+                expect(controller.displayCityForecastHourlyForecastCalled?.count).to(equal(Mock.cityHourlyForecast.count))
+            }
+
+            it("should call controller to display city daily forecast") {
+                expect(controller.displayCityForecastDailyForecastCalled).notTo(beNil())
+                expect(controller.displayCityForecastDailyForecastCalled?.count).to(equal(Mock.cityDailyForecast.count))
             }
 
             it("should display rounded temperature with degree sign") {
-                expect(controller.displayCityForecastCalled?[0].temp).to(equal("10°"))
+                expect(controller.displayCityForecastHourlyForecastCalled?[0].temp).to(equal("10°"))
+                expect(controller.displayCityForecastDailyForecastCalled?[0].maxTemp).to(equal("10°"))
+                expect(controller.displayCityForecastDailyForecastCalled?[0].minTemp).to(equal("5°"))
+
             }
 
             it("should display percentage of precip with percent sign") {
-                expect(controller.displayCityForecastCalled?[0].precip).to(equal("46%"))
+                expect(controller.displayCityForecastHourlyForecastCalled?[0].precip).to(equal("46%"))
+                expect(controller.displayCityForecastDailyForecastCalled?[0].precip).to(equal("30%"))
             }
         }
     }

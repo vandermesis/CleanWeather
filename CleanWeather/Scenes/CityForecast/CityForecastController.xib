@@ -44,10 +44,10 @@
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50" weight="thin"/>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kQq-ih-yyW">
-                    <rect key="frame" x="0.0" y="239.66666666666663" width="414" height="110"/>
+                    <rect key="frame" x="0.0" y="239.66666666666663" width="414" height="130"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="110" id="0N3-cu-B7H"/>
+                        <constraint firstAttribute="height" constant="130" id="0N3-cu-B7H"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SY8-NI-Cwo">
                         <size key="itemSize" width="50" height="130"/>
@@ -57,7 +57,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kcY-gQ-iEf">
-                    <rect key="frame" x="0.0" y="349.66666666666669" width="414" height="512.33333333333326"/>
+                    <rect key="frame" x="0.0" y="369.66666666666674" width="414" height="492.33333333333326"/>
                     <color key="backgroundColor" name="backgroundColor"/>
                 </tableView>
             </subviews>
@@ -78,7 +78,7 @@
                 <constraint firstItem="9Ik-LG-vz7" firstAttribute="top" secondItem="nFU-2l-XnE" secondAttribute="bottom" constant="10" id="tzM-0c-Qgv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-91.304347826086968" y="-84.375"/>
+            <point key="canvasLocation" x="39" y="-224"/>
         </view>
     </objects>
     <resources>

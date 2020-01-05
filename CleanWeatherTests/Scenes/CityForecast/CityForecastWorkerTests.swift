@@ -25,14 +25,14 @@ final class CityForecastWorkerTests: QuickSpec {
 
         describe("fetching city hour details list") {
 
-            var receivedCityHourDetailsList: [CityForecast]?
+            var receivedCityHourlyForecastList: CityForecast?
             var receivedError: Error?
 
             beforeEach {
-                worker.fetchCityHourlyForecast(coordinates: Mock.cityWeather2.id) { result in
+                worker.fetchCityForecast(coordinates: Mock.cityWeather2.id) { result in
                     switch result {
                     case .success(let cityHourForecast):
-                        receivedCityHourDetailsList = cityHourForecast
+                        receivedCityHourlyForecastList = cityHourForecast
                     case .failure(let error):
                         receivedError = error
                     }
@@ -40,7 +40,7 @@ final class CityForecastWorkerTests: QuickSpec {
             }
 
             afterEach {
-                receivedCityHourDetailsList = nil
+                receivedCityHourlyForecastList = nil
                 receivedError = nil
             }
 
@@ -55,9 +55,14 @@ final class CityForecastWorkerTests: QuickSpec {
                     networking.fetchForecastWeatherForCityCompletion?(.success(Mock.cityForecastApiResponse))
                 }
 
-                it("should return city hour details list") {
-                    expect(receivedCityHourDetailsList).notTo(beNil())
-                    expect(receivedCityHourDetailsList?.count).to(equal(Mock.cityForecastApiResponse.hourly.data.count))
+                it("should return city hourly forecast list") {
+                    expect(receivedCityHourlyForecastList).notTo(beNil())
+                    expect(receivedCityHourlyForecastList?.0.count).to(equal(Mock.cityForecastApiResponse.hourly.data.count))
+                }
+
+                it("should return city daily forecast list") {
+                    expect(receivedCityHourlyForecastList).notTo(beNil())
+                    expect(receivedCityHourlyForecastList?.1.count).to(equal(Mock.cityForecastApiResponse.daily.data.count))
                 }
 
                 it("should return no errors") {
@@ -72,7 +77,7 @@ final class CityForecastWorkerTests: QuickSpec {
                 }
 
                 it("should not return city hour details list") {
-                    expect(receivedCityHourDetailsList).to(beNil())
+                    expect(receivedCityHourlyForecastList).to(beNil())
                 }
 
                 it("should return valid error") {
