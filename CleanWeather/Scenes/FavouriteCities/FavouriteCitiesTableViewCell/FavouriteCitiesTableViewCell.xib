@@ -18,20 +18,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington D.C." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X94-yi-qaL">
-                        <rect key="frame" x="16" y="13" width="113.5" height="18"/>
+                        <rect key="frame" x="16" y="12" width="126.5" height="20.5"/>
                         <color key="backgroundColor" name="backgroundColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RL3-6u-8An">
-                        <rect key="frame" x="291" y="13.5" width="19" height="17.5"/>
+                        <rect key="frame" x="290" y="13.5" width="20" height="17.5"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <color key="tintColor" name="textColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="hOV-yt-H6e"/>
                         </constraints>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" weight="regular"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" weight="regular"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" name="backgroundColor"/>
