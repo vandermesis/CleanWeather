@@ -30,7 +30,6 @@ extension CityForecastWorkerImpl: CityForecastWorker {
         networking.fetchForecastWeatherForCity(coordinates: coordinates) { result in
             switch result {
             case .success(let apiResponse):
-                print(apiResponse)
                 let cityHourlyForecast = apiResponse.hourly.data.map { CityHourlyForecast(coordinates: coordinates,
                                                                                           dateTimestamp: $0.time,
                                                                                           temperature: $0.temperature,

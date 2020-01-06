@@ -20,7 +20,6 @@ final class CityForecastController: SharedViewController {
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
     @IBOutlet private weak var dailyForecastTableView: UITableView!
-    @IBOutlet private weak var hourlyForecastCollectionView: UICollectionView!
 
     private let interactor: CityForecastInteractor
     
@@ -41,7 +40,6 @@ final class CityForecastController: SharedViewController {
         interactor.getCityDetails()
         interactor.getCityForecast()
         setupTableView()
-        setupCollectionView()
         setupNavigationBar()
     }
 
@@ -63,33 +61,35 @@ extension CityForecastController: CityForecastPresentable {
         cityHourlyForecastDataSource = hourlyForecast
         cityDailyForecastDataSource = dailyForecast
         dailyForecastTableView.reloadData(with: .automatic)
-        hourlyForecastCollectionView.reloadData()
     }
 }
 
 extension CityForecastController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cityDailyForecastDataSource.count
+        return cityDailyForecastDataSource.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
-        cell.setup(with: cityDailyForecastDataSource[indexPath.row])
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeue(with: CityForecastTableViewCellForCollectionView.self, for: indexPath)
+            cell.setup(dataSource: cityHourlyForecastDataSource)
+            return cell
+        } else {
+            let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
+            cell.setup(with: cityDailyForecastDataSource[indexPath.row - 1])
+            return cell
+        }
     }
 }
 
-extension CityForecastController: UICollectionViewDataSource {
+extension CityForecastController: UITableViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cityHourlyForecastDataSource.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(with: CityForecastCollectionViewCell.self, for: indexPath)
-        cell.setup(with: cityHourlyForecastDataSource[indexPath.row])
-        return cell
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 130
+        }
+        return 40
     }
 }
 
@@ -97,13 +97,10 @@ private extension CityForecastController {
 
     private func setupTableView() {
         dailyForecastTableView.register(cellType: CityForecastTableViewCell.self)
+        dailyForecastTableView.register(cellType: CityForecastTableViewCellForCollectionView.self)
         dailyForecastTableView.dataSource = self
-    }
-
-    private func setupCollectionView() {
-        hourlyForecastCollectionView.register(cellType: CityForecastCollectionViewCell.self)
-        hourlyForecastCollectionView.dataSource = self
-        hourlyForecastCollectionView.showsHorizontalScrollIndicator = false
+        dailyForecastTableView.delegate = self
+        dailyForecastTableView.separatorStyle = .none
     }
 
     private func setupNavigationBar() {

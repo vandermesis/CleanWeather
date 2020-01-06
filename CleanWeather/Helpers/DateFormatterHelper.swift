@@ -12,7 +12,7 @@ enum DateFormat: String {
     case full = "dd.MM.yyyy HH:mm"
     case long = "dd MMMM yyyy"
     case hour = "HH"
-    case day = "EEEE d.MM"
+    case day = "dd.MM EEEE"
     case apiFormat = "yyyy-MM-DD'T'HH:mm:ss"
 }
 

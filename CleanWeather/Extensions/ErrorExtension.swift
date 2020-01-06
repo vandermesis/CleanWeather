@@ -34,6 +34,7 @@ enum UserDefaultsError: Error {
 }
 
 extension Error {
+    
     var userFriendlyMessage: String {
         if let appError = self as? AppError {
             return appError.message
