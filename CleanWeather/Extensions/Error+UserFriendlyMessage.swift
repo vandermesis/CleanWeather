@@ -1,5 +1,5 @@
 //
-//  ErrorExtension.swift
+//  Error+UserFriendlyMessage.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 18/11/2019.

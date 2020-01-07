@@ -1,5 +1,5 @@
 //
-//  DataExtension.swift
+//  Data+PrettyStringValue.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 18/12/2019.

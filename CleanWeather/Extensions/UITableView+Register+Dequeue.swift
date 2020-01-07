@@ -1,5 +1,5 @@
 //
-//  TableViewControllerExtension.swift
+//  UITableView+Register+Dequeue.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 16/11/2019.

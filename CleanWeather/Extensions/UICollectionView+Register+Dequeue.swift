@@ -1,5 +1,5 @@
 //
-//  CollectionViewExtension.swift
+//  UICollectionView+Register+Dequeue.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 03/01/2020.

@@ -1,5 +1,5 @@
 //
-//  NSObjectExtension.swift
+//  NSObject+ClassName.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 03/01/2020.
