@@ -8,7 +8,6 @@
 
 import Foundation
 
-typealias CityForecast = ([CityHourlyForecast], [CityDailyForecast])
 typealias FetchForecastCompletion = (Result<CityForecast, Error>) -> Void
 
 protocol CityForecastWorker {
@@ -38,10 +37,10 @@ extension CityForecastWorkerImpl: CityForecastWorker {
                 let cityDailyForecast = apiResponse.daily.data.map { CityDailyForecast(coordinates: coordinates,
                                                                                        dateTimestamp: $0.time,
                                                                                        maxTemperature: $0.temperatureHigh,
-                                                                                       minTemperatyre: $0.temperatureLow,
+                                                                                       minTemperature: $0.temperatureLow,
                                                                                        precipProbability: $0.precipProbability,
                                                                                        icon: $0.icon)}
-                let cityForecast = (cityHourlyForecast, cityDailyForecast)
+                let cityForecast = CityForecast(hourly: cityHourlyForecast, daily: cityDailyForecast)
                 completion?(.success(cityForecast))
             case .failure(let error):
                 completion?(.failure(error))

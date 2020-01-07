@@ -23,8 +23,8 @@ extension CityForecastPresenterImpl: CityForecastPresenter {
     }
     
     func presentCityForecastList(_ forecast: CityForecast) {
-        let hourlyForecast = forecast.0
-        let dailyForecast = forecast.1
+        let hourlyForecast = forecast.hourly
+        let dailyForecast = forecast.daily
         let hourlyForecastDisplayable = hourlyForecast.map { CityHourlyForecastListDisplayable(object: $0) }
         let dailyForecastDisplayable = dailyForecast.map { CityDailyForecastListDisplayable(object: $0)}
         controller?.displayCityForecast(hourlyForecast: hourlyForecastDisplayable,

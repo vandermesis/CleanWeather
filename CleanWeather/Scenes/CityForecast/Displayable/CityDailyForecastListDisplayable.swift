@@ -22,7 +22,7 @@ struct CityDailyForecastListDisplayable {
                                                       timezone: .CET,
                                                       format: .day)
         maxTemp = object.maxTemperature.temperatureString
-        minTemp = object.minTemperatyre.temperatureString
+        minTemp = object.minTemperature.temperatureString
         precip = object.precipProbability.percentString
         symbol = object.symbol
     }

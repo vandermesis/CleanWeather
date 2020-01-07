@@ -43,7 +43,7 @@ final class CityForecastPresenterTests: QuickSpec {
         describe("presenting city forecast list") {
 
             beforeEach {
-                let cityForecast = CityForecast(Mock.cityHourlyForecast, Mock.cityDailyForecast)
+                let cityForecast = CityForecast(hourly: Mock.cityHourlyForecast, daily: Mock.cityDailyForecast)
                 presenter.presentCityForecastList(cityForecast)
             }
 

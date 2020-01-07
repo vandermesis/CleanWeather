@@ -59,7 +59,7 @@ final class CityForecastInteractorTests: QuickSpec {
             context("on success response") {
 
                 beforeEach {
-                    let cityForecast = CityForecast(Mock.cityHourlyForecast, Mock.cityDailyForecast)
+                    let cityForecast = CityForecast(hourly: Mock.cityHourlyForecast, daily: Mock.cityDailyForecast)
                     worker.fetchCityForecastCompletion?(.success(cityForecast))
                 }
 
@@ -68,13 +68,13 @@ final class CityForecastInteractorTests: QuickSpec {
                 }
 
                 it("should call presenter to display city hourly forecast list") {
-                    expect(presenter.presentCityForecastListCalled?.0).notTo(beNil())
-                    expect(presenter.presentCityForecastListCalled?.0.count).to(equal(Mock.cityHourlyForecast.count))
+                    expect(presenter.presentCityForecastListCalled).notTo(beNil())
+                    expect(presenter.presentCityForecastListCalled?.hourly.count).to(equal(Mock.cityHourlyForecast.count))
                 }
 
                 it("should call presenter to display city daily forecast list") {
-                    expect(presenter.presentCityForecastListCalled?.1).notTo(beNil())
-                    expect(presenter.presentCityForecastListCalled?.1.count).to(equal(Mock.cityDailyForecast.count))
+                    expect(presenter.presentCityForecastListCalled).notTo(beNil())
+                    expect(presenter.presentCityForecastListCalled?.daily.count).to(equal(Mock.cityDailyForecast.count))
                 }
 
                 it("should not call presenter to display any alert") {

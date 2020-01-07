@@ -11,7 +11,7 @@ struct CityDailyForecast: Codable {
     let coordinates: String
     let dateTimestamp: Double
     let maxTemperature: Double
-    let minTemperatyre: Double
+    let minTemperature: Double
     let precipProbability: Double
     let icon: String
 
