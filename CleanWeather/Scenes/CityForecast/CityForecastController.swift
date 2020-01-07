@@ -72,7 +72,7 @@ extension CityForecastController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeue(with: CityForecastTableViewCellForCollectionView.self, for: indexPath)
+            let cell = tableView.dequeue(with: CityForecastCollectionViewTableViewCell.self, for: indexPath)
             cell.setup(dataSource: cityHourlyForecastDataSource)
             return cell
         } else {
@@ -97,7 +97,7 @@ private extension CityForecastController {
 
     private func setupTableView() {
         dailyForecastTableView.register(cellType: CityForecastTableViewCell.self)
-        dailyForecastTableView.register(cellType: CityForecastTableViewCellForCollectionView.self)
+        dailyForecastTableView.register(cellType: CityForecastCollectionViewTableViewCell.self)
         dailyForecastTableView.dataSource = self
         dailyForecastTableView.delegate = self
         dailyForecastTableView.separatorStyle = .none

@@ -1,5 +1,5 @@
 //
-//  CityForecastTableViewCellForCollectionView.swift
+//  CityForecastCollectionViewTableViewCell.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 05/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityForecastTableViewCellForCollectionView: UITableViewCell {
+class CityForecastCollectionViewTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
@@ -23,7 +23,7 @@ class CityForecastTableViewCellForCollectionView: UITableViewCell {
     }
 }
 
-extension CityForecastTableViewCellForCollectionView: UICollectionViewDataSource {
+extension CityForecastCollectionViewTableViewCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hourlyForecastDataSource.count
@@ -36,7 +36,7 @@ extension CityForecastTableViewCellForCollectionView: UICollectionViewDataSource
     }
 }
 
-extension CityForecastTableViewCellForCollectionView {
+extension CityForecastCollectionViewTableViewCell {
 
     private func setupCollectionView() {
         collectionView.register(cellType: CityForecastCollectionViewCell.self)
