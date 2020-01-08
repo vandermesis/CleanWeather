@@ -39,19 +39,10 @@ extension CityForecastCellManager: UITableViewDataSource {
         let item = items[indexPath.section]
         switch item.type {
         case .hourlyForecast:
-            if let item = item as? CityForecastCellManagerHourlyForecastItem {
-                let cell = tableView.dequeue(with: CityForecastCollectionViewTableViewCell.self, for: indexPath)
-                cell.setup(with: item.hourlyForecast)
-                return cell
-            }
+            return buildHourlyForecastItemCell(item: item, tableView: tableView, indexPath: indexPath)
         case .dailyForecast:
-            if let item = item as? CityForecastCellManagerDailyForecastItem {
-                let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
-                cell.setup(with: item.dailyForecast[indexPath.row])
-                return cell
-            }
+            return buildDailyForecastItemCell(item: item, tableView: tableView, indexPath: indexPath)
         }
-        return UITableViewCell()
     }
 }
 
@@ -63,5 +54,30 @@ extension CityForecastCellManager {
         items.append(hourlyForecastItem)
         let dailyForecastItem = CityForecastCellManagerDailyForecastItem(dailyForecast: dailyForecast)
         items.append(dailyForecastItem)
+    }
+}
+
+private extension CityForecastCellManager {
+
+    private func buildHourlyForecastItemCell(item: CellManagerItem,
+                                             tableView: UITableView,
+                                             indexPath: IndexPath) -> UITableViewCell {
+        if let item = item as? CityForecastCellManagerHourlyForecastItem {
+            let cell = tableView.dequeue(with: CityForecastCollectionViewTableViewCell.self, for: indexPath)
+            cell.setup(with: item.hourlyForecast)
+            return cell
+        }
+        return UITableViewCell()
+    }
+
+    private func buildDailyForecastItemCell(item: CellManagerItem,
+                                            tableView: UITableView,
+                                            indexPath: IndexPath) -> UITableViewCell {
+        if let item = item as? CityForecastCellManagerDailyForecastItem {
+            let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
+            cell.setup(with: item.dailyForecast[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
     }
 }
