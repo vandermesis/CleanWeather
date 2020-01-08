@@ -1,5 +1,5 @@
 //
-//  CellManager.swift
+//  CityForecastCellManager.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 07/01/2020.
@@ -20,18 +20,18 @@ protocol CellManagerItem {
     var rowCount: Int { get }
 }
 
-final class CellManager: NSObject {
+final class CityForecastCellManager: NSObject {
 
     private var items = [CellManagerItem]()
 }
 
-extension CellManager: UITableViewDataSource {
+extension CityForecastCellManager: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].rowCount
     }
 
@@ -39,13 +39,13 @@ extension CellManager: UITableViewDataSource {
         let item = items[indexPath.section]
         switch item.type {
         case .hourlyForecast:
-            if let item = item as? CellManagerHourlyForecastItem {
+            if let item = item as? CityForecastCellManagerHourlyForecastItem {
                 let cell = tableView.dequeue(with: CityForecastCollectionViewTableViewCell.self, for: indexPath)
                 cell.setup(with: item.hourlyForecast)
                 return cell
             }
         case .dailyForecast:
-            if let item = item as? CellManagerDailyForecastItem {
+            if let item = item as? CityForecastCellManagerDailyForecastItem {
                 let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
                 cell.setup(with: item.dailyForecast[indexPath.row])
                 return cell
@@ -55,13 +55,13 @@ extension CellManager: UITableViewDataSource {
     }
 }
 
-extension CellManager {
+extension CityForecastCellManager {
 
     func setup(with hourlyForecast: [CityHourlyForecastListDisplayable],
                _ dailyForecast: [CityDailyForecastListDisplayable]) {
-        let hourlyForecastItem = CellManagerHourlyForecastItem(hourlyForecast: hourlyForecast)
+        let hourlyForecastItem = CityForecastCellManagerHourlyForecastItem(hourlyForecast: hourlyForecast)
         items.append(hourlyForecastItem)
-        let dailyForecastItem = CellManagerDailyForecastItem(dailyForecast: dailyForecast)
+        let dailyForecastItem = CityForecastCellManagerDailyForecastItem(dailyForecast: dailyForecast)
         items.append(dailyForecastItem)
     }
 }

@@ -22,10 +22,10 @@ final class CityForecastController: SharedViewController {
     @IBOutlet private weak var forecastTableView: UITableView!
 
     private let interactor: CityForecastInteractor
-    private let cellManager: CellManager
+    private let cellManager: CityForecastCellManager
 
     init(interactor: CityForecastInteractor,
-         cellManager: CellManager) {
+         cellManager: CityForecastCellManager) {
         self.interactor = interactor
         self.cellManager = cellManager
         super.init(nibName: nil, bundle: nil)
@@ -69,7 +69,6 @@ private extension CityForecastController {
         forecastTableView.register(cellType: CityForecastTableViewCell.self)
         forecastTableView.register(cellType: CityForecastCollectionViewTableViewCell.self)
         forecastTableView.dataSource = cellManager
-        forecastTableView.separatorStyle = .none
     }
 
     private func setupNavigationBar() {

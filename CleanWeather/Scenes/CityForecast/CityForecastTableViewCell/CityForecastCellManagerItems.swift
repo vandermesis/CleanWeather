@@ -1,5 +1,5 @@
 //
-//  CellManagerItems.swift
+//  CityForecastCellManagerItems.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 08/01/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CellManagerHourlyForecastItem: CellManagerItem {
+final class CityForecastCellManagerHourlyForecastItem: CellManagerItem {
 
     var type: CellManagerItemType {
         return .hourlyForecast
@@ -25,7 +25,7 @@ final class CellManagerHourlyForecastItem: CellManagerItem {
     }
 }
 
-final class CellManagerDailyForecastItem: CellManagerItem {
+final class CityForecastCellManagerDailyForecastItem: CellManagerItem {
 
     var type: CellManagerItemType {
         return .dailyForecast
