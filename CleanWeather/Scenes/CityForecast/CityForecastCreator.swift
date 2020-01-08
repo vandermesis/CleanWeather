@@ -12,6 +12,7 @@ struct CityForecastCreator {
     
     func getController(with cityDetails: CityWeather) -> CityForecastController {
 
+        let cellManager = CellManager()
         let networking = WeatherNetworkingImpl()
         let worker = CityForecastWorkerImpl(networking: networking)
         let router = CityForecastRouterImpl()
@@ -20,7 +21,7 @@ struct CityForecastCreator {
                                                     presenter: presenter,
                                                     worker: worker,
                                                     router: router)
-        let controller = CityForecastController(interactor: interactor)
+        let controller = CityForecastController(interactor: interactor, cellManager: cellManager)
         
         presenter.controller = controller
         router.controller = controller

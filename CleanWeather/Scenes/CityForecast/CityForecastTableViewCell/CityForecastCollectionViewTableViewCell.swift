@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityForecastCollectionViewTableViewCell: UITableViewCell {
+final class CityForecastCollectionViewTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
@@ -18,7 +18,7 @@ class CityForecastCollectionViewTableViewCell: UITableViewCell {
         setupCollectionView()
     }
 
-    func setup(dataSource: [CityHourlyForecastListDisplayable]) {
+    func setup(with dataSource: [CityHourlyForecastListDisplayable]) {
         hourlyForecastDataSource = dataSource
     }
 }

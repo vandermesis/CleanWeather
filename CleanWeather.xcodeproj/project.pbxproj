@@ -63,6 +63,8 @@
 		BA3C10B123A05933003E0B7D /* Mock+City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C10B023A05933003E0B7D /* Mock+City.swift */; };
 		BA3C10B323A065E7003E0B7D /* Mock+Favourite+City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C10B223A065E7003E0B7D /* Mock+Favourite+City.swift */; };
 		BA3E433A23C4FAC5006239B2 /* CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E433923C4FAC5006239B2 /* CityForecast.swift */; };
+		BA3E433C23C50864006239B2 /* CellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E433B23C50864006239B2 /* CellManager.swift */; };
+		BA3E436423C54DA8006239B2 /* CellManagerItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E436323C54DA8006239B2 /* CellManagerItems.swift */; };
 		BA3E9BA223A2ADDC009F695C /* BaseNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */; };
 		BA3E9BA623A2B151009F695C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BA523A2B151009F695C /* Request.swift */; };
 		BA3E9BAC23A303BE009F695C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E9BAB23A303BE009F695C /* APIClient.swift */; };
@@ -258,6 +260,8 @@
 		BA3C10B023A05933003E0B7D /* Mock+City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+City.swift"; sourceTree = "<group>"; };
 		BA3C10B223A065E7003E0B7D /* Mock+Favourite+City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mock+Favourite+City.swift"; sourceTree = "<group>"; };
 		BA3E433923C4FAC5006239B2 /* CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecast.swift; sourceTree = "<group>"; };
+		BA3E433B23C50864006239B2 /* CellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellManager.swift; sourceTree = "<group>"; };
+		BA3E436323C54DA8006239B2 /* CellManagerItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellManagerItems.swift; sourceTree = "<group>"; };
 		BA3E9BA123A2ADDC009F695C /* BaseNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworking.swift; sourceTree = "<group>"; };
 		BA3E9BA523A2B151009F695C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BA3E9BAB23A303BE009F695C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -894,6 +898,8 @@
 				BAF57DE32386955D0054C3F6 /* CityForecastTableViewCell.xib */,
 				BABF0BC223C2879700EA7E9E /* CityForecastCollectionViewTableViewCell.swift */,
 				BABF0BC323C2879700EA7E9E /* CityForecastCollectionViewTableViewCell.xib */,
+				BA3E433B23C50864006239B2 /* CellManager.swift */,
+				BA3E436323C54DA8006239B2 /* CellManagerItems.swift */,
 			);
 			path = CityForecastTableViewCell;
 			sourceTree = "<group>";
@@ -1179,6 +1185,7 @@
 				BA2D2C9D238073A400204BA0 /* SharedViewController.swift in Sources */,
 				609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */,
 				BAF3A18A237B21C20093420E /* CityListController.swift in Sources */,
+				BA3E433C23C50864006239B2 /* CellManager.swift in Sources */,
 				BAF20D4323992E0100A8485A /* FavouriteCitiesWorker.swift in Sources */,
 				BAF3A186237B10970093420E /* CityWeather.swift in Sources */,
 				BAF20D51239950A900A8485A /* FavouriteCitiesListDisplayable.swift in Sources */,
@@ -1221,6 +1228,7 @@
 				BA91496B2397E8930029D666 /* DateFormatterHelper.swift in Sources */,
 				BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */,
 				BA2BAB8323BD3D6900B5CC4E /* CitiesFilter.swift in Sources */,
+				BA3E436423C54DA8006239B2 /* CellManagerItems.swift in Sources */,
 				BAF56E2523ABCD7500B1FD14 /* CityHistoricalAPIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

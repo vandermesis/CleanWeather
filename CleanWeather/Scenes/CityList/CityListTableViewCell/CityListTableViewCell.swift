@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityListTableViewCell: UITableViewCell {
+final class CityListTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!

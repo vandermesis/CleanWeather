@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityForecastTableViewCell: UITableViewCell {
+final class CityForecastTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var maxTempLabel: UILabel!
@@ -16,11 +16,11 @@ class CityForecastTableViewCell: UITableViewCell {
     @IBOutlet private weak var precipLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
     
-    func setup(with cityForecastListDisplayable: CityDailyForecastListDisplayable) {
-        dayLabel.text = cityForecastListDisplayable.day
-        maxTempLabel.text = cityForecastListDisplayable.maxTemp
-        minTempLabel.text = cityForecastListDisplayable.minTemp
-        precipLabel.text = cityForecastListDisplayable.precip
-        weatherSymbol.image = UIImage(systemName: cityForecastListDisplayable.symbol.icon)
+    func setup(with cityDailyForecastListDisplayable: CityDailyForecastListDisplayable) {
+        dayLabel.text = cityDailyForecastListDisplayable.day
+        maxTempLabel.text = cityDailyForecastListDisplayable.maxTemp
+        minTempLabel.text = cityDailyForecastListDisplayable.minTemp
+        precipLabel.text = cityDailyForecastListDisplayable.precip
+        weatherSymbol.image = UIImage(systemName: cityDailyForecastListDisplayable.symbol.icon)
     }
 }

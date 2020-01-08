@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityForecastController" customModule="CleanWeather" customModuleProvider="target">
             <connections>
                 <outlet property="cityLabel" destination="GG3-FO-UAQ" id="pBQ-lj-ZPD"/>
-                <outlet property="dailyForecastTableView" destination="kcY-gQ-iEf" id="2Fp-7b-oni"/>
+                <outlet property="forecastTableView" destination="kcY-gQ-iEf" id="2Fp-7b-oni"/>
                 <outlet property="tempLabel" destination="nFU-2l-XnE" id="lmf-3d-BQh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherSymbol" destination="9Ik-LG-vz7" id="iTh-Jo-uaw"/>
@@ -23,21 +23,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington DC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GG3-FO-UAQ">
-                    <rect key="frame" x="108.33333333333333" y="54" width="197.33333333333337" height="36"/>
+                    <rect key="frame" x="108.66666666666669" y="54" width="197" height="36"/>
                     <color key="backgroundColor" name="backgroundColor"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFU-2l-XnE">
-                    <rect key="frame" x="178" y="100" width="58.333333333333343" height="60"/>
+                    <rect key="frame" x="178" y="100" width="58" height="60"/>
                     <color key="backgroundColor" name="backgroundColor"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                     <color key="textColor" name="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-LG-vz7">
-                    <rect key="frame" x="175.33333333333334" y="171.66666666666666" width="63.666666666666657" height="62"/>
+                    <rect key="frame" x="175" y="171.66666666666666" width="64" height="62"/>
                     <color key="backgroundColor" name="backgroundColor"/>
                     <color key="tintColor" name="textColor"/>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50" weight="thin"/>
