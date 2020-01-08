@@ -9,6 +9,7 @@ target 'CleanWeather' do
   # Pods for CleanWeather
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'lottie-ios'
   
 target 'CleanWeatherTests' do
   

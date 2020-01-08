@@ -1,5 +1,5 @@
 //
-//  ErrorPresentable.swift
+//  SpinnerPresentable.swift
 //  CleanWeather
 //
 //  Created by Patryk Średziński on 19/11/2019.

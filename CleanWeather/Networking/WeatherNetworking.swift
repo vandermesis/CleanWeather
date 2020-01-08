@@ -42,7 +42,7 @@ final class WeatherNetworkingImpl: BaseNetworking, WeatherNetworking {
     }
     
     func fetchCities(completion: FetchCitiesResponseCompletion?) {
-        let urlParams = "?dataset=worldcitiespop&lang=pl&sort=population&facet=country&refine.country=pl&rows=100"
+        let urlParams = "?dataset=worldcitiespop&lang=pl&sort=population&facet=country&refine.country=pl&rows=500"
         let httpRequest = Request(url: APIURL.openDataSoft + urlParams, method: .get, completion: completion)
         client.perform(request: httpRequest)
     }

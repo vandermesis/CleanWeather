@@ -95,6 +95,8 @@
 		BA75B958238E9EA700C3D598 /* Mock+CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75B957238E9EA700C3D598 /* Mock+CityForecast.swift */; };
 		BA76CF8F2385744C001DDC94 /* CityForecastDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */; };
 		BA76CF9123857635001DDC94 /* CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76CF9023857635001DDC94 /* CityForecast.swift */; };
+		BA76D45723C60593009520B4 /* 1221-loader-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = BA76D45623C60592009520B4 /* 1221-loader-animation.json */; };
+		BA76D45923C6106D009520B4 /* 94-soda-loader.json in Resources */ = {isa = PBXBuildFile; fileRef = BA76D45823C6106C009520B4 /* 94-soda-loader.json */; };
 		BA7834D923A0FF0600C9D333 /* FakeFavouriteCityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7834D823A0FF0600C9D333 /* FakeFavouriteCityRepository.swift */; };
 		BA7A1FD8238D54CA00E18E79 /* CityWeatherDisplayableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FD7238D54C900E18E79 /* CityWeatherDisplayableTests.swift */; };
 		BA7A1FDA238D5E7200E18E79 /* FakeCityForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1FD9238D5E7200E18E79 /* FakeCityForecastController.swift */; };
@@ -280,6 +282,8 @@
 		BA75B957238E9EA700C3D598 /* Mock+CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+CityForecast.swift"; sourceTree = "<group>"; };
 		BA76CF8E2385744C001DDC94 /* CityForecastDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastDisplayable.swift; sourceTree = "<group>"; };
 		BA76CF9023857635001DDC94 /* CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecast.swift; sourceTree = "<group>"; };
+		BA76D45623C60592009520B4 /* 1221-loader-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1221-loader-animation.json"; sourceTree = "<group>"; };
+		BA76D45823C6106C009520B4 /* 94-soda-loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "94-soda-loader.json"; sourceTree = "<group>"; };
 		BA7834D823A0FF0600C9D333 /* FakeFavouriteCityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFavouriteCityRepository.swift; sourceTree = "<group>"; };
 		BA7A1FD7238D54C900E18E79 /* CityWeatherDisplayableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherDisplayableTests.swift; sourceTree = "<group>"; };
 		BA7A1FD9238D5E7200E18E79 /* FakeCityForecastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCityForecastController.swift; sourceTree = "<group>"; };
@@ -447,6 +451,7 @@
 				BA15D6622372144700813B24 /* LaunchScreen.storyboard */,
 				BA15D6602372144700813B24 /* Assets.xcassets */,
 				BA4A904C2374905500753E39 /* Colors.xcassets */,
+				BA76D45523C60576009520B4 /* LottieFiles */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -662,12 +667,12 @@
 			isa = PBXGroup;
 			children = (
 				BA2D2C9C238073A400204BA0 /* SharedViewController.swift */,
-				BA6101AD239D612000E5EB4D /* SerializerHelper.swift */,
+				BAC16BE2238214C100420AA6 /* SharedPresenter.swift */,
 				BA6E474B237E13E20083762F /* SpinnerController.swift */,
 				BA74DD5A2381C90400CF1D91 /* SpinnerController.xib */,
-				BAC16BE2238214C100420AA6 /* SharedPresenter.swift */,
 				606B80092383FD8F00C8B952 /* SpinnerPresentable.swift */,
 				606B800B2383FDCC00C8B952 /* AlertPresentable.swift */,
+				BA6101AD239D612000E5EB4D /* SerializerHelper.swift */,
 				BA6CFD5623970A14004B7BD7 /* SharedTextField.swift */,
 				BA91496A2397E8930029D666 /* DateFormatterHelper.swift */,
 				BABF1013239F10A700D7FB5B /* Empty.swift */,
@@ -684,6 +689,15 @@
 				BA153645238602110060EC78 /* CityForecastListDisplayable.swift */,
 			);
 			path = Displayable;
+			sourceTree = "<group>";
+		};
+		BA76D45523C60576009520B4 /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BA76D45623C60592009520B4 /* 1221-loader-animation.json */,
+				BA76D45823C6106C009520B4 /* 94-soda-loader.json */,
+			);
+			path = LottieFiles;
 			sourceTree = "<group>";
 		};
 		BA7834D723A0FED600C9D333 /* Database */ = {
@@ -950,10 +964,12 @@
 				BAC45BB3239870300008E87D /* FavouriteCitiesController.xib in Resources */,
 				BAF0DBF52393DE92000F63B0 /* CityHistoricalController.xib in Resources */,
 				BA15D6642372144700813B24 /* LaunchScreen.storyboard in Resources */,
+				BA76D45923C6106D009520B4 /* 94-soda-loader.json in Resources */,
 				BAF3A199237B2F6E0093420E /* CityListController.xib in Resources */,
 				BA6E4750237E185A0083762F /* CityListTableViewCell.xib in Resources */,
 				BA4A904D2374905500753E39 /* Colors.xcassets in Resources */,
 				609DA54B237440BA00C5773D /* PeopleListController.xib in Resources */,
+				BA76D45723C60593009520B4 /* 1221-loader-animation.json in Resources */,
 				BA9077252383012500258E45 /* Localizable.strings in Resources */,
 				BA15D6612372144700813B24 /* Assets.xcassets in Resources */,
 				BAF20D4E2399424E00A8485A /* FavouriteCitiesTableViewCell.xib in Resources */,
