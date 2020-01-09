@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CityListCreatorsMVVM {
+struct CityListCreatorMVVM {
 
     func getController() -> CityListControllerMVVM {
 
@@ -16,7 +16,8 @@ struct CityListCreatorsMVVM {
         let jsonHelper = SerializerHelper.shared
         let repository = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
         let networking = WeatherNetworkingImpl()
-        let controller = CityListControllerMVVM()
+        let viewModel = CityListViewModelMVVM()
+        let controller = CityListControllerMVVM(viewModel: viewModel)
         return controller
     }
 }
