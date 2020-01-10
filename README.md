@@ -12,7 +12,7 @@
 ![logo](/Demo/animation.gif)
 
 ## What is it
-My first professionally written project written entirely with supervision of proffesional iOS developer. 
+My first professionally written project. Developed entirely with supervision of proffesional iOS developer. 
 
 - used Clean Swift software architecture 
 - followed coding best practices and SOLID principles
