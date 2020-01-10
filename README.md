@@ -12,7 +12,7 @@
 ![logo](/Demo/animation.gif)
 
 ## What is it
-My first professionally written project. Developed entirely with supervision of proffesional iOS developer. 
+My first professionally written project. Developed entirely with supervision of professional iOS developer. 
 
 - used Clean Swift software architecture 
 - followed coding best practices and SOLID principles
@@ -75,7 +75,7 @@ Thank you for your enormous knowledge, rough challanges, understanding, attentiv
 
 ## Who is who
 
-Marek Skrzelowski as mentee, mskrzelowski@vandermesis.com
+Marek Skrzelowski, mskrzelowski@vandermesis.com
 
 
 
