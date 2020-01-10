@@ -20,7 +20,6 @@ struct CitiesAPIResponse: Codable, Equatable {
             let accentcity: String
             let longitude: Double
             let latitude: Double
-            
         }
     }
 }
