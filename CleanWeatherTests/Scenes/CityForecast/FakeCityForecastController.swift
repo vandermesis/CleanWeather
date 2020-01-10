@@ -13,13 +13,16 @@ import UIKit
 final class FakeCityForecastController: UIViewController, CityForecastPresentable {
 
     var displayCityDetailsCalled: CityForecastDisplayable?
-    var displayCityForecastCalled: [CityForecastListDisplayable]?
+    var displayCityForecastHourlyForecastCalled: [CityHourlyForecastListDisplayable]?
+    var displayCityForecastDailyForecastCalled: [CityDailyForecastListDisplayable]?
 
     func displayCityDetails(_ cityDetails: CityForecastDisplayable) {
         displayCityDetailsCalled = cityDetails
     }
 
-    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
-        displayCityForecastCalled = cityForecast
+    func displayCityForecast(hourlyForecast: [CityHourlyForecastListDisplayable],
+                             dailyForecast: [CityDailyForecastListDisplayable]) {
+        displayCityForecastHourlyForecastCalled = hourlyForecast
+        displayCityForecastDailyForecastCalled = dailyForecast
     }
 }

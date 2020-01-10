@@ -112,6 +112,7 @@ private extension FavouriteCitiesController {
         searchController.searchBar.scopeButtonTitles = [R.string.localizable.favouriteCitiesScopeBarTitleAll(),
                                                         R.string.localizable.favouriteCitiesScopeBarTitleFavourites()]
         searchController.searchBar.selectedScopeButtonIndex = 0
+        searchController.searchBar.text = ""
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController

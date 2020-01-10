@@ -1,5 +1,5 @@
 //
-//  IntExtension.swift
+//  Int+HourString.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 27/11/2019.

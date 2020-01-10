@@ -15,20 +15,20 @@ final class CityForecastListDisplayableTests: QuickSpec {
 
     override func spec() {
 
-        var cityForecastListDisplayable: CityForecastListDisplayable!
+        var cityForecastListDisplayable: CityHourlyForecastListDisplayable!
 
-        describe("init of CityForecastListDisplayable") {
+        describe("init of CityHourlyForecastListDisplayable") {
 
             beforeEach {
-                cityForecastListDisplayable = CityForecastListDisplayable(object: Mock.cityForecast4)
+                cityForecastListDisplayable = CityHourlyForecastListDisplayable(object: Mock.cityHourlyForecast4)
             }
 
-            it("should return valid id string") {
-                expect(cityForecastListDisplayable.id).to(equal("c1f2934e-b2f4-47d2-961f-22c72d2411b5"))
+            it("should return valid coordinates string") {
+                expect(cityForecastListDisplayable.coordinates).to(equal("c1f2934e-b2f4-47d2-961f-22c72d2411b5"))
             }
 
             it("should return valid hour string") {
-                expect(cityForecastListDisplayable.hour).to(equal("13:00"))
+                expect(cityForecastListDisplayable.hour).to(equal("13"))
             }
 
             it("should return valid rounded temp with degree sign") {

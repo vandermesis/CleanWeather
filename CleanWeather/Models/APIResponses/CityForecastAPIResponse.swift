@@ -9,18 +9,32 @@
 struct CityForecastAPIResponse: Codable, Equatable {
 
     let hourly: HourlyForecast
+    let daily: DailyForecast
+}
 
-    struct HourlyForecast: Codable, Equatable {
+struct HourlyForecast: Codable, Equatable {
 
-        let data: [ForecastData]
+    let data: [ForecastWeather]
 
-        struct ForecastData: Codable, Equatable {
+    struct ForecastWeather: Codable, Equatable {
 
-            let time: Double
-            let icon: String
-            let precipProbability: Double
-            let temperature: Double
+        let time: Double
+        let icon: String
+        let precipProbability: Double
+        let temperature: Double
+    }
+}
 
-        }
+struct DailyForecast: Codable, Equatable {
+
+    let data: [ForecastWeather]
+
+    struct ForecastWeather: Codable, Equatable {
+
+        let time: Double
+        let icon: String
+        let precipProbability: Double
+        let temperatureLow: Double
+        let temperatureHigh: Double
     }
 }

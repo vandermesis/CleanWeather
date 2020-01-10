@@ -1,5 +1,5 @@
 //
-//  DoubleExtension.swift
+//  Double+StringConverters.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 21/11/2019.

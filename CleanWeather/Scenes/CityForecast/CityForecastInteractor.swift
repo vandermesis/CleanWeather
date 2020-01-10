@@ -41,11 +41,11 @@ extension CityForecastInteractorImpl: CityForecastInteractor {
     func getCityForecast() {
         let coordinates = Coordinates(lat: cityDetails.latitude, lon: cityDetails.longitude)
         presenter.toggleSpinner(true)
-        worker.fetchCityHourlyForecast(coordinates: coordinates.stringValue) { [weak self] result in
+        worker.fetchCityForecast(coordinates: coordinates.stringValue) { [weak self] result in
             self?.presenter.toggleSpinner(false)
             switch result {
             case .success(let detailsList):
-                self?.presenter.presentCityDetailsList(detailsList)
+                self?.presenter.presentCityForecastList(detailsList)
             case .failure(let error):
                 self?.presenter.presentError(error)
             }

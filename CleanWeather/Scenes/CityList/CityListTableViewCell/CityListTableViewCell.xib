@@ -10,35 +10,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="CityListTableViewCell" customModule="CleanWeather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="36" id="KGk-i7-Jjw" customClass="CityListTableViewCell" customModule="CleanWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="249" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="249" height="36"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Warsaw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hab-xj-pXs">
-                        <rect key="frame" x="10" y="10" width="285.5" height="30"/>
+                        <rect key="frame" x="10" y="10" width="138" height="16"/>
                         <color key="backgroundColor" name="backgroundColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="19°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVr-Yl-IT1">
-                        <rect key="frame" x="340" y="13" width="50" height="24"/>
+                        <rect key="frame" x="189" y="8" width="50" height="20.5"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="cqm-w6-Z0t"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-wR-GBk">
-                        <rect key="frame" x="305.5" y="14" width="24.5" height="24"/>
+                        <rect key="frame" x="158" y="9" width="21" height="21"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <color key="tintColor" name="textColor"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" scale="large"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" scale="large"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" name="backgroundColor"/>
@@ -59,13 +59,13 @@
                 <outlet property="tempLabel" destination="vVr-Yl-IT1" id="kq9-aU-ifT"/>
                 <outlet property="weatherSymbol" destination="4gt-wR-GBk" id="5j0-ZD-zT7"/>
             </connections>
-            <point key="canvasLocation" x="-400.00000000000006" y="-43.526785714285715"/>
+            <point key="canvasLocation" x="-509.4202898550725" y="-48.214285714285715"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="cloud.rain" catalog="system" width="64" height="62"/>
         <namedColor name="backgroundColor">
-            <color red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

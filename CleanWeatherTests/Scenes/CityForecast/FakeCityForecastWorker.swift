@@ -10,13 +10,13 @@
 
 final class FakeCityForecastWorker: CityForecastWorker {
 
-    var fetchCityHourDetailsListCalled: Bool?
-    var fetchCityHourDetailsListCoordinatesCalled: String?
-    var fetchCityHourDetailsListCompletion: FetchForecastCompletion?
+    var fetchCityForecastCalled: Bool?
+    var fetchCityForecastCoordinatesCalled: String?
+    var fetchCityForecastCompletion: FetchForecastCompletion?
 
-    func fetchCityHourlyForecast(coordinates: String, completion: FetchForecastCompletion?) {
-        fetchCityHourDetailsListCalled = true
-        fetchCityHourDetailsListCoordinatesCalled = coordinates
-        fetchCityHourDetailsListCompletion = completion
+    func fetchCityForecast(coordinates: String, completion: FetchForecastCompletion?) {
+        fetchCityForecastCalled = true
+        fetchCityForecastCoordinatesCalled = coordinates
+        fetchCityForecastCompletion = completion
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ErrorExtension.swift
+//  Error+UserFriendlyMessage.swift
 //  CleanWeather
 //
 //  Created by Marek Skrzelowski on 18/11/2019.
@@ -34,6 +34,7 @@ enum UserDefaultsError: Error {
 }
 
 extension Error {
+    
     var userFriendlyMessage: String {
         if let appError = self as? AppError {
             return appError.message
