@@ -51,7 +51,9 @@ It is completely rewritten Weatherly app.
 
   
 
-## What I've used
+## What was really helpfull
+### Thank you for your help!
+
 - *[Clean Swift](https://clean-swift.com)*
 - *[Bundler](https://github.com/bundler/bundler)*
 - *[Cocoapods](https://cocoapods.org)*
@@ -61,7 +63,8 @@ It is completely rewritten Weatherly app.
 - *[LottieFilez](https://lottiefiles.com/lottiefilez)*
 - *[Quick](https://github.com/Quick/Quick)*
 - *[Nimble](https://github.com/Quick/Nimble)*
-
+- *[Gifski](https://gif.ski)*
+- *[Typora](https://typora.io)*
   
 
 ## Special thanks to my mentor
@@ -80,4 +83,4 @@ Marek Skrzelowski as mentee, mskrzelowski@vandermesis.com
 
 
 
-*.swift learning month seven
+*.swift learning month seven*
