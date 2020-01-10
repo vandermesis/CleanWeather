@@ -21,7 +21,6 @@ My first professionally written project written entirely with supervision of pro
 - all critical parts of application covered by unit tests with use of Bitrise CI
 
 Application shows current, past and future weather for different locations. 
-
 It is completely rewritten Weatherly app.
 
 
@@ -61,7 +60,6 @@ It is completely rewritten Weatherly app.
 - *[Lottie-ios](https://github.com/airbnb/lottie-ios)*
 - *[LottieFilez](https://lottiefiles.com/lottiefilez)*
 - *[Quick](https://github.com/Quick/Quick)*
-
 - *[Nimble](https://github.com/Quick/Nimble)*
 
   

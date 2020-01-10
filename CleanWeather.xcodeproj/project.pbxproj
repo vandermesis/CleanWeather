@@ -37,6 +37,7 @@
 		BA15D6612372144700813B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6602372144700813B24 /* Assets.xcassets */; };
 		BA15D6642372144700813B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA15D6622372144700813B24 /* LaunchScreen.storyboard */; };
 		BA15D66F2372144700813B24 /* CleanWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15D66E2372144700813B24 /* CleanWeatherTests.swift */; };
+		BA1E52CE23C8898500687F44 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BA1E52CD23C8898500687F44 /* README.md */; };
 		BA229A7023900F0B00E9AA88 /* DoubleExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA229A6F23900F0B00E9AA88 /* DoubleExtensionTests.swift */; };
 		BA229A74239012F300E9AA88 /* IntExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA229A73239012F300E9AA88 /* IntExtensionTests.swift */; };
 		BA289C1423A273B7003EA9E8 /* FavouriteCitiesRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA289C1323A273B7003EA9E8 /* FavouriteCitiesRouterTests.swift */; };
@@ -237,6 +238,7 @@
 		BA15D66A2372144700813B24 /* CleanWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA15D66E2372144700813B24 /* CleanWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanWeatherTests.swift; sourceTree = "<group>"; };
 		BA15D6702372144700813B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA1E52CD23C8898500687F44 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BA229A6F23900F0B00E9AA88 /* DoubleExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionTests.swift; sourceTree = "<group>"; };
 		BA229A73239012F300E9AA88 /* IntExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensionTests.swift; sourceTree = "<group>"; };
 		BA289C1323A273B7003EA9E8 /* FavouriteCitiesRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteCitiesRouterTests.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 		BA15D64B2372144700813B24 = {
 			isa = PBXGroup;
 			children = (
+				BA1E52CD23C8898500687F44 /* README.md */,
 				BAFAA62423C88899001CCA96 /* Demo */,
 				BA15D6562372144700813B24 /* CleanWeather */,
 				BA15D66D2372144700813B24 /* CleanWeatherTests */,
@@ -1021,6 +1024,7 @@
 				BA76D45723C60593009520B4 /* 1221-loader-animation.json in Resources */,
 				BA9077252383012500258E45 /* Localizable.strings in Resources */,
 				BA15D6612372144700813B24 /* Assets.xcassets in Resources */,
+				BA1E52CE23C8898500687F44 /* README.md in Resources */,
 				BAF20D4E2399424E00A8485A /* FavouriteCitiesTableViewCell.xib in Resources */,
 				BA74DD5B2381C90500CF1D91 /* SpinnerController.xib in Resources */,
 				BABF0BC523C2879700EA7E9E /* CityForecastCollectionViewTableViewCell.xib in Resources */,
