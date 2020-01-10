@@ -12,11 +12,11 @@ struct CityListCreatorMVVM {
 
     func getController() -> CityListControllerMVVM {
 
+        let networking = WeatherNetworkingImpl()
         let userDefaults = UserDefaults.standard
         let jsonHelper = SerializerHelper.shared
         let repository = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
-        let networking = WeatherNetworkingImpl()
-        let viewModel = CityListViewModelMVVM()
+        let viewModel = CityListViewModelMVVM(networking: networking, repository: repository)
         let controller = CityListControllerMVVM(viewModel: viewModel)
         return controller
     }
