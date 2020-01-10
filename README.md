@@ -51,8 +51,8 @@ It is completely rewritten Weatherly app.
 
   
 
-## What was really helpfull
-### Thank you for your help!
+## What was really helpful
+
 
 - *[Clean Swift](https://clean-swift.com)*
 - *[Bundler](https://github.com/bundler/bundler)*
@@ -65,7 +65,7 @@ It is completely rewritten Weatherly app.
 - *[Nimble](https://github.com/Quick/Nimble)*
 - *[Gifski](https://gif.ski)*
 - *[Typora](https://typora.io)*
-  
+
 
 ## Special thanks to my mentor
 
