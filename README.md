@@ -69,15 +69,11 @@ It is completely rewritten Weatherly app.
 
 ## Special thanks to my mentor
 
-*[Patryk Średziński](https://github.com/psredzinski)*
-
 Thank you for your enormous knowledge, rough challanges, understanding, attentive guidance and patience. During last two months I've learned a lot. I mean a lot, a lot!
 
 
 
 ## Who is who
-
-Patryk Średziński as mentor, https://github.com/psredzinski
 
 Marek Skrzelowski as mentee, mskrzelowski@vandermesis.com
 
