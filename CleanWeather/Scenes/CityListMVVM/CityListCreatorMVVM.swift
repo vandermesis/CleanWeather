@@ -17,7 +17,8 @@ struct CityListCreatorMVVM {
         let jsonHelper = SerializerHelper.shared
         let repository = FavouriteCityRepositoryImpl(userDefaults: userDefaults, jsonHelper: jsonHelper)
         let viewModel = CityListViewModelMVVM(networking: networking, repository: repository)
-        let controller = CityListControllerMVVM(viewModel: viewModel)
+        let cellManager = CityListCellManagerMVVM()
+        let controller = CityListControllerMVVM(viewModel: viewModel, cellManager: cellManager)
         return controller
     }
 }

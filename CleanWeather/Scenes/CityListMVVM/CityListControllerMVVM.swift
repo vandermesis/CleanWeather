@@ -13,12 +13,14 @@ final class CityListControllerMVVM: SharedViewController {
     @IBOutlet private weak var cityListTableView: UITableView!
 
     private var citiesWeatherDataSource = [CityWeather]()
-    private var citiesWeatherDisplayableDataSource = [CityWeatherDisplayable]()
 
+    private let cellManager: CityListCellManagerMVVM
     private let viewModel: CityListViewModelMVVM
 
-    init(viewModel: CityListViewModelMVVM) {
+    init(viewModel: CityListViewModelMVVM,
+         cellManager: CityListCellManagerMVVM) {
         self.viewModel = viewModel
+        self.cellManager = cellManager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -30,7 +32,8 @@ final class CityListControllerMVVM: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
-        setupViewModel()
+        setupViewModelDelegate()
+        setupCellManagerDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,36 +46,11 @@ final class CityListControllerMVVM: SharedViewController {
     }
 }
 
-extension CityListControllerMVVM: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return citiesWeatherDisplayableDataSource.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
-        cell.setup(with: citiesWeatherDisplayableDataSource[indexPath.row])
-        return cell
-    }
-}
-
-extension CityListControllerMVVM: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let city = citiesWeatherDataSource[indexPath.row]
-        let cityForecastController = CityForecastCreator().getController(with: city)
-        navigationController?.pushViewController(cityForecastController, animated: true)
-    }
-}
-
 extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
 
     func didUpdateFavouriteCitiesWeather(_ viewModel: CityListViewModelMVVM,
-                                         citiesWeather: [CityWeather],
-                                         citiesWeatherDisplayable: [CityWeatherDisplayable]) {
-        citiesWeatherDataSource = citiesWeather
-        citiesWeatherDisplayableDataSource = citiesWeatherDisplayable
-        print(citiesWeatherDisplayableDataSource)
+                                         citiesWeather: [CityWeather]) {
+        cellManager.setup(with: citiesWeather)
         cityListTableView.reloadData()
     }
 
@@ -82,12 +60,20 @@ extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
     }
 }
 
+extension CityListControllerMVVM: CityListCellManagerMVVMDelegate {
+
+    func didSelectCityCell(city: CityWeather) {
+        let cityForecastController = CityForecastCreator().getController(with: city)
+        navigationController?.pushViewController(cityForecastController, animated: true)
+    }
+}
+
 private extension CityListControllerMVVM {
 
     private func setupTableView() {
         cityListTableView.register(cellType: CityListTableViewCell.self)
-        cityListTableView.delegate = self
-        cityListTableView.dataSource = self
+        cityListTableView.delegate = cellManager
+        cityListTableView.dataSource = cellManager
     }
 
     private func setupNavigationBar() {
@@ -97,7 +83,11 @@ private extension CityListControllerMVVM {
                                                             action: #selector(addButtonPressed(_:)))
     }
 
-    private func setupViewModel() {
+    private func setupViewModelDelegate() {
         viewModel.delegate = self
+    }
+
+    private func setupCellManagerDelegate() {
+        cellManager.delegate = self
     }
 }
