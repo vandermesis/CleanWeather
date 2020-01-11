@@ -12,7 +12,6 @@ protocol CityListInteractor {
     func getFavouriteCities()
     func didSelectCityCell(id: String)
     func didPressAddButton()
-
 }
 
 final class CityListInteractorImpl {

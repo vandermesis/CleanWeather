@@ -12,9 +12,10 @@ final class CityListControllerMVVM: SharedViewController {
 
     @IBOutlet private weak var cityListTableView: UITableView!
 
-    private let viewModel: CityListViewModelMVVM
+    private var citiesWeatherDataSource = [CityWeather]()
+    private var citiesWeatherDisplayableDataSource = [CityWeatherDisplayable]()
 
-    private var citiesWeatherDataSource = [CityWeatherDisplayable]()
+    private let viewModel: CityListViewModelMVVM
 
     init(viewModel: CityListViewModelMVVM) {
         self.viewModel = viewModel
@@ -29,26 +30,28 @@ final class CityListControllerMVVM: SharedViewController {
         super.viewDidLoad()
         setupTableView()
         setupNavigationBar()
+        setupViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        viewModel.getFavouriteCites()
+        viewModel.getFavouriteCities()
     }
 
     @IBAction private func addButtonPressed(_ sender: UIBarButtonItem) {
-//        viewModel.didPressAddButton()
+        let favourtieCitiesController = FavouriteCitiesCreator().getController()
+        navigationController?.pushViewController(favourtieCitiesController, animated: true)
     }
 }
 
 extension CityListControllerMVVM: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return citiesWeatherDataSource.count
+        return citiesWeatherDisplayableDataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
-        cell.setup(with: citiesWeatherDataSource[indexPath.row])
+        cell.setup(with: citiesWeatherDisplayableDataSource[indexPath.row])
         return cell
     }
 }
@@ -56,7 +59,26 @@ extension CityListControllerMVVM: UITableViewDataSource {
 extension CityListControllerMVVM: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel.didSelectCityCell()
+        let city = citiesWeatherDataSource[indexPath.row]
+        let cityForecastController = CityForecastCreator().getController(with: city)
+        navigationController?.pushViewController(cityForecastController, animated: true)
+    }
+}
+
+extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
+
+    func didUpdateFavouriteCitiesWeather(_ viewModel: CityListViewModelMVVM,
+                                         citiesWeather: [CityWeather],
+                                         citiesWeatherDisplayable: [CityWeatherDisplayable]) {
+        citiesWeatherDataSource = citiesWeather
+        citiesWeatherDisplayableDataSource = citiesWeatherDisplayable
+        print(citiesWeatherDisplayableDataSource)
+        cityListTableView.reloadData()
+    }
+
+    func didFailWithError(error: Error) {
+        presentAlert(title: R.string.localizable.sharedPresenterErrorTitle(),
+                     message: error.userFriendlyMessage)
     }
 }
 
@@ -64,6 +86,8 @@ private extension CityListControllerMVVM {
 
     private func setupTableView() {
         cityListTableView.register(cellType: CityListTableViewCell.self)
+        cityListTableView.delegate = self
+        cityListTableView.dataSource = self
     }
 
     private func setupNavigationBar() {
@@ -71,5 +95,9 @@ private extension CityListControllerMVVM {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addButtonPressed(_:)))
+    }
+
+    private func setupViewModel() {
+        viewModel.delegate = self
     }
 }
