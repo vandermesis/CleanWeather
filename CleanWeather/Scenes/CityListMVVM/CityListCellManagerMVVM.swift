@@ -9,7 +9,6 @@
 import UIKit
 
 protocol CityListCellManagerMVVMDelegate: class {
-
     func didSelectCityCell(city: CityWeather)
 }
 
