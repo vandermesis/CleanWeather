@@ -10,15 +10,14 @@ import Foundation
 
 protocol CityListViewModelMVVMDelegate: class {
 
-    func didUpdateFavouriteCitiesWeather(_ viewModel: CityListViewModelMVVM,
-                                         citiesWeather: [CityWeather])
+    func didUpdateFavouriteCitiesWeather(citiesWeather: [CityWeather])
     func didFailWithError(error: Error)
 }
 
 final class CityListViewModelMVVM {
 
     private var citiesWeather = [CityWeather]()
-
+    
     weak var delegate: CityListViewModelMVVMDelegate?
 
     private let networking: WeatherNetworking
@@ -39,7 +38,7 @@ extension CityListViewModelMVVM {
                 self.fetchCitiesWeather(cities: cities) { result in
                     switch result {
                     case .success(let cityWeather):
-                        self.delegate?.didUpdateFavouriteCitiesWeather(self, citiesWeather: cityWeather)
+                        self.delegate?.didUpdateFavouriteCitiesWeather(citiesWeather: cityWeather)
                     case .failure(let error):
                         self.delegate?.didFailWithError(error: error)
                     }

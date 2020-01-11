@@ -48,8 +48,7 @@ final class CityListControllerMVVM: SharedViewController {
 
 extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
 
-    func didUpdateFavouriteCitiesWeather(_ viewModel: CityListViewModelMVVM,
-                                         citiesWeather: [CityWeather]) {
+    func didUpdateFavouriteCitiesWeather(citiesWeather: [CityWeather]) {
         cellManager.setup(with: citiesWeather)
         cityListTableView.reloadData()
     }
