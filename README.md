@@ -12,7 +12,7 @@
 ![logo](/Demo/animation.gif)
 
 ## What is it
-My first professionally written project. Developed entirely with supervision of professional iOS developer. 
+My first advanced project. Developed entirely with supervision of professional iOS developer. 
 
 - used Clean Swift software architecture 
 - followed coding best practices and SOLID principles
@@ -69,7 +69,7 @@ It is completely rewritten Weatherly app.
 
 ## Special thanks to my mentor
 
-Thank you for your enormous knowledge, rough challanges, understanding, attentive guidance and patience. During last two months I've learned a lot. I mean a lot, a lot!
+Thank you for enormous knowledge, rough challanges, understanding, attentive guidance and patience. During last two months I've learned a lot. I mean a lot, a lot!
 
 
 
