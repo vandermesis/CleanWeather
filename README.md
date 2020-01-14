@@ -19,6 +19,7 @@ My first advanced project. Developed entirely with supervision of professional i
 - with systematic code review
 - all stages approved by my mentor
 - all critical parts of application covered by unit tests with use of Bitrise CI
+- alternatively - first scene is also made with MVVM design pattern (CityListMVVM folder)
 
 Application shows current, past and future weather for different locations. 
 It is completely rewritten Weatherly app.
@@ -28,6 +29,8 @@ It is completely rewritten Weatherly app.
 ## What new I've learned
 
 - Clean Swift
+
+- MVVM
 
 - Clean Architecture principles
 

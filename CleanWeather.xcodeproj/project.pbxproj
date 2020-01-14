@@ -938,11 +938,11 @@
 		BAF9571223CDD7B600B780C3 /* CityListMVVM */ = {
 			isa = PBXGroup;
 			children = (
-				BAF9571323CDD7B600B780C3 /* CityListCellManagerMVVM.swift */,
+				BAF9571623CDD7B600B780C3 /* CityListCreatorMVVM.swift */,
 				BAF9571423CDD7B600B780C3 /* CityListControllerMVVM.swift */,
 				BAF9571523CDD7B600B780C3 /* CityListControllerMVVM.xib */,
-				BAF9571623CDD7B600B780C3 /* CityListCreatorMVVM.swift */,
 				BAF9571723CDD7B600B780C3 /* CityListViewModelMVVM.swift */,
+				BAF9571323CDD7B600B780C3 /* CityListCellManagerMVVM.swift */,
 			);
 			path = CityListMVVM;
 			sourceTree = "<group>";

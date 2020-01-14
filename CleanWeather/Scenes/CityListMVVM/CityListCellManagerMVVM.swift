@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CityListCellManagerMVVM: NSObject {
+final class CityListCellManagerMVVM {
 
     var citiesWeather = [CityWeather]()
     private var citiesWeatherDisplayable: [CityWeatherDisplayable] {
