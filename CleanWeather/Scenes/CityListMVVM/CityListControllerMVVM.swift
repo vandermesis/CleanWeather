@@ -47,27 +47,29 @@ final class CityListControllerMVVM: SharedViewController {
 extension CityListControllerMVVM: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cellManager.citiesWeather.count
+        return viewModel.citiesWeather.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellManager.buildCell(tableView, cellForRowAt: indexPath)
+        let citiesWeather = viewModel.citiesWeather
+        return cellManager.buildCell(tableView: tableView,
+                                     indexPath: indexPath,
+                                     citiesWeather: citiesWeather)
     }
 }
 
 extension CityListControllerMVVM: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let city = cellManager.didSelectCityCell(indexPath: indexPath)
+        let city = viewModel.citiesWeather[indexPath.row]
         navigateToCityForecast(city: city)
     }
 }
 
 extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
 
-    func didUpdateFavouriteCitiesWeather(citiesWeather: [CityWeather]) {
+    func didUpdateFavouriteCitiesWeather() {
         toogleSpinner(false)
-        cellManager.setupCellManager(with: citiesWeather)
         cityListTableView.reloadData()
     }
 

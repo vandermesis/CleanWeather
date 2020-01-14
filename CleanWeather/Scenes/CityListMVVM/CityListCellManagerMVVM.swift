@@ -8,27 +8,21 @@
 
 import UIKit
 
-final class CityListCellManagerMVVM {
+struct CityListCellManagerMVVM {
 
-    var citiesWeather = [CityWeather]()
-    private var citiesWeatherDisplayable: [CityWeatherDisplayable] {
-        return citiesWeather.map { CityWeatherDisplayable(object: $0)}
-    }
-}
-
-extension CityListCellManagerMVVM {
-    
-    func buildCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func buildCell(tableView: UITableView,
+                   indexPath: IndexPath,
+                   citiesWeather: [CityWeather]) -> UITableViewCell {
+        let citiesWeatherDisplayable = convertToCitiesWeatherDisplayable(citiesWeather: citiesWeather)
         let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
         cell.setup(with: citiesWeatherDisplayable[indexPath.row])
         return cell
     }
+}
 
-    func didSelectCityCell(indexPath: IndexPath) -> CityWeather {
-        return citiesWeather[indexPath.row]
-    }
+private extension CityListCellManagerMVVM {
 
-    func setupCellManager(with citiesWeather: [CityWeather]) {
-        self.citiesWeather = citiesWeather
+    func convertToCitiesWeatherDisplayable(citiesWeather: [CityWeather]) -> [CityWeatherDisplayable] {
+        return citiesWeather.map { CityWeatherDisplayable(object: $0)}
     }
 }
