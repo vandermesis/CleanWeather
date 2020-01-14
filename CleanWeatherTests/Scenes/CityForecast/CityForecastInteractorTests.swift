@@ -52,23 +52,29 @@ final class CityForecastInteractorTests: QuickSpec {
             }
 
             it("should call worker to fetch city hourly details list for valid coordinates") {
-                expect(worker.fetchCityHourDetailsListCalled).to(beTrue())
-                expect(worker.fetchCityHourDetailsListCoordinatesCalled).to(equal("40.0,5.0"))
+                expect(worker.fetchCityForecastCalled).to(beTrue())
+                expect(worker.fetchCityForecastCoordinatesCalled).to(equal("40.0,5.0"))
             }
 
             context("on success response") {
 
                 beforeEach {
-                    worker.fetchCityHourDetailsListCompletion?(.success(Mock.cityForecast))
+                    let cityForecast = CityForecast(hourly: Mock.cityHourlyForecast, daily: Mock.cityDailyForecast)
+                    worker.fetchCityForecastCompletion?(.success(cityForecast))
                 }
 
                 it("should call presenter to hide spinner") {
                     expect(presenter.toggleSpinnerStateCalled).to(beFalse())
                 }
 
-                it("should call presenter to display hourly city details list") {
-                    expect(presenter.presentCityDetailsListCalled).notTo(beNil())
-                    expect(presenter.presentCityDetailsListCalled?.count).to(equal(Mock.cityForecast.count))
+                it("should call presenter to display city hourly forecast list") {
+                    expect(presenter.presentCityForecastListCalled).notTo(beNil())
+                    expect(presenter.presentCityForecastListCalled?.hourly.count).to(equal(Mock.cityHourlyForecast.count))
+                }
+
+                it("should call presenter to display city daily forecast list") {
+                    expect(presenter.presentCityForecastListCalled).notTo(beNil())
+                    expect(presenter.presentCityForecastListCalled?.daily.count).to(equal(Mock.cityDailyForecast.count))
                 }
 
                 it("should not call presenter to display any alert") {
@@ -81,7 +87,7 @@ final class CityForecastInteractorTests: QuickSpec {
             context("on failure response") {
 
                 beforeEach {
-                    worker.fetchCityHourDetailsListCompletion?(.failure(UnitTestError()))
+                    worker.fetchCityForecastCompletion?(.failure(UnitTestError()))
                 }
 
                 it("should call presenter to hide spinner") {

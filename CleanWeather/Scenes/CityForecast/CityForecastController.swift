@@ -10,7 +10,8 @@ import UIKit
 
 protocol CityForecastPresentable: SpinnerPresentable & AlertPresentable {
     func displayCityDetails(_ cityDetails: CityForecastDisplayable)
-    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable])
+    func displayCityForecast(hourlyForecast: [CityHourlyForecastListDisplayable],
+                             dailyForecast: [CityDailyForecastListDisplayable])
 }
 
 final class CityForecastController: SharedViewController {
@@ -18,14 +19,15 @@ final class CityForecastController: SharedViewController {
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
     @IBOutlet private weak var weatherSymbol: UIImageView!
-    @IBOutlet private weak var tableView: UITableView!
-    
+    @IBOutlet private weak var forecastTableView: UITableView!
+
     private let interactor: CityForecastInteractor
-    
-    private var cityForecastDataSource = [CityForecastListDisplayable]()
-    
-    init(interactor: CityForecastInteractor) {
+    private let cellManager: CityForecastCellManager
+
+    init(interactor: CityForecastInteractor,
+         cellManager: CityForecastCellManager) {
         self.interactor = interactor
+        self.cellManager = cellManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -54,30 +56,19 @@ extension CityForecastController: CityForecastPresentable {
         weatherSymbol.image = UIImage(systemName: cityDetails.symbol.icon)
     }
     
-    func displayCityForecast(_ cityForecast: [CityForecastListDisplayable]) {
-        cityForecastDataSource = cityForecast
-        tableView.reloadData(with: .automatic)
-    }
-}
-
-extension CityForecastController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cityForecastDataSource.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(with: CityForecastTableViewCell.self, for: indexPath)
-        cell.setup(with: cityForecastDataSource[indexPath.row])
-        return cell
+    func displayCityForecast(hourlyForecast: [CityHourlyForecastListDisplayable],
+                             dailyForecast: [CityDailyForecastListDisplayable]) {
+        cellManager.setup(with: hourlyForecast, dailyForecast)
+        forecastTableView.reloadData()
     }
 }
 
 private extension CityForecastController {
 
     private func setupTableView() {
-        tableView.register(cellType: CityForecastTableViewCell.self)
-        tableView.dataSource = self
+        forecastTableView.register(cellType: CityForecastTableViewCell.self)
+        forecastTableView.register(cellType: CityForecastCollectionViewTableViewCell.self)
+        forecastTableView.dataSource = cellManager
     }
 
     private func setupNavigationBar() {

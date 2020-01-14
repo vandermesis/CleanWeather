@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavouriteCitiesTableViewCell: UITableViewCell {
+final class FavouriteCitiesTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var cityNameLabel: UILabel!
     @IBOutlet private weak var cityFavouriteImage: UIImageView!

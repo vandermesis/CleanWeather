@@ -10,7 +10,7 @@ import UIKit
 
 protocol CityForecastPresenter: SpinnerPresenter, AlertPresenter {
     func presentCityDetails(_ cityDetails: CityWeather)
-    func presentCityDetailsList(_ forecast: [CityForecast])
+    func presentCityForecastList(_ forecast: CityForecast)
 }
 
 final class CityForecastPresenterImpl<T: CityForecastPresentable>: SharedPresenter<T> {}
@@ -22,8 +22,12 @@ extension CityForecastPresenterImpl: CityForecastPresenter {
         controller?.displayCityDetails(displayable)
     }
     
-    func presentCityDetailsList(_ forecast: [CityForecast]) {
-        let displayable = forecast.map { CityForecastListDisplayable(object: $0) }
-        controller?.displayCityForecast(displayable)
+    func presentCityForecastList(_ forecast: CityForecast) {
+        let hourlyForecast = forecast.hourly
+        let dailyForecast = forecast.daily
+        let hourlyForecastDisplayable = hourlyForecast.map { CityHourlyForecastListDisplayable(object: $0) }
+        let dailyForecastDisplayable = dailyForecast.map { CityDailyForecastListDisplayable(object: $0)}
+        controller?.displayCityForecast(hourlyForecast: hourlyForecastDisplayable,
+                                        dailyForecast: dailyForecastDisplayable)
     }
 }
