@@ -185,6 +185,11 @@
 		BAF56E2723ABE66800B1FD14 /* Mock+CityHistoricalApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF56E2623ABE66800B1FD14 /* Mock+CityHistoricalApiResponse.swift */; };
 		BAF57DE42386955D0054C3F6 /* CityForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF57DE22386955D0054C3F6 /* CityForecastTableViewCell.swift */; };
 		BAF57DE52386955D0054C3F6 /* CityForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAF57DE32386955D0054C3F6 /* CityForecastTableViewCell.xib */; };
+		BAF9571823CDD7B700B780C3 /* CityListCellManagerMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9571323CDD7B600B780C3 /* CityListCellManagerMVVM.swift */; };
+		BAF9571923CDD7B700B780C3 /* CityListControllerMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9571423CDD7B600B780C3 /* CityListControllerMVVM.swift */; };
+		BAF9571A23CDD7B700B780C3 /* CityListControllerMVVM.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAF9571523CDD7B600B780C3 /* CityListControllerMVVM.xib */; };
+		BAF9571B23CDD7B700B780C3 /* CityListCreatorMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9571623CDD7B600B780C3 /* CityListCreatorMVVM.swift */; };
+		BAF9571C23CDD7B700B780C3 /* CityListViewModelMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9571723CDD7B600B780C3 /* CityListViewModelMVVM.swift */; };
 		BAFAA62523C88899001CCA96 /* Demo in Resources */ = {isa = PBXBuildFile; fileRef = BAFAA62423C88899001CCA96 /* Demo */; };
 		EBBFF68FBE65B46835BDBE6E /* Pods_CleanWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DB2D90E373536D4412D876 /* Pods_CleanWeatherTests.framework */; };
 /* End PBXBuildFile section */
@@ -386,6 +391,11 @@
 		BAF56E2623ABE66800B1FD14 /* Mock+CityHistoricalApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+CityHistoricalApiResponse.swift"; sourceTree = "<group>"; };
 		BAF57DE22386955D0054C3F6 /* CityForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastTableViewCell.swift; sourceTree = "<group>"; };
 		BAF57DE32386955D0054C3F6 /* CityForecastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityForecastTableViewCell.xib; sourceTree = "<group>"; };
+		BAF9571323CDD7B600B780C3 /* CityListCellManagerMVVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListCellManagerMVVM.swift; sourceTree = "<group>"; };
+		BAF9571423CDD7B600B780C3 /* CityListControllerMVVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListControllerMVVM.swift; sourceTree = "<group>"; };
+		BAF9571523CDD7B600B780C3 /* CityListControllerMVVM.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityListControllerMVVM.xib; sourceTree = "<group>"; };
+		BAF9571623CDD7B600B780C3 /* CityListCreatorMVVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListCreatorMVVM.swift; sourceTree = "<group>"; };
+		BAF9571723CDD7B600B780C3 /* CityListViewModelMVVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewModelMVVM.swift; sourceTree = "<group>"; };
 		BAFAA62423C88899001CCA96 /* Demo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Demo; sourceTree = "<group>"; };
 		F8C6165805C0B9DAC9808A12 /* Pods-CleanWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanWeather.release.xcconfig"; path = "Target Support Files/Pods-CleanWeather/Pods-CleanWeather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,7 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				609DA547237440A900C5773D /* PeopleList */,
-				BA98737A23C7E0A80062D6BD /* CityListMVVM */,
+				BAF9571223CDD7B600B780C3 /* CityListMVVM */,
 				BAF3A18B237B22470093420E /* CityList */,
 				BAC45BAD23986E2B0008E87D /* FavouriteCities */,
 				BA712A432384682E00213466 /* CityForecast */,
@@ -925,6 +935,18 @@
 			path = CityForecastTableViewCell;
 			sourceTree = "<group>";
 		};
+		BAF9571223CDD7B600B780C3 /* CityListMVVM */ = {
+			isa = PBXGroup;
+			children = (
+				BAF9571323CDD7B600B780C3 /* CityListCellManagerMVVM.swift */,
+				BAF9571423CDD7B600B780C3 /* CityListControllerMVVM.swift */,
+				BAF9571523CDD7B600B780C3 /* CityListControllerMVVM.xib */,
+				BAF9571623CDD7B600B780C3 /* CityListCreatorMVVM.swift */,
+				BAF9571723CDD7B600B780C3 /* CityListViewModelMVVM.swift */,
+			);
+			path = CityListMVVM;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1024,13 +1046,13 @@
 				609DA54B237440BA00C5773D /* PeopleListController.xib in Resources */,
 				BA76D45723C60593009520B4 /* 1221-loader-animation.json in Resources */,
 				BA9077252383012500258E45 /* Localizable.strings in Resources */,
-				BA98738623C7E2F90062D6BD /* CityListControllerMVVM.xib in Resources */,
 				BA15D6612372144700813B24 /* Assets.xcassets in Resources */,
 				BA1E52CE23C8898500687F44 /* README.md in Resources */,
 				BAF20D4E2399424E00A8485A /* FavouriteCitiesTableViewCell.xib in Resources */,
 				BA74DD5B2381C90500CF1D91 /* SpinnerController.xib in Resources */,
 				BABF0BC523C2879700EA7E9E /* CityForecastCollectionViewTableViewCell.xib in Resources */,
 				BAED7AB1238469CA00790744 /* CityForecastController.xib in Resources */,
+				BAF9571A23CDD7B700B780C3 /* CityListControllerMVVM.xib in Resources */,
 				BAF57DE52386955D0054C3F6 /* CityForecastTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1174,6 +1196,7 @@
 				BA15D6582372144700813B24 /* AppDelegate.swift in Sources */,
 				BAC45BAF23986E8F0008E87D /* City.swift in Sources */,
 				BAF3A19B237B4C1C0093420E /* CityWeatherDisplayable.swift in Sources */,
+				BAF9571923CDD7B700B780C3 /* CityListControllerMVVM.swift in Sources */,
 				BA76CF9123857635001DDC94 /* CityHourlyForecast.swift in Sources */,
 				60EAC79E2374417000E48021 /* PeopleListWorker.swift in Sources */,
 				BAC16BE123820FDF00420AA6 /* Error+UserFriendlyMessage.swift in Sources */,
@@ -1184,7 +1207,6 @@
 				BAED7AB32384761800790744 /* CityForecastInteractor.swift in Sources */,
 				BA6E474C237E13E20083762F /* SpinnerController.swift in Sources */,
 				BAF20D4723992FC900A8485A /* FavouriteCitiesRouter.swift in Sources */,
-				BA98738523C7E2F90062D6BD /* CityListControllerMVVM.swift in Sources */,
 				BAF3A193237B25880093420E /* CityListRouter.swift in Sources */,
 				BAF20D4D2399424E00A8485A /* FavouriteCitiesTableViewCell.swift in Sources */,
 				BAED7AB72384792000790744 /* CityForecastPresenter.swift in Sources */,
@@ -1192,13 +1214,12 @@
 				BAED7AB0238469CA00790744 /* CityForecastController.swift in Sources */,
 				BA2E67A823BFE4660027A3F2 /* NSObject+ClassName.swift in Sources */,
 				BAED7AB923847A2200790744 /* CityForecastRouter.swift in Sources */,
+				BAF9571B23CDD7B700B780C3 /* CityListCreatorMVVM.swift in Sources */,
 				BA153646238602110060EC78 /* CityHourlyForecastListDisplayable.swift in Sources */,
 				BAF0DBFD2393E64D000F63B0 /* CityHistoricalRouter.swift in Sources */,
 				BA3E9BA223A2ADDC009F695C /* BaseNetworking.swift in Sources */,
 				BAE8892423B105F30035C5C6 /* CurrentWeatherAPIResponse.swift in Sources */,
 				BA6CFD5723970A14004B7BD7 /* SharedTextField.swift in Sources */,
-				BA8B124B23CA2139007DCF20 /* CityListCellManagerMVVM.swift in Sources */,
-				BA98738023C7E1B50062D6BD /* CityListViewModelMVVM.swift in Sources */,
 				BA15D65A2372144700813B24 /* SceneDelegate.swift in Sources */,
 				BA69C358237C0F9200309105 /* R.generated.swift in Sources */,
 				609DA54A237440BA00C5773D /* PeopleListController.swift in Sources */,
@@ -1214,6 +1235,7 @@
 				BA2D2C9D238073A400204BA0 /* SharedViewController.swift in Sources */,
 				609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */,
 				BAF3A18A237B21C20093420E /* CityListController.swift in Sources */,
+				BAF9571C23CDD7B700B780C3 /* CityListViewModelMVVM.swift in Sources */,
 				BA3E433C23C50864006239B2 /* CityForecastCellManager.swift in Sources */,
 				BAF20D4323992E0100A8485A /* FavouriteCitiesWorker.swift in Sources */,
 				BAF3A186237B10970093420E /* CityWeather.swift in Sources */,
@@ -1232,7 +1254,6 @@
 				BAED7AB52384788A00790744 /* CityForecastWorker.swift in Sources */,
 				BA83342723BF75FC00F24850 /* CityForecastCollectionViewCell.swift in Sources */,
 				BA3E9BAC23A303BE009F695C /* APIClient.swift in Sources */,
-				BA98738223C7E1ED0062D6BD /* CityListCreatorMVVM.swift in Sources */,
 				60EAC7A02374418100E48021 /* PeopleListRouter.swift in Sources */,
 				BAF20D49239930C800A8485A /* FavouriteCitiesCreator.swift in Sources */,
 				BAF3A191237B24C70093420E /* CityListWorker.swift in Sources */,
@@ -1253,6 +1274,7 @@
 				BA6E474F237E185A0083762F /* CityListTableViewCell.swift in Sources */,
 				BA7E4BA723A1394D0060D157 /* SharedButton.swift in Sources */,
 				BAD256D923B94E2C004960E9 /* SearchControllerHelper.swift in Sources */,
+				BAF9571823CDD7B700B780C3 /* CityListCellManagerMVVM.swift in Sources */,
 				BAF3A197237B27880093420E /* CityListCreator.swift in Sources */,
 				BA3E433A23C4FAC5006239B2 /* CityForecast.swift in Sources */,
 				BA91496B2397E8930029D666 /* DateFormatterHelper.swift in Sources */,
