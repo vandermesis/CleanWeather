@@ -62,7 +62,7 @@
                 <constraint firstItem="OFQ-85-piE" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="yM5-a6-fjf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="355" y="-192"/>
+            <point key="canvasLocation" x="-135" y="-2"/>
         </view>
     </objects>
     <resources>
