@@ -19,17 +19,14 @@ final class CityHistoricalInteractorTests: QuickSpec {
 
         var presenter: FakeCityHistoricalPresenter!
         var worker: FakeCityHistoricalWorker!
-        var router: FakeCityHistoricalRouter!
         var interactor: CityHistoricalInteractorImpl!
 
         beforeEach {
             presenter = FakeCityHistoricalPresenter()
             worker = FakeCityHistoricalWorker()
-            router = FakeCityHistoricalRouter()
             interactor = CityHistoricalInteractorImpl(cityDetails: Mock.cityWeather1,
                                                       presenter: presenter,
-                                                      worker: worker,
-                                                      router: router)
+                                                      worker: worker)
         }
 
         describe("getting city details") {

@@ -71,10 +71,9 @@ private extension APIClient {
             return
         }
 
-        //TODO: Uncomment for niceString
-//        if let niceString = data.prettyStringValue {
-//            print(niceString)
-//        }
+        if let niceString = data.prettyStringValue {
+            print(niceString)
+        }
         
         do {
             let decodedObject = try jsonDeserializer.decode(T.self, from: data)
