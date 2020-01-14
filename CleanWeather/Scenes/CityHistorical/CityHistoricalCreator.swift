@@ -15,16 +15,13 @@ struct CityHistoricalCreator {
         let dateFormatter = DateFormatterHelper.shared
         let networking = WeatherNetworkingImpl()
         let worker = CityHistoricalWorkerImpl(networking: networking)
-        let router = CityHistoricalRouterImpl()
         let presenter = CityHistoricalPresenterImpl<CityHistoricalController>(dateFormatter: dateFormatter)
         let interactor = CityHistoricalInteractorImpl(cityDetails: cityDetails,
                                                       presenter: presenter,
-                                                      worker: worker,
-                                                      router: router)
+                                                      worker: worker)
         let controller = CityHistoricalController(interactor: interactor)
 
         presenter.controller = controller
-        router.controller = controller
 
         return controller
     }
