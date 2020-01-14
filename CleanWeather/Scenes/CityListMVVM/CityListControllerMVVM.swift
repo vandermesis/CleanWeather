@@ -12,8 +12,6 @@ final class CityListControllerMVVM: SharedViewController {
 
     @IBOutlet private weak var cityListTableView: UITableView!
 
-    private var citiesWeatherDataSource = [CityWeather]()
-
     private let cellManager: CityListCellManagerMVVM
     private let viewModel: CityListViewModelMVVM
 
@@ -33,10 +31,10 @@ final class CityListControllerMVVM: SharedViewController {
         setupTableView()
         setupNavigationBar()
         setupViewModelDelegate()
-        setupCellManagerDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        toogleSpinner(true)
         viewModel.getFavouriteCities()
     }
 
@@ -46,10 +44,30 @@ final class CityListControllerMVVM: SharedViewController {
     }
 }
 
+extension CityListControllerMVVM: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        cellManager.citiesWeather.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return cellManager.buildCell(tableView, cellForRowAt: indexPath)
+    }
+}
+
+extension CityListControllerMVVM: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = cellManager.didSelectCityCell(indexPath: indexPath)
+        navigateToCityForecast(city: city)
+    }
+}
+
 extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
 
     func didUpdateFavouriteCitiesWeather(citiesWeather: [CityWeather]) {
-        cellManager.setup(with: citiesWeather)
+        toogleSpinner(false)
+        cellManager.setupCellManager(with: citiesWeather)
         cityListTableView.reloadData()
     }
 
@@ -59,20 +77,12 @@ extension CityListControllerMVVM: CityListViewModelMVVMDelegate {
     }
 }
 
-extension CityListControllerMVVM: CityListCellManagerMVVMDelegate {
-
-    func didSelectCityCell(city: CityWeather) {
-        let cityForecastController = CityForecastCreator().getController(with: city)
-        navigationController?.pushViewController(cityForecastController, animated: true)
-    }
-}
-
 private extension CityListControllerMVVM {
 
     private func setupTableView() {
         cityListTableView.register(cellType: CityListTableViewCell.self)
-        cityListTableView.delegate = cellManager
-        cityListTableView.dataSource = cellManager
+        cityListTableView.delegate = self
+        cityListTableView.dataSource = self
     }
 
     private func setupNavigationBar() {
@@ -86,7 +96,8 @@ private extension CityListControllerMVVM {
         viewModel.delegate = self
     }
 
-    private func setupCellManagerDelegate() {
-        cellManager.delegate = self
+    private func navigateToCityForecast(city: CityWeather) {
+        let cityForecastController = CityForecastCreator().getController(with: city)
+        navigationController?.pushViewController(cityForecastController, animated: true)
     }
 }

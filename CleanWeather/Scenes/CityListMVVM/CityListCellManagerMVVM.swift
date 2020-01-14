@@ -8,45 +8,27 @@
 
 import UIKit
 
-protocol CityListCellManagerMVVMDelegate: class {
-    func didSelectCityCell(city: CityWeather)
-}
-
 final class CityListCellManagerMVVM: NSObject {
 
-    private var citiesWeather = [CityWeather]()
+    var citiesWeather = [CityWeather]()
     private var citiesWeatherDisplayable: [CityWeatherDisplayable] {
         return citiesWeather.map { CityWeatherDisplayable(object: $0)}
     }
-
-    weak var delegate: CityListCellManagerMVVMDelegate?
 }
 
-extension CityListCellManagerMVVM: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return citiesWeatherDisplayable.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+extension CityListCellManagerMVVM {
+    
+    func buildCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(with: CityListTableViewCell.self, for: indexPath)
         cell.setup(with: citiesWeatherDisplayable[indexPath.row])
         return cell
     }
-}
 
-extension CityListCellManagerMVVM: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let city = citiesWeather[indexPath.row]
-        delegate?.didSelectCityCell(city: city)
+    func didSelectCityCell(indexPath: IndexPath) -> CityWeather {
+        return citiesWeather[indexPath.row]
     }
 
-}
-
-extension CityListCellManagerMVVM {
-
-    func setup(with citiesWeather: [CityWeather]) {
+    func setupCellManager(with citiesWeather: [CityWeather]) {
         self.citiesWeather = citiesWeather
     }
 }
