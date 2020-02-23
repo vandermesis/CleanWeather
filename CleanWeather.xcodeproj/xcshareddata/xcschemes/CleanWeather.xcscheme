@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BA15D6532372144700813B24"
-               BuildableName = "CleanWeather.app"
+               BuildableName = "CleanWeatherly.app"
                BlueprintName = "CleanWeather"
                ReferencedContainer = "container:CleanWeather.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA15D6532372144700813B24"
-            BuildableName = "CleanWeather.app"
+            BuildableName = "CleanWeatherly.app"
             BlueprintName = "CleanWeather"
             ReferencedContainer = "container:CleanWeather.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA15D6532372144700813B24"
-            BuildableName = "CleanWeather.app"
+            BuildableName = "CleanWeatherly.app"
             BlueprintName = "CleanWeather"
             ReferencedContainer = "container:CleanWeather.xcodeproj">
          </BuildableReference>
