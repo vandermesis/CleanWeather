@@ -11,7 +11,6 @@
 		606B800A2383FD8F00C8B952 /* SpinnerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B80092383FD8F00C8B952 /* SpinnerPresentable.swift */; };
 		606B800C2383FDCC00C8B952 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B800B2383FDCC00C8B952 /* AlertPresentable.swift */; };
 		609DA54423743E2D00C5773D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA54323743E2D00C5773D /* Person.swift */; };
-		609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DA54523743F5600C5773D /* PeopleNetworking.swift */; };
 		60D4AC6323A5101400D591BB /* CitiesAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D4AC6223A5101400D591BB /* CitiesAPIResponse.swift */; };
 		60DDA2152388410600EF9898 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA2142388410600EF9898 /* Mock.swift */; };
 		60DDA21E238842C800EF9898 /* FakePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDA21D238842C800EF9898 /* FakePresenter.swift */; };
@@ -188,7 +187,6 @@
 		606B80092383FD8F00C8B952 /* SpinnerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerPresentable.swift; sourceTree = "<group>"; };
 		606B800B2383FDCC00C8B952 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		609DA54323743E2D00C5773D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		609DA54523743F5600C5773D /* PeopleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworking.swift; sourceTree = "<group>"; };
 		60D4AC6223A5101400D591BB /* CitiesAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesAPIResponse.swift; sourceTree = "<group>"; };
 		60DDA2142388410600EF9898 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		60DDA21D238842C800EF9898 /* FakePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePresenter.swift; sourceTree = "<group>"; };
@@ -429,7 +427,6 @@
 		609DA54123743DF100C5773D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				609DA54523743F5600C5773D /* PeopleNetworking.swift */,
 				BAF3A187237B170A0093420E /* WeatherNetworking.swift */,
 				60D4AC6123A506BB00D591BB /* Base */,
 			);
@@ -1137,7 +1134,6 @@
 				BA53A9C7238F2D020024F205 /* Int+HourString.swift in Sources */,
 				BA53BDB423AAE2CF0077661E /* CityForecastAPIResponse.swift in Sources */,
 				BA2D2C9D238073A400204BA0 /* SharedViewController.swift in Sources */,
-				609DA54623743F5600C5773D /* PeopleNetworking.swift in Sources */,
 				BAF3A18A237B21C20093420E /* CityListController.swift in Sources */,
 				BAF9571C23CDD7B700B780C3 /* CityListViewModelMVVM.swift in Sources */,
 				BA3E433C23C50864006239B2 /* CityForecastCellManager.swift in Sources */,
@@ -1401,14 +1397,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6H3JCHA3QJ;
 				INFOPLIST_FILE = CleanWeather/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vandermesis.CleanWeather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vandermesis.CleanWeatherly;
+				PRODUCT_NAME = CleanWeather;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1420,14 +1417,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6H3JCHA3QJ;
 				INFOPLIST_FILE = CleanWeather/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vandermesis.CleanWeather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vandermesis.CleanWeatherly;
+				PRODUCT_NAME = CleanWeather;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1440,6 +1438,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6H3JCHA3QJ;
 				INFOPLIST_FILE = CleanWeatherTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1462,6 +1461,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6H3JCHA3QJ;
 				INFOPLIST_FILE = CleanWeatherTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
